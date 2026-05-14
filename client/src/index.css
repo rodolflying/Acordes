@@ -317,12 +317,41 @@ input#search:focus {
 @media (max-width: 900px) {
     #app {
         grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        height: 100vh;
+        overflow: hidden;
     }
     aside {
-        display: none; /* For mobile we'd need a drawer */
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.5rem;
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
+        background: rgba(10, 10, 10, 0.8);
+        z-index: 10;
+    }
+    .logo-container {
+        margin-bottom: 0.5rem;
+    }
+    aside nav div {
+        display: none; /* Hide the "Carpetas" label on mobile to save space */
+    }
+    .folder-list {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+        gap: 0.8rem;
+    }
+    .folder-item {
+        white-space: nowrap;
+        flex-shrink: 0;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
     }
     main {
         padding: 1rem 1rem;
+        overflow-y: auto;
     }
     header {
         flex-direction: column;
@@ -558,6 +587,10 @@ input#search:focus {
         border-radius: 12px;
         line-height: 1.5;
         letter-spacing: 0;
+        /* Permitir que el texto de la letra envuelva para no scrolear infinito */
+        white-space: pre-wrap;
+        word-break: break-word;
+        overflow-x: hidden;
     }
     .diagrams-scroll {
         gap: 0.8rem;
@@ -573,10 +606,11 @@ input#search:focus {
     .autoscroll-panel {
         bottom: 1rem;
         right: 1rem;
-        left: 1rem;
+        left: auto; /* Allow it to be just a tiny bubble on bottom right */
         justify-content: center;
         padding: 0.4rem 0.8rem;
         gap: 0.5rem;
+        background: rgba(10, 10, 10, 0.5); /* Más transparente */
     }
     /* Selected chord becomes a bottom-sheet on mobile */
     .selected-chord-panel {
