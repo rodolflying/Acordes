@@ -156,19 +156,18 @@ const SongViewer = ({ song, onClose, chordDb }) => {
       if (transposeDelta === 0) return 'Tono Original';
       return transposeDelta > 0 ? `+${transposeDelta}` : `${transposeDelta}`;
   };
-
   return (
     <div id="song-viewer" ref={viewerRef} style={{ display: 'block', position: 'fixed', inset: 0, background: 'var(--bg-dark)', zIndex: 2000, overflowY: 'auto' }}>
       <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', position: 'sticky', top: 0, background: 'var(--bg-dark)', padding: '1rem 0', borderBottom: '1px solid var(--glass-border)', zIndex: 10 }}>
+        <div className="viewer-header">
           <h2 id="viewer-title">{song.title}</h2>
           
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div className="viewer-controls">
             <div className="transpose-controls" style={{ display: 'flex', alignItems: 'center', background: 'var(--glass)', borderRadius: '20px', padding: '0.2rem 0.5rem', border: '1px solid var(--glass-border)' }}>
               <button onClick={() => setTransposeDelta(p => p - 1)} className="btn-icon" style={{ width: '30px', height: '30px', fontSize: '0.9rem' }} title="Bajar medio tono">
                   <i className="fas fa-minus"></i>
               </button>
-              <div style={{ minWidth: '100px', textAlign: 'center', fontSize: '0.9rem', fontWeight: 'bold', color: transposeDelta !== 0 ? 'var(--primary)' : 'var(--text-main)' }}>
+              <div style={{ minWidth: '80px', textAlign: 'center', fontSize: '0.85rem', fontWeight: 'bold', color: transposeDelta !== 0 ? 'var(--primary)' : 'var(--text-main)' }}>
                   {getTransposeLabel()}
               </div>
               <button onClick={() => setTransposeDelta(p => p + 1)} className="btn-icon" style={{ width: '30px', height: '30px', fontSize: '0.9rem' }} title="Subir medio tono">
@@ -217,27 +216,10 @@ const SongViewer = ({ song, onClose, chordDb }) => {
       )}
 
       {selectedChordSvg && (
-        <div style={{
-           position: 'fixed',
-           left: '5%',
-           top: '50%',
-           transform: 'translateY(-50%)',
-           background: 'rgba(10, 10, 10, 0.8)',
-           backdropFilter: 'blur(20px)',
-           border: '1px solid var(--primary)',
-           borderRadius: '20px',
-           padding: '2rem',
-           boxShadow: '0 0 30px rgba(0, 242, 255, 0.2)',
-           zIndex: 2500,
-           display: 'flex',
-           flexDirection: 'column',
-           alignItems: 'center',
-           gap: '1rem',
-           minWidth: '180px'
-        }}>
+        <div className="selected-chord-panel">
            <div style={{ color: 'var(--primary)', fontWeight: 'bold', fontSize: '1.5rem', letterSpacing: '1px' }}>{selectedChordSvg.name}</div>
            <div dangerouslySetInnerHTML={{ __html: selectedChordSvg.svg }} style={{ transform: 'scale(1.2)', transformOrigin: 'center' }} />
-           <button onClick={() => setSelectedChordSvg(null)} className="btn-icon" style={{marginTop: '1rem', background: 'var(--glass)', width: '40px', height: '40px'}}>
+           <button onClick={() => setSelectedChordSvg(null)} className="btn-icon" style={{background: 'var(--glass)', width: '40px', height: '40px'}}>
                <i className="fas fa-times"></i>
            </button>
         </div>
