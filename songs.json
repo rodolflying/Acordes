@@ -2845,6 +2845,30 @@
             "name": "Ojos color sol (acordes) - Calle 13 - Cifra Club",
             "type": "url",
             "url": "https://www.cifraclub.com/calle-13/ojos-color-sol/"
+        },
+        {
+            "date_added": "13424836360645306",
+            "date_last_used": "0",
+            "guid": "2641a7f6-d88e-41dd-b57f-99d9d4a6c4aa",
+            "id": "1034",
+            "meta_info": {
+                "power_bookmark_meta": ""
+            },
+            "name": "Yo Siempre Contesto (acordes) - LATIN MAFIA - Cifra Club",
+            "type": "url",
+            "url": "https://www.cifraclub.com/latin-mafia/yo-siempre-contesto/"
+        },
+        {
+            "date_added": "13424839120092387",
+            "date_last_used": "0",
+            "guid": "870e41cb-1868-482d-be77-1bc89c401bbf",
+            "id": "1035",
+            "meta_info": {
+                "power_bookmark_meta": ""
+            },
+            "name": "API account created | Last.fm",
+            "type": "url",
+            "url": "https://www.last.fm/api/account/create"
         }
     ]
 }

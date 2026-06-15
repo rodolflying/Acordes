@@ -220,8 +220,8 @@ function closeSongViewer() {
 
 function parseChord(chordStr) {
     // Splits "C#m7" or "Sol#m" into root ("C#", "Sol#") and suffix ("m7", "m")
-    // Using a group with OR (|) to correctly match full words for Spanish notes, independent of case
-    const match = chordStr.match(/^((?:C|D|E|F|G|A|B|H|Do|Re|Mi|Fa|Sol|La|Si)[#b]?)(.*)$/i);
+    // Put Spanish notes first to avoid eager matching on English prefixes (like D matching in DO)
+    const match = chordStr.match(/^((?:Do|Re|Mi|Fa|Sol|La|Si|C|D|E|F|G|A|B|H)[#b]?)(.*)$/i);
     if (!match) return { key: chordStr, suffix: 'major' }; // Fallback
     
     let root = match[1];
@@ -265,6 +265,29 @@ function parseChord(chordStr) {
     // Acordes con '4' o '2' solos que se refieren a acordes suspendidos
     if (suffixKey === '4') suffixKey = 'sus4';
     if (suffixKey === '2') suffixKey = 'sus2';
+    
+    // Traducir nota de bajo en acordes con barra (ej. /Sol -> /G)
+    const slashTranslation = {
+        'C': 'C', 'Do': 'C',
+        'C#': 'C#', 'Db': 'C#', 'Do#': 'C#', 'Reb': 'C#',
+        'D': 'D', 'Re': 'D',
+        'D#': 'D#', 'Eb': 'Eb', 'Re#': 'D#', 'Mib': 'Eb',
+        'E': 'E', 'Mi': 'E',
+        'F': 'F', 'Fa': 'F',
+        'F#': 'F#', 'Gb': 'F#', 'Fa#': 'F#', 'Solb': 'F#',
+        'G': 'G', 'Sol': 'G',
+        'G#': 'G#', 'Ab': 'Ab', 'Sol#': 'G#', 'Lab': 'Ab',
+        'A': 'A', 'La': 'A',
+        'A#': 'A#', 'Bb': 'Bb', 'La#': 'A#', 'Sib': 'Bb',
+        'B': 'B', 'Si': 'B'
+    };
+    const slashMatch = suffixKey.match(/\/((?:Do|Re|Mi|Fa|Sol|La|Si|C|D|E|F|G|A|B)[#b]?)$/i);
+    if (slashMatch) {
+        let slashRoot = slashMatch[1];
+        slashRoot = slashRoot.charAt(0).toUpperCase() + slashRoot.slice(1).toLowerCase();
+        const translatedSlash = slashTranslation[slashRoot] || slashRoot;
+        suffixKey = suffixKey.slice(0, slashMatch.index) + '/' + translatedSlash;
+    }
     
     return { key: rootKey, suffix: suffixKey };
 }
@@ -476,8 +499,8 @@ function setupEventListeners() {
     document.getElementById('scroll-toggle').onclick = () => {
         isScrolling ? stopAutoscroll() : startAutoscroll();
     };
-    document.getElementById('scroll-increase').onclick = () => updateScrollSpeed(0.5);
-    document.getElementById('scroll-decrease').onclick = () => updateScrollSpeed(-0.5);
+    document.getElementById('scroll-increase').onclick = () => updateScrollSpeed(1);
+    document.getElementById('scroll-decrease').onclick = () => updateScrollSpeed(-1);
 
     // Refresh controls
     const refreshBtn = document.getElementById('refresh-btn');
@@ -519,8 +542,9 @@ function setupEventListeners() {
 }
 
 // Autoscroll Logic
+const scrollSpeeds = [0.5, 0.65, 0.8, 1.0, 1.15, 1.3, 1.5, 1.65, 1.8, 2.0];
+let scrollSpeedIndex = 3; // Corresponde a 1.0
 let scrollInterval = null;
-let scrollSpeed = 1;
 let isScrolling = false;
 
 function startAutoscroll() {
@@ -531,7 +555,8 @@ function startAutoscroll() {
     const viewer = document.getElementById('song-viewer');
     scrollInterval = setInterval(() => {
         // Increment scrollTop
-        viewer.scrollTop += (scrollSpeed * 0.5); 
+        const currentSpeed = scrollSpeeds[scrollSpeedIndex];
+        viewer.scrollTop += (currentSpeed * 0.5); 
     }, 50); // 50ms interval => 20 fps smooth scrolling
 }
 
@@ -542,14 +567,13 @@ function stopAutoscroll() {
     clearInterval(scrollInterval);
 }
 
-function updateScrollSpeed(delta) {
-    scrollSpeed += delta;
-    if (scrollSpeed < 0.5) scrollSpeed = 0.5;
-    if (scrollSpeed > 10) scrollSpeed = 10;
+function updateScrollSpeed(direction) {
+    scrollSpeedIndex += direction;
+    if (scrollSpeedIndex < 0) scrollSpeedIndex = 0;
+    if (scrollSpeedIndex >= scrollSpeeds.length) scrollSpeedIndex = scrollSpeeds.length - 1;
     
-    // Formatear para no mostrar .0 si es entero, o mostrar un decimal si es .5
-    const displayValue = scrollSpeed % 1 === 0 ? scrollSpeed : scrollSpeed.toFixed(1);
-    document.getElementById('scroll-speed-display').innerText = `x${displayValue}`;
+    const currentSpeed = scrollSpeeds[scrollSpeedIndex];
+    document.getElementById('scroll-speed-display').innerText = `x${currentSpeed}`;
 }
 
 init();

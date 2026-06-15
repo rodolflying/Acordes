@@ -1,0 +1,12 @@
+# Environment
+.env
+
+# Enriched data (generated locally)
+enriched_songs.json
+
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/

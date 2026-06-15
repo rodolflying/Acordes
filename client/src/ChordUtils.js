@@ -1,5 +1,7 @@
 export function parseChord(chordStr) {
-    const match = chordStr.match(/^((?:C|D|E|F|G|A|B|H|Do|Re|Mi|Fa|Sol|La|Si)[#b]?)(.*)$/i);
+    // Splits "C#m7" or "Sol#m" into root ("C#", "Sol#") and suffix ("m7", "m")
+    // Put Spanish notes first to avoid eager matching on English prefixes (like D matching in DO)
+    const match = chordStr.match(/^((?:Do|Re|Mi|Fa|Sol|La|Si|C|D|E|F|G|A|B|H)[#b]?)(.*)$/i);
     if (!match) return { key: chordStr, suffix: 'major' }; 
     
     let root = match[1];
@@ -39,11 +41,35 @@ export function parseChord(chordStr) {
     if (suffixKey === '4') suffixKey = 'sus4';
     if (suffixKey === '2') suffixKey = 'sus2';
     
+    // Traducir nota de bajo en acordes con barra (ej. /Sol -> /G)
+    const slashTranslation = {
+        'C': 'C', 'Do': 'C',
+        'C#': 'C#', 'Db': 'C#', 'Do#': 'C#', 'Reb': 'C#',
+        'D': 'D', 'Re': 'D',
+        'D#': 'D#', 'Eb': 'Eb', 'Re#': 'D#', 'Mib': 'Eb',
+        'E': 'E', 'Mi': 'E',
+        'F': 'F', 'Fa': 'F',
+        'F#': 'F#', 'Gb': 'F#', 'Fa#': 'F#', 'Solb': 'F#',
+        'G': 'G', 'Sol': 'G',
+        'G#': 'G#', 'Ab': 'Ab', 'Sol#': 'G#', 'Lab': 'Ab',
+        'A': 'A', 'La': 'A',
+        'A#': 'A#', 'Bb': 'Bb', 'La#': 'A#', 'Sib': 'Bb',
+        'B': 'B', 'Si': 'B'
+    };
+    const slashMatch = suffixKey.match(/\/((?:Do|Re|Mi|Fa|Sol|La|Si|C|D|E|F|G|A|B)[#b]?)$/i);
+    if (slashMatch) {
+        let slashRoot = slashMatch[1];
+        slashRoot = slashRoot.charAt(0).toUpperCase() + slashRoot.slice(1).toLowerCase();
+        const translatedSlash = slashTranslation[slashRoot] || slashRoot;
+        suffixKey = suffixKey.slice(0, slashMatch.index) + '/' + translatedSlash;
+    }
+    
     return { key: rootKey, suffix: suffixKey };
 }
 
 export function transposeChord(chordStr, delta) {
-    const match = chordStr.match(/^((?:C|D|E|F|G|A|B|H|Do|Re|Mi|Fa|Sol|La|Si)[#b]?)(.*)$/i);
+    // Put Spanish notes first to avoid eager matching on English prefixes (like D matching in DO)
+    const match = chordStr.match(/^((?:Do|Re|Mi|Fa|Sol|La|Si|C|D|E|F|G|A|B|H)[#b]?)(.*)$/i);
     if (!match) return chordStr; 
     
     let root = match[1];
@@ -78,7 +104,8 @@ export function transposeChord(chordStr, delta) {
     const newRoot = scale[newIndex];
     
     let newSuffix = suffix;
-    const slashMatch = suffix.match(/^(.*?)\/([CDEFGABH][#b]?)$/i);
+    // Support Spanish notes for the bass note in suffix matching
+    const slashMatch = suffix.match(/^(.*?)\/((?:Do|Re|Mi|Fa|Sol|La|Si|C|D|E|F|G|A|B|H)[#b]?)$/i);
     if (slashMatch) {
         const bassNote = slashMatch[2].charAt(0).toUpperCase() + slashMatch[2].slice(1).toLowerCase();
         const normBass = rootToEnglish[bassNote] || bassNote;

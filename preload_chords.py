@@ -51,6 +51,17 @@ def main():
     with open(os.path.join('client', 'public', 'songs.json'), 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False)
         
+    # También copiar enriched_songs.json a public si existe
+    enriched_src = 'enriched_songs.json'
+    enriched_dest = os.path.join('client', 'public', 'enriched_songs.json')
+    if os.path.exists(enriched_src):
+        try:
+            import shutil
+            shutil.copy(enriched_src, enriched_dest)
+            print("Se copió enriched_songs.json a la carpeta pública del cliente")
+        except Exception as e:
+            print(f"Error copiando enriched_songs.json: {e}")
+        
     print("¡Pre-carga completada con éxito!")
 
 if __name__ == '__main__':
