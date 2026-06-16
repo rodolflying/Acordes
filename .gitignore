@@ -3,6 +3,7 @@
 
 # Enriched data (generated locally)
 enriched_songs.json
+!client/public/enriched_songs.json
 
 # Python
 __pycache__/

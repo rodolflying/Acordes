@@ -1,0 +1,397 @@
+{
+  "backing_tracks": {
+    "https://acordes.lacuerda.net/ases_falsos/mi_ejercito-3.shtml": {
+      "Karaoke": {
+        "id": "kTOZOgkEIxw",
+        "title": "Ases Falsos - Mi ejercito | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=kTOZOgkEIxw"
+      },
+      "Instrumental": {
+        "id": "QktRXb56lO4",
+        "title": "Ases Falsos - Mi ejercito | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=QktRXb56lO4"
+      }
+    },
+    "https://acordes.lacuerda.net/lucybell/tu-2.shtml": {
+      "Karaoke": {
+        "id": "BQaVuCnN5T8",
+        "title": "Lucybell - Cuando Respiro En Tu Boca | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=BQaVuCnN5T8"
+      },
+      "Instrumental": {
+        "id": "AqQAUtybtTs",
+        "title": "Lucybell - Cuando Respiro En Tu Boca | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=AqQAUtybtTs"
+      },
+      "Backtrack": {
+        "id": "eOAhOuY8ZT0",
+        "title": "Lucybell - Cuando Respiro En Tu Boca | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=eOAhOuY8ZT0"
+      }
+    },
+    "https://acordes.lacuerda.net/lucybell/voy_por_ti.shtml": {
+      "Karaoke": {
+        "id": "zZAyTsBhnRY",
+        "title": "Voy por ti - Lucybell | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=zZAyTsBhnRY"
+      },
+      "Instrumental": {
+        "id": "twF6kHJguxA",
+        "title": "Voy por ti - Lucybell | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=twF6kHJguxA"
+      },
+      "Backtrack": {
+        "id": "az5MajTkcI4",
+        "title": "Voy por ti - Lucybell | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=az5MajTkcI4"
+      }
+    },
+    "https://acordes.lacuerda.net/lucybell/cuando_respiro_en_tu_boca.shtml": {
+      "Karaoke": {
+        "id": "BQaVuCnN5T8",
+        "title": "Lucybell - Cuando Respiro En Tu Boca | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=BQaVuCnN5T8"
+      },
+      "Instrumental": {
+        "id": "AqQAUtybtTs",
+        "title": "Lucybell - Cuando Respiro En Tu Boca | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=AqQAUtybtTs"
+      },
+      "Backtrack": {
+        "id": "eOAhOuY8ZT0",
+        "title": "Lucybell - Cuando Respiro En Tu Boca | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=eOAhOuY8ZT0"
+      }
+    },
+    "https://www.cifraclub.com/coldplay/fix-you/": {
+      "Karaoke": {
+        "id": "xQxi5s9-1vY",
+        "title": "Coldplay - Fix You | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=xQxi5s9-1vY"
+      },
+      "Instrumental": {
+        "id": "BD6rHmdzn7I",
+        "title": "Coldplay - Fix You | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=BD6rHmdzn7I"
+      }
+    },
+    "https://www.cifraclub.com/30-seconds-to-mars/beautiful-lie/": {
+      "Karaoke": {
+        "id": "Li17K5ycr9Q",
+        "title": "Thirty Seconds To Mars - A Beautiful Lie | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=Li17K5ycr9Q"
+      },
+      "Instrumental": {
+        "id": "gVTE4f10uuo",
+        "title": "Thirty Seconds To Mars - A Beautiful Lie | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=gVTE4f10uuo"
+      },
+      "Backtrack": {
+        "id": "A-dR0y9Q8ww",
+        "title": "Thirty Seconds To Mars - A Beautiful Lie | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=A-dR0y9Q8ww"
+      }
+    },
+    "https://acordes.lacuerda.net/tronic/bajo_llave.shtml": {
+      "Karaoke": {
+        "id": "ZfKd-5HD5u8",
+        "title": "TRONIC - Bajo Llave | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=ZfKd-5HD5u8"
+      },
+      "Instrumental": {
+        "id": "AaFgKhz9chs",
+        "title": "TRONIC - Bajo Llave | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=AaFgKhz9chs"
+      },
+      "Backtrack": {
+        "id": "O4LmJM9J3hM",
+        "title": "TRONIC - Bajo Llave | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=O4LmJM9J3hM"
+      }
+    },
+    "https://www.cifraclub.com/harry-styles/as-it-was/": {
+      "Karaoke": {
+        "id": "_9WENq8jXOo",
+        "title": "Harry Styles - As It Was | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=_9WENq8jXOo"
+      },
+      "Instrumental": {
+        "id": "ipf4k9ORvQw",
+        "title": "Harry Styles - As It Was | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=ipf4k9ORvQw"
+      },
+      "Backtrack": {
+        "id": "TxowugR_hbw",
+        "title": "Harry Styles - As It Was | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=TxowugR_hbw"
+      }
+    },
+    "https://www.cifraclub.com/harry-styles/sign-of-the-times/": {
+      "Karaoke": {
+        "id": "7ia5OIi-uDw",
+        "title": "Harry Styles - Sign of the Times | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=7ia5OIi-uDw"
+      },
+      "Instrumental": {
+        "id": "as8aYgrhwgg",
+        "title": "Harry Styles - Sign of the Times | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=as8aYgrhwgg"
+      },
+      "Backtrack": {
+        "id": "QFRcj-TsD9Y",
+        "title": "Harry Styles - Sign of the Times | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=QFRcj-TsD9Y"
+      }
+    },
+    "https://www.cifraclub.com/arctic-monkeys/505/": {
+      "Karaoke": {
+        "id": "wEXNHMCrgUY",
+        "title": "Arctic Monkeys - 505 | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=wEXNHMCrgUY"
+      },
+      "Instrumental": {
+        "id": "jX1TpJX_I68",
+        "title": "Arctic Monkeys - 505 | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=jX1TpJX_I68"
+      },
+      "Backtrack": {
+        "id": "curu5Mhqy6E",
+        "title": "Arctic Monkeys - 505 | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=curu5Mhqy6E"
+      }
+    },
+    "https://acordes.lacuerda.net/smitten/bitacora-2.shtml": {
+      "Karaoke": {
+        "id": "ksXbH-hx4gI",
+        "title": "Smitten - Bitacora | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=ksXbH-hx4gI"
+      },
+      "Instrumental": {
+        "id": "zkj1-TylGV4",
+        "title": "Smitten - Bitacora | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=zkj1-TylGV4"
+      },
+      "Backtrack": {
+        "id": "fE2-gWGQdGI",
+        "title": "Smitten - Bitacora | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=fE2-gWGQdGI"
+      }
+    },
+    "https://acordes.lacuerda.net/little_jesus/azul.shtml": {
+      "Karaoke": {
+        "id": "ZW-_jplb8gE",
+        "title": "Little Jesus - Azul | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=ZW-_jplb8gE"
+      },
+      "Instrumental": {
+        "id": "lTTLs023hzI",
+        "title": "Little Jesus - Azul | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=lTTLs023hzI"
+      },
+      "Backtrack": {
+        "id": "ncerJglnupU",
+        "title": "Little Jesus - Azul | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=ncerJglnupU"
+      }
+    },
+    "https://www.cifraclub.com/coldplay/clocks/": {
+      "Karaoke": {
+        "id": "DlmUY21StTQ",
+        "title": "Coldplay - Clocks | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=DlmUY21StTQ"
+      },
+      "Instrumental": {
+        "id": "nHXYaA0M6jg",
+        "title": "Coldplay - Clocks | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=nHXYaA0M6jg"
+      },
+      "Backtrack": {
+        "id": "K3ofGIsawGI",
+        "title": "Coldplay - Clocks | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=K3ofGIsawGI"
+      }
+    },
+    "https://www.cifraclub.com/ed-sheeran/the-a-team/": {
+      "Karaoke": {
+        "id": "iRhSDgm-Sqs",
+        "title": "Ed Sheeran - The A Team | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=iRhSDgm-Sqs"
+      },
+      "Instrumental": {
+        "id": "jAgnA1Mlyxo",
+        "title": "Ed Sheeran - The A Team | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=jAgnA1Mlyxo"
+      },
+      "Backtrack": {
+        "id": "gPFR8xxvnqA",
+        "title": "Ed Sheeran - The A Team | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=gPFR8xxvnqA"
+      }
+    },
+    "https://www.cifraclub.com/bastille/pompeii/": {
+      "Karaoke": {
+        "id": "EhKUR90l-Ao",
+        "title": "Bastille - Pompeii | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=EhKUR90l-Ao"
+      },
+      "Instrumental": {
+        "id": "YOi1yJ32JJw",
+        "title": "Bastille - Pompeii | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=YOi1yJ32JJw"
+      },
+      "Backtrack": {
+        "id": "Enikxvad6bw",
+        "title": "Bastille - Pompeii | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=Enikxvad6bw"
+      }
+    },
+    "https://acordes.lacuerda.net/mato_a_un_policia_motorizado/fuego-2.shtml": {
+      "Karaoke": {
+        "id": "TRC-HVgH9bA",
+        "title": "El mato a un policia motorizado - Fuego | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=TRC-HVgH9bA"
+      },
+      "Instrumental": {
+        "id": "blPjnvFHrI8",
+        "title": "El mato a un policia motorizado - Fuego | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=blPjnvFHrI8"
+      },
+      "Backtrack": {
+        "id": "lzWS8XUwHfE",
+        "title": "El mato a un policia motorizado - Fuego | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=lzWS8XUwHfE"
+      }
+    },
+    "https://www.cifraclub.com.br/los-choclok/bonita/": {
+      "Karaoke": {
+        "id": "tkNnmcywRyY",
+        "title": "Los Choclok - Los Choclok Bonita | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=tkNnmcywRyY"
+      },
+      "Instrumental": {
+        "id": "AjxClOyaQ50",
+        "title": "Los Choclok - Los Choclok Bonita | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=AjxClOyaQ50"
+      },
+      "Backtrack": {
+        "id": "Q1YWxjJvWNI",
+        "title": "Los Choclok - Los Choclok Bonita | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=Q1YWxjJvWNI"
+      }
+    },
+    "https://m.cifraclub.com/the-killers/mr-brightside/": {
+      "Karaoke": {
+        "id": "OiA3Gm7jQ0E",
+        "title": "The Killers - Mr Brightside | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=OiA3Gm7jQ0E"
+      },
+      "Instrumental": {
+        "id": "1Q2IExCuAg8",
+        "title": "The Killers - Mr Brightside | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=1Q2IExCuAg8"
+      },
+      "Backtrack": {
+        "id": "Tvci6t51XtE",
+        "title": "The Killers - Mr Brightside | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=Tvci6t51XtE"
+      }
+    },
+    "https://m.cifraclub.com/harry-styles/as-it-was/": {
+      "Karaoke": {
+        "id": "_9WENq8jXOo",
+        "title": "Harry Styles - As It Was | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=_9WENq8jXOo"
+      },
+      "Instrumental": {
+        "id": "ipf4k9ORvQw",
+        "title": "Harry Styles - As It Was | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=ipf4k9ORvQw"
+      },
+      "Backtrack": {
+        "id": "TxowugR_hbw",
+        "title": "Harry Styles - As It Was | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=TxowugR_hbw"
+      }
+    },
+    "https://acordes.lacuerda.net/santiago_motorizado/mil_derrotas.shtml": {
+      "Karaoke": {
+        "id": "wcG8iG8hnzo",
+        "title": "Santiago Motorizado - Mil derrotas | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=wcG8iG8hnzo"
+      },
+      "Instrumental": {
+        "id": "0-B8Id8IMNo",
+        "title": "Santiago Motorizado - Mil derrotas | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=0-B8Id8IMNo"
+      }
+    },
+    "https://www.cifraclub.com/vance-joy/riptide/": {
+      "Karaoke": {
+        "id": "tYg9kFzpLis",
+        "title": "Vance Joy - Riptide | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=tYg9kFzpLis"
+      },
+      "Instrumental": {
+        "id": "q9rstNSTIo4",
+        "title": "Vance Joy - Riptide | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=q9rstNSTIo4"
+      },
+      "Backtrack": {
+        "id": "B-QKU_8F2fc",
+        "title": "Vance Joy - Riptide | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=B-QKU_8F2fc"
+      }
+    },
+    "https://www.cifraclub.com/kidd-voodoo/angeles/": {
+      "Karaoke": {
+        "id": "Hs4cU-RH2Jk",
+        "title": "Kidd Voodoo - Angeles | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=Hs4cU-RH2Jk"
+      },
+      "Instrumental": {
+        "id": "gJ0qme6SzRw",
+        "title": "Kidd Voodoo - Angeles | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=gJ0qme6SzRw"
+      },
+      "Backtrack": {
+        "id": "2reyEaMng0U",
+        "title": "Kidd Voodoo - Angeles | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=2reyEaMng0U"
+      }
+    },
+    "https://www.cifraclub.com/oliver-tree/alien-boy/": {
+      "Karaoke": {
+        "id": "g0K-O0Fczt4",
+        "title": "Oliver Tree - Alien Boy | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=g0K-O0Fczt4"
+      },
+      "Instrumental": {
+        "id": "UWDW4v1JAyc",
+        "title": "Oliver Tree - Alien Boy | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=UWDW4v1JAyc"
+      },
+      "Backtrack": {
+        "id": "RKOucrdyg6s",
+        "title": "Oliver Tree - Alien Boy | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=RKOucrdyg6s"
+      }
+    },
+    "https://www.cifraclub.com.br/cardellino/nino-eterno/": {
+      "Karaoke": {
+        "id": "wJGmO9dgaUU",
+        "title": "Cardellino - Nino Eterno | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=wJGmO9dgaUU"
+      },
+      "Instrumental": {
+        "id": "kv-tFVZhZqc",
+        "title": "Cardellino - Nino Eterno | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=kv-tFVZhZqc"
+      },
+      "Backtrack": {
+        "id": "9dAmPn0Lc8w",
+        "title": "Cardellino - Nino Eterno | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=9dAmPn0Lc8w"
+      }
+    }
+  }
+}

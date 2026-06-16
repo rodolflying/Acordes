@@ -93,7 +93,7 @@ function App() {
   
   const [selectedSong, setSelectedSong] = useState(null);
   const [randomModal, setRandomModal] = useState(null); // contains random song obj
-  const [backingTracksList, setBackingTracksList] = useState([]);
+  const [backingTracksDict, setBackingTracksDict] = useState({});
   const [filterHasBackingTrack, setFilterHasBackingTrack] = useState(false);
   const [performanceMode, setPerformanceMode] = useState(() => {
     return localStorage.getItem('performanceMode') === 'true';
@@ -114,15 +114,7 @@ function App() {
   };
 
   const songHasBackingTrack = (song) => {
-    const sArtist = normalizeString(song.clean_artist || song.folder);
-    const sTitle = normalizeString(song.clean_title || song.title);
-    
-    return backingTracksList.some(track => {
-      const tArtist = normalizeString(track.artist);
-      const tTitle = normalizeString(track.title);
-      return (sArtist === tArtist && sTitle === tTitle) || 
-             (sArtist === tTitle && sTitle === tArtist);
-    });
+    return !!backingTracksDict[song.url];
   };
 
   const loadData = async () => {
@@ -209,13 +201,13 @@ function App() {
 
   const loadBackingTracksList = async () => {
     try {
-      const res = await fetch('http://127.0.0.1:8001/api/youtube/has_backing_tracks');
+      const res = await fetch('./backing_tracks.json');
       if (res.ok) {
         const data = await res.json();
-        setBackingTracksList(data.songs || []);
+        setBackingTracksDict(data.backing_tracks || {});
       }
     } catch(e) {
-      console.log("No se pudo cargar la lista de backing tracks");
+      console.log("No se pudo cargar la lista de backing tracks estáticos");
     }
   };
 
@@ -267,7 +259,7 @@ function App() {
       
       return matchesSearch && matchesFolder && matchesMood && matchesTheme && matchesBackingTrack;
     });
-  }, [allSongs, searchQuery, currentFilter, activeMood, activeTheme, filterHasBackingTrack, backingTracksList]);
+  }, [allSongs, searchQuery, currentFilter, activeMood, activeTheme, filterHasBackingTrack, backingTracksDict]);
 
   const stats = useMemo(() => {
     if (!allSongs.length) return null;
@@ -688,7 +680,12 @@ function App() {
             </div>
           </div>
         }>
-          <SongViewer song={selectedSong} chordDb={chordDb} onClose={() => setSelectedSong(null)} />
+          <SongViewer 
+            song={selectedSong} 
+            chordDb={chordDb} 
+            backingTracks={backingTracksDict[selectedSong.url]} 
+            onClose={() => setSelectedSong(null)} 
+          />
         </Suspense>
       )}
 

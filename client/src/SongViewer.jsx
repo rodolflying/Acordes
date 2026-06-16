@@ -11,7 +11,7 @@ const MOODS_CONFIG = {
   "Nostálgico": { color: "#f26419", rgb: "242, 100, 25" }
 };
 
-const SongViewer = ({ song, onClose, chordDb }) => {
+const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [content, setContent] = useState('');
@@ -36,6 +36,47 @@ const SongViewer = ({ song, onClose, chordDb }) => {
 
   // Fetch Backing Tracks matching this song from local uploader JSON
   useEffect(() => {
+    if (propBackingTracks) {
+      setBackingTracks(propBackingTracks);
+      
+      // Determine default version to play (Karaoke -> Instrumental -> Backtrack)
+      const versions = ['Karaoke', 'Instrumental', 'Backtrack'];
+      let defaultVer = null;
+      for (const v of versions) {
+        if (propBackingTracks[v]) {
+          defaultVer = v;
+          break;
+        }
+      }
+      if (!defaultVer) {
+        defaultVer = Object.keys(propBackingTracks)[0];
+      }
+      
+      if (defaultVer) {
+        setActiveVideoId(propBackingTracks[defaultVer].id);
+        setShowYoutube(true);
+      }
+      setLoadingTracks(false);
+      return;
+    }
+
+    // Fallback A: Embedded youtube_video metadata (from enriched_songs.json)
+    if (song.youtube_video) {
+      const defaultTrack = {
+        "Karaoke": {
+          "id": song.youtube_video.id,
+          "title": song.youtube_video.title,
+          "youtube_url": `https://www.youtube.com/watch?v=${song.youtube_video.id}`
+        }
+      };
+      setBackingTracks(defaultTrack);
+      setActiveVideoId(song.youtube_video.id);
+      setShowYoutube(true);
+      setLoadingTracks(false);
+      return;
+    }
+
+    // Fallback B: local API server (for active local development)
     const fetchTracks = async () => {
       setLoadingTracks(true);
       try {
@@ -72,13 +113,13 @@ const SongViewer = ({ song, onClose, chordDb }) => {
           }
         }
       } catch (err) {
-        console.error("Error fetching backing tracks:", err);
+        console.error("Error fetching backing tracks from API:", err);
       } finally {
         setLoadingTracks(false);
       }
     };
     fetchTracks();
-  }, [song]);
+  }, [song, propBackingTracks]);
 
   // Reset scrolling on version switch
   useEffect(() => {
