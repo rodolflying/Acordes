@@ -92,8 +92,21 @@ import os
 def refresh_bookmarks():
     try:
         root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        
+        # 1. extract bookmarks
         script_path = os.path.join(root_dir, "extract_bookmarks.py")
         subprocess.run(["python", script_path], check=True, cwd=root_dir)
+        
+        # 2. enrich new songs
+        enricher_path = os.path.join(root_dir, "enricher.py")
+        if os.path.exists(enricher_path):
+            subprocess.run(["python", enricher_path], check=True, cwd=root_dir)
+            
+        # 3. preload chords & backing tracks mapping
+        preload_path = os.path.join(root_dir, "preload_chords.py")
+        if os.path.exists(preload_path):
+            subprocess.run(["python", preload_path], check=True, cwd=root_dir)
+            
         return {"status": "success"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -171,9 +184,14 @@ def normalize_string(s: str) -> str:
 def get_all_uploaded_songs():
     try:
         root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        youtube_state_path = os.path.join(os.path.dirname(root_dir), "Karaokes", "youtube_upload_state.json")
+        candidates = [
+            os.path.join(os.path.dirname(root_dir), "Karaokes", "data", "youtube_upload_state.json"),
+            os.path.join(os.path.dirname(root_dir), "Karaokes", "youtube_upload_state.json"),
+            os.path.join(root_dir, "youtube_upload_state.json")
+        ]
+        youtube_state_path = next((p for p in candidates if os.path.exists(p)), None)
         
-        if not os.path.exists(youtube_state_path):
+        if not youtube_state_path:
             return {"songs": []}
             
         with open(youtube_state_path, 'r', encoding='utf-8') as f:
@@ -210,9 +228,14 @@ def get_all_uploaded_songs():
 def get_song_backing_tracks(artist: str = "", title: str = ""):
     try:
         root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        youtube_state_path = os.path.join(os.path.dirname(root_dir), "Karaokes", "youtube_upload_state.json")
+        candidates = [
+            os.path.join(os.path.dirname(root_dir), "Karaokes", "data", "youtube_upload_state.json"),
+            os.path.join(os.path.dirname(root_dir), "Karaokes", "youtube_upload_state.json"),
+            os.path.join(root_dir, "youtube_upload_state.json")
+        ]
+        youtube_state_path = next((p for p in candidates if os.path.exists(p)), None)
         
-        if not os.path.exists(youtube_state_path):
+        if not youtube_state_path:
             return {"backing_tracks": None}
             
         with open(youtube_state_path, 'r', encoding='utf-8') as f:
@@ -281,5 +304,135 @@ def get_song_backing_tracks(artist: str = "", title: str = ""):
         return {"backing_tracks": None}
     except Exception as e:
         print(f"Error matching backing tracks: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+class LinkVideoRequest(BaseModel):
+    url: str
+    video_id: str
+    video_title: str
+
+
+@app.get("/api/youtube/search")
+def search_youtube(query: str):
+    api_key = load_youtube_api_key()
+    if not api_key:
+        raise HTTPException(status_code=500, detail="YouTube API key not configured")
+    try:
+        import urllib.request
+        import urllib.parse
+        
+        params = urllib.parse.urlencode({
+            'part': 'snippet',
+            'q': query,
+            'maxResults': 5,
+            'type': 'video',
+            'key': api_key
+        })
+        url = f"https://www.googleapis.com/youtube/v3/search?{params}"
+        
+        req = urllib.request.Request(url, headers={'User-Agent': 'Acordes/1.0'})
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read().decode('utf-8'))
+            
+        results = []
+        for item in data.get('items', []):
+            v_id = item.get('id', {}).get('videoId')
+            snippet = item.get('snippet', {})
+            if v_id:
+                results.append({
+                    'id': v_id,
+                    'title': snippet.get('title'),
+                    'description': snippet.get('description'),
+                    'channelTitle': snippet.get('channelTitle'),
+                    'thumbnail': snippet.get('thumbnails', {}).get('default', {}).get('url')
+                })
+        return {"results": results}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/song/link_video")
+def link_song_video(req_data: LinkVideoRequest):
+    try:
+        root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        enriched_path = os.path.join(root_dir, 'enriched_songs.json')
+        
+        # Load enriched songs
+        enriched = {"last_enriched": None, "songs": {}}
+        if os.path.exists(enriched_path):
+            with open(enriched_path, 'r', encoding='utf-8') as f:
+                enriched = json.load(f)
+                
+        # If song is not enriched yet, we initialize it
+        if req_data.url not in enriched["songs"]:
+            import sys
+            if root_dir not in sys.path:
+                sys.path.append(root_dir)
+            from enricher import parse_song_name, detect_source
+            
+            # Find name from songs.json if possible
+            songs_path = os.path.join(root_dir, 'songs.json')
+            folder = "Musica"
+            name = "Unknown"
+            if os.path.exists(songs_path):
+                with open(songs_path, 'r', encoding='utf-8') as sf:
+                    songs_data = json.load(sf)
+                
+                def find_song(node):
+                    if node.get('url') == req_data.url:
+                        return node
+                    if 'children' in node:
+                        for c in node['children']:
+                            res = find_song(c)
+                            if res:
+                                return res
+                    return None
+                
+                song_node = find_song(songs_data)
+                if song_node:
+                    name = song_node.get('name', 'Unknown')
+                    
+            artist, title = parse_song_name(name)
+            source = detect_source(req_data.url)
+            
+            enriched["songs"][req_data.url] = {
+                "artist": artist,
+                "title": title,
+                "folder": folder,
+                "source": source,
+                "mood": "Reflexivo",
+                "mood_emoji": "🔮",
+                "theme": "Existencial",
+                "theme_emoji": "🌀",
+                "energy": "Media",
+                "genre": "Unknown",
+                "year": None,
+                "country": None,
+                "lastfm_tags": [],
+                "listeners": None,
+                "playcount": None,
+                "enriched_at": datetime.now().isoformat()
+            }
+            
+        # Update youtube_video
+        enriched["songs"][req_data.url]["youtube_video"] = {
+            "id": req_data.video_id,
+            "title": req_data.video_title
+        }
+        
+        # Save enriched using the save_enriched function from enricher
+        import sys
+        if root_dir not in sys.path:
+            sys.path.append(root_dir)
+        from enricher import save_enriched
+        save_enriched(enriched)
+        
+        # Regenerate backing_tracks.json
+        from preload_chords import generate_backing_tracks
+        generate_backing_tracks()
+        
+        return {"status": "success", "youtube_video": enriched["songs"][req_data.url]["youtube_video"]}
+    except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

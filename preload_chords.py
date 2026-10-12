@@ -90,12 +90,22 @@ def generate_backing_tracks():
         return " ".join(s.split())
         
     root_dir = os.path.dirname(os.path.abspath(__file__))
-    youtube_state_path = os.path.join(os.path.dirname(root_dir), "Karaokes", "youtube_upload_state.json")
+    candidates = [
+        os.path.join(os.path.dirname(root_dir), "Karaokes", "data", "youtube_upload_state.json"),
+        os.path.join(os.path.dirname(root_dir), "Karaokes", "youtube_upload_state.json"),
+        os.path.join(root_dir, "youtube_upload_state.json")
+    ]
+    youtube_state_path = None
+    for p in candidates:
+        if os.path.exists(p):
+            youtube_state_path = p
+            break
     
-    if not os.path.exists(youtube_state_path):
-        print(f"Advertencia: {youtube_state_path} no existe. No se generará backing_tracks.json.")
+    if not youtube_state_path:
+        print(f"Advertencia: No se encontró youtube_upload_state.json en Karaokes. No se generará backing_tracks.json.")
         return
         
+    print(f"Leyendo estado de karaokes desde: {youtube_state_path}")
     with open(youtube_state_path, 'r', encoding='utf-8') as f:
         youtube_data = json.load(f)
         

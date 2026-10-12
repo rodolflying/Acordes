@@ -2869,6 +2869,18 @@
             "name": "API account created | Last.fm",
             "type": "url",
             "url": "https://www.last.fm/api/account/create"
+        },
+        {
+            "date_added": "13430804617833563",
+            "date_last_used": "0",
+            "guid": "5fe6f2ee-1228-4c8b-9d5a-39063e4847a1",
+            "id": "1044",
+            "meta_info": {
+                "power_bookmark_meta": ""
+            },
+            "name": "My Heart - Paramore - Cifra Club",
+            "type": "url",
+            "url": "https://www.cifraclub.com/paramore/my-heart/wzjgw.html?keyShape=5"
         }
     ]
 }

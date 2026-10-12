@@ -1,5 +1,5 @@
 {
-  "last_enriched": "2026-06-01T23:55:01.397677",
+  "last_enriched": "2026-08-09T23:46:20.906136",
   "songs": {
     "https://www.ukulele-tabs.com/uke-songs/jason-mraz/i-won-t-give-up-uke-tab-21635.html": {
       "artist": "Jason Mraz",
@@ -580,7 +580,11 @@
       "lastfm_tags": [],
       "listeners": 995377,
       "playcount": 7185706,
-      "enriched_at": "2026-06-01T22:24:12.711743"
+      "enriched_at": "2026-06-01T22:24:12.711743",
+      "youtube_video": {
+        "id": "qlqGSEYOYiQ",
+        "title": "Coldplay • Warning Sign (CC) 🎤 [Karaoke] [Instrumental]"
+      }
     },
     "https://www.cifraclub.com/coldplay/fix-you/": {
       "artist": "Coldplay",
@@ -1761,8 +1765,8 @@
       "enriched_at": "2026-06-01T22:41:06.935746"
     },
     "https://www.ukulele-tabs.com/es/tablaturas/el-mato-a-un-policia-motorizado/destruccion-uke-tab-61624.html": {
-      "artist": "Unknown",
-      "title": "Destrucción Tab por El Mato A Un Policia Motorizado - Ukulele Tabs",
+      "artist": "El Mato A Un Policia Motorizado",
+      "title": "Destrucción",
       "folder": "Musica",
       "source": "Uku-Tabs",
       "mood": "Enérgico",
@@ -1826,8 +1830,8 @@
       "enriched_at": "2026-06-01T22:42:05.621074"
     },
     "https://www.ukulele-tabs.com/es/tablaturas/natalia-lafourcade/nunca-es-suficiente-uke-tab-45322.html": {
-      "artist": "Unknown",
-      "title": "Nunca Es Suficiente Tab por Natalia Lafourcade - Ukulele Tabs",
+      "artist": "Natalia Lafourcade",
+      "title": "Nunca Es Suficiente",
       "folder": "Musica",
       "source": "Uku-Tabs",
       "mood": "Romántico",
@@ -1844,8 +1848,8 @@
       "enriched_at": "2026-06-01T22:42:17.873303"
     },
     "https://www.ukulele-tabs.com/es/tablaturas/julius-popper/huke-uke-tab-58495.html": {
-      "artist": "Unknown",
-      "title": "Huke Tab por Julius Popper - Ukulele Tabs",
+      "artist": "Julius Popper",
+      "title": "Huke",
       "folder": "Musica",
       "source": "Uku-Tabs",
       "mood": "Reflexivo",
@@ -1862,8 +1866,8 @@
       "enriched_at": "2026-06-01T22:42:47.246140"
     },
     "https://www.ukulele-tabs.com/es/tablaturas/julius-popper/la-innombrable-uke-tab-57491.html": {
-      "artist": "Unknown",
-      "title": "La Innombrable Tab por Julius Popper - Ukulele Tabs",
+      "artist": "Julius Popper",
+      "title": "La Innombrable",
       "folder": "Musica",
       "source": "Uku-Tabs",
       "mood": "Reflexivo",
@@ -1880,8 +1884,8 @@
       "enriched_at": "2026-06-01T22:43:02.787324"
     },
     "https://www.ukulele-tabs.com/es/tablaturas/vicente-garcia/dulcito-de-coco-uke-tab-64129.html": {
-      "artist": "Unknown",
-      "title": "Dulcito De Coco Tab por Vicente García - Ukulele Tabs",
+      "artist": "Vicente García",
+      "title": "Dulcito De Coco",
       "folder": "Musica",
       "source": "Uku-Tabs",
       "mood": "Alegre",
@@ -1898,8 +1902,8 @@
       "enriched_at": "2026-06-01T22:43:32.863428"
     },
     "https://www.ukulele-tabs.com/es/tablaturas/camila-gallardo/la-despedida-uke-tab-68233.html": {
-      "artist": "Unknown",
-      "title": "La Despedida Tab por Camila Gallardo - Ukulele Tabs",
+      "artist": "Camila Gallardo",
+      "title": "La Despedida",
       "folder": "Musica",
       "source": "Uku-Tabs",
       "mood": "Reflexivo",
@@ -1916,7 +1920,7 @@
       "enriched_at": "2026-06-01T22:44:05.548077"
     },
     "https://tabs.ultimate-guitar.com/tab/metronomy/the-bay-chords-1247167": {
-      "artist": "Metronomy @ Ultimate",
+      "artist": "Metronomy",
       "title": "The Bay",
       "folder": "Musica",
       "source": "Ultimate Guitar",
@@ -2399,8 +2403,8 @@
       "enriched_at": "2026-06-01T22:50:16.305790"
     },
     "https://es.ultimate-guitar.com/tab/chon/cant-wait-chords-4065118": {
-      "artist": "Guitar.Com",
-      "title": "CANT WAIT por CHON @ Ultimate",
+      "artist": "Chon",
+      "title": "Cant Wait",
       "folder": "Musica",
       "source": "Ultimate Guitar",
       "mood": "Reflexivo",
@@ -2543,8 +2547,8 @@
       "enriched_at": "2026-06-01T22:53:35.986859"
     },
     "https://es.ultimate-guitar.com/tab/zcar-jpg/gustarme-tanto-chords-5125372": {
-      "artist": "Guitar.Com",
-      "title": "GUSTARME TANTO (ver 2) por Zcar JPG @ Ultimate",
+      "artist": "Zcar JPG",
+      "title": "Gustarme Tanto",
       "folder": "Musica",
       "source": "Ultimate Guitar",
       "mood": "Romántico",
@@ -2561,8 +2565,8 @@
       "enriched_at": "2026-06-01T22:53:54.775288"
     },
     "https://es.ultimate-guitar.com/tab/gorillaz/feel-good-inc-chords-1434111": {
-      "artist": "Guitar.Com",
-      "title": "FEEL GOOD INC (ver 3) por Gorillaz @ Ultimate",
+      "artist": "Gorillaz",
+      "title": "Feel Good Inc",
       "folder": "Musica",
       "source": "Ultimate Guitar",
       "mood": "Enérgico",
@@ -2737,8 +2741,8 @@
       "enriched_at": "2026-06-01T22:57:17.096704"
     },
     "https://es.ultimate-guitar.com/tab/gorillaz/on-melancholy-hill-chords-929606": {
-      "artist": "Guitar",
-      "title": "ON MELANCHOLY HILL (ver 2) por Gorillaz para guitarra, ukulele, piano en Ultimate",
+      "artist": "Gorillaz",
+      "title": "On Melancholy Hill",
       "folder": "Musica",
       "source": "Ultimate Guitar",
       "mood": "Melancólico",
@@ -3095,7 +3099,7 @@
     },
     "https://www.cifraclub.com/cardellino/nino-eterno/": {
       "artist": "Cardellino",
-      "title": "Niño Eterno (acordes)",
+      "title": "Niño Eterno",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Nostálgico",
@@ -3113,7 +3117,7 @@
     },
     "https://www.cifraclub.com/cardellino/cursi/": {
       "artist": "Cardellino",
-      "title": "Cursi (acordes)",
+      "title": "Cursi",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Romántico",
@@ -3131,7 +3135,7 @@
     },
     "https://www.cifraclub.com/mac-miller/hand-me-downs/": {
       "artist": "Mac Miller",
-      "title": "Hand Me Downs (acordes)",
+      "title": "Hand Me Downs",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -3149,7 +3153,7 @@
     },
     "https://www.cifraclub.com/radiohead/high-and-dry/": {
       "artist": "Radiohead",
-      "title": "High And Dry (acordes)",
+      "title": "High And Dry",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Melancólico",
@@ -3167,7 +3171,7 @@
     },
     "https://www.cifraclub.com/mac-miller/circles/": {
       "artist": "Mac Miller",
-      "title": "Circles (acordes)",
+      "title": "Circles",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -3203,7 +3207,7 @@
     },
     "https://www.cifraclub.com/bandalos-chinos/mi-fiesta/": {
       "artist": "Bandalos Chinos",
-      "title": "Mi Fiesta (acordes)",
+      "title": "Mi Fiesta",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -3221,7 +3225,7 @@
     },
     "https://www.cifraclub.com/ed-maverick/fuentes-de-ortiz/": {
       "artist": "Ed Maverick",
-      "title": "Fuentes de Ortiz (acordes)",
+      "title": "Fuentes de Ortiz",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -3238,8 +3242,8 @@
       "enriched_at": "2026-06-01T23:06:16.364202"
     },
     "https://www.ukulele-tabs.com/es/tablaturas/babasonicos/el-loco-uke-tab-50323.html": {
-      "artist": "Unknown",
-      "title": "El Loco Tab por Babasónicos - Ukulele Tabs",
+      "artist": "Babasónicos",
+      "title": "El Loco",
       "folder": "Musica",
       "source": "Uku-Tabs",
       "mood": "Enérgico",
@@ -3275,7 +3279,7 @@
     },
     "https://www.cifraclub.com/mac-miller/surf/": {
       "artist": "Mac Miller",
-      "title": "Surf (acordes)",
+      "title": "Surf",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -3365,7 +3369,7 @@
     },
     "https://www.cifraclub.com/gauchito-club/charlatan/": {
       "artist": "Gauchito Club",
-      "title": "Charlatán (acordes)",
+      "title": "Charlatán",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Melancólico",
@@ -3383,7 +3387,7 @@
     },
     "https://www.cifraclub.com/naruto/wind/": {
       "artist": "Naruto",
-      "title": "Wind (acordes)",
+      "title": "Wind",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -3419,7 +3423,7 @@
     },
     "https://www.cifraclub.com/bad-bunny/un-coco/": {
       "artist": "Bad Bunny",
-      "title": "Un Coco (acordes)",
+      "title": "Un Coco",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Enérgico",
@@ -3436,8 +3440,8 @@
       "enriched_at": "2026-06-01T23:10:17.927229"
     },
     "https://es.ultimate-guitar.com/tab/tom-misch/beautiful-escape-chords-1763754": {
-      "artist": "Guitar.Com",
-      "title": "BEAUTIFUL ESCAPE por Tom Misch @ Ultimate",
+      "artist": "Tom Misch",
+      "title": "Beautiful Escape",
       "folder": "Musica",
       "source": "Ultimate Guitar",
       "mood": "Reflexivo",
@@ -3455,7 +3459,7 @@
     },
     "https://www.cifraclub.com/sebastian-yatra/cristina/": {
       "artist": "Sebastián Yatra",
-      "title": "Cristina (acordes)",
+      "title": "Cristina",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Romántico",
@@ -3472,8 +3476,8 @@
       "enriched_at": "2026-06-01T23:11:08.876980"
     },
     "https://es.ultimate-guitar.com/tab/latin-mafia/patadas-de-ahogado-chords-5015038": {
-      "artist": "Guitar.Com",
-      "title": "PATADAS DE AHOGADO por LATIN MAFIA & Humbe @ Ultimate",
+      "artist": "LATIN MAFIA & Humbe",
+      "title": "Patadas de Ahogado",
       "folder": "Musica",
       "source": "Ultimate Guitar",
       "mood": "Enérgico",
@@ -3491,7 +3495,7 @@
     },
     "https://www.cifraclub.com/babasonicos/pijamas/": {
       "artist": "Babasónicos",
-      "title": "Pijamas (acordes)",
+      "title": "Pijamas",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -3699,7 +3703,7 @@
     },
     "https://www.cifraclub.com/babasonicos/yegua/": {
       "artist": "Babasónicos",
-      "title": "Yegua (acordes)",
+      "title": "Yegua",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Melancólico",
@@ -3717,7 +3721,7 @@
     },
     "https://www.cifraclub.com/bacilos/caraluna/": {
       "artist": "Bacilos",
-      "title": "Caraluna (acordes)",
+      "title": "Caraluna",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Romántico",
@@ -3735,7 +3739,7 @@
     },
     "https://www.cifraclub.com/el-mato-un-policia-motorizado/diamante-roto/": {
       "artist": "El Mató a un Policía Motorizado",
-      "title": "Diamante Roto (acordes)",
+      "title": "Diamante Roto",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Melancólico",
@@ -3753,7 +3757,7 @@
     },
     "https://www.cifraclub.com/el-mato-un-policia-motorizado/la-noche-eterna/": {
       "artist": "El Mató a un Policía Motorizado",
-      "title": "La Noche Eterna (acordes)",
+      "title": "La Noche Eterna",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Melancólico",
@@ -3771,7 +3775,7 @@
     },
     "https://www.cifraclub.com/el-mato-un-policia-motorizado/chica-de-oro/": {
       "artist": "El Mató a un Policía Motorizado",
-      "title": "Chica de Oro (acordes)",
+      "title": "Chica de Oro",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Enérgico",
@@ -3789,7 +3793,7 @@
     },
     "https://www.cifraclub.com/el-mato-un-policia-motorizado/el-universo/": {
       "artist": "El Mató a un Policía Motorizado",
-      "title": "El Universo (acordes)",
+      "title": "El Universo",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -3919,7 +3923,7 @@
     },
     "https://www.cifraclub.com/slipknot/circle/": {
       "artist": "Slipknot",
-      "title": "Circle (acordes)",
+      "title": "Circle",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Enérgico",
@@ -3937,7 +3941,7 @@
     },
     "https://www.cifraclub.com/slipknot/snuff/": {
       "artist": "Slipknot",
-      "title": "Snuff (acordes)",
+      "title": "Snuff",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Melancólico",
@@ -3954,8 +3958,8 @@
       "enriched_at": "2026-06-01T23:44:57.782975"
     },
     "https://es.ultimate-guitar.com/tab/cardellino/conversaciones-con-el-techo-chords-6006014": {
-      "artist": "Guitar.Com",
-      "title": "CONVERSACIONES CON EL TECHO por Cardellino @ Ultimate",
+      "artist": "Cardellino",
+      "title": "Conversaciones Con el Techo",
       "folder": "Musica",
       "source": "Ultimate Guitar",
       "mood": "Reflexivo",
@@ -3991,7 +3995,7 @@
     },
     "https://www.cifraclub.com/linkin-park/sharp-edges/": {
       "artist": "Linkin Park",
-      "title": "Sharp Edges (acordes)",
+      "title": "Sharp Edges",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -4009,7 +4013,7 @@
     },
     "https://www.cifraclub.com/linkin-park/the-little-things-give-you-away/versao-3.html": {
       "artist": "Linkin Park",
-      "title": "The Little Things Give You Away (acordes)",
+      "title": "The Little Things Give You Away",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Melancólico",
@@ -4027,7 +4031,7 @@
     },
     "https://www.cifraclub.com/linkin-park/in-pieces/wzpts.html": {
       "artist": "Linkin Park",
-      "title": "In Pieces (acordes)",
+      "title": "In Pieces",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Melancólico",
@@ -4045,7 +4049,7 @@
     },
     "https://www.cifraclub.com/linkin-park/rollin-in-the-deep/": {
       "artist": "Linkin Park",
-      "title": "Rollin' In The Deep (acordes)",
+      "title": "Rollin' In The Deep",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -4063,7 +4067,7 @@
     },
     "https://www.cifraclub.com/linkin-park/waiting-for-the-end/": {
       "artist": "Linkin Park",
-      "title": "Waiting For The End (acordes)",
+      "title": "Waiting For The End",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -4081,7 +4085,7 @@
     },
     "https://www.cifraclub.com/linkin-park/in-my-remains/": {
       "artist": "Linkin Park",
-      "title": "In My Remains (acordes)",
+      "title": "In My Remains",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -4099,7 +4103,7 @@
     },
     "https://www.cifraclub.com/linkin-park/shadow-of-the-day/": {
       "artist": "Linkin Park",
-      "title": "Shadow Of The Day (acordes)",
+      "title": "Shadow Of The Day",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Melancólico",
@@ -4117,7 +4121,7 @@
     },
     "https://www.cifraclub.com/linkin-park/shadow-of-the-day/szwwsw.html": {
       "artist": "Linkin Park",
-      "title": "Shadow Of The Day (acordes)",
+      "title": "Shadow Of The Day",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Melancólico",
@@ -4135,7 +4139,7 @@
     },
     "https://www.cifraclub.com/linkin-park/roads-untraveled/": {
       "artist": "Linkin Park",
-      "title": "Roads Untraveled (acordes)",
+      "title": "Roads Untraveled",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -4153,7 +4157,7 @@
     },
     "https://www.cifraclub.com/linkin-park/what-ive-done-2/": {
       "artist": "Linkin Park",
-      "title": "What Ive Done (acordes)",
+      "title": "What Ive Done",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -4171,7 +4175,7 @@
     },
     "https://www.cifraclub.com/linkin-park/burning-in-the-skies/": {
       "artist": "Linkin Park",
-      "title": "Burning In The Skies (acordes)",
+      "title": "Burning In The Skies",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Enérgico",
@@ -4189,7 +4193,7 @@
     },
     "https://www.cifraclub.com/linkin-park/battle-symphony/": {
       "artist": "Linkin Park",
-      "title": "Battle Symphony (acordes)",
+      "title": "Battle Symphony",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Enérgico",
@@ -4207,7 +4211,7 @@
     },
     "https://www.cifraclub.com/kidd-voodoo/poder-quererme/": {
       "artist": "Kidd Voodoo",
-      "title": "Poder Quererme (acordes)",
+      "title": "Poder Quererme",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -4369,7 +4373,7 @@
     },
     "https://www.cifraclub.com/audioslave/like-stone/": {
       "artist": "Audioslave",
-      "title": "Like a Stone (acordes)",
+      "title": "Like a Stone",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Melancólico",
@@ -4387,7 +4391,7 @@
     },
     "https://www.cifraclub.com/bad-bunny/turista/simplificada.html": {
       "artist": "Bad Bunny",
-      "title": "Turista (acordes)",
+      "title": "Turista",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Reflexivo",
@@ -4405,7 +4409,7 @@
     },
     "https://www.cifraclub.com/the-neighbourhood/sweater-weather/simplificada.html": {
       "artist": "The Neighbourhood",
-      "title": "Sweater Weather (acordes)",
+      "title": "Sweater Weather",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Melancólico",
@@ -4423,7 +4427,7 @@
     },
     "https://www.cifraclub.com/calle-13/ojos-color-sol/": {
       "artist": "Calle 13",
-      "title": "Ojos color sol (acordes)",
+      "title": "Ojos color sol",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Alegre",
@@ -4441,7 +4445,7 @@
     },
     "https://www.cifraclub.com/latin-mafia/yo-siempre-contesto/": {
       "artist": "Latin Mafia",
-      "title": "Yo Siempre Contesto (acordes)",
+      "title": "Yo Siempre Contesto",
       "folder": "Musica",
       "source": "Cifra Club",
       "mood": "Romántico",
@@ -4456,6 +4460,35 @@
       "listeners": null,
       "playcount": null,
       "enriched_at": "2026-06-01T23:55:01.397677"
+    },
+    "https://www.cifraclub.com/paramore/my-heart/wzjgw.html?keyShape=5": {
+      "artist": "Paramore",
+      "title": "My Heart",
+      "folder": "Musica",
+      "source": "Cifra Club",
+      "mood": "Enérgico",
+      "mood_emoji": "⚡",
+      "theme": "Amor",
+      "theme_emoji": "❤️",
+      "energy": "Alta",
+      "genre": "rock",
+      "year": 2026,
+      "country": "GB",
+      "lastfm_tags": [
+        "rock",
+        "pop punk",
+        "paramore",
+        "female vocalists",
+        "emo",
+        "alternative rock",
+        "alternative",
+        "beautiful",
+        "screamo",
+        "<3"
+      ],
+      "listeners": 657559,
+      "playcount": 6519764,
+      "enriched_at": "2026-08-09T23:46:20.905599"
     }
   }
 }

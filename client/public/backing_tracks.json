@@ -1,5 +1,22 @@
 {
   "backing_tracks": {
+    "https://acordes.lacuerda.net/mato_a_un_policia_motorizado/el_tesoro-4.shtml": {
+      "Karaoke": {
+        "id": "JQNg_UHQTVs",
+        "title": "El mato a un policia motorizado - El Tesoro | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=JQNg_UHQTVs"
+      },
+      "Instrumental": {
+        "id": "fSlewFgFz48",
+        "title": "El mato a un policia motorizado - El Tesoro | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=fSlewFgFz48"
+      },
+      "Backtrack": {
+        "id": "t_zDBSAiQ_M",
+        "title": "El mato a un policia motorizado - El Tesoro | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=t_zDBSAiQ_M"
+      }
+    },
     "https://acordes.lacuerda.net/ases_falsos/mi_ejercito-3.shtml": {
       "Karaoke": {
         "id": "kTOZOgkEIxw",
@@ -10,6 +27,23 @@
         "id": "QktRXb56lO4",
         "title": "Ases Falsos - Mi ejercito | Instrumental (Sin Voces)",
         "youtube_url": "https://www.youtube.com/watch?v=QktRXb56lO4"
+      }
+    },
+    "https://acordes.lacuerda.net/lucybell/familiar.shtml": {
+      "Karaoke": {
+        "id": "p2UjVxa6tF0",
+        "title": "LucybellTV - Oficial Familiar | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=p2UjVxa6tF0"
+      },
+      "Instrumental": {
+        "id": "ZtnTn9DlG10",
+        "title": "LucybellTV - Oficial Familiar | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=ZtnTn9DlG10"
+      },
+      "Backtrack": {
+        "id": "fKGkzyrDTm8",
+        "title": "LucybellTV - Oficial Familiar | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=fKGkzyrDTm8"
       }
     },
     "https://acordes.lacuerda.net/lucybell/tu-2.shtml": {
@@ -313,6 +347,23 @@
         "youtube_url": "https://www.youtube.com/watch?v=TxowugR_hbw"
       }
     },
+    "https://m.cifraclub.com/bad-bunny/un-coco/": {
+      "Karaoke": {
+        "id": "jjkcxBlh6jU",
+        "title": "Bad Bunny - Un Coco | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=jjkcxBlh6jU"
+      },
+      "Instrumental": {
+        "id": "oguq0gAkPYM",
+        "title": "Bad Bunny - Un Coco | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=oguq0gAkPYM"
+      },
+      "Backtrack": {
+        "id": "tx6BPixdCsw",
+        "title": "Bad Bunny - Un Coco | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=tx6BPixdCsw"
+      }
+    },
     "https://acordes.lacuerda.net/santiago_motorizado/mil_derrotas.shtml": {
       "Karaoke": {
         "id": "wcG8iG8hnzo",
@@ -323,6 +374,40 @@
         "id": "0-B8Id8IMNo",
         "title": "Santiago Motorizado - Mil derrotas | Instrumental (Sin Voces)",
         "youtube_url": "https://www.youtube.com/watch?v=0-B8Id8IMNo"
+      }
+    },
+    "https://acordes.lacuerda.net/milo_j/una_bala.shtml": {
+      "Karaoke": {
+        "id": "wfYfrfp3XII",
+        "title": "MILO J - UNA BALA ft Peso Pluma | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=wfYfrfp3XII"
+      },
+      "Instrumental": {
+        "id": "OTdLlRl6xbQ",
+        "title": "MILO J - UNA BALA ft Peso Pluma | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=OTdLlRl6xbQ"
+      },
+      "Backtrack": {
+        "id": "yNjLqpfREwI",
+        "title": "MILO J - UNA BALA ft Peso Pluma | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=yNjLqpfREwI"
+      }
+    },
+    "https://acordes.lacuerda.net/milo_j/el_bolero.shtml": {
+      "Karaoke": {
+        "id": "c--Ew6-P2zA",
+        "title": "Yami Safdie Milo J - El Bolero | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=c--Ew6-P2zA"
+      },
+      "Instrumental": {
+        "id": "RQrij92y0bE",
+        "title": "Yami Safdie Milo J - El Bolero | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=RQrij92y0bE"
+      },
+      "Backtrack": {
+        "id": "Kzxi7Sp-Eu4",
+        "title": "Yami Safdie Milo J - El Bolero | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=Kzxi7Sp-Eu4"
       }
     },
     "https://www.cifraclub.com/vance-joy/riptide/": {
@@ -359,6 +444,74 @@
         "youtube_url": "https://www.youtube.com/watch?v=2reyEaMng0U"
       }
     },
+    "https://www.cifraclub.com/milo-j/tu-manta/": {
+      "Karaoke": {
+        "id": "kQNIvEGdH5o",
+        "title": "MILO J - TU MANTA | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=kQNIvEGdH5o"
+      },
+      "Instrumental": {
+        "id": "keHibT7izfA",
+        "title": "MILO J - TU MANTA | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=keHibT7izfA"
+      },
+      "Backtrack": {
+        "id": "qokqfOX8-cI",
+        "title": "MILO J - TU MANTA | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=qokqfOX8-cI"
+      }
+    },
+    "https://www.cifraclub.com/fother-muckers/explorador/#key=10": {
+      "Karaoke": {
+        "id": "XTnj38lgyrI",
+        "title": "Fother Muckers - Explorador | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=XTnj38lgyrI"
+      },
+      "Instrumental": {
+        "id": "jOTuIghcYt8",
+        "title": "Fother Muckers - Explorador | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=jOTuIghcYt8"
+      },
+      "Backtrack": {
+        "id": "uJWA_Y3V8-A",
+        "title": "Fother Muckers - Explorador | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=uJWA_Y3V8-A"
+      }
+    },
+    "https://www.cifraclub.com/billie-eilish/chihiro/": {
+      "Karaoke": {
+        "id": "MQZHQZDb184",
+        "title": "Billie Eilish - CHIHIRO | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=MQZHQZDb184"
+      },
+      "Instrumental": {
+        "id": "I0bR2bCCf98",
+        "title": "Billie Eilish - CHIHIRO | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=I0bR2bCCf98"
+      },
+      "Backtrack": {
+        "id": "R1SY9RN0HY4",
+        "title": "Billie Eilish - CHIHIRO | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=R1SY9RN0HY4"
+      }
+    },
+    "https://www.cifraclub.com/oliver-tree/hurt/": {
+      "Karaoke": {
+        "id": "-5kSB2Jkblw",
+        "title": "Oliver Tree - Hurt | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=-5kSB2Jkblw"
+      },
+      "Instrumental": {
+        "id": "dWSQjpsNkPI",
+        "title": "Oliver Tree - Hurt | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=dWSQjpsNkPI"
+      },
+      "Backtrack": {
+        "id": "_MjvlxCdTEY",
+        "title": "Oliver Tree - Hurt | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=_MjvlxCdTEY"
+      }
+    },
     "https://www.cifraclub.com/oliver-tree/alien-boy/": {
       "Karaoke": {
         "id": "g0K-O0Fczt4",
@@ -376,6 +529,23 @@
         "youtube_url": "https://www.youtube.com/watch?v=RKOucrdyg6s"
       }
     },
+    "https://www.cifraclub.com/cardellino/nino-eterno/": {
+      "Karaoke": {
+        "id": "wJGmO9dgaUU",
+        "title": "Cardellino - Nino Eterno | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=wJGmO9dgaUU"
+      },
+      "Instrumental": {
+        "id": "kv-tFVZhZqc",
+        "title": "Cardellino - Nino Eterno | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=kv-tFVZhZqc"
+      },
+      "Backtrack": {
+        "id": "9dAmPn0Lc8w",
+        "title": "Cardellino - Nino Eterno | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=9dAmPn0Lc8w"
+      }
+    },
     "https://www.cifraclub.com.br/cardellino/nino-eterno/": {
       "Karaoke": {
         "id": "wJGmO9dgaUU",
@@ -391,6 +561,86 @@
         "id": "9dAmPn0Lc8w",
         "title": "Cardellino - Nino Eterno | Backtrack",
         "youtube_url": "https://www.youtube.com/watch?v=9dAmPn0Lc8w"
+      }
+    },
+    "https://www.cifraclub.com/bad-bunny/un-coco/": {
+      "Karaoke": {
+        "id": "jjkcxBlh6jU",
+        "title": "Bad Bunny - Un Coco | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=jjkcxBlh6jU"
+      },
+      "Instrumental": {
+        "id": "oguq0gAkPYM",
+        "title": "Bad Bunny - Un Coco | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=oguq0gAkPYM"
+      },
+      "Backtrack": {
+        "id": "tx6BPixdCsw",
+        "title": "Bad Bunny - Un Coco | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=tx6BPixdCsw"
+      }
+    },
+    "https://www.cifraclub.com/kidd-voodoo/destello/": {
+      "Karaoke": {
+        "id": "RMWNFYCNxMo",
+        "title": "Kidd Voodoo - Destello | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=RMWNFYCNxMo"
+      },
+      "Instrumental": {
+        "id": "XbJ5NeYsX98",
+        "title": "Kidd Voodoo - Destello | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=XbJ5NeYsX98"
+      },
+      "Backtrack": {
+        "id": "XAVHVz7xCf8",
+        "title": "Kidd Voodoo - Destello | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=XAVHVz7xCf8"
+      }
+    },
+    "https://www.cifraclub.com.br/milo-j/nino/": {
+      "Karaoke": {
+        "id": "cMCfLEjbMlM",
+        "title": "Milo J - Nino | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=cMCfLEjbMlM"
+      },
+      "Instrumental": {
+        "id": "oJhJw4SLMJQ",
+        "title": "Milo J - Nino | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=oJhJw4SLMJQ"
+      },
+      "Backtrack": {
+        "id": "FPyOFlN2T68",
+        "title": "Milo J - Nino | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=FPyOFlN2T68"
+      }
+    },
+    "https://www.cifraclub.com/el-mato-un-policia-motorizado/el-universo/": {
+      "Karaoke": {
+        "id": "WED2m1rp28Q",
+        "title": "El mato a un policia motorizado - El universo | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=WED2m1rp28Q"
+      },
+      "Instrumental": {
+        "id": "ZtsrS5i_n6k",
+        "title": "El mato a un policia motorizado - El universo | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=ZtsrS5i_n6k"
+      }
+    },
+    "https://www.cifraclub.com/bad-bunny/turista/simplificada.html": {
+      "Karaoke": {
+        "id": "ELwwzwr2-00",
+        "title": "BAD BUNNY - TURiSTA | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=ELwwzwr2-00"
+      },
+      "Instrumental": {
+        "id": "LPP1CunZSdU",
+        "title": "BAD BUNNY - TURiSTA | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=LPP1CunZSdU"
+      },
+      "Backtrack": {
+        "id": "OhVhsTVE-b8",
+        "title": "BAD BUNNY - TURiSTA | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=OhVhsTVE-b8"
       }
     }
   }

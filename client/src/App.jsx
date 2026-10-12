@@ -1,10 +1,25 @@
-import React, { useState, useEffect, useMemo, Suspense } from 'react';
+import React, { useState, useEffect, useMemo, useRef, Suspense } from 'react';
 import CelestialIcon from './CelestialIcon';
 import './index.css';
 
 const ThreeBackground = React.lazy(() => import('./ThreeBackground'));
 const SongViewer = React.lazy(() => import('./SongViewer'));
 const DashboardModal = React.lazy(() => import('./DashboardModal'));
+
+// Only defined in dev (client/.env.development); undefined in the GitHub Pages build
+const API_URL = import.meta.env.VITE_API_URL;
+
+const PAGE_SIZES = [24, 48, 96, Infinity]; // Infinity = all songs on one page
+
+// Page numbers to show: first, last and the current page's neighbours, with gaps as '…'
+const pageItems = (current, total) => {
+  const items = [];
+  for (let p = 1; p <= total; p++) {
+    if (p === 1 || p === total || Math.abs(p - current) <= 1) items.push(p);
+    else if (items[items.length - 1] !== '…') items.push('…');
+  }
+  return items;
+};
 
 const MOODS_CONFIG = {
   "Romántico": { emoji: "💕", color: "#ff007a", rgb: "255, 0, 122" },
@@ -103,6 +118,17 @@ function App() {
     localStorage.setItem('performanceMode', performanceMode);
   }, [performanceMode]);
 
+  const [pageSize, setPageSize] = useState(() => {
+    return Number(localStorage.getItem('pageSize')) || PAGE_SIZES[0];
+  });
+  const [page, setPage] = useState(1);
+  const resultsRef = useRef(null);
+  const [filtersOpen, setFiltersOpen] = useState(false); // only matters on phones, where filters collapse
+
+  useEffect(() => {
+    localStorage.setItem('pageSize', pageSize);
+  }, [pageSize]);
+
   const normalizeString = (s) => {
     if (!s) return "";
     return s.toLowerCase()
@@ -138,34 +164,16 @@ function App() {
         }
 
         const rawSongs = processData(data);
-        
-        // Normalize folder names case-insensitively
-        const folderMap = new Map();
-        rawSongs.forEach(song => {
-            if (song.folder && song.folder !== 'Otros') {
-                const lower = song.folder.toLowerCase();
-                if (!folderMap.has(lower)) {
-                    folderMap.set(lower, song.folder);
-                } else {
-                    const existing = folderMap.get(lower);
-                    if (existing === lower && song.folder !== lower) {
-                        folderMap.set(lower, song.folder);
-                    }
-                }
-            }
-        });
-        
-        rawSongs.forEach(song => {
-            if (song.folder && song.folder !== 'Otros') {
-                song.folder = folderMap.get(song.folder.toLowerCase());
-            }
-        });
 
-        // Merge enriched data
+        // Merge enriched data. Title and folder (artist) use the names cleaned by
+        // enricher.py when available, instead of the raw bookmark name
         const mergedSongs = rawSongs.map(song => {
             const enriched = enrichedData.songs[song.url] || {};
+            const hasArtist = enriched.artist && enriched.artist !== 'Unknown';
             return {
                 ...song,
+                title: enriched.title || song.title,
+                folder: hasArtist ? enriched.artist : song.folder,
                 mood: enriched.mood || null,
                 mood_emoji: enriched.mood_emoji || null,
                 theme: enriched.theme || null,
@@ -177,6 +185,27 @@ function App() {
                 clean_artist: enriched.artist || null,
                 clean_title: enriched.title || null,
             };
+        });
+
+        // Normalize folder names ignoring case and accents, keeping the best spelling:
+        // accented over plain ("El Mató…" over "El Mato…"), capitalized over all-lowercase
+        const folderKey = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+        const spellingScore = s => (/[̀-ͯ]/.test(s.normalize('NFD')) ? 2 : 0) + (s !== s.toLowerCase() ? 1 : 0);
+        const folderMap = new Map();
+        mergedSongs.forEach(song => {
+            if (song.folder && song.folder !== 'Otros') {
+                const key = folderKey(song.folder);
+                const existing = folderMap.get(key);
+                if (!existing || spellingScore(song.folder) > spellingScore(existing)) {
+                    folderMap.set(key, song.folder);
+                }
+            }
+        });
+
+        mergedSongs.forEach(song => {
+            if (song.folder && song.folder !== 'Otros') {
+                song.folder = folderMap.get(folderKey(song.folder));
+            }
         });
 
         setAllSongs(mergedSongs);
@@ -220,7 +249,7 @@ function App() {
     setSyncing(true);
     setSyncStatus(null);
     try {
-      const response = await fetch('http://127.0.0.1:8001/api/refresh', { method: 'POST' });
+      const response = await fetch(`${API_URL}/api/refresh`, { method: 'POST' });
       if (response.ok) {
         await loadData();
         setSyncStatus('success');
@@ -260,6 +289,20 @@ function App() {
       return matchesSearch && matchesFolder && matchesMood && matchesTheme && matchesBackingTrack;
     });
   }, [allSongs, searchQuery, currentFilter, activeMood, activeTheme, filterHasBackingTrack, backingTracksDict]);
+
+  // Back to the first page whenever the filters change the list
+  const [pagedList, setPagedList] = useState(filteredSongs);
+  if (pagedList !== filteredSongs) {
+    setPagedList(filteredSongs);
+    setPage(1);
+  }
+  const pageCount = Math.max(1, Math.ceil(filteredSongs.length / pageSize));
+  const visibleSongs = pageCount === 1 ? filteredSongs : filteredSongs.slice((page - 1) * pageSize, page * pageSize);
+
+  const goToPage = (p) => {
+    setPage(p);
+    resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const stats = useMemo(() => {
     if (!allSongs.length) return null;
@@ -407,12 +450,66 @@ function App() {
     };
   }, [allSongs]);
 
+  const handleVideoLinked = (url, videoId, videoTitle) => {
+    setBackingTracksDict(prev => ({
+      ...prev,
+      [url]: {
+        "Karaoke": {
+          "id": videoId,
+          "title": videoTitle,
+          "youtube_url": `https://www.youtube.com/watch?v=${videoId}`
+        }
+      }
+    }));
+
+    setAllSongs(prevSongs => prevSongs.map(song => {
+      if (song.url === url) {
+        return {
+          ...song,
+          youtube_video: {
+            id: videoId,
+            title: videoTitle
+          }
+        };
+      }
+      return song;
+    }));
+
+    setSelectedSong(prevSelected => {
+      if (prevSelected && prevSelected.url === url) {
+        return {
+          ...prevSelected,
+          youtube_video: {
+            id: videoId,
+            title: videoTitle
+          }
+        };
+      }
+      return prevSelected;
+    });
+  };
+
   const handleOpenSong = (song) => {
     if (song.source !== 'Cifra Club' && song.source !== 'LaCuerda') {
       window.open(song.url, '_blank');
     } else {
       setSelectedSong(song);
     }
+  };
+
+  // The phone's "back" closes the open song instead of leaving the page
+  const songOpen = Boolean(selectedSong);
+  useEffect(() => {
+    if (!songOpen) return;
+    if (!window.history.state?.songOpen) window.history.pushState({ songOpen: true }, '');
+    const onBack = () => setSelectedSong(null);
+    window.addEventListener('popstate', onBack);
+    return () => window.removeEventListener('popstate', onBack);
+  }, [songOpen]);
+
+  const closeSong = () => {
+    if (window.history.state?.songOpen) window.history.back(); // its popstate closes the song
+    else setSelectedSong(null);
   };
 
   return (
@@ -473,7 +570,7 @@ function App() {
                       ></i>
                     )}
                 </div>
-                <div className="actions" style={{display: 'flex', gap: '0.5rem'}}>
+                <div className="actions">
                     <button 
                       className={`btn ${performanceMode ? 'btn-active' : ''}`}
                       style={{
@@ -487,17 +584,19 @@ function App() {
                         <i className={`fas ${performanceMode ? 'fa-bolt' : 'fa-film'}`} style={{ color: performanceMode ? '#ffb703' : 'white' }}></i>
                         {performanceMode ? 'Modo Rápido' : 'Animaciones'}
                     </button>
-                    <button 
-                      className="btn btn-primary" 
+                    {API_URL && (
+                    <button
+                      className="btn btn-primary"
                       style={{background: 'var(--glass)', color: 'white'}}
                       onClick={handleSync}
                       disabled={syncing}
                     >
-                        {syncing ? <><i className="fas fa-spinner fa-spin"></i> Sincronizando...</> : 
+                        {syncing ? <><i className="fas fa-spinner fa-spin"></i> Sincronizando...</> :
                          syncStatus === 'success' ? <><i className="fas fa-check"></i> ¡Listo!</> :
                          syncStatus === 'error' ? <><i className="fas fa-times"></i> Error</> :
                          <><i className="fas fa-sync-alt"></i> Sincronizar</>}
                     </button>
+                    )}
                     <button 
                       className="btn btn-primary" 
                       style={{background: 'var(--glass)', color: 'white'}}
@@ -514,7 +613,14 @@ function App() {
             </header>
 
             {/* Filter buttons */}
-            <div className="filters-container">
+            <button className="filters-toggle" onClick={() => setFiltersOpen(!filtersOpen)} aria-expanded={filtersOpen}>
+                <i className="fas fa-sliders"></i> Filtros
+                {(activeMood || activeTheme || filterHasBackingTrack) && (
+                    <span className="filters-count">{[activeMood, activeTheme, filterHasBackingTrack].filter(Boolean).length}</span>
+                )}
+                <i className={`fas fa-chevron-${filtersOpen ? 'up' : 'down'}`} style={{ marginLeft: 'auto' }}></i>
+            </button>
+            <div className={`filters-container ${filtersOpen ? 'open' : ''}`}>
                 <div className="filter-row">
                     <span className="filter-label">MOOD</span>
                     <div className="filter-buttons">
@@ -573,14 +679,28 @@ function App() {
                 </div>
             </div>
 
-            <div style={{marginBottom: '1.5rem', color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '1.5rem'}}>
-                Mostrando <span style={{color: 'var(--text-main)', fontWeight: '600'}}>{filteredSongs.length}</span> canciones
+            <div ref={resultsRef} className="results-bar">
+                <span>
+                    {pageCount > 1 ? (
+                        <>Mostrando <span style={{color: 'var(--text-main)', fontWeight: '600'}}>{(page - 1) * pageSize + 1}–{(page - 1) * pageSize + visibleSongs.length}</span> de {filteredSongs.length} canciones</>
+                    ) : (
+                        <>Mostrando <span style={{color: 'var(--text-main)', fontWeight: '600'}}>{filteredSongs.length}</span> canciones</>
+                    )}
+                </span>
+                <label className="page-size">
+                    Por página
+                    <select value={pageSize} onChange={(e) => { setPageSize(Number(e.target.value)); setPage(1); }}>
+                        {PAGE_SIZES.map(size => (
+                            <option key={size} value={size}>{size === Infinity ? 'Todas' : size}</option>
+                        ))}
+                    </select>
+                </label>
             </div>
 
             <div className="song-grid">
-                {filteredSongs.map((song, index) => (
-                  <div 
-                    key={index} 
+                {visibleSongs.map((song, index) => (
+                  <div
+                    key={song.url}
                     className={`song-card animate-in ${song.theme ? `theme-${song.theme.toLowerCase()}` : ''}`} 
                     style={{
                       animationDelay: `${Math.min(index * 0.05, 1)}s`,
@@ -642,6 +762,29 @@ function App() {
                   </div>
                 ))}
             </div>
+
+            {pageCount > 1 && (
+                <nav className="pagination" aria-label="Páginas">
+                    <button className="page-btn" disabled={page === 1} onClick={() => goToPage(page - 1)} aria-label="Página anterior">
+                        <i className="fas fa-chevron-left"></i>
+                    </button>
+                    {pageItems(page, pageCount).map((p, i) => p === '…' ? (
+                        <span key={`gap-${i}`} className="page-gap">…</span>
+                    ) : (
+                        <button
+                            key={p}
+                            className={`page-btn ${p === page ? 'active' : ''}`}
+                            aria-current={p === page ? 'page' : undefined}
+                            onClick={() => goToPage(p)}
+                        >
+                            {p}
+                        </button>
+                    ))}
+                    <button className="page-btn" disabled={page === pageCount} onClick={() => goToPage(page + 1)} aria-label="Página siguiente">
+                        <i className="fas fa-chevron-right"></i>
+                    </button>
+                </nav>
+            )}
         </main>
       </div>
 
@@ -649,7 +792,10 @@ function App() {
         <div style={{position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(10px)', zIndex: 1000, display: 'grid', placeItems: 'center'}}>
             <div className="song-card" style={{width: '400px', padding: '3rem', textAlign: 'center'}}>
                 <div style={{fontSize: '0.9rem', color: 'var(--primary)', marginBottom: '1rem', fontWeight: '700', textTransform: 'uppercase'}}>¡Hoy deberías cantar!</div>
-                <div className="song-title" style={{fontSize: '2rem', marginBottom: '1.5rem'}}>{randomModal.title}</div>
+                <div style={{marginBottom: '1.5rem'}}>
+                    <div className="song-title" style={{fontSize: '2rem', marginBottom: '0.3rem'}}>{randomModal.title}</div>
+                    {randomModal.folder !== 'Otros' && <div className="song-artist">{randomModal.folder}</div>}
+                </div>
                 <div style={{display: 'flex', gap: '1rem', flexDirection: 'column'}}>
                     {(randomModal.source === 'Cifra Club' || randomModal.source === 'LaCuerda') && (
                       <button 
@@ -684,7 +830,8 @@ function App() {
             song={selectedSong} 
             chordDb={chordDb} 
             backingTracks={backingTracksDict[selectedSong.url]} 
-            onClose={() => setSelectedSong(null)} 
+            onClose={closeSong}
+            onVideoLinked={handleVideoLinked}
           />
         </Suspense>
       )}

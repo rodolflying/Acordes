@@ -12,10 +12,19 @@ import json
 import os
 import re
 import sys
+import os
+import re
 import time
 import argparse
 from datetime import datetime
 from pathlib import Path
+
+# Ensure utf-8 output on Windows terminal
+if sys.platform == 'win32':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
 
 # ---------------------------------------------------------------------------
 # Config
@@ -77,10 +86,14 @@ def parse_song_name(name: str) -> tuple[str, str]:
     
     Patrones soportados:
     - "Fix You - Coldplay - Cifra Club"           → ("Coldplay", "Fix You")
+    - "Niño Eterno (acordes) - Cardellino - ..."  → ("Cardellino", "Niño Eterno")
     - "GEHENA, Ases Falsos: Acordes"              → ("Ases Falsos", "Gehena")
     - "A PERDERSE: Acordes y Letra... (Lucybell)" → ("Lucybell", "A Perderse")
-    - "OIL AND WATER CHORDS by Incubus..."        → ("Incubus", "Oil And Water")
+    - "OIL AND WATER CHORDS by Incubus..."        → ("Incubus", "Oil and Water")
+    - "GUSTARME TANTO ACORDES (ver 2) por ..."    → ("Zcar JPG", "Gustarme Tanto")
     - "I Won't Give Up Uke tab by Jason Mraz..."  → ("Jason Mraz", "I Won't Give Up")
+    - "Huke Tab por Julius Popper - Ukulele Tabs" → ("Julius Popper", "Huke")
+    Los casos están cubiertos en tests/test_enricher.py.
     """
     original = name.strip()
     
@@ -99,25 +112,28 @@ def parse_song_name(name: str) -> tuple[str, str]:
         return (_title_case(artist), _title_case(title))
     
     # ===== Aggressive cleaning for other patterns =====
-    clean = re.sub(r'\s*[-–]\s*(CIFRA CLUB|Cifra Club|cifra club)$', '', original, flags=re.IGNORECASE)
-    clean = re.sub(r'\s*[-–]\s*Cifra Club$', '', clean, flags=re.IGNORECASE)
-    clean = re.sub(r'\s*CHORDS?\s*(\(ver \d+\))?\s*by\s+', ' by ', clean, flags=re.IGNORECASE)
-    clean = re.sub(r'\s+for guitar.*$', '', clean, flags=re.IGNORECASE)
-    clean = re.sub(r'\s+at Ultimate-Guitar$', '', clean, flags=re.IGNORECASE)
-    # Handle "TITLE Uke tab by ARTIST - Site" -> "TITLE by ARTIST"
-    clean = re.sub(r'\s+Uke\s+tab\s+by\s+', ' by ', clean, flags=re.IGNORECASE)
+    # Marks where "<title> CHORDS/ACORDES/Tab by|por <artist>" splits, so a plain
+    # " by " inside a title ("Stand by Me") is never mistaken for it
+    BY = '\x1f'
+    clean = re.sub(r'\s*[-–]\s*Cifra Club$', '', original, flags=re.IGNORECASE)
+    # Ultimate Guitar and Ukulele Tabs, in English and Spanish:
+    # "TITLE CHORDS (ver 2) by ARTIST", "TITLE ACORDES por ARTIST", "TITLE Uke tab by ARTIST", "TITLE Tab por ARTIST"
+    clean = re.sub(r'\s+(?:Uke\s+)?(?:CHORDS?|ACORDES|TABS?)\s*(?:\(ver \d+\))?\s+(?:by|por)\s+', BY, clean, flags=re.IGNORECASE)
+    # Site and instrument tails after the artist
+    clean = re.sub(r'\s+(?:for guitar|para guitarra|at Ultimate-Guitar|@\s*Ultimate-Guitar).*$', '', clean, flags=re.IGNORECASE)
     # Remove standalone "Uke tab" suffix (no "by" following)
     clean = re.sub(r'\s*Uke\s+tab\b.*$', '', clean, flags=re.IGNORECASE)
-    # Remove "Acordes" in the middle of dash-separated names (e.g. Chordify)
+    # Remove chord-site markers: "Niño Eterno (acordes)", and "Acordes" in the middle of dash-separated names (e.g. Chordify)
+    clean = re.sub(r'\s*\((?:acordes|cifra|chords|tabs?)\)', '', clean, flags=re.IGNORECASE)
     clean = re.sub(r'\s+Acordes\b', '', clean, flags=re.IGNORECASE)
     # Remove trailing " - Ukulele Tabs"
     clean = re.sub(r'\s*[-–]\s*Ukulele Tabs$', '', clean, flags=re.IGNORECASE)
-    
-    # Pattern C: "TITLE by ARTIST ..." (Ultimate Guitar, Chordify)
-    m = re.match(r'^(.+?)\s+by\s+(.+?)(?:\s*[-–].*)?$', clean, re.IGNORECASE)
-    if m:
-        title, artist = m.group(1).strip(), m.group(2).strip()
-        return (_title_case(artist), _title_case(title))
+
+    # Pattern C: "TITLE <by> ARTIST ..." (Ultimate Guitar, Ukulele Tabs)
+    if BY in clean:
+        title, artist = clean.split(BY, 1)
+        artist = re.split(r'\s+[-–]\s+', artist)[0]  # drop " - Site" tails, keep "Jay-Z"
+        return (_title_case(artist.strip()), _title_case(title.strip()))
     
     # Pattern D: "TITLE - ARTIST - SITE" or "TITLE - ARTIST"
     parts = re.split(r'\s*[-–]\s*', clean)
