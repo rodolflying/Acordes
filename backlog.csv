@@ -11,5 +11,5 @@ Mejoras, Títulos y artistas limpios con parser de enricher.py y tests, 60, HIGH
 Mejoras, Arreglos móviles: filtros plegables / Cerrar visible / atrás cierra la canción / video compacto / A- A+, 90, HIGH, Must, UX, Ninguno, Ninguno, completada
 Mejoras, Sincronización línea a línea con LRCLIB y calibración del desfase, 120, HIGH, Should, FEATURE, Ninguno, Ninguno, completada
 Mejoras, Bajar efectos visuales (un protagonista / notas fuera del texto / sin blur en tarjetas), 45, MEDIUM, Could, UX, Ninguno, Ninguno, backlog
-Mejoras, Ocultar marcadores que no son canciones, 30, MEDIUM, Should, FIX, Ninguno, Ninguno, backlog
+Mejoras, Ocultar marcadores que no son canciones y unificar canciones repetidas, 30, MEDIUM, Should, FIX, Ninguno, Ninguno, completada
 Mejoras, Exportar desde Karaokes los tiempos de stable_whisper para sincronía exacta, 60, MEDIUM, Could, FEATURE, Ninguno, Ninguno, backlog

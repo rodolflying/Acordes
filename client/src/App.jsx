@@ -11,6 +11,9 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const PAGE_SIZES = [24, 48, 96, Infinity]; // Infinity = all songs on one page
 
+// Comparable form of a name: no accents, case or punctuation ("I Won't Give Up" = "I Wont Give Up")
+const normKey = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+
 // Page numbers to show: first, last and the current page's neighbours, with gaps as '…'
 const pageItems = (current, total) => {
   const items = [];
@@ -164,7 +167,9 @@ function App() {
             console.log('No se pudo cargar la base de datos de acordes');
         }
 
-        const rawSongs = processData(data);
+        // Only chord pages: the bookmark folders also hold music-related links that aren't
+        // songs (tools, shops, tutorials and covers on YouTube…)
+        const rawSongs = processData(data).filter(song => song.source !== 'Web');
 
         // Merge enriched data. Title and folder (artist) use the names cleaned by
         // enricher.py when available, instead of the raw bookmark name
@@ -277,15 +282,30 @@ function App() {
     }
   };
 
+  // One card per song: when the same song was bookmarked twice (mobile and desktop Cifra Club,
+  // .com and .com.br, two sites) keep the most complete one — backing tracks, synced lyrics, chords
+  const songs = useMemo(() => {
+    const key = s => s.clean_title ? `${normKey(s.folder)}|${normKey(s.clean_title)}` : s.url;
+    const score = s => (backingTracksDict[s.url] ? 4 : 0) + (syncPointsDict[s.url] ? 2 : 0)
+      - (s.source === 'LaCuerda' && !s.url.includes('.shtml') ? 3 : 0) // a LaCuerda index page has no chords
+      - (s.url.includes('//m.') ? 1 : 0);
+    const best = new Map();
+    allSongs.forEach(s => {
+      const k = key(s);
+      if (!best.has(k) || score(s) > score(best.get(k))) best.set(k, s);
+    });
+    return allSongs.filter(s => best.get(key(s)) === s);
+  }, [allSongs, backingTracksDict, syncPointsDict]);
+
   const handleRandom = () => {
-    if (allSongs.length > 0) {
-      const randomSong = allSongs[Math.floor(Math.random() * allSongs.length)];
+    if (songs.length > 0) {
+      const randomSong = songs[Math.floor(Math.random() * songs.length)];
       setRandomModal(randomSong);
     }
   };
 
   const filteredSongs = useMemo(() => {
-    return allSongs.filter(song => {
+    return songs.filter(song => {
       const hasSearch = searchQuery.trim() !== '';
       const matchesSearch = song.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                            song.folder.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -300,7 +320,7 @@ function App() {
       
       return matchesSearch && matchesFolder && matchesMood && matchesTheme && matchesBackingTrack;
     });
-  }, [allSongs, searchQuery, currentFilter, activeMood, activeTheme, filterHasBackingTrack, backingTracksDict]);
+  }, [songs, searchQuery, currentFilter, activeMood, activeTheme, filterHasBackingTrack, backingTracksDict]);
 
   // Back to the first page whenever the filters change the list
   const [pagedList, setPagedList] = useState(filteredSongs);
@@ -317,9 +337,9 @@ function App() {
   };
 
   const stats = useMemo(() => {
-    if (!allSongs.length) return null;
+    if (!songs.length) return null;
     
-    const total = allSongs.length;
+    const total = songs.length;
     
     // Moods distribution
     const moodsCount = {};
@@ -343,7 +363,7 @@ function App() {
     // Decades distribution
     const decadesCount = {};
     
-    allSongs.forEach(song => {
+    songs.forEach(song => {
         // Mood
         if (song.mood && MOODS_CONFIG[song.mood]) {
             moodsCount[song.mood]++;
@@ -460,7 +480,7 @@ function App() {
         dominantTheme,
         uniqueFoldersCount
     };
-  }, [allSongs]);
+  }, [songs]);
 
   const handleVideoLinked = (url, videoId, videoTitle) => {
     setBackingTracksDict(prev => ({
