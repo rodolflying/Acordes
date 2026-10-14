@@ -109,6 +109,7 @@ function App() {
   const [selectedSong, setSelectedSong] = useState(null);
   const [randomModal, setRandomModal] = useState(null); // contains random song obj
   const [backingTracksDict, setBackingTracksDict] = useState({});
+  const [syncPointsDict, setSyncPointsDict] = useState({});
   const [filterHasBackingTrack, setFilterHasBackingTrack] = useState(false);
   const [performanceMode, setPerformanceMode] = useState(() => {
     return localStorage.getItem('performanceMode') === 'true';
@@ -240,9 +241,20 @@ function App() {
     }
   };
 
+  // Seconds at which each lyric line is sung (lyrics_sync.py), so the sheet follows the video line by line
+  const loadSyncPoints = async () => {
+    try {
+      const res = await fetch('./sync_points.json');
+      if (res.ok) setSyncPointsDict(await res.json());
+    } catch(e) {
+      console.log("No se pudieron cargar los tiempos de las letras");
+    }
+  };
+
   useEffect(() => {
     loadData();
     loadBackingTracksList();
+    loadSyncPoints();
   }, []);
 
   const handleSync = async () => {
@@ -829,7 +841,8 @@ function App() {
           <SongViewer 
             song={selectedSong} 
             chordDb={chordDb} 
-            backingTracks={backingTracksDict[selectedSong.url]} 
+            backingTracks={backingTracksDict[selectedSong.url]}
+            syncPoints={syncPointsDict[selectedSong.url]}
             onClose={closeSong}
             onVideoLinked={handleVideoLinked}
           />

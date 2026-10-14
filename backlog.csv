@@ -5,3 +5,11 @@ Fase 1, Implementar script de carga masiva para canciones y repertorio karaokeab
 Fase 2, Desarrollar módulo de generación automática de tablaturas musicalizadas, 60, MEDIUM, Should, FEATURE, Carga canciones, Ninguno, backlog
 Fase 2, Optimizar almacenamiento y búsqueda en chords_db.json y enriched_songs.json, 45, MEDIUM, Should, REFACTOR, Ninguno, Ninguno, backlog
 Fase 3, Integrar pruebas unitarias para el motor enricher.py, 30, LOW, Could, DEV, Ninguno, Ninguno, backlog
+Mejoras, Hoja sincronizada con el video de YouTube (handshake del player y scroll proporcional), 60, HIGH, Should, FEATURE, Ninguno, Ninguno, completada
+Mejoras, Paginación con selector de tarjetas por página, 45, HIGH, Should, PERF, Ninguno, Ninguno, completada
+Mejoras, Títulos y artistas limpios con parser de enricher.py y tests, 60, HIGH, Must, UX, Ninguno, Ninguno, completada
+Mejoras, Arreglos móviles: filtros plegables / Cerrar visible / atrás cierra la canción / video compacto / A- A+, 90, HIGH, Must, UX, Ninguno, Ninguno, completada
+Mejoras, Sincronización línea a línea con LRCLIB y calibración del desfase, 120, HIGH, Should, FEATURE, Ninguno, Ninguno, completada
+Mejoras, Bajar efectos visuales (un protagonista / notas fuera del texto / sin blur en tarjetas), 45, MEDIUM, Could, UX, Ninguno, Ninguno, backlog
+Mejoras, Ocultar marcadores que no son canciones, 30, MEDIUM, Should, FIX, Ninguno, Ninguno, backlog
+Mejoras, Exportar desde Karaokes los tiempos de stable_whisper para sincronía exacta, 60, MEDIUM, Could, FEATURE, Ninguno, Ninguno, backlog

@@ -2152,3 +2152,33 @@ input#search:focus {
         font-size: 0.8rem;
     }
 }
+
+/* Room after the last line so the end of the song can also reach the reading line while the sheet follows the video */
+#song-viewer.with-youtube .chords-scroll-container {
+    padding-bottom: 70vh;
+}
+
+/* Song viewer sync helpers: offset label, hint bubbles above the autoscroll panel, tap-to-calibrate cursor */
+.sync-offset {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.panel-hint {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    right: 0;
+    padding: 0.4rem 0.8rem;
+    border-radius: 12px;
+    border: 1px solid var(--primary);
+    background: rgba(10, 10, 15, 0.95);
+    color: var(--text-main);
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+#viewer-content.calibrating {
+    cursor: crosshair;
+}

@@ -74,7 +74,11 @@ def main():
             
     # Generar backing_tracks.json en la carpeta pública del cliente
     generate_backing_tracks()
-        
+
+    # Tiempos de cada línea de la letra, para que la hoja siga al video línea a línea
+    from lyrics_sync import generate_sync_points
+    generate_sync_points()
+
     print("¡Pre-carga completada con éxito!")
 
 def generate_backing_tracks():

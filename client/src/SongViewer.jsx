@@ -14,11 +14,53 @@ const MOODS_CONFIG = {
 // Only defined in dev (client/.env.development); undefined in the GitHub Pages build
 const API_URL = import.meta.env.VITE_API_URL;
 
-// Where the current line sits in the viewport while the sheet follows the video
+// Where the current line sits while the sheet follows the video, as a share of the visible
+// area below the sticky header
 const READING_LINE = 0.3;
 const freshPlayer = () => ({ time: 0, stamp: 0, duration: 0, rate: 1, state: -1, ready: false });
 
-const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, onVideoLinked }) => {
+// Top (px from `origin`) of each source line of the chord sheet. Measured in the DOM because on
+// phones long lines wrap, so a line's position isn't its index × line height
+const measureLineTops = (pre, origin, lineHeight) => {
+  const tops = [];
+  const range = document.createRange();
+  const walker = document.createTreeWalker(pre, NodeFilter.SHOW_TEXT);
+  let lineStart = true;
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    for (let i = 0; i < node.data.length; i++) {
+      if (lineStart) {
+        range.setStart(node, i);
+        range.setEnd(node, i + 1);
+        const rect = range.getClientRects()[0];
+        tops.push(rect ? rect.top - origin : (tops.length ? tops[tops.length - 1] + lineHeight : 0));
+        lineStart = false;
+      }
+      if (node.data[i] === '\n') lineStart = true;
+    }
+  }
+  return tops;
+};
+
+// Sheet position (px from its top) for video time t, from the [second, line] points of the synced
+// lyrics: it moves line to line at the song's own pace, holds before a repeated section and then
+// jumps back to it, comes down from the top during the intro and runs to the end after the last line
+const syncedPosition = (t, points, tops, sheetHeight, duration) => {
+  const at = line => tops[Math.min(line, tops.length - 1)] ?? 0;
+  const [firstT, firstLine] = points[0];
+  if (t <= firstT) return at(firstLine) * Math.max(t, 0) / firstT;
+  for (let i = 1; i < points.length; i++) {
+    const [tb, lb] = points[i];
+    if (t < tb) {
+      const [ta, la] = points[i - 1];
+      return lb < la ? at(la) : at(la) + (at(lb) - at(la)) * (t - ta) / (tb - ta || 1);
+    }
+  }
+  const [lastT, lastLine] = points[points.length - 1];
+  const rest = duration > lastT ? Math.min(1, (t - lastT) / (duration - lastT)) : 0;
+  return at(lastLine) + (sheetHeight - at(lastLine)) * rest;
+};
+
+const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, syncPoints, onVideoLinked }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [content, setContent] = useState('');
@@ -61,6 +103,19 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   useEffect(() => {
     localStorage.setItem('syncWithVideo', syncWithVideo);
   }, [syncWithVideo]);
+
+  // Seconds the video runs ahead of the recording the lyric times come from (e.g. the intro of an
+  // official video), per song. Set once with the 🎯 button and a tap on the line being sung
+  const [timeOffsets, setTimeOffsets] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('syncTimeOffsets')) || {}; } catch { return {}; }
+  });
+  const timeOffset = timeOffsets[song.url] || 0;
+  const [calibrating, setCalibrating] = useState(false);
+  const [playHint, setPlayHint] = useState(false); // phones only let YouTube start with a tap on the video
+
+  useEffect(() => {
+    localStorage.setItem('syncTimeOffsets', JSON.stringify(timeOffsets));
+  }, [timeOffsets]);
 
   // Chord sheet text size, as a multiplier of the base size (bigger text wraps more lines on phones)
   const [fontScale, setFontScale] = useState(() => {
@@ -198,6 +253,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
           player.stamp = performance.now();
           if (state === 1) {
             setIsScrolling(prev => prev !== true ? true : prev);
+            setPlayHint(false);
           } else if (state === 2 || state === 0) {
             setIsScrolling(prev => prev !== false ? false : prev);
           }
@@ -360,8 +416,9 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     return () => clearInterval(scrollIntervalRef.current);
   }, [isScrolling, scrollSpeedIndex, syncing]);
 
-  // Follow the video: map its progress onto the chord sheet. If the user moves the
-  // sheet while it plays, wait until they let go and keep that position as an offset.
+  // Follow the video: line by line with the synced lyrics when the song has them, otherwise in
+  // proportion to the video's progress. If the user moves the sheet while it plays, wait until
+  // they let go and keep that position as an offset.
   useEffect(() => {
     const scroller = viewerRef.current;
     const sheet = contentRef.current;
@@ -370,6 +427,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     let frame;
     let pos = scroller.scrollTop; // where we last put the sheet
     let holdUntil = 0;
+    let lines = { size: '', tops: [] }; // line positions, measured again when the sheet's size changes
     const tick = (now) => {
       frame = requestAnimationFrame(tick);
       const player = playerRef.current;
@@ -383,9 +441,21 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       if (now < holdUntil) return;
 
       const elapsed = player.state === 1 ? (now - player.stamp) / 1000 * player.rate : 0;
-      const progress = Math.min(Math.max((player.time + elapsed) / player.duration, 0), 1);
-      const sheetTop = sheet.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop;
-      const base = sheetTop + progress * sheet.offsetHeight - scroller.clientHeight * READING_LINE;
+      const t = Math.min(Math.max(player.time + elapsed, 0), player.duration);
+      const sheetRect = sheet.getBoundingClientRect();
+      const sheetTop = sheetRect.top - scroller.getBoundingClientRect().top + scroller.scrollTop;
+      let y = t / player.duration * sheet.offsetHeight;
+      if (syncPoints?.length) {
+        const size = `${sheet.offsetWidth}x${sheet.offsetHeight}`;
+        if (lines.size !== size) {
+          const pre = sheet.querySelector('.chord-sheet');
+          lines = { size, tops: measureLineTops(pre, sheetRect.top, parseFloat(getComputedStyle(pre).lineHeight) || 20) };
+        }
+        y = syncedPosition(t - timeOffset, syncPoints, lines.tops, sheet.offsetHeight, player.duration - timeOffset);
+      }
+      const headerHeight = scroller.querySelector('.viewer-header')?.offsetHeight || 0;
+      const readingY = headerHeight + (scroller.clientHeight - headerHeight) * READING_LINE;
+      const base = sheetTop + y - readingY;
       if (holdUntil) {
         syncOffsetRef.current = pos - base;
         holdUntil = 0;
@@ -397,12 +467,35 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [syncing, isScrolling, loading]);
+  }, [syncing, isScrolling, loading, syncPoints, timeOffset]);
+
+  // 🎯 calibration: the tapped line is the one being sung now, so the gap between the video's
+  // time and that line's lyric time is the song's offset
+  const calibrateAt = (e) => {
+    if (!calibrating || !syncPoints?.length) return;
+    const sheet = contentRef.current;
+    const pre = sheet.querySelector('.chord-sheet');
+    const sheetTop = sheet.getBoundingClientRect().top;
+    const tops = measureLineTops(pre, sheetTop, parseFloat(getComputedStyle(pre).lineHeight) || 20);
+    let line = 0;
+    tops.forEach((top, i) => { if (top <= e.clientY - sheetTop) line = i; });
+    const player = playerRef.current;
+    const now = player.time + (player.state === 1 ? (performance.now() - player.stamp) / 1000 * player.rate : 0);
+    // The synced line closest to the tapped one; for a chorus sung several times, the time nearest to now
+    const [lyricTime] = syncPoints.reduce((best, p) => {
+      const score = Math.abs(p[1] - line) * 1000 + Math.abs(now - timeOffset - p[0]);
+      return score < best.score ? { p, score } : best;
+    }, { p: null, score: Infinity }).p;
+    setTimeOffsets(offsets => ({ ...offsets, [song.url]: Math.round((now - lyricTime) * 10) / 10 }));
+    syncOffsetRef.current = 0;
+    setCalibrating(false);
+  };
 
   const toggleScroll = () => {
     if (syncing) {
       const playing = [1, 3].includes(playerRef.current.state); // playing or buffering
       sendPlayerCommand(playing ? 'pauseVideo' : 'playVideo');
+      if (!playing) setTimeout(() => setPlayHint(playerRef.current.state !== 1), 2500);
     } else {
       setIsScrolling(!isScrolling);
     }
@@ -570,7 +663,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                     <div key={i} className="diagram-item animate-in" dangerouslySetInnerHTML={{ __html: d.svg }} />
                   ))}
                 </div>
-                <div id="viewer-content" ref={contentRef} style={{ '--sheet-scale': fontScale }}>
+                <div id="viewer-content" ref={contentRef} style={{ '--sheet-scale': fontScale }} className={calibrating ? 'calibrating' : ''} onClick={calibrateAt}>
                   <pre className="chord-sheet" dangerouslySetInnerHTML={{ __html: displayContent }}></pre>
                 </div>
               </>
@@ -809,11 +902,26 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
               onClick={toggleSync}
               className={`btn-icon ${syncWithVideo ? 'sync-on' : ''}`}
               aria-pressed={syncWithVideo}
-              title={syncWithVideo ? 'La hoja sigue al video · clic para velocidad fija' : 'Velocidad fija · clic para que la hoja siga al video'}
+              title={!syncWithVideo ? 'Velocidad fija · clic para que la hoja siga al video'
+                : syncPoints?.length ? 'La hoja sigue la letra del video, línea a línea · clic para velocidad fija'
+                : 'La hoja sigue al video de forma aproximada (esta canción no tiene letra con tiempos) · clic para velocidad fija'}
             >
               <i className="fas fa-link"></i>
             </button>
           )}
+          {syncing && syncPoints?.length > 0 && (
+            <button
+              onClick={() => setCalibrating(!calibrating)}
+              className={`btn-icon ${calibrating ? 'sync-on' : ''}`}
+              aria-pressed={calibrating}
+              title={`¿La hoja va desfasada? Toca acá y después la línea que está sonando${timeOffset ? ` (desfase actual: ${timeOffset > 0 ? '+' : ''}${timeOffset} s)` : ''}`}
+            >
+              <i className="fas fa-crosshairs"></i>
+            </button>
+          )}
+          {syncing && !calibrating && timeOffset !== 0 && <span className="sync-offset">{timeOffset > 0 ? '+' : ''}{timeOffset}s</span>}
+          {calibrating && <div className="panel-hint">Toca la línea que está sonando</div>}
+          {!calibrating && playHint && <div className="panel-hint">Toca el video para empezar</div>}
           {!syncing && <button onClick={() => updateSpeed(-1)} className="btn-icon"><i className="fas fa-minus"></i></button>}
           <button onClick={toggleScroll} className="btn-primary" style={{ borderRadius: '20px', padding: '0.5rem 1rem' }}>
             {isScrolling ? <><i className="fas fa-pause"></i> Pausar</> : <><i className="fas fa-play"></i> {syncing ? 'Reproducir' : 'Auto-Scroll'}</>}
