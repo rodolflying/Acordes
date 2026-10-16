@@ -1963,12 +1963,35 @@ input#search:focus {
 @media (max-width: 900px) {
     #song-viewer {
         flex-direction: column;
+        /* The screen that is really visible: on phones 100vh/inset reach under the browser's toolbar */
+        bottom: auto;
+        height: 100vh;
+        height: 100dvh;
     }
 
     .viewer-left-panel {
         flex: 1;
+        min-height: 0;
         overflow: hidden;
         padding-bottom: 0;
+    }
+
+    /* The play controls become a bar between the sheet and the video instead of floating over the
+       version buttons at the bottom edge */
+    #song-viewer .autoscroll-panel {
+        position: relative;
+        order: 1;
+        inset: auto;
+        flex-shrink: 0;
+        justify-content: center;
+        border-radius: 0;
+        border-width: 1px 0 0;
+        padding: 0.4rem 1rem;
+        box-shadow: none;
+        background: #09090e;
+    }
+    #song-viewer .viewer-right-panel {
+        order: 2;
     }
 
     .viewer-right-panel {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { parseChord, renderSVGChord, transposeChord } from './ChordUtils';
+import { parseChord, renderSVGChord, sharpChord, transposeChord } from './ChordUtils';
 
 const MOODS_CONFIG = {
   "Romántico": { color: "#ff007a", rgb: "255, 0, 122" },
@@ -47,7 +47,7 @@ const measureLineTops = (pre, origin, lineHeight) => {
 const syncedPosition = (t, points, tops, sheetHeight, duration) => {
   const at = line => tops[Math.min(line, tops.length - 1)] ?? 0;
   const [firstT, firstLine] = points[0];
-  if (t <= firstT) return at(firstLine) * Math.max(t, 0) / firstT;
+  if (t <= firstT) return firstT > 0 ? at(firstLine) * Math.max(t, 0) / firstT : at(firstLine);
   for (let i = 1; i < points.length; i++) {
     const [tb, lb] = points[i];
     if (t < tb) {
@@ -333,18 +333,15 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
         return;
     }
     
-    if (transposeDelta === 0) {
-        setDisplayContent(content);
-        return;
-    }
-    
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = content;
-    
+
+    // Always in sharps: transposing already gives sharps, and in the original key the flats are rewritten
     const chordElements = tempDiv.querySelectorAll('.chord');
     chordElements.forEach(el => {
         const originalChord = el.innerText.trim();
-        el.innerText = transposeChord(originalChord, transposeDelta);
+        const shown = transposeDelta === 0 ? sharpChord(originalChord) : transposeChord(originalChord, transposeDelta);
+        if (shown !== originalChord) el.innerText = shown;
     });
     
     setDisplayContent(tempDiv.innerHTML);
@@ -424,6 +421,17 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     const sheet = contentRef.current;
     if (!syncing || !isScrolling || !scroller || !sheet) return;
 
+    // Only a real gesture counts as moving the sheet by hand. The page also scrolls on its own when it
+    // reflows (zoom, window or text size), and that must not become a manual offset
+    let lastGesture = -Infinity;
+    const gesture = () => { lastGesture = performance.now(); };
+    const scrollbarGesture = (e) => { if (e.target === scroller) gesture(); };
+    const keyGesture = (e) => { if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(e.key)) gesture(); };
+    scroller.addEventListener('wheel', gesture, { passive: true });
+    scroller.addEventListener('touchmove', gesture, { passive: true });
+    scroller.addEventListener('pointerdown', scrollbarGesture);
+    window.addEventListener('keydown', keyGesture);
+
     let frame;
     let pos = scroller.scrollTop; // where we last put the sheet
     let holdUntil = 0;
@@ -433,10 +441,13 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       const player = playerRef.current;
       if (!player.duration) return;
 
-      if (Math.abs(scroller.scrollTop - pos) > 2) { // moved by hand
+      if (Math.abs(scroller.scrollTop - pos) > 2) {
         pos = scroller.scrollTop;
-        holdUntil = now + 1000;
-        return;
+        if (now - lastGesture < 1000) { // moved by hand (a fling keeps moving after the finger lifts)
+          lastGesture = now;
+          holdUntil = now + 1000;
+          return;
+        }
       }
       if (now < holdUntil) return;
 
@@ -444,13 +455,14 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       const t = Math.min(Math.max(player.time + elapsed, 0), player.duration);
       const sheetRect = sheet.getBoundingClientRect();
       const sheetTop = sheetRect.top - scroller.getBoundingClientRect().top + scroller.scrollTop;
+      const size = `${sheet.offsetWidth}x${sheet.offsetHeight}`;
+      if (lines.size !== size) {
+        if (lines.size) syncOffsetRef.current = 0; // a manual offset in px means nothing once lines move
+        const pre = sheet.querySelector('.chord-sheet');
+        lines = { size, tops: syncPoints?.length ? measureLineTops(pre, sheetRect.top, parseFloat(getComputedStyle(pre).lineHeight) || 20) : [] };
+      }
       let y = t / player.duration * sheet.offsetHeight;
       if (syncPoints?.length) {
-        const size = `${sheet.offsetWidth}x${sheet.offsetHeight}`;
-        if (lines.size !== size) {
-          const pre = sheet.querySelector('.chord-sheet');
-          lines = { size, tops: measureLineTops(pre, sheetRect.top, parseFloat(getComputedStyle(pre).lineHeight) || 20) };
-        }
         y = syncedPosition(t - timeOffset, syncPoints, lines.tops, sheet.offsetHeight, player.duration - timeOffset);
       }
       const headerHeight = scroller.querySelector('.viewer-header')?.offsetHeight || 0;
@@ -466,7 +478,13 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       scroller.scrollTop = pos;
     };
     frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      cancelAnimationFrame(frame);
+      scroller.removeEventListener('wheel', gesture);
+      scroller.removeEventListener('touchmove', gesture);
+      scroller.removeEventListener('pointerdown', scrollbarGesture);
+      window.removeEventListener('keydown', keyGesture);
+    };
   }, [syncing, isScrolling, loading, syncPoints, timeOffset]);
 
   // 🎯 calibration: the tapped line is the one being sung now, so the gap between the video's

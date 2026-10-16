@@ -41,19 +41,20 @@ export function parseChord(chordStr) {
     if (suffixKey === '4') suffixKey = 'sus4';
     if (suffixKey === '2') suffixKey = 'sus2';
     
-    // Traducir nota de bajo en acordes con barra (ej. /Sol -> /G)
+    // Traducir nota de bajo en acordes con barra (ej. /Sol -> /G), con los nombres que usa
+    // chords_db en sus sufijos (/C#, /Eb, /F#, /Ab, /Bb)
     const slashTranslation = {
         'C': 'C', 'Do': 'C',
         'C#': 'C#', 'Db': 'C#', 'Do#': 'C#', 'Reb': 'C#',
         'D': 'D', 'Re': 'D',
-        'D#': 'D#', 'Eb': 'Eb', 'Re#': 'D#', 'Mib': 'Eb',
+        'D#': 'Eb', 'Eb': 'Eb', 'Re#': 'Eb', 'Mib': 'Eb',
         'E': 'E', 'Mi': 'E',
         'F': 'F', 'Fa': 'F',
         'F#': 'F#', 'Gb': 'F#', 'Fa#': 'F#', 'Solb': 'F#',
         'G': 'G', 'Sol': 'G',
-        'G#': 'G#', 'Ab': 'Ab', 'Sol#': 'G#', 'Lab': 'Ab',
+        'G#': 'Ab', 'Ab': 'Ab', 'Sol#': 'Ab', 'Lab': 'Ab',
         'A': 'A', 'La': 'A',
-        'A#': 'A#', 'Bb': 'Bb', 'La#': 'A#', 'Sib': 'Bb',
+        'A#': 'Bb', 'Bb': 'Bb', 'La#': 'Bb', 'Sib': 'Bb',
         'B': 'B', 'Si': 'B'
     };
     const slashMatch = suffixKey.match(/\/((?:Do|Re|Mi|Fa|Sol|La|Si|C|D|E|F|G|A|B)[#b]?)$/i);
@@ -65,6 +66,18 @@ export function parseChord(chordStr) {
     }
     
     return { key: rootKey, suffix: suffixKey };
+}
+
+// The songbook writes every chord with sharps, never flats: Bb → A#, Ebm7 → D#m7, Fm/Ab → Fm/G#.
+// Keeps the sheet's language (Sib → La#)
+const FLAT_TO_SHARP = {
+    'Db': 'C#', 'Eb': 'D#', 'Gb': 'F#', 'Ab': 'G#', 'Bb': 'A#', 'Cb': 'B', 'Fb': 'E',
+    'Reb': 'Do#', 'Mib': 'Re#', 'Solb': 'Fa#', 'Lab': 'Sol#', 'Sib': 'La#', 'Dob': 'Si', 'Fab': 'Mi'
+};
+
+export function sharpChord(chordStr) {
+    return chordStr.replace(/(^|\/)(Do|Re|Mi|Fa|Sol|La|Si|[A-G])b/g,
+        (flat, before, note) => before + FLAT_TO_SHARP[note + 'b']);
 }
 
 export function transposeChord(chordStr, delta) {
