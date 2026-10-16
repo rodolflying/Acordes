@@ -41,23 +41,64 @@ const measureLineTops = (pre, origin, lineHeight) => {
   return tops;
 };
 
-// Sheet position (px from its top) for video time t, from the [second, line] points of the synced
-// lyrics: it moves line to line at the song's own pace, holds before a repeated section and then
-// jumps back to it, comes down from the top during the intro and runs to the end after the last line
-const syncedPosition = (t, points, tops, sheetHeight, duration) => {
-  const at = line => tops[Math.min(line, tops.length - 1)] ?? 0;
-  const [firstT, firstLine] = points[0];
-  if (t <= firstT) return firstT > 0 ? at(firstLine) * Math.max(t, 0) / firstT : at(firstLine);
-  for (let i = 1; i < points.length; i++) {
-    const [tb, lb] = points[i];
-    if (t < tb) {
-      const [ta, la] = points[i - 1];
-      return lb < la ? at(la) : at(la) + (at(lb) - at(la)) * (t - ta) / (tb - ta || 1);
+// Each source line of the sheet: its length in characters, its chords (element and column) and
+// whether it only holds chords (a chord line above the lyrics, an intro or a solo)
+const indexSheet = (pre) => {
+  const lines = [{ length: 0, chords: [], letters: 0 }];
+  const walker = document.createTreeWalker(pre, NodeFilter.SHOW_TEXT);
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    const chord = node.parentElement.closest('.chord');
+    for (const ch of node.data) {
+      const line = lines[lines.length - 1];
+      if (ch === '\n') { lines.push({ length: 0, chords: [], letters: 0 }); continue; }
+      if (chord && line.chords[line.chords.length - 1]?.el !== chord) line.chords.push({ col: line.length, el: chord });
+      if (!chord && ch.trim()) line.letters++;
+      line.length++;
     }
   }
-  const [lastT, lastLine] = points[points.length - 1];
-  const rest = duration > lastT ? Math.min(1, (t - lastT) / (duration - lastT)) : 0;
-  return at(lastLine) + (sheetHeight - at(lastLine)) * rest;
+  // A few letters next to the chords are labels ("Intro: RE-SOL (x2)"), not lyrics
+  lines.forEach(l => { l.chordsOnly = l.chords.length > 0 && l.letters <= 12; });
+  return lines;
+};
+
+// When each line sounds and when each chord comes in, from the synced lyrics: a sung line lights up
+// together with its chord line above, and each chord comes in at its column's share of the line.
+// Between sung lines, the lines that only have chords (intro, solos) share the gap
+const buildTimeline = (points, lines) => {
+  const segments = [];
+  const singing = (t, line) => Math.min(t, 0.15 * Math.max(lines[line]?.length || 0, 1) + 1.5);
+  const addChordLines = (from, to, start, end) => {
+    const block = [];
+    for (let l = from; l < to; l++) if (lines[l]?.chordsOnly) block.push(l);
+    const count = block.reduce((n, l) => n + lines[l].chords.length, 0);
+    if (!count || end - start < 1) return;
+    let k = 0;
+    block.forEach(l => {
+      const events = lines[l].chords.map(c => ({ t: start + (end - start) * (k++) / count, el: c.el }));
+      segments.push({ start: events[0].t, top: l, bottom: l, events });
+    });
+  };
+  points.forEach(([t, line], j) => {
+    const next = points[j + 1]?.[0] ?? t + 6;
+    const above = lines[line - 1]?.chordsOnly ? line - 1 : line;
+    const dur = singing(next - t, line);
+    const length = Math.max(lines[line]?.length || 0, 1);
+    const events = [...(above < line ? lines[above].chords : []), ...(lines[line]?.chords || [])]
+      .map(c => ({ t: t + dur * Math.min(c.col / length, 0.95), el: c.el }));
+    if (j === 0) addChordLines(0, above, 0, t); // the intro, before the first sung line
+    segments.push({ start: t, top: above, bottom: line, sung: dur, events });
+    const nextLine = points[j + 1]?.[1];
+    if (nextLine > line + 1) addChordLines(line + 1, nextLine - 1, t + dur, next);
+  });
+  segments.sort((a, b) => a.start - b.start);
+  return { segments, events: segments.flatMap(s => s.events).sort((a, b) => a.t - b.t) };
+};
+
+// Last item of a list sorted by `key` whose key is <= t
+const lastAt = (list, t, key) => {
+  let found = null;
+  for (const item of list) { if (key(item) <= t) found = item; else break; }
+  return found;
 };
 
 const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, syncPoints, onVideoLinked }) => {
@@ -65,6 +106,8 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   const [error, setError] = useState(null);
   const [content, setContent] = useState('');
   const [displayContent, setDisplayContent] = useState('');
+  // Lines the sheet left without chords that complete_chords.py filled ({bloque, linea, audio})
+  const [addedChords, setAddedChords] = useState(null);
   const [transposeDelta, setTransposeDelta] = useState(0);
   const [diagrams, setDiagrams] = useState([]);
   const [selectedChordSvg, setSelectedChordSvg] = useState(null);
@@ -75,7 +118,9 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   const viewerRef = useRef(null);
   const scrollIntervalRef = useRef(null);
   const contentRef = useRef(null);
-
+  const bandRef = useRef(null); // lights up the line being sung
+  const progressRef = useRef(null); // how far into that line the singing is
+  const nowChordRef = useRef(null); // the chord sounding now
 
   // YouTube States
   const [showYoutube, setShowYoutube] = useState(false);
@@ -316,6 +361,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
           setError(contentData.error);
         } else {
           setContent(contentData.content);
+          setAddedChords(contentData.added_chords || null);
         }
       } catch (err) {
         setError('Error de conexión al cargar la canción.');
@@ -413,13 +459,16 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     return () => clearInterval(scrollIntervalRef.current);
   }, [isScrolling, scrollSpeedIndex, syncing]);
 
-  // Follow the video: line by line with the synced lyrics when the song has them, otherwise in
-  // proportion to the video's progress. If the user moves the sheet while it plays, wait until
-  // they let go and keep that position as an offset.
+  // Follow the video. With synced lyrics, the line being sung lights up, its chords come in one by
+  // one and the sheet stays still, turning the page when the lit line gets near the bottom (like
+  // "Escuchar artículo" in the blog): a sheet that never stops moving is hard to read with a guitar
+  // in your hands. Without synced lyrics, the sheet glides in proportion to the video. If the user
+  // moves the sheet while it plays, wait until they let go.
   useEffect(() => {
     const scroller = viewerRef.current;
     const sheet = contentRef.current;
     if (!syncing || !isScrolling || !scroller || !sheet) return;
+    if (syncPoints?.length) return followLyrics(scroller, sheet);
 
     // Only a real gesture counts as moving the sheet by hand. The page also scrolls on its own when it
     // reflows (zoom, window or text size), and that must not become a manual offset
@@ -435,7 +484,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     let frame;
     let pos = scroller.scrollTop; // where we last put the sheet
     let holdUntil = 0;
-    let lines = { size: '', tops: [] }; // line positions, measured again when the sheet's size changes
+    let lines = { size: '' }; // the sheet's size, to notice when it reflows
     const tick = (now) => {
       frame = requestAnimationFrame(tick);
       const player = playerRef.current;
@@ -458,13 +507,9 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       const size = `${sheet.offsetWidth}x${sheet.offsetHeight}`;
       if (lines.size !== size) {
         if (lines.size) syncOffsetRef.current = 0; // a manual offset in px means nothing once lines move
-        const pre = sheet.querySelector('.chord-sheet');
-        lines = { size, tops: syncPoints?.length ? measureLineTops(pre, sheetRect.top, parseFloat(getComputedStyle(pre).lineHeight) || 20) : [] };
+        lines = { size };
       }
-      let y = t / player.duration * sheet.offsetHeight;
-      if (syncPoints?.length) {
-        y = syncedPosition(t - timeOffset, syncPoints, lines.tops, sheet.offsetHeight, player.duration - timeOffset);
-      }
+      const y = t / player.duration * sheet.offsetHeight;
       const headerHeight = scroller.querySelector('.viewer-header')?.offsetHeight || 0;
       const readingY = headerHeight + (scroller.clientHeight - headerHeight) * READING_LINE;
       const base = sheetTop + y - readingY;
@@ -485,7 +530,125 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       scroller.removeEventListener('pointerdown', scrollbarGesture);
       window.removeEventListener('keydown', keyGesture);
     };
-  }, [syncing, isScrolling, loading, syncPoints, timeOffset]);
+  }, [syncing, isScrolling, loading, syncPoints, timeOffset, displayContent]);
+
+  // Line by line with the synced lyrics (see above). Returns the cleanup
+  const followLyrics = (scroller, sheet) => {
+    const pre = sheet.querySelector('.chord-sheet');
+    const band = bandRef.current;
+    const progress = progressRef.current;
+    if (!pre || !band || !progress) return undefined;
+    const { segments, events } = buildTimeline(syncPoints, indexSheet(pre));
+
+    let lastGesture = -Infinity;
+    const gesture = () => { lastGesture = performance.now(); };
+    const scrollbarGesture = (e) => { if (e.target === scroller) gesture(); };
+    const keyGesture = (e) => { if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(e.key)) gesture(); };
+    scroller.addEventListener('wheel', gesture, { passive: true });
+    scroller.addEventListener('touchmove', gesture, { passive: true });
+    scroller.addEventListener('pointerdown', scrollbarGesture);
+    window.addEventListener('keydown', keyGesture);
+
+    let frame;
+    let pos = scroller.scrollTop; // where we last put the sheet
+    let target = null; // where the sheet is gliding to after a page turn
+    let holdUntil = 0;
+    let layout = { size: '' }; // line positions, measured again when the sheet's size changes
+    let shown = null; // segment on screen
+    const tick = (now) => {
+      frame = requestAnimationFrame(tick);
+      const player = playerRef.current;
+      if (!player.duration) return;
+
+      if (Math.abs(scroller.scrollTop - pos) > 2) {
+        pos = scroller.scrollTop;
+        if (now - lastGesture < 1000) { // moved by hand: let them read where they want for a while
+          lastGesture = now;
+          holdUntil = now + 2500;
+          target = null;
+        }
+      }
+
+      const size = `${sheet.offsetWidth}x${sheet.offsetHeight}`;
+      if (layout.size !== size) {
+        const lineHeight = parseFloat(getComputedStyle(pre).lineHeight) || 20;
+        layout = { size, lineHeight, tops: measureLineTops(pre, sheet.getBoundingClientRect().top, lineHeight), widths: new Map() };
+        band.style.left = `${pre.offsetLeft + 6}px`;
+        band.style.width = `${pre.offsetWidth - 12}px`;
+        progress.style.left = `${parseFloat(getComputedStyle(pre).paddingLeft) - 6}px`;
+        shown = null;
+      }
+      const { tops, lineHeight } = layout;
+      const lineTop = l => tops[Math.min(l, tops.length - 1)] ?? 0;
+      const lineBottom = l => (l + 1 < tops.length ? tops[l + 1] : lineTop(l) + lineHeight);
+
+      const elapsed = player.state === 1 ? (now - player.stamp) / 1000 * player.rate : 0;
+      const t = Math.min(Math.max(player.time + elapsed, 0), player.duration) - timeOffset;
+
+      // The line being sung and the chord sounding now
+      const seg = lastAt(segments, t, s => s.start);
+      if (seg !== shown) {
+        shown = seg;
+        band.classList.toggle('on', Boolean(seg));
+        if (seg) {
+          band.style.transform = `translateY(${lineTop(seg.top) - 4}px)`;
+          band.style.height = `${lineBottom(seg.bottom) - lineTop(seg.top) + 8}px`;
+          if (seg.sung && !layout.widths.has(seg.bottom)) {
+            const range = document.createRange(); // how wide the sung line is, for the progress bar
+            range.selectNodeContents(pre);
+            const rects = [...range.getClientRects()].filter(r => r.top >= sheet.getBoundingClientRect().top + lineTop(seg.bottom) - 1 && r.top < sheet.getBoundingClientRect().top + lineBottom(seg.bottom) - 1);
+            const left = pre.getBoundingClientRect().left + parseFloat(getComputedStyle(pre).paddingLeft);
+            layout.widths.set(seg.bottom, Math.max(0, ...rects.map(r => r.right - left)));
+          }
+          progress.style.width = `${seg.sung ? layout.widths.get(seg.bottom) : 0}px`;
+        }
+      }
+      if (seg?.sung) progress.style.transform = `scaleX(${Math.min(Math.max((t - seg.start) / seg.sung, 0), 1)})`;
+      // A chord keeps sounding until the next one; long after the last written one (a part the sheet
+      // writes without chords, "same as above") it is no longer what sounds
+      const last = lastAt(events, t, e => e.t);
+      const chord = last && (t - last.t < 12 || seg?.events.includes(last)) ? last.el : null;
+      if (chord !== nowChordRef.current) {
+        nowChordRef.current?.classList.remove('chord-now');
+        chord?.classList.add('chord-now');
+        nowChordRef.current = chord;
+      }
+
+      // Turn the page when the lit line leaves the comfortable part of the screen
+      if (now >= holdUntil && seg) {
+        const headerHeight = scroller.querySelector('.viewer-header')?.offsetHeight || 0;
+        const visible = scroller.clientHeight - headerHeight;
+        const sheetTop = sheet.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop;
+        const top = sheetTop + lineTop(seg.top) - scroller.scrollTop;
+        const bottom = sheetTop + lineBottom(seg.bottom) - scroller.scrollTop;
+        if (top < headerHeight + visible * 0.05 || bottom > headerHeight + visible * 0.75) {
+          const maxScroll = scroller.scrollHeight - scroller.clientHeight;
+          target = Math.min(Math.max(sheetTop + lineTop(seg.top) - headerHeight - visible * 0.2, 0), maxScroll);
+        }
+      }
+      if (target !== null) {
+        pos += (target - pos) * 0.12;
+        if (Math.abs(target - pos) < 0.5) { pos = target; target = null; }
+        scroller.scrollTop = pos;
+      }
+    };
+    frame = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(frame);
+      scroller.removeEventListener('wheel', gesture);
+      scroller.removeEventListener('touchmove', gesture);
+      scroller.removeEventListener('pointerdown', scrollbarGesture);
+      window.removeEventListener('keydown', keyGesture);
+    };
+  };
+
+  // Turning the sync off (or changing song, version or key) takes the light off the sheet
+  useEffect(() => {
+    if (syncing && syncPoints?.length) return;
+    bandRef.current?.classList.remove('on');
+    nowChordRef.current?.classList.remove('chord-now');
+    nowChordRef.current = null;
+  }, [syncing, syncPoints, displayContent]);
 
   // 🎯 calibration: the tapped line is the one being sung now, so the gap between the video's
   // time and that line's lyric time is the song's offset
@@ -681,7 +844,20 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                     <div key={i} className="diagram-item animate-in" dangerouslySetInnerHTML={{ __html: d.svg }} />
                   ))}
                 </div>
+                {addedChords && (addedChords.bloque + addedChords.linea + addedChords.audio) > 0 && (
+                  <p className="added-note">
+                    <i className="fas fa-wand-magic-sparkles"></i>{' '}
+                    Completamos {addedChords.bloque + addedChords.linea + addedChords.audio} líneas que esta hoja dejaba sin acordes
+                    {' '}(<span className="chord-added-sample">subrayados</span>):
+                    {addedChords.bloque + addedChords.linea > 0 && ` ${addedChords.bloque + addedChords.linea} repiten una parte de más arriba`}
+                    {addedChords.bloque + addedChords.linea > 0 && addedChords.audio > 0 && ' y'}
+                    {addedChords.audio > 0 && ` ${addedChords.audio} los oímos en tu video`}.
+                  </p>
+                )}
                 <div id="viewer-content" ref={contentRef} style={{ '--sheet-scale': fontScale }} className={calibrating ? 'calibrating' : ''} onClick={calibrateAt}>
+                  <div className="sing-band" ref={bandRef} aria-hidden="true">
+                    <div className="sing-progress" ref={progressRef}></div>
+                  </div>
                   <pre className="chord-sheet" dangerouslySetInnerHTML={{ __html: displayContent }}></pre>
                 </div>
               </>
