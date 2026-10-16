@@ -7,6 +7,10 @@ precargada. Genera client/public/sync_points.json:
 La app usa esos puntos para avanzar línea a línea; sin ellos la hoja avanza en proporción
 al video.
 
+sync_offsets.json corrige canciones cuyo video va corrido respecto de la letra de LRCLIB:
+    { "<url de la canción>": {"segundos": 1.2, ...} }   (positivo: en el video se canta después)
+Lo genera experiments/chord_check/offsets.py midiendo la voz guía de tus karaokes.
+
 Uso:
     python lyrics_sync.py      # también lo corre preload_chords.py al final
 """
@@ -24,6 +28,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 PUBLIC = ROOT / 'client' / 'public'
 CACHE_FILE = ROOT / 'lrclib_cache.json'  # respuestas de LRCLIB, para no repetir descargas
+OFFSETS_FILE = ROOT / 'sync_offsets.json'  # desfase medido de cada video respecto de la letra
 
 SECTION = re.compile(r'^(intro|coro|estribillo|verso|puente|solo|final|outro|chorus|verse|bridge|'
                      r'pre ?coro|pre ?chorus|interludio|interlude|first part|second part|parte|tab|riff)\b')
@@ -158,6 +163,7 @@ def generate_sync_points():
     tracks_path = PUBLIC / 'backing_tracks.json'
     tracks = json.loads(tracks_path.read_text(encoding='utf-8'))['backing_tracks'] if tracks_path.exists() else {}
     cache = json.loads(CACHE_FILE.read_text(encoding='utf-8')) if CACHE_FILE.exists() else {}
+    offsets = json.loads(OFFSETS_FILE.read_text(encoding='utf-8')) if OFFSETS_FILE.exists() else {}
 
     # Solo importa en canciones con video: pistas de Karaokes o videos vinculados a mano
     urls = set(tracks) | {url for url, e in enriched.items() if e.get('youtube_video')}
@@ -171,13 +177,15 @@ def generate_sync_points():
         points = align(lrc, sheet_lyric_lines(sheet['content'])) if lrc else []
         # Una letra que casi no calza con la hoja es otra versión (u otra canción): mejor el modo aproximado
         if len(points) >= 8 and len(points) >= 0.5 * len(lrc):
-            sync_points[url] = points
+            shift = offsets.get(url, {}).get('segundos', 0)
+            sync_points[url] = [[round(t + shift, 2), line] for t, line in points]
         else:
             sin_letra.append(f"{song['title']} — {song['artist']}")
 
     CACHE_FILE.write_text(json.dumps(cache, ensure_ascii=False), encoding='utf-8')
     (PUBLIC / 'sync_points.json').write_text(json.dumps(sync_points, ensure_ascii=False), encoding='utf-8')
-    print(f"Se generó sync_points.json: {len(sync_points)} de {len(urls)} canciones con video sincronizadas línea a línea")
+    print(f"Se generó sync_points.json: {len(sync_points)} de {len(urls)} canciones con video sincronizadas línea a línea"
+          f" ({sum(url in offsets for url in sync_points)} con desfase del video corregido)")
     if sin_letra:
         print("  Sin letra con tiempos (quedan en modo aproximado): " + ', '.join(sin_letra))
 

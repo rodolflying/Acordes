@@ -1,11 +1,13 @@
 # Backlog - Acordes
 
 ## 🌟 Focus (Esta Semana)
-- [ ] Fact-check de acordes contra el audio: escalar la prueba de `experiments/chord_check` a todas las canciones con pista (tono, acordes mal escritos, tramos que no calzan) <!-- priority: HIGH, type: FEATURE, est: 60 -->
-- [ ] Auto-calibrar el desfase de la letra con los acordes del audio (Fénix: la hoja iba 3 s adelantada) <!-- priority: HIGH, type: FEATURE, est: 45 -->
+- [ ] Videos caídos: Mi Ejército, Riptide, Corazón y La Perla (las 3 versiones "no disponible") y Hurt (pide confirmar edad): el reproductor no funciona en el sitio <!-- priority: HIGH, type: FIX, est: 30 -->
 - [ ] Renovar la clave de Qwen (DashScope responde 401: el mood y la temática caen al respaldo genérico) y reclasificar las ~60 canciones con "Reflexivo / Existencial / Media" <!-- priority: MEDIUM, type: FIX, est: 20 -->
 
 ## 📋 Backlog General
+- [ ] Ofrecer el tono del video: transposición medida cuando la hoja está en otro tono (Talk Is Cheap +3, Mr. Brightside y Turista −1) <!-- priority: MEDIUM, type: FEATURE, est: 30 -->
+- [ ] Probar una red neuronal ya entrenada (BTC o Basic Pitch) para reconocer acordes y compararla con el método de plantillas <!-- priority: MEDIUM, type: FEATURE, est: 90 -->
+- [ ] Desfases dudosos (la letra con tiempos es de otra edición del tema): Fix You, The A Team, Virtual Insanity, Familiar, Going Shopping, Nada Nuevo, No Me Hables de Sufrir <!-- priority: LOW, type: FIX, est: 30 -->
 - [ ] Acordes versión propia: generar o corregir hojas desde el audio, dejando la original como versión alternativa <!-- priority: MEDIUM, type: FEATURE, est: 120 -->
 - [ ] Exportar desde el proyecto Karaokes los tiempos de `stable_whisper` de cada video (JSON por canción): sincronía exacta sin calibrar, también para los 15 videos que no duran lo mismo que la grabación original <!-- priority: MEDIUM, type: FEATURE, est: 60 -->
 - [ ] Desarrollar módulo de extracción y generación automática de tablaturas musicalizadas <!-- priority: MEDIUM, type: FEATURE, est: 60 -->
@@ -14,6 +16,10 @@
 - [ ] Bajar efectos visuales: un solo protagonista (íconos celestes o fondo 3D), notas flotantes fuera del texto, sin blur en las tarjetas <!-- priority: MEDIUM, type: UX, est: 45 -->
 
 ## ✅ Completadas
+- [x] Sincronía robusta al zoom (Ctrl +/−), al tamaño de ventana y a A+/A−: el reacomodo de la página ya no se confunde con mover la hoja a mano, que la dejaba corrida (~45 líneas en el celular con A+). En el celular la barra de Reproducir queda entre la hoja y el video, sin tapar las versiones ni esconderse bajo la barra del navegador. Medido: la línea que se canta queda a 0–3 px de la altura de lectura en 375, 960, 1280 y 1700 px de ancho <!-- priority: HIGH, type: FIX, done: 2026-10-16 -->
+- [x] Desfase de la letra auto-calibrado con la voz guía de tus karaokes (`sync_offsets.json`, lo aplica `lyrics_sync.py`): 11 canciones corregidas (Fénix +1,2 s, Pompeii +7,25 s, Clocks +5,15 s, Niño −5 s…), cada una confirmada por dos mediciones independientes <!-- priority: HIGH, type: FEATURE, done: 2026-10-16 -->
+- [x] Fact-check de acordes en las 54 canciones con pista disponible (`experiments/chord_check/batch.py`): stem other + bajo separado con Demucs (da lo mismo que el stem real), tono que calza, acordes que suenan distinto y ranking de hojas <!-- priority: HIGH, type: FEATURE, done: 2026-10-16 -->
+- [x] Acordes siempre en sostenido (A# en vez de Bb, también en las barras: Fm/G#): la hoja reescribe los 580 bemoles al mostrarla y los diagramas siguen encontrándose <!-- priority: MEDIUM, type: UX, done: 2026-10-16 -->
 - [x] Scraper de Cifra Club al día con su HTML nuevo (`<b data-chord-*>` y `<div class="kvMV">`), con tests; reparadas en el lugar las 20 hojas que habían quedado sin acordes marcados (sin color, sin transposición ni diagramas) <!-- priority: HIGH, type: FIX, done: 2026-10-15 -->
 - [x] Pipeline de actualización en 4 pasos (`Actualizar-Acordes`): marcadores → canciones de tus karaokes → enriquecimiento → acordes, pistas y tiempos de letra. Nombre desde la URL para marcadores sin nombre útil, LaCuerda baja el `.shtml` de las páginas índice y el emparejador de karaokes tolera "(Acoustic version)", "M.A.I" y "30/Thirty" (43 → 64 canciones con pista) <!-- priority: HIGH, type: FEATURE, done: 2026-10-14 -->
 - [x] Carga masiva del repertorio karaokeable (`karaoke_songs.py`): busca en Cifra Club y LaCuerda la hoja de cada karaoke subido sin marcador; 21 de 39 encontradas, 20 confirmadas por la letra. Karaokes visibles en la app: 35 → 59 de 77 <!-- priority: HIGH, type: FEATURE, done: 2026-10-14 -->

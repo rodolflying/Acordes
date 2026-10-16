@@ -1,0 +1,4169 @@
+{
+ "https://www.cifraclub.com/los-bunkers/bailando-solo/": {
+  "estado": "ok",
+  "video": "VasxtGxGMyQ",
+  "duracion": 267,
+  "acordes_hoja": 34,
+  "distintos": 4,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.992,
+  "coinciden": 0.731,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 267,
+  "desfase_acordes": {
+   "segundos": 0.8,
+   "calce": 0.943,
+   "calce_sin_corregir": 0.913,
+   "nitidez": 0.032
+  },
+  "desfase_voz": {
+   "segundos": 0.5,
+   "ancho": 0.4,
+   "inicios_sin_corregir": 0.051,
+   "inicios_corregido": 0.673,
+   "reentradas": 0.54
+  },
+  "acordes": [
+   {
+    "acorde": "Dm",
+    "segundos": 175.4,
+    "suena_mas": "Dm",
+    "proporcion": 0.46,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "segundos": 50.2,
+    "suena_mas": "F",
+    "proporcion": 0.93,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "segundos": 20.7,
+    "suena_mas": "Am",
+    "proporcion": 0.6,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 18.2,
+    "suena_mas": "G",
+    "proporcion": 0.98,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/tronic/fenix/": {
+  "estado": "ok",
+  "video": "2_QpDKt40Jc",
+  "duracion": 197,
+  "acordes_hoja": 59,
+  "distintos": 6,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.981,
+  "coinciden": 0.676,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 197,
+  "desfase_acordes": {
+   "segundos": -0.1,
+   "calce": 0.703,
+   "calce_sin_corregir": 0.701,
+   "nitidez": 0.027
+  },
+  "desfase_voz": {
+   "segundos": 1.2,
+   "ancho": 0.35,
+   "inicios_sin_corregir": -0.065,
+   "inicios_corregido": 0.364,
+   "reentradas": 1.29
+  },
+  "acordes": [
+   {
+    "acorde": "A#",
+    "segundos": 60.1,
+    "suena_mas": "A#",
+    "proporcion": 0.49,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "segundos": 39.2,
+    "suena_mas": "Dm",
+    "proporcion": 0.51,
+    "tercera": "menor",
+    "problema": "suena Dm"
+   },
+   {
+    "acorde": "G",
+    "segundos": 28.6,
+    "suena_mas": "Gm",
+    "proporcion": 0.4,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "D#",
+    "segundos": 26.9,
+    "suena_mas": "D#",
+    "proporcion": 0.96,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "segundos": 18.5,
+    "suena_mas": "C",
+    "proporcion": 0.73,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "segundos": 6.8,
+    "suena_mas": "F",
+    "proporcion": 0.96,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/mato_a_un_policia_motorizado/el_tesoro-4.shtml": {
+  "estado": "ok",
+  "video": "JQNg_UHQTVs",
+  "duracion": 383,
+  "acordes_hoja": 51,
+  "distintos": 5,
+  "cejilla": 0,
+  "transposicion": 5,
+  "calce_tono": 0.953,
+  "coinciden": 0.618,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 383,
+  "desfase_acordes": {
+   "segundos": 1.6,
+   "calce": 0.659,
+   "calce_sin_corregir": 0.601,
+   "nitidez": 0.029
+  },
+  "desfase_voz": {
+   "segundos": 1.7,
+   "ancho": 0.35,
+   "inicios_sin_corregir": -0.04,
+   "inicios_corregido": 0.627,
+   "reentradas": 1.57
+  },
+  "acordes": [
+   {
+    "acorde": "G#m",
+    "segundos": 135.8,
+    "suena_mas": "G#m",
+    "proporcion": 0.45,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "B",
+    "segundos": 125.3,
+    "suena_mas": "B",
+    "proporcion": 0.48,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A",
+    "segundos": 97.8,
+    "suena_mas": "A",
+    "proporcion": 0.58,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "segundos": 3.9,
+    "suena_mas": "E",
+    "proporcion": 0.55,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C#m",
+    "segundos": 0.5,
+    "suena_mas": "B",
+    "proporcion": 0.8,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/ases_falsos/mi_ejercito-3.shtml": {
+  "estado": "error: CalledProcessError: Command '['yt-dlp', '-q', '--no-warnings', '-f', 'bestaudio', '-o', 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Software development\\\\_WORK_\\\\Acordes\\\\experiments\\\\chord_check\\\\audio\\\\tmp\\\\kTOZOgkEIxw.%(ext)s', 'https://www.youtube.com/watch?v=kTOZOgkEIxw']' returned non-zero exit statu"
+ },
+ "https://acordes.lacuerda.net/lucybell/familiar.shtml": {
+  "estado": "ok",
+  "video": "p2UjVxa6tF0",
+  "duracion": 283,
+  "acordes_hoja": 47,
+  "distintos": 9,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.002,
+  "coinciden": 0.636,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 283,
+  "desfase_acordes": {
+   "segundos": -1.1,
+   "calce": 0.726,
+   "calce_sin_corregir": 0.697,
+   "nitidez": 0.009
+  },
+  "desfase_voz": {
+   "segundos": 10.0,
+   "ancho": 0.45,
+   "inicios_sin_corregir": 0.093,
+   "inicios_corregido": 0.044,
+   "reentradas": 9.85
+  },
+  "acordes": [
+   {
+    "acorde": "RE",
+    "segundos": 87.6,
+    "suena_mas": "D",
+    "proporcion": 0.59,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "LA7",
+    "segundos": 82.4,
+    "suena_mas": "D",
+    "proporcion": 0.35,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "SOL",
+    "segundos": 26.7,
+    "suena_mas": "G",
+    "proporcion": 0.97,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "MI",
+    "segundos": 23.0,
+    "suena_mas": "E",
+    "proporcion": 0.52,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "SIm",
+    "segundos": 20.1,
+    "suena_mas": "Bm",
+    "proporcion": 0.6,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "LA",
+    "segundos": 13.8,
+    "suena_mas": "A",
+    "proporcion": 0.97,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "MIm",
+    "segundos": 5.4,
+    "suena_mas": "Em",
+    "proporcion": 1.0,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "FA#",
+    "segundos": 5.0,
+    "suena_mas": "F#",
+    "proporcion": 0.93,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "SOLm",
+    "segundos": 0.8,
+    "suena_mas": "Gm",
+    "proporcion": 1.0,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/lucybell/tu-2.shtml": {
+  "estado": "ok",
+  "video": "BQaVuCnN5T8",
+  "duracion": 215,
+  "acordes_hoja": 52,
+  "distintos": 6,
+  "cejilla": 0,
+  "transposicion": 5,
+  "calce_tono": 0.987,
+  "coinciden": 0.886,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 215,
+  "desfase_acordes": null,
+  "desfase_voz": {
+   "segundos": 9.25,
+   "ancho": 4.05,
+   "inicios_sin_corregir": -0.043,
+   "inicios_corregido": 0.123,
+   "reentradas": 8.63
+  },
+  "acordes": [
+   {
+    "acorde": "C*",
+    "segundos": 132.1,
+    "suena_mas": "C",
+    "proporcion": 0.75,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Am6",
+    "segundos": 49.8,
+    "suena_mas": "Am",
+    "proporcion": 0.86,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Em*",
+    "segundos": 16.7,
+    "suena_mas": "Bm",
+    "proporcion": 0.29,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G*",
+    "segundos": 5.9,
+    "suena_mas": "Bm",
+    "proporcion": 0.69,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "B7",
+    "segundos": 1.4,
+    "suena_mas": "Bm",
+    "proporcion": 0.8,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "D#GDAE",
+    "segundos": 0.1,
+    "suena_mas": "Gm",
+    "proporcion": 1.0,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/lucybell/voy_por_ti.shtml": {
+  "estado": "ok",
+  "video": "zZAyTsBhnRY",
+  "duracion": 220,
+  "acordes_hoja": 68,
+  "distintos": 11,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.016,
+  "coinciden": 0.952,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 220,
+  "desfase_acordes": null,
+  "desfase_voz": null,
+  "acordes": [
+   {
+    "acorde": "C",
+    "segundos": 41.7,
+    "suena_mas": "C",
+    "proporcion": 0.89,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "segundos": 37.0,
+    "suena_mas": "F",
+    "proporcion": 0.86,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 36.9,
+    "suena_mas": "G",
+    "proporcion": 0.96,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Dm",
+    "segundos": 31.7,
+    "suena_mas": "Dm",
+    "proporcion": 0.87,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "segundos": 17.8,
+    "suena_mas": "Em",
+    "proporcion": 0.88,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Fmaj7",
+    "segundos": 17.6,
+    "suena_mas": "F",
+    "proporcion": 0.75,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "segundos": 16.9,
+    "suena_mas": "Am",
+    "proporcion": 0.92,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A#",
+    "segundos": 8.5,
+    "suena_mas": "Gm",
+    "proporcion": 0.87,
+    "tercera": "mayor",
+    "problema": "suena Gm"
+   },
+   {
+    "acorde": "E",
+    "segundos": 8.5,
+    "suena_mas": "E",
+    "proporcion": 0.84,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "SI",
+    "segundos": 0.1,
+    "suena_mas": "Em",
+    "proporcion": 1.0,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A",
+    "segundos": 0.1,
+    "suena_mas": "C",
+    "proporcion": 1.0,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/lucybell/cuando_respiro_en_tu_boca.shtml": {
+  "estado": "ok",
+  "video": "BQaVuCnN5T8",
+  "duracion": 215,
+  "acordes_hoja": 27,
+  "distintos": 5,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.993,
+  "coinciden": 0.792,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 215,
+  "desfase_acordes": {
+   "segundos": 2.5,
+   "calce": 0.827,
+   "calce_sin_corregir": 0.804,
+   "nitidez": 0.011
+  },
+  "desfase_voz": {
+   "segundos": -6.7,
+   "ancho": 6.55,
+   "inicios_sin_corregir": 0.024,
+   "inicios_corregido": 0.042,
+   "reentradas": -6.64
+  },
+  "acordes": [
+   {
+    "acorde": "FA",
+    "segundos": 151.7,
+    "suena_mas": "F",
+    "proporcion": 0.6,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "REm",
+    "segundos": 33.4,
+    "suena_mas": "Dm",
+    "proporcion": 0.64,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "MIm",
+    "segundos": 9.4,
+    "suena_mas": "Em",
+    "proporcion": 0.61,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "DO",
+    "segundos": 8.5,
+    "suena_mas": "A",
+    "proporcion": 0.29,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "LA#m",
+    "segundos": 3.0,
+    "suena_mas": "A#",
+    "proporcion": 0.72,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/coldplay/fix-you/": {
+  "estado": "ok",
+  "video": "xQxi5s9-1vY",
+  "duracion": 294,
+  "acordes_hoja": 116,
+  "distintos": 9,
+  "cejilla": 4,
+  "transposicion": 3,
+  "calce_tono": 1.029,
+  "coinciden": 0.851,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 294,
+  "desfase_acordes": {
+   "segundos": -8.0,
+   "calce": 0.82,
+   "calce_sin_corregir": 0.691,
+   "nitidez": 0.015
+  },
+  "desfase_voz": {
+   "segundos": -8.85,
+   "ancho": 7.35,
+   "inicios_sin_corregir": -0.036,
+   "inicios_corregido": 0.505,
+   "reentradas": -8.87
+  },
+  "acordes": [
+   {
+    "acorde": "C",
+    "segundos": 118.1,
+    "suena_mas": "C",
+    "proporcion": 0.73,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Am7",
+    "segundos": 48.6,
+    "suena_mas": "Am",
+    "proporcion": 0.6,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 46.0,
+    "suena_mas": "G",
+    "proporcion": 0.95,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F7M",
+    "segundos": 24.1,
+    "suena_mas": "F",
+    "proporcion": 0.96,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "segundos": 21.4,
+    "suena_mas": "Em",
+    "proporcion": 0.92,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G4(6)",
+    "segundos": 13.5,
+    "suena_mas": "G",
+    "proporcion": 0.66,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C/E",
+    "segundos": 8.8,
+    "suena_mas": "C",
+    "proporcion": 0.81,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "segundos": 4.6,
+    "suena_mas": "Am",
+    "proporcion": 0.73,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "C11",
+    "segundos": 0.7,
+    "suena_mas": "F",
+    "proporcion": 0.57,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/30-seconds-to-mars/a-modern-myth-acustica/": {
+  "estado": "ok",
+  "video": "HZicaBu45y4",
+  "duracion": 205,
+  "acordes_hoja": 52,
+  "distintos": 4,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.01,
+  "coinciden": 0.84,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 201,
+  "desfase_acordes": null,
+  "desfase_voz": null,
+  "acordes": [
+   {
+    "acorde": "A#5",
+    "segundos": 76.9,
+    "suena_mas": "A#",
+    "proporcion": 0.73,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "C5",
+    "segundos": 75.7,
+    "suena_mas": "C",
+    "proporcion": 0.52,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D5",
+    "segundos": 21.0,
+    "suena_mas": "Dm",
+    "proporcion": 0.71,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G5",
+    "segundos": 14.6,
+    "suena_mas": "G",
+    "proporcion": 0.57,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/30-seconds-to-mars/beautiful-lie/": {
+  "estado": "ok",
+  "video": "Li17K5ycr9Q",
+  "duracion": 436,
+  "acordes_hoja": 32,
+  "distintos": 4,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.939,
+  "coinciden": 0.633,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 436,
+  "desfase_acordes": {
+   "segundos": -8.0,
+   "calce": 0.802,
+   "calce_sin_corregir": 0.662,
+   "nitidez": 0.051
+  },
+  "desfase_voz": {
+   "segundos": 6.25,
+   "ancho": 14.6,
+   "inicios_sin_corregir": -0.018,
+   "inicios_corregido": 0.08,
+   "reentradas": 3.35
+  },
+  "acordes": [
+   {
+    "acorde": "Am",
+    "segundos": 160.8,
+    "suena_mas": "Am",
+    "proporcion": 0.28,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "segundos": 92.1,
+    "suena_mas": "F",
+    "proporcion": 0.61,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "segundos": 53.5,
+    "suena_mas": "E",
+    "proporcion": 0.46,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "Dm",
+    "segundos": 35.6,
+    "suena_mas": "D",
+    "proporcion": 0.54,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/tronic/bajo_llave.shtml": {
+  "estado": "ok",
+  "video": "ZfKd-5HD5u8",
+  "duracion": 172,
+  "acordes_hoja": 30,
+  "distintos": 7,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.996,
+  "coinciden": 0.684,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 172,
+  "desfase_acordes": {
+   "segundos": 1.1,
+   "calce": 0.894,
+   "calce_sin_corregir": 0.847,
+   "nitidez": 0.048
+  },
+  "desfase_voz": {
+   "segundos": 0.45,
+   "ancho": 2.9,
+   "inicios_sin_corregir": 0.017,
+   "inicios_corregido": 0.242,
+   "reentradas": 0.2
+  },
+  "acordes": [
+   {
+    "acorde": "E",
+    "segundos": 87.3,
+    "suena_mas": "E",
+    "proporcion": 0.47,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A",
+    "segundos": 65.9,
+    "suena_mas": "A",
+    "proporcion": 0.71,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C#m",
+    "segundos": 10.2,
+    "suena_mas": "C#m",
+    "proporcion": 0.73,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "B",
+    "segundos": 4.7,
+    "suena_mas": "B",
+    "proporcion": 0.9,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#",
+    "segundos": 0.5,
+    "suena_mas": "B",
+    "proporcion": 0.8,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "segundos": 0.2,
+    "suena_mas": "A",
+    "proporcion": 0.5,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "segundos": 0.1,
+    "suena_mas": "C#m",
+    "proporcion": 1.0,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/harry-styles/as-it-was/": {
+  "estado": "ok",
+  "video": "_9WENq8jXOo",
+  "duracion": 166,
+  "acordes_hoja": 73,
+  "distintos": 7,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.017,
+  "coinciden": 0.895,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 166,
+  "desfase_acordes": {
+   "segundos": -0.8,
+   "calce": 0.857,
+   "calce_sin_corregir": 0.818,
+   "nitidez": 0.06
+  },
+  "desfase_voz": {
+   "segundos": 0.55,
+   "ancho": 0.3,
+   "inicios_sin_corregir": -0.11,
+   "inicios_corregido": 0.658,
+   "reentradas": 0.62
+  },
+  "acordes": [
+   {
+    "acorde": "E",
+    "segundos": 36.9,
+    "suena_mas": "E",
+    "proporcion": 0.96,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm7(9)",
+    "segundos": 33.7,
+    "suena_mas": "Bm",
+    "proporcion": 0.83,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A7M",
+    "segundos": 32.1,
+    "suena_mas": "A",
+    "proporcion": 0.87,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D7M(9)",
+    "segundos": 24.1,
+    "suena_mas": "D",
+    "proporcion": 0.86,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm7(11)",
+    "segundos": 19.2,
+    "suena_mas": "Bm",
+    "proporcion": 0.59,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A2",
+    "segundos": 11.5,
+    "suena_mas": "A",
+    "proporcion": 0.86,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D2",
+    "segundos": 0.4,
+    "suena_mas": "A",
+    "proporcion": 0.5,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/harry-styles/sign-of-the-times/": {
+  "estado": "ok",
+  "video": "7ia5OIi-uDw",
+  "duracion": 342,
+  "acordes_hoja": 96,
+  "distintos": 5,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.003,
+  "coinciden": 0.991,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 342,
+  "desfase_acordes": {
+   "segundos": 0.4,
+   "calce": 0.994,
+   "calce_sin_corregir": 0.982,
+   "nitidez": 0.124
+  },
+  "desfase_voz": {
+   "segundos": 0.65,
+   "ancho": 0.4,
+   "inicios_sin_corregir": -0.042,
+   "inicios_corregido": 0.611,
+   "reentradas": 0.72
+  },
+  "acordes": [
+   {
+    "acorde": "C",
+    "segundos": 109.9,
+    "suena_mas": "C",
+    "proporcion": 0.98,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "segundos": 90.2,
+    "suena_mas": "F",
+    "proporcion": 0.98,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Dm",
+    "segundos": 83.7,
+    "suena_mas": "Dm",
+    "proporcion": 0.96,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "C7",
+    "segundos": 34.4,
+    "suena_mas": "C",
+    "proporcion": 0.91,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#",
+    "segundos": 15.8,
+    "suena_mas": "A#",
+    "proporcion": 0.96,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/arctic-monkeys/505/": {
+  "estado": "ok",
+  "video": "wEXNHMCrgUY",
+  "duracion": 252,
+  "acordes_hoja": 72,
+  "distintos": 2,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.995,
+  "coinciden": 0.974,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 252,
+  "desfase_acordes": {
+   "segundos": -0.5,
+   "calce": 0.84,
+   "calce_sin_corregir": 0.818,
+   "nitidez": 0.004
+  },
+  "desfase_voz": {
+   "segundos": 0.3,
+   "ancho": 0.9,
+   "inicios_sin_corregir": 0.237,
+   "inicios_corregido": 0.27,
+   "reentradas": -0.01
+  },
+  "acordes": [
+   {
+    "acorde": "Em",
+    "segundos": 124.9,
+    "suena_mas": "Em",
+    "proporcion": 0.96,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Dm",
+    "segundos": 123.5,
+    "suena_mas": "Dm",
+    "proporcion": 0.92,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/smitten/bitacora-2.shtml": {
+  "estado": "ok",
+  "video": "ksXbH-hx4gI",
+  "duracion": 208,
+  "acordes_hoja": 108,
+  "distintos": 8,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.999,
+  "coinciden": 0.89,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 208,
+  "desfase_acordes": {
+   "segundos": 3.3,
+   "calce": 0.694,
+   "calce_sin_corregir": 0.645,
+   "nitidez": 0.007
+  },
+  "desfase_voz": {
+   "segundos": 0.5,
+   "ancho": 3.0,
+   "inicios_sin_corregir": 0.028,
+   "inicios_corregido": 0.242,
+   "reentradas": -0.24
+  },
+  "acordes": [
+   {
+    "acorde": "C",
+    "segundos": 51.3,
+    "suena_mas": "C",
+    "proporcion": 0.87,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "segundos": 50.2,
+    "suena_mas": "F",
+    "proporcion": 0.69,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 29.7,
+    "suena_mas": "G",
+    "proporcion": 0.79,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Fm",
+    "segundos": 28.9,
+    "suena_mas": "Fm",
+    "proporcion": 0.85,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "segundos": 20.3,
+    "suena_mas": "Am",
+    "proporcion": 0.97,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "segundos": 15.3,
+    "suena_mas": "D",
+    "proporcion": 0.98,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G#",
+    "segundos": 3.0,
+    "suena_mas": "G#",
+    "proporcion": 0.59,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#",
+    "segundos": 3.0,
+    "suena_mas": "D",
+    "proporcion": 0.78,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/little_jesus/azul.shtml": {
+  "estado": "ok",
+  "video": "ZW-_jplb8gE",
+  "duracion": 254,
+  "acordes_hoja": 90,
+  "distintos": 6,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.0,
+  "coinciden": 0.822,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 254,
+  "desfase_acordes": {
+   "segundos": 0.4,
+   "calce": 0.905,
+   "calce_sin_corregir": 0.893,
+   "nitidez": 0.105
+  },
+  "desfase_voz": {
+   "segundos": 0.3,
+   "ancho": 0.4,
+   "inicios_sin_corregir": 0.126,
+   "inicios_corregido": 0.393,
+   "reentradas": 0.4
+  },
+  "acordes": [
+   {
+    "acorde": "Em",
+    "segundos": 139.6,
+    "suena_mas": "Em",
+    "proporcion": 0.65,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 54.0,
+    "suena_mas": "G",
+    "proporcion": 0.98,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "segundos": 23.8,
+    "suena_mas": "Am",
+    "proporcion": 0.92,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "segundos": 12.4,
+    "suena_mas": "Bm",
+    "proporcion": 0.97,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "segundos": 11.1,
+    "suena_mas": "C",
+    "proporcion": 0.81,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "segundos": 9.1,
+    "suena_mas": "D",
+    "proporcion": 1.0,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/coldplay/clocks/": {
+  "estado": "ok",
+  "video": "DlmUY21StTQ",
+  "duracion": 256,
+  "acordes_hoja": 103,
+  "distintos": 7,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.008,
+  "coinciden": 0.964,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 256,
+  "desfase_acordes": {
+   "segundos": -1.6,
+   "calce": 0.849,
+   "calce_sin_corregir": 0.743,
+   "nitidez": 0.03
+  },
+  "desfase_voz": {
+   "segundos": 5.15,
+   "ancho": 0.4,
+   "inicios_sin_corregir": -0.036,
+   "inicios_corregido": 0.262,
+   "reentradas": 4.85
+  },
+  "acordes": [
+   {
+    "acorde": "A#m",
+    "segundos": 99.8,
+    "suena_mas": "A#m",
+    "proporcion": 0.97,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D#",
+    "segundos": 57.7,
+    "suena_mas": "D#",
+    "proporcion": 0.93,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Fm",
+    "segundos": 40.5,
+    "suena_mas": "Fm",
+    "proporcion": 0.84,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Fm/G#",
+    "segundos": 19.9,
+    "suena_mas": "G#",
+    "proporcion": 0.41,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F#7M",
+    "segundos": 18.4,
+    "suena_mas": "F#",
+    "proporcion": 0.63,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C#",
+    "segundos": 6.3,
+    "suena_mas": "C#",
+    "proporcion": 0.9,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G#",
+    "segundos": 4.6,
+    "suena_mas": "G#",
+    "proporcion": 0.82,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/ed-sheeran/the-a-team/": {
+  "estado": "ok",
+  "video": "iRhSDgm-Sqs",
+  "duracion": 290,
+  "acordes_hoja": 124,
+  "distintos": 7,
+  "cejilla": 2,
+  "transposicion": 2,
+  "calce_tono": 1.022,
+  "coinciden": 0.908,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 290,
+  "desfase_acordes": {
+   "segundos": 8.0,
+   "calce": 0.713,
+   "calce_sin_corregir": 0.661,
+   "nitidez": 0.003
+  },
+  "desfase_voz": {
+   "segundos": 9.0,
+   "ancho": 1.2,
+   "inicios_sin_corregir": 0.113,
+   "inicios_corregido": 0.123,
+   "reentradas": 8.67
+  },
+  "acordes": [
+   {
+    "acorde": "G",
+    "segundos": 113.1,
+    "suena_mas": "G",
+    "proporcion": 0.94,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "segundos": 53.8,
+    "suena_mas": "C",
+    "proporcion": 0.66,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "segundos": 36.6,
+    "suena_mas": "Em",
+    "proporcion": 0.85,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Am7",
+    "segundos": 27.0,
+    "suena_mas": "Am",
+    "proporcion": 0.73,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D/F#",
+    "segundos": 16.4,
+    "suena_mas": "D",
+    "proporcion": 0.93,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D4/F#",
+    "segundos": 9.8,
+    "suena_mas": "D",
+    "proporcion": 0.75,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em7",
+    "segundos": 1.5,
+    "suena_mas": "Em",
+    "proporcion": 0.94,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/bastille/pompeii/": {
+  "estado": "ok",
+  "video": "EhKUR90l-Ao",
+  "duracion": 233,
+  "acordes_hoja": 110,
+  "distintos": 4,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.993,
+  "coinciden": 0.918,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 233,
+  "desfase_acordes": {
+   "segundos": 7.2,
+   "calce": 0.807,
+   "calce_sin_corregir": 0.775,
+   "nitidez": 0.031
+  },
+  "desfase_voz": {
+   "segundos": 7.25,
+   "ancho": 0.35,
+   "inicios_sin_corregir": 0.022,
+   "inicios_corregido": 0.29,
+   "reentradas": 7.36
+  },
+  "acordes": [
+   {
+    "acorde": "A",
+    "segundos": 63.3,
+    "suena_mas": "A",
+    "proporcion": 0.7,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "segundos": 50.2,
+    "suena_mas": "E",
+    "proporcion": 0.91,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "segundos": 46.7,
+    "suena_mas": "D",
+    "proporcion": 0.97,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "segundos": 42.3,
+    "suena_mas": "F#m",
+    "proporcion": 0.9,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/mato_a_un_policia_motorizado/fuego-2.shtml": {
+  "estado": "ok",
+  "video": "TRC-HVgH9bA",
+  "duracion": 311,
+  "acordes_hoja": 70,
+  "distintos": 5,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.99,
+  "coinciden": 0.789,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 311,
+  "desfase_acordes": {
+   "segundos": 0.1,
+   "calce": 0.913,
+   "calce_sin_corregir": 0.912,
+   "nitidez": 0.04
+  },
+  "desfase_voz": {
+   "segundos": 0.35,
+   "ancho": 0.4,
+   "inicios_sin_corregir": 0.196,
+   "inicios_corregido": 0.546,
+   "reentradas": 0.29
+  },
+  "acordes": [
+   {
+    "acorde": "D",
+    "segundos": 151.6,
+    "suena_mas": "D",
+    "proporcion": 0.57,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "segundos": 36.7,
+    "suena_mas": "Bm",
+    "proporcion": 0.9,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 33.8,
+    "suena_mas": "G",
+    "proporcion": 0.86,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "segundos": 33.6,
+    "suena_mas": "F#m",
+    "proporcion": 0.86,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F#",
+    "segundos": 2.0,
+    "suena_mas": "F#",
+    "proporcion": 0.95,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com.br/los-choclok/bonita/": {
+  "estado": "ok",
+  "video": "tkNnmcywRyY",
+  "duracion": 303,
+  "acordes_hoja": 54,
+  "distintos": 3,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.968,
+  "coinciden": 0.617,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 303,
+  "desfase_acordes": {
+   "segundos": 1.3,
+   "calce": 0.85,
+   "calce_sin_corregir": 0.748,
+   "nitidez": 0.029
+  },
+  "desfase_voz": {
+   "segundos": 1.1,
+   "ancho": 0.6,
+   "inicios_sin_corregir": -0.031,
+   "inicios_corregido": 0.258,
+   "reentradas": 0.91
+  },
+  "acordes": [
+   {
+    "acorde": "D7",
+    "segundos": 139.1,
+    "suena_mas": "D",
+    "proporcion": 0.19,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "Gm",
+    "segundos": 120.5,
+    "suena_mas": "Gm",
+    "proporcion": 0.5,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Cm",
+    "segundos": 27.3,
+    "suena_mas": "Cm",
+    "proporcion": 0.79,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://m.cifraclub.com/the-killers/mr-brightside/": {
+  "estado": "ok",
+  "video": "OiA3Gm7jQ0E",
+  "duracion": 227,
+  "acordes_hoja": 97,
+  "distintos": 10,
+  "cejilla": 0,
+  "transposicion": 11,
+  "calce_tono": 1.062,
+  "coinciden": 0.856,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 227,
+  "desfase_acordes": {
+   "segundos": 3.3,
+   "calce": 0.891,
+   "calce_sin_corregir": 0.604,
+   "nitidez": 0.064
+  },
+  "desfase_voz": {
+   "segundos": 3.85,
+   "ancho": 0.3,
+   "inicios_sin_corregir": -0.007,
+   "inicios_corregido": 0.33,
+   "reentradas": 3.87
+  },
+  "acordes": [
+   {
+    "acorde": "D9/C#",
+    "segundos": 127.3,
+    "suena_mas": "D",
+    "proporcion": 0.45,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G7M(6)",
+    "segundos": 46.8,
+    "suena_mas": "G",
+    "proporcion": 0.54,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G5",
+    "segundos": 9.1,
+    "suena_mas": "G",
+    "proporcion": 0.97,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "A5",
+    "segundos": 7.8,
+    "suena_mas": "A",
+    "proporcion": 0.95,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm11",
+    "segundos": 7.5,
+    "suena_mas": "Bm",
+    "proporcion": 0.94,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A4",
+    "segundos": 7.2,
+    "suena_mas": "A",
+    "proporcion": 0.54,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G6",
+    "segundos": 6.7,
+    "suena_mas": "G",
+    "proporcion": 0.83,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D5",
+    "segundos": 4.4,
+    "suena_mas": "D",
+    "proporcion": 0.79,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D9",
+    "segundos": 0.8,
+    "suena_mas": "A",
+    "proporcion": 0.44,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "B5",
+    "segundos": 0.6,
+    "suena_mas": "Bm",
+    "proporcion": 0.5,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://m.cifraclub.com/harry-styles/as-it-was/": {
+  "estado": "ok",
+  "video": "_9WENq8jXOo",
+  "duracion": 166,
+  "acordes_hoja": 73,
+  "distintos": 7,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.017,
+  "coinciden": 0.895,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 166,
+  "desfase_acordes": {
+   "segundos": -0.8,
+   "calce": 0.857,
+   "calce_sin_corregir": 0.818,
+   "nitidez": 0.06
+  },
+  "desfase_voz": {
+   "segundos": 0.55,
+   "ancho": 0.3,
+   "inicios_sin_corregir": -0.11,
+   "inicios_corregido": 0.658,
+   "reentradas": 0.62
+  },
+  "acordes": [
+   {
+    "acorde": "E",
+    "segundos": 36.9,
+    "suena_mas": "E",
+    "proporcion": 0.96,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm7(9)",
+    "segundos": 33.7,
+    "suena_mas": "Bm",
+    "proporcion": 0.83,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A7M",
+    "segundos": 32.1,
+    "suena_mas": "A",
+    "proporcion": 0.87,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D7M(9)",
+    "segundos": 24.1,
+    "suena_mas": "D",
+    "proporcion": 0.86,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm7(11)",
+    "segundos": 19.2,
+    "suena_mas": "Bm",
+    "proporcion": 0.59,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A2",
+    "segundos": 11.5,
+    "suena_mas": "A",
+    "proporcion": 0.86,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D2",
+    "segundos": 0.4,
+    "suena_mas": "A",
+    "proporcion": 0.5,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://m.cifraclub.com/bad-bunny/un-coco/": {
+  "estado": "sin acordes en la hoja"
+ },
+ "https://acordes.lacuerda.net/santiago_motorizado/mil_derrotas.shtml": {
+  "estado": "ok",
+  "video": "wcG8iG8hnzo",
+  "duracion": 247,
+  "acordes_hoja": 61,
+  "distintos": 7,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.004,
+  "coinciden": 0.76,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 247,
+  "desfase_acordes": {
+   "segundos": 0.2,
+   "calce": 0.944,
+   "calce_sin_corregir": 0.937,
+   "nitidez": 0.171
+  },
+  "desfase_voz": {
+   "segundos": -0.1,
+   "ancho": 7.25,
+   "inicios_sin_corregir": 0.441,
+   "inicios_corregido": 0.466,
+   "reentradas": 0.17
+  },
+  "acordes": [
+   {
+    "acorde": "C",
+    "segundos": 113.4,
+    "suena_mas": "C",
+    "proporcion": 0.67,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Dm",
+    "segundos": 43.4,
+    "suena_mas": "Dm",
+    "proporcion": 0.87,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "segundos": 26.9,
+    "suena_mas": "Em",
+    "proporcion": 0.91,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "segundos": 21.0,
+    "suena_mas": "Fm",
+    "proporcion": 0.65,
+    "tercera": "dudoso",
+    "problema": "quizás Fm"
+   },
+   {
+    "acorde": "A7",
+    "segundos": 13.8,
+    "suena_mas": "A",
+    "proporcion": 0.93,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Fm",
+    "segundos": 11.5,
+    "suena_mas": "Fm",
+    "proporcion": 0.88,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 10.7,
+    "suena_mas": "G",
+    "proporcion": 0.98,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/milo_j/una_bala.shtml": {
+  "estado": "ok",
+  "video": "wfYfrfp3XII",
+  "duracion": 187,
+  "acordes_hoja": 69,
+  "distintos": 3,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.968,
+  "coinciden": 0.803,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 187,
+  "desfase_acordes": {
+   "segundos": -7.9,
+   "calce": 0.881,
+   "calce_sin_corregir": 0.858,
+   "nitidez": 0.002
+  },
+  "desfase_voz": {
+   "segundos": 0.0,
+   "ancho": 0.35,
+   "inicios_sin_corregir": 0.516,
+   "inicios_corregido": 0.516,
+   "reentradas": 0.31
+  },
+  "acordes": [
+   {
+    "acorde": "Bm",
+    "segundos": 75.1,
+    "suena_mas": "Bm",
+    "proporcion": 0.6,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 47.0,
+    "suena_mas": "G",
+    "proporcion": 0.9,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A",
+    "segundos": 33.6,
+    "suena_mas": "A",
+    "proporcion": 0.61,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/milo_j/el_bolero.shtml": {
+  "estado": "ok",
+  "video": "c--Ew6-P2zA",
+  "duracion": 217,
+  "acordes_hoja": 96,
+  "distintos": 4,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.964,
+  "coinciden": 0.786,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 217,
+  "desfase_acordes": {
+   "segundos": -0.6,
+   "calce": 0.853,
+   "calce_sin_corregir": 0.83,
+   "nitidez": 0.094
+  },
+  "desfase_voz": {
+   "segundos": -0.05,
+   "ancho": 0.6,
+   "inicios_sin_corregir": 0.286,
+   "inicios_corregido": 0.314,
+   "reentradas": 0.35
+  },
+  "acordes": [
+   {
+    "acorde": "Cm",
+    "segundos": 67.8,
+    "suena_mas": "C",
+    "proporcion": 0.54,
+    "tercera": "dudoso",
+    "problema": "quizás C"
+   },
+   {
+    "acorde": "G",
+    "segundos": 59.3,
+    "suena_mas": "G",
+    "proporcion": 0.58,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#",
+    "segundos": 26.0,
+    "suena_mas": "A#",
+    "proporcion": 0.63,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "segundos": 24.6,
+    "suena_mas": "F",
+    "proporcion": 0.68,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/vance-joy/riptide/": {
+  "estado": "error: CalledProcessError: Command '['yt-dlp', '-q', '--no-warnings', '-f', 'bestaudio', '-o', 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Software development\\\\_WORK_\\\\Acordes\\\\experiments\\\\chord_check\\\\audio\\\\tmp\\\\tYg9kFzpLis.%(ext)s', 'https://www.youtube.com/watch?v=tYg9kFzpLis']' returned non-zero exit statu"
+ },
+ "https://www.cifraclub.com/kidd-voodoo/angeles/": {
+  "estado": "ok",
+  "video": "Hs4cU-RH2Jk",
+  "duracion": 226,
+  "acordes_hoja": 83,
+  "distintos": 9,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.018,
+  "coinciden": 0.917,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 226,
+  "desfase_acordes": {
+   "segundos": -2.8,
+   "calce": 0.776,
+   "calce_sin_corregir": 0.746,
+   "nitidez": 0.003
+  },
+  "desfase_voz": {
+   "segundos": -0.9,
+   "ancho": 0.35,
+   "inicios_sin_corregir": -0.014,
+   "inicios_corregido": 0.364,
+   "reentradas": -0.6
+  },
+  "acordes": [
+   {
+    "acorde": "Bm",
+    "segundos": 84.8,
+    "suena_mas": "Bm",
+    "proporcion": 0.71,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "segundos": 52.2,
+    "suena_mas": "Em",
+    "proporcion": 0.82,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 21.5,
+    "suena_mas": "G",
+    "proporcion": 0.91,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#7",
+    "segundos": 20.8,
+    "suena_mas": "F#",
+    "proporcion": 0.87,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#",
+    "segundos": 8.5,
+    "suena_mas": "F#",
+    "proporcion": 0.85,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G7M",
+    "segundos": 8.4,
+    "suena_mas": "D",
+    "proporcion": 0.5,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "segundos": 6.2,
+    "suena_mas": "F#m",
+    "proporcion": 0.57,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "F#m7",
+    "segundos": 5.8,
+    "suena_mas": "F#",
+    "proporcion": 1.0,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "segundos": 0.1,
+    "suena_mas": "D",
+    "proporcion": 1.0,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/milo-j/m-a-i/": {
+  "estado": "ok",
+  "video": "jSxUClW6EAg",
+  "duracion": 180,
+  "acordes_hoja": 77,
+  "distintos": 5,
+  "cejilla": 1,
+  "transposicion": 1,
+  "calce_tono": 1.003,
+  "coinciden": 0.906,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 180,
+  "desfase_acordes": {
+   "segundos": -0.9,
+   "calce": 0.805,
+   "calce_sin_corregir": 0.726,
+   "nitidez": 0.039
+  },
+  "desfase_voz": {
+   "segundos": 0.85,
+   "ancho": 8.0,
+   "inicios_sin_corregir": -0.026,
+   "inicios_corregido": 0.01,
+   "reentradas": 2.05
+  },
+  "acordes": [
+   {
+    "acorde": "Am",
+    "segundos": 59.9,
+    "suena_mas": "Am",
+    "proporcion": 0.74,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 41.7,
+    "suena_mas": "G",
+    "proporcion": 0.73,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "segundos": 41.0,
+    "suena_mas": "F",
+    "proporcion": 0.92,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F/C",
+    "segundos": 25.9,
+    "suena_mas": "F",
+    "proporcion": 0.79,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "segundos": 2.9,
+    "suena_mas": "Em",
+    "proporcion": 0.68,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/milo-j/tu-manta/": {
+  "estado": "ok",
+  "video": "kQNIvEGdH5o",
+  "duracion": 190,
+  "acordes_hoja": 39,
+  "distintos": 6,
+  "cejilla": 3,
+  "transposicion": 3,
+  "calce_tono": 0.967,
+  "coinciden": 0.82,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 190,
+  "desfase_acordes": {
+   "segundos": 0.7,
+   "calce": 0.952,
+   "calce_sin_corregir": 0.904,
+   "nitidez": 0.049
+  },
+  "desfase_voz": {
+   "segundos": 1.2,
+   "ancho": 0.6,
+   "inicios_sin_corregir": -0.003,
+   "inicios_corregido": 0.189,
+   "reentradas": 1.74
+  },
+  "acordes": [
+   {
+    "acorde": "Bm",
+    "segundos": 48.8,
+    "suena_mas": "Bm",
+    "proporcion": 0.7,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "segundos": 40.8,
+    "suena_mas": "A",
+    "proporcion": 0.53,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "segundos": 38.1,
+    "suena_mas": "D",
+    "proporcion": 0.73,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 36.0,
+    "suena_mas": "G",
+    "proporcion": 0.76,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#m",
+    "segundos": 3.2,
+    "suena_mas": "A#",
+    "proporcion": 0.94,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#",
+    "segundos": 0.7,
+    "suena_mas": "A#",
+    "proporcion": 0.88,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/milo-j/el-bolero/": {
+  "estado": "ok",
+  "video": "c--Ew6-P2zA",
+  "duracion": 217,
+  "acordes_hoja": 98,
+  "distintos": 4,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.989,
+  "coinciden": 0.849,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 217,
+  "desfase_acordes": null,
+  "desfase_voz": null,
+  "acordes": [
+   {
+    "acorde": "G7",
+    "segundos": 84.5,
+    "suena_mas": "G",
+    "proporcion": 0.41,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Cm",
+    "segundos": 49.0,
+    "suena_mas": "C",
+    "proporcion": 0.55,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "segundos": 22.3,
+    "suena_mas": "F",
+    "proporcion": 0.75,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#",
+    "segundos": 21.8,
+    "suena_mas": "A#",
+    "proporcion": 0.73,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/fother-muckers/explorador/#key=10": {
+  "estado": "ok",
+  "video": "XTnj38lgyrI",
+  "duracion": 171,
+  "acordes_hoja": 60,
+  "distintos": 7,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.997,
+  "coinciden": 0.91,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 171,
+  "desfase_acordes": {
+   "segundos": 0.4,
+   "calce": 0.885,
+   "calce_sin_corregir": 0.882,
+   "nitidez": 0.056
+  },
+  "desfase_voz": {
+   "segundos": 0.55,
+   "ancho": 0.5,
+   "inicios_sin_corregir": -0.015,
+   "inicios_corregido": 0.3,
+   "reentradas": 0.9
+  },
+  "acordes": [
+   {
+    "acorde": "G#",
+    "segundos": 69.9,
+    "suena_mas": "G#",
+    "proporcion": 0.81,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#m",
+    "segundos": 32.0,
+    "suena_mas": "A#m",
+    "proporcion": 0.65,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "C#",
+    "segundos": 28.0,
+    "suena_mas": "C#",
+    "proporcion": 0.95,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Fm",
+    "segundos": 17.6,
+    "suena_mas": "Fm",
+    "proporcion": 0.91,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "segundos": 5.9,
+    "suena_mas": "F#m",
+    "proporcion": 0.89,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D#",
+    "segundos": 4.1,
+    "suena_mas": "D#",
+    "proporcion": 0.91,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Cm",
+    "segundos": 4.1,
+    "suena_mas": "Cm",
+    "proporcion": 1.0,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/billie-eilish/chihiro/": {
+  "estado": "ok",
+  "video": "MQZHQZDb184",
+  "duracion": 324,
+  "acordes_hoja": 68,
+  "distintos": 5,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.033,
+  "coinciden": 0.941,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 324,
+  "desfase_acordes": {
+   "segundos": 0.1,
+   "calce": 1.022,
+   "calce_sin_corregir": 1.022,
+   "nitidez": 0.076
+  },
+  "desfase_voz": {
+   "segundos": 0.15,
+   "ancho": 0.3,
+   "inicios_sin_corregir": 0.4,
+   "inicios_corregido": 0.537,
+   "reentradas": 0.09
+  },
+  "acordes": [
+   {
+    "acorde": "C7M",
+    "segundos": 71.6,
+    "suena_mas": "C",
+    "proporcion": 0.73,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Am7",
+    "segundos": 64.3,
+    "suena_mas": "Am",
+    "proporcion": 0.83,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "segundos": 62.7,
+    "suena_mas": "Em",
+    "proporcion": 0.89,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 59.4,
+    "suena_mas": "G",
+    "proporcion": 0.69,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em7",
+    "segundos": 5.9,
+    "suena_mas": "Em",
+    "proporcion": 0.95,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/oliver-tree/hurt/": {
+  "estado": "error: CalledProcessError: Command '['yt-dlp', '-q', '--no-warnings', '-f', 'bestaudio', '-o', 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Software development\\\\_WORK_\\\\Acordes\\\\experiments\\\\chord_check\\\\audio\\\\tmp\\\\-5kSB2Jkblw.%(ext)s', 'https://www.youtube.com/watch?v=-5kSB2Jkblw']' returned non-zero exit statu"
+ },
+ "https://www.cifraclub.com/oliver-tree/alien-boy/": {
+  "estado": "ok",
+  "video": "g0K-O0Fczt4",
+  "duracion": 164,
+  "acordes_hoja": 54,
+  "distintos": 3,
+  "cejilla": 1,
+  "transposicion": 11,
+  "calce_tono": 0.889,
+  "coinciden": 0.537,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 163,
+  "desfase_acordes": {
+   "segundos": -3.8,
+   "calce": 0.796,
+   "calce_sin_corregir": 0.598,
+   "nitidez": 0.003
+  },
+  "desfase_voz": {
+   "segundos": 0.15,
+   "ancho": 0.3,
+   "inicios_sin_corregir": 0.368,
+   "inicios_corregido": 0.477,
+   "reentradas": 0.44
+  },
+  "acordes": [
+   {
+    "acorde": "Em7",
+    "segundos": 88.1,
+    "suena_mas": "Em",
+    "proporcion": 0.75,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "segundos": 44.6,
+    "suena_mas": "F#m",
+    "proporcion": 0.35,
+    "tercera": "mayor",
+    "problema": "suena A"
+   },
+   {
+    "acorde": "F7M",
+    "segundos": 16.5,
+    "suena_mas": "F#m",
+    "proporcion": 0.62,
+    "tercera": "mayor",
+    "problema": "suena F#m"
+   }
+  ]
+ },
+ "https://www.cifraclub.com/cardellino/nino-eterno/": {
+  "estado": "ok",
+  "video": "wJGmO9dgaUU",
+  "duracion": 169,
+  "acordes_hoja": 41,
+  "distintos": 3,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.028,
+  "coinciden": 0.883,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 169,
+  "desfase_acordes": {
+   "segundos": -0.1,
+   "calce": 0.994,
+   "calce_sin_corregir": 0.993,
+   "nitidez": 0.09
+  },
+  "desfase_voz": {
+   "segundos": 0.25,
+   "ancho": 0.4,
+   "inicios_sin_corregir": 0.146,
+   "inicios_corregido": 0.219,
+   "reentradas": 0.15
+  },
+  "acordes": [
+   {
+    "acorde": "D#7M",
+    "segundos": 78.8,
+    "suena_mas": "D#",
+    "proporcion": 0.75,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G#7M",
+    "segundos": 40.6,
+    "suena_mas": "G#",
+    "proporcion": 0.61,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G#m",
+    "segundos": 26.4,
+    "suena_mas": "G#m",
+    "proporcion": 0.95,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com.br/cardellino/nino-eterno/": {
+  "estado": "ok",
+  "video": "wJGmO9dgaUU",
+  "duracion": 169,
+  "acordes_hoja": 41,
+  "distintos": 3,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.028,
+  "coinciden": 0.883,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 169,
+  "desfase_acordes": {
+   "segundos": -0.1,
+   "calce": 0.994,
+   "calce_sin_corregir": 0.993,
+   "nitidez": 0.09
+  },
+  "desfase_voz": {
+   "segundos": 0.25,
+   "ancho": 0.4,
+   "inicios_sin_corregir": 0.146,
+   "inicios_corregido": 0.219,
+   "reentradas": 0.15
+  },
+  "acordes": [
+   {
+    "acorde": "D#7M",
+    "segundos": 78.8,
+    "suena_mas": "D#",
+    "proporcion": 0.75,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G#7M",
+    "segundos": 40.6,
+    "suena_mas": "G#",
+    "proporcion": 0.61,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G#m",
+    "segundos": 26.4,
+    "suena_mas": "G#m",
+    "proporcion": 0.95,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/bad-bunny/un-coco/": {
+  "estado": "sin acordes en la hoja"
+ },
+ "https://www.cifraclub.com/kidd-voodoo/destello/": {
+  "estado": "ok",
+  "video": "RMWNFYCNxMo",
+  "duracion": 240,
+  "acordes_hoja": 96,
+  "distintos": 7,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.002,
+  "coinciden": 0.944,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 240,
+  "desfase_acordes": {
+   "segundos": -1.0,
+   "calce": 0.831,
+   "calce_sin_corregir": 0.81,
+   "nitidez": 0.055
+  },
+  "desfase_voz": {
+   "segundos": 0.05,
+   "ancho": 0.3,
+   "inicios_sin_corregir": 0.423,
+   "inicios_corregido": 0.456,
+   "reentradas": 0.05
+  },
+  "acordes": [
+   {
+    "acorde": "E",
+    "segundos": 66.3,
+    "suena_mas": "E",
+    "proporcion": 0.81,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "segundos": 51.1,
+    "suena_mas": "F#m",
+    "proporcion": 0.87,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "segundos": 49.3,
+    "suena_mas": "D",
+    "proporcion": 0.88,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "segundos": 25.5,
+    "suena_mas": "Bm",
+    "proporcion": 0.99,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "C#m",
+    "segundos": 24.6,
+    "suena_mas": "C#m",
+    "proporcion": 0.89,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "E7",
+    "segundos": 9.3,
+    "suena_mas": "E",
+    "proporcion": 0.93,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E6",
+    "segundos": 3.9,
+    "suena_mas": "C#m",
+    "proporcion": 0.62,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com.br/milo-j/nino/": {
+  "estado": "ok",
+  "video": "cMCfLEjbMlM",
+  "duracion": 223,
+  "acordes_hoja": 81,
+  "distintos": 13,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.033,
+  "coinciden": 0.847,
+  "hoja_suena_desde": 1,
+  "hoja_suena_hasta": 223,
+  "desfase_acordes": {
+   "segundos": -0.5,
+   "calce": 0.864,
+   "calce_sin_corregir": 0.856,
+   "nitidez": 0.056
+  },
+  "desfase_voz": {
+   "segundos": -5.0,
+   "ancho": 0.6,
+   "inicios_sin_corregir": -0.08,
+   "inicios_corregido": 0.215,
+   "reentradas": -4.76
+  },
+  "acordes": [
+   {
+    "acorde": "B7",
+    "segundos": 35.9,
+    "suena_mas": "F#m",
+    "proporcion": 0.39,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "segundos": 32.6,
+    "suena_mas": "Em",
+    "proporcion": 0.89,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G7M",
+    "segundos": 23.3,
+    "suena_mas": "G",
+    "proporcion": 0.6,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A7",
+    "segundos": 19.9,
+    "suena_mas": "A",
+    "proporcion": 0.91,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D4",
+    "segundos": 19.4,
+    "suena_mas": "D",
+    "proporcion": 0.47,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C7M",
+    "segundos": 13.3,
+    "suena_mas": "C",
+    "proporcion": 0.68,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "segundos": 12.2,
+    "suena_mas": "Am",
+    "proporcion": 0.56,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G/F",
+    "segundos": 11.5,
+    "suena_mas": "Dm",
+    "proporcion": 0.43,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Cm",
+    "segundos": 8.0,
+    "suena_mas": "Cm",
+    "proporcion": 0.6,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 6.7,
+    "suena_mas": "G",
+    "proporcion": 0.65,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "segundos": 6.2,
+    "suena_mas": "Bm",
+    "proporcion": 0.97,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Em/C",
+    "segundos": 5.9,
+    "suena_mas": "Em",
+    "proporcion": 0.59,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "segundos": 5.6,
+    "suena_mas": "D",
+    "proporcion": 0.8,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/el-mato-un-policia-motorizado/el-universo/": {
+  "estado": "ok",
+  "video": "WED2m1rp28Q",
+  "duracion": 137,
+  "acordes_hoja": 37,
+  "distintos": 8,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.003,
+  "coinciden": 0.963,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 137,
+  "desfase_acordes": {
+   "segundos": 0.3,
+   "calce": 0.878,
+   "calce_sin_corregir": 0.874,
+   "nitidez": 0.066
+  },
+  "desfase_voz": {
+   "segundos": 0.15,
+   "ancho": 0.85,
+   "inicios_sin_corregir": 0.273,
+   "inicios_corregido": 0.301,
+   "reentradas": -0.01
+  },
+  "acordes": [
+   {
+    "acorde": "A7",
+    "segundos": 28.2,
+    "suena_mas": "A",
+    "proporcion": 0.97,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "segundos": 27.2,
+    "suena_mas": "Em",
+    "proporcion": 0.86,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D7M",
+    "segundos": 26.8,
+    "suena_mas": "D",
+    "proporcion": 0.82,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "B7",
+    "segundos": 18.1,
+    "suena_mas": "B",
+    "proporcion": 0.78,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "segundos": 16.5,
+    "suena_mas": "D",
+    "proporcion": 0.98,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "segundos": 4.5,
+    "suena_mas": "F#m",
+    "proporcion": 0.85,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "D7",
+    "segundos": 2.4,
+    "suena_mas": "D",
+    "proporcion": 0.85,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "segundos": 2.3,
+    "suena_mas": "C",
+    "proporcion": 1.0,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/bad-bunny/turista/simplificada.html": {
+  "estado": "ok",
+  "video": "ELwwzwr2-00",
+  "duracion": 233,
+  "acordes_hoja": 61,
+  "distintos": 9,
+  "cejilla": 0,
+  "transposicion": 11,
+  "calce_tono": 1.021,
+  "coinciden": 0.744,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 219,
+  "desfase_acordes": {
+   "segundos": 1.5,
+   "calce": 0.899,
+   "calce_sin_corregir": 0.796,
+   "nitidez": 0.074
+  },
+  "desfase_voz": {
+   "segundos": 2.35,
+   "ancho": 4.2,
+   "inicios_sin_corregir": -0.019,
+   "inicios_corregido": 0.457,
+   "reentradas": 2.22
+  },
+  "acordes": [
+   {
+    "acorde": "D7M",
+    "segundos": 56.5,
+    "suena_mas": "D",
+    "proporcion": 0.42,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm7",
+    "segundos": 40.7,
+    "suena_mas": "Bm",
+    "proporcion": 0.37,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A7",
+    "segundos": 28.5,
+    "suena_mas": "A",
+    "proporcion": 0.2,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "Em7",
+    "segundos": 25.4,
+    "suena_mas": "Em",
+    "proporcion": 0.55,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F#7",
+    "segundos": 18.9,
+    "suena_mas": "F#",
+    "proporcion": 0.41,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "C#m7(5-)",
+    "segundos": 11.1,
+    "suena_mas": "G",
+    "proporcion": 0.29,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G7M",
+    "segundos": 8.3,
+    "suena_mas": "G",
+    "proporcion": 0.7,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Gm",
+    "segundos": 3.8,
+    "suena_mas": "Gm",
+    "proporcion": 0.8,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "segundos": 1.7,
+    "suena_mas": "Em",
+    "proporcion": 0.72,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/chet-faker/talk-is-cheap/": {
+  "estado": "ok",
+  "video": "lzoD-IVxGhU",
+  "duracion": 219,
+  "acordes_hoja": 121,
+  "distintos": 4,
+  "cejilla": 0,
+  "transposicion": 3,
+  "calce_tono": 0.997,
+  "coinciden": 0.955,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 219,
+  "desfase_acordes": {
+   "segundos": 0.5,
+   "calce": 0.948,
+   "calce_sin_corregir": 0.918,
+   "nitidez": 0.007
+  },
+  "desfase_voz": null,
+  "acordes": [
+   {
+    "acorde": "Am",
+    "segundos": 64.6,
+    "suena_mas": "Am",
+    "proporcion": 0.83,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 55.9,
+    "suena_mas": "G",
+    "proporcion": 0.91,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "segundos": 42.1,
+    "suena_mas": "D",
+    "proporcion": 0.85,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "segundos": 41.9,
+    "suena_mas": "C",
+    "proporcion": 0.91,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/fother-muckers/2022/": {
+  "estado": "ok",
+  "video": "5W83sbSaeX0",
+  "duracion": 264,
+  "acordes_hoja": 63,
+  "distintos": 4,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.988,
+  "coinciden": 0.742,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 264,
+  "desfase_acordes": {
+   "segundos": -0.4,
+   "calce": 0.839,
+   "calce_sin_corregir": 0.833,
+   "nitidez": 0.036
+  },
+  "desfase_voz": {
+   "segundos": 6.25,
+   "ancho": 0.5,
+   "inicios_sin_corregir": -0.008,
+   "inicios_corregido": 0.163,
+   "reentradas": 4.9
+  },
+  "acordes": [
+   {
+    "acorde": "C#maj7",
+    "segundos": 120.3,
+    "suena_mas": "C#",
+    "proporcion": 0.42,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#m",
+    "segundos": 39.9,
+    "suena_mas": "A#m",
+    "proporcion": 0.7,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F#",
+    "segundos": 39.5,
+    "suena_mas": "F#",
+    "proporcion": 0.62,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G#",
+    "segundos": 29.8,
+    "suena_mas": "G#",
+    "proporcion": 0.42,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/fother-muckers/aunque-todo-salio-mal/": {
+  "estado": "ok",
+  "video": "2RrGmnJJBvY",
+  "duracion": 253,
+  "acordes_hoja": 89,
+  "distintos": 10,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.006,
+  "coinciden": 0.835,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 253,
+  "desfase_acordes": {
+   "segundos": 3.7,
+   "calce": 0.846,
+   "calce_sin_corregir": 0.728,
+   "nitidez": 0.003
+  },
+  "desfase_voz": {
+   "segundos": 8.25,
+   "ancho": 1.6,
+   "inicios_sin_corregir": 0.042,
+   "inicios_corregido": 0.089,
+   "reentradas": 7.69
+  },
+  "acordes": [
+   {
+    "acorde": "D",
+    "segundos": 96.1,
+    "suena_mas": "D",
+    "proporcion": 0.63,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "segundos": 29.6,
+    "suena_mas": "F#m",
+    "proporcion": 0.78,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 26.2,
+    "suena_mas": "G",
+    "proporcion": 0.73,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "segundos": 23.0,
+    "suena_mas": "Bm",
+    "proporcion": 0.42,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "segundos": 20.2,
+    "suena_mas": "E",
+    "proporcion": 0.83,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "segundos": 14.6,
+    "suena_mas": "Em",
+    "proporcion": 0.9,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A7",
+    "segundos": 12.5,
+    "suena_mas": "Em",
+    "proporcion": 0.47,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A5",
+    "segundos": 7.7,
+    "suena_mas": "A",
+    "proporcion": 0.55,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#",
+    "segundos": 3.7,
+    "suena_mas": "F#",
+    "proporcion": 0.78,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A",
+    "segundos": 3.1,
+    "suena_mas": "A",
+    "proporcion": 0.7,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/jamiroquai/virtual-insanity/": {
+  "estado": "ok",
+  "video": "lXD_-qI-mPA",
+  "duracion": 235,
+  "acordes_hoja": 185,
+  "distintos": 10,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.086,
+  "coinciden": 0.971,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 235,
+  "desfase_acordes": {
+   "segundos": -4.0,
+   "calce": 0.86,
+   "calce_sin_corregir": 0.776,
+   "nitidez": 0.017
+  },
+  "desfase_voz": {
+   "segundos": -9.3,
+   "ancho": 3.35,
+   "inicios_sin_corregir": -0.018,
+   "inicios_corregido": 0.061,
+   "reentradas": -9.07
+  },
+  "acordes": [
+   {
+    "acorde": "D#m7",
+    "segundos": 46.1,
+    "suena_mas": "D#m",
+    "proporcion": 0.78,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "B7M",
+    "segundos": 44.0,
+    "suena_mas": "B",
+    "proporcion": 0.45,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D°",
+    "segundos": 25.4,
+    "suena_mas": "Dm",
+    "proporcion": 0.55,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "G#m7",
+    "segundos": 20.6,
+    "suena_mas": "G#m",
+    "proporcion": 0.54,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F#7M",
+    "segundos": 17.9,
+    "suena_mas": "F#",
+    "proporcion": 0.85,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#7(13-)",
+    "segundos": 17.5,
+    "suena_mas": "A#",
+    "proporcion": 0.86,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Cm7(b5)",
+    "segundos": 16.2,
+    "suena_mas": "Cm",
+    "proporcion": 0.65,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "C#7",
+    "segundos": 14.8,
+    "suena_mas": "C#",
+    "proporcion": 0.65,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G#7",
+    "segundos": 14.6,
+    "suena_mas": "G#",
+    "proporcion": 0.87,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#m7",
+    "segundos": 6.2,
+    "suena_mas": "A#",
+    "proporcion": 0.66,
+    "tercera": "mayor",
+    "problema": "suena A#"
+   }
+  ]
+ },
+ "https://www.cifraclub.com/los-autenticos-decadentes/corazon/": {
+  "estado": "error: CalledProcessError: Command '['yt-dlp', '-q', '--no-warnings', '-f', 'bestaudio', '-o', 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Software development\\\\_WORK_\\\\Acordes\\\\experiments\\\\chord_check\\\\audio\\\\tmp\\\\ighAHtVFhxs.%(ext)s', 'https://www.youtube.com/watch?v=ighAHtVFhxs']' returned non-zero exit statu"
+ },
+ "https://www.cifraclub.com/los-bunkers/llueve-sobre-la-ciudad/": {
+  "estado": "ok",
+  "video": "i9GkqJabukw",
+  "duracion": 252,
+  "acordes_hoja": 146,
+  "distintos": 6,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.995,
+  "coinciden": 0.89,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 252,
+  "desfase_acordes": {
+   "segundos": 1.5,
+   "calce": 0.83,
+   "calce_sin_corregir": 0.737,
+   "nitidez": 0.072
+  },
+  "desfase_voz": {
+   "segundos": 1.7,
+   "ancho": 0.5,
+   "inicios_sin_corregir": -0.044,
+   "inicios_corregido": 0.317,
+   "reentradas": 1.76
+  },
+  "acordes": [
+   {
+    "acorde": "Am",
+    "segundos": 84.5,
+    "suena_mas": "Am",
+    "proporcion": 0.73,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 70.8,
+    "suena_mas": "G",
+    "proporcion": 0.77,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "segundos": 34.9,
+    "suena_mas": "F",
+    "proporcion": 0.8,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "segundos": 21.1,
+    "suena_mas": "E",
+    "proporcion": 0.57,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "Dm",
+    "segundos": 19.7,
+    "suena_mas": "Dm",
+    "proporcion": 0.99,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "E7",
+    "segundos": 2.3,
+    "suena_mas": "Bm",
+    "proporcion": 0.56,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/los-bunkers/nada-nuevo-bajo-el-sol/": {
+  "estado": "ok",
+  "video": "scC79T8oqAQ",
+  "duracion": 283,
+  "acordes_hoja": 90,
+  "distintos": 7,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.002,
+  "coinciden": 0.95,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 283,
+  "desfase_acordes": {
+   "segundos": -1.1,
+   "calce": 0.828,
+   "calce_sin_corregir": 0.818,
+   "nitidez": 0.011
+  },
+  "desfase_voz": {
+   "segundos": -3.75,
+   "ancho": 6.4,
+   "inicios_sin_corregir": -0.017,
+   "inicios_corregido": 0.072,
+   "reentradas": -3.71
+  },
+  "acordes": [
+   {
+    "acorde": "F#m",
+    "segundos": 68.7,
+    "suena_mas": "F#m",
+    "proporcion": 0.79,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "C#m",
+    "segundos": 66.6,
+    "suena_mas": "C#m",
+    "proporcion": 0.95,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm7",
+    "segundos": 41.1,
+    "suena_mas": "Bm",
+    "proporcion": 0.64,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "segundos": 38.5,
+    "suena_mas": "E",
+    "proporcion": 0.84,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "segundos": 27.4,
+    "suena_mas": "D",
+    "proporcion": 0.86,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "A",
+    "segundos": 25.7,
+    "suena_mas": "A",
+    "proporcion": 0.94,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 6.8,
+    "suena_mas": "G",
+    "proporcion": 0.96,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/los-bunkers/no-me-hables-de-sufrir/": {
+  "estado": "ok",
+  "video": "5Opn6N3yBnU",
+  "duracion": 233,
+  "acordes_hoja": 128,
+  "distintos": 12,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.992,
+  "coinciden": 0.763,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 233,
+  "desfase_acordes": {
+   "segundos": 5.4,
+   "calce": 0.727,
+   "calce_sin_corregir": 0.656,
+   "nitidez": 0.009
+  },
+  "desfase_voz": {
+   "segundos": 5.0,
+   "ancho": 6.1,
+   "inicios_sin_corregir": 0.045,
+   "inicios_corregido": 0.056,
+   "reentradas": 5.1
+  },
+  "acordes": [
+   {
+    "acorde": "E",
+    "segundos": 37.7,
+    "suena_mas": "E",
+    "proporcion": 0.93,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A",
+    "segundos": 32.5,
+    "suena_mas": "A",
+    "proporcion": 0.66,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E5",
+    "segundos": 24.5,
+    "suena_mas": "E",
+    "proporcion": 0.63,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "Dm",
+    "segundos": 24.1,
+    "suena_mas": "Dm",
+    "proporcion": 0.84,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "G5",
+    "segundos": 19.6,
+    "suena_mas": "G",
+    "proporcion": 0.76,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "segundos": 16.8,
+    "suena_mas": "D",
+    "proporcion": 0.99,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "segundos": 16.7,
+    "suena_mas": "F#m",
+    "proporcion": 1.0,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A5",
+    "segundos": 15.1,
+    "suena_mas": "Am",
+    "proporcion": 0.6,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "Dm7M",
+    "segundos": 12.4,
+    "suena_mas": "A",
+    "proporcion": 0.19,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "F5",
+    "segundos": 10.5,
+    "suena_mas": "F",
+    "proporcion": 0.93,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Dm7",
+    "segundos": 6.5,
+    "suena_mas": "Bm",
+    "proporcion": 0.4,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "Dm6",
+    "segundos": 0.4,
+    "suena_mas": "Bm",
+    "proporcion": 0.75,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/los-bunkers/quien-fuera/": {
+  "estado": "ok",
+  "video": "Hz9DEKdsun0",
+  "duracion": 226,
+  "acordes_hoja": 79,
+  "distintos": 9,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.003,
+  "coinciden": 0.971,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 226,
+  "desfase_acordes": {
+   "segundos": -0.0,
+   "calce": 0.901,
+   "calce_sin_corregir": 0.901,
+   "nitidez": 0.061
+  },
+  "desfase_voz": {
+   "segundos": 0.9,
+   "ancho": 0.35,
+   "inicios_sin_corregir": -0.067,
+   "inicios_corregido": 0.691,
+   "reentradas": 0.87
+  },
+  "acordes": [
+   {
+    "acorde": "A",
+    "segundos": 69.7,
+    "suena_mas": "A",
+    "proporcion": 0.9,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "segundos": 50.2,
+    "suena_mas": "F#m",
+    "proporcion": 0.96,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "segundos": 35.6,
+    "suena_mas": "D",
+    "proporcion": 0.9,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C#m",
+    "segundos": 21.3,
+    "suena_mas": "C#m",
+    "proporcion": 0.96,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm7",
+    "segundos": 19.1,
+    "suena_mas": "Bm",
+    "proporcion": 0.54,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "segundos": 13.9,
+    "suena_mas": "E",
+    "proporcion": 0.78,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D#°",
+    "segundos": 2.0,
+    "suena_mas": "Cm",
+    "proporcion": 0.48,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "F°",
+    "segundos": 1.9,
+    "suena_mas": "Dm",
+    "proporcion": 0.4,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "segundos": 1.2,
+    "suena_mas": "Bm",
+    "proporcion": 0.38,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/milo_j/rara_vez.shtml": {
+  "estado": "ok",
+  "video": "A_CrmMrWdN0",
+  "duracion": 137,
+  "acordes_hoja": 58,
+  "distintos": 4,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.997,
+  "coinciden": 0.806,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 137,
+  "desfase_acordes": {
+   "segundos": 1.6,
+   "calce": 0.894,
+   "calce_sin_corregir": 0.85,
+   "nitidez": 0.005
+  },
+  "desfase_voz": {
+   "segundos": 3.05,
+   "ancho": 4.15,
+   "inicios_sin_corregir": -0.043,
+   "inicios_corregido": 0.485,
+   "reentradas": 3.13
+  },
+  "acordes": [
+   {
+    "acorde": "Fm7",
+    "segundos": 34.2,
+    "suena_mas": "Fm",
+    "proporcion": 0.77,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Cm7",
+    "segundos": 29.6,
+    "suena_mas": "Cm",
+    "proporcion": 0.66,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Cm9",
+    "segundos": 25.5,
+    "suena_mas": "G",
+    "proporcion": 0.35,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "Gm7b13",
+    "segundos": 22.2,
+    "suena_mas": "D#",
+    "proporcion": 0.42,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/milo_j/gil.shtml": {
+  "estado": "ok",
+  "video": "UnkNRaJvGUg",
+  "duracion": 234,
+  "acordes_hoja": 108,
+  "distintos": 4,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.957,
+  "coinciden": 0.719,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 234,
+  "desfase_acordes": {
+   "segundos": 0.6,
+   "calce": 0.837,
+   "calce_sin_corregir": 0.809,
+   "nitidez": 0.066
+  },
+  "desfase_voz": {
+   "segundos": 0.6,
+   "ancho": 0.3,
+   "inicios_sin_corregir": -0.1,
+   "inicios_corregido": 0.351,
+   "reentradas": 0.83
+  },
+  "acordes": [
+   {
+    "acorde": "Bm",
+    "segundos": 74.3,
+    "suena_mas": "Bm",
+    "proporcion": 0.47,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "segundos": 56.0,
+    "suena_mas": "Em",
+    "proporcion": 0.55,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F#",
+    "segundos": 34.5,
+    "suena_mas": "F#",
+    "proporcion": 0.75,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "segundos": 22.8,
+    "suena_mas": "G#m",
+    "proporcion": 0.3,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/oliver-tree/im-gone/": {
+  "estado": "sin acordes en la hoja"
+ },
+ "https://www.cifraclub.com/oliver-tree/miracle-man/": {
+  "estado": "ok",
+  "video": "Ip65sryh_xs",
+  "duracion": 146,
+  "acordes_hoja": 72,
+  "distintos": 7,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.001,
+  "coinciden": 0.901,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 143,
+  "desfase_acordes": {
+   "segundos": 0.4,
+   "calce": 0.867,
+   "calce_sin_corregir": 0.851,
+   "nitidez": 0.019
+  },
+  "desfase_voz": {
+   "segundos": 1.7,
+   "ancho": 7.1,
+   "inicios_sin_corregir": -0.027,
+   "inicios_corregido": 0.243,
+   "reentradas": 1.55
+  },
+  "acordes": [
+   {
+    "acorde": "Em",
+    "segundos": 43.1,
+    "suena_mas": "Em",
+    "proporcion": 0.55,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "segundos": 31.1,
+    "suena_mas": "Am",
+    "proporcion": 0.74,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "segundos": 22.5,
+    "suena_mas": "C",
+    "proporcion": 0.91,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 17.6,
+    "suena_mas": "G",
+    "proporcion": 0.74,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "segundos": 4.6,
+    "suena_mas": "E",
+    "proporcion": 0.96,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "segundos": 3.4,
+    "suena_mas": "F",
+    "proporcion": 0.92,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E7",
+    "segundos": 3.3,
+    "suena_mas": "E",
+    "proporcion": 0.72,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/rosalia/la_perla.shtml": {
+  "estado": "error: CalledProcessError: Command '['yt-dlp', '-q', '--no-warnings', '-f', 'bestaudio', '-o', 'C:\\\\Users\\\\usuario\\\\Desktop\\\\Software development\\\\_WORK_\\\\Acordes\\\\experiments\\\\chord_check\\\\audio\\\\tmp\\\\rfJNr_Zh9Is.%(ext)s', 'https://www.youtube.com/watch?v=rfJNr_Zh9Is']' returned non-zero exit statu"
+ },
+ "https://www.cifraclub.com/rayos-laser/ya-me-hiciste-mal/": {
+  "estado": "ok",
+  "video": "ihkuY98RIy8",
+  "duracion": 245,
+  "acordes_hoja": 42,
+  "distintos": 5,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.994,
+  "coinciden": 0.789,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 245,
+  "desfase_acordes": {
+   "segundos": 2.9,
+   "calce": 0.786,
+   "calce_sin_corregir": 0.633,
+   "nitidez": 0.02
+  },
+  "desfase_voz": {
+   "segundos": 3.5,
+   "ancho": 0.35,
+   "inicios_sin_corregir": 0.044,
+   "inicios_corregido": 0.666,
+   "reentradas": 3.5
+  },
+  "acordes": [
+   {
+    "acorde": "G",
+    "segundos": 106.3,
+    "suena_mas": "G",
+    "proporcion": 0.7,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "segundos": 70.7,
+    "suena_mas": "Am",
+    "proporcion": 0.57,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Dm",
+    "segundos": 12.5,
+    "suena_mas": "Dm",
+    "proporcion": 0.51,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "segundos": 2.7,
+    "suena_mas": "Dm",
+    "proporcion": 0.62,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "segundos": 0.4,
+    "suena_mas": "Em",
+    "proporcion": 0.75,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/tronic/prendan-la-radio/": {
+  "estado": "ok",
+  "video": "vRfce_adwBg",
+  "duracion": 163,
+  "acordes_hoja": 46,
+  "distintos": 5,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.987,
+  "coinciden": 0.683,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 163,
+  "desfase_acordes": {
+   "segundos": -0.2,
+   "calce": 0.928,
+   "calce_sin_corregir": 0.924,
+   "nitidez": 0.185
+  },
+  "desfase_voz": {
+   "segundos": 0.35,
+   "ancho": 0.7,
+   "inicios_sin_corregir": 0.084,
+   "inicios_corregido": 0.21,
+   "reentradas": 0.59
+  },
+  "acordes": [
+   {
+    "acorde": "F5",
+    "segundos": 50.4,
+    "suena_mas": "F",
+    "proporcion": 0.63,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "A#",
+    "segundos": 48.1,
+    "suena_mas": "A#",
+    "proporcion": 0.49,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "C5",
+    "segundos": 35.7,
+    "suena_mas": "C",
+    "proporcion": 0.73,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "D5",
+    "segundos": 20.8,
+    "suena_mas": "D",
+    "proporcion": 0.43,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "A5",
+    "segundos": 3.5,
+    "suena_mas": "D",
+    "proporcion": 0.5,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/the-strokes/going-shopping/": {
+  "estado": "ok",
+  "video": "QEX94Vf_Uik",
+  "duracion": 278,
+  "acordes_hoja": 166,
+  "distintos": 6,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 1.02,
+  "coinciden": 0.841,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 278,
+  "desfase_acordes": {
+   "segundos": 6.6,
+   "calce": 0.885,
+   "calce_sin_corregir": 0.873,
+   "nitidez": 0.006
+  },
+  "desfase_voz": {
+   "segundos": 6.35,
+   "ancho": 1.0,
+   "inicios_sin_corregir": -0.008,
+   "inicios_corregido": 0.236,
+   "reentradas": 6.48
+  },
+  "acordes": [
+   {
+    "acorde": "E4",
+    "segundos": 73.8,
+    "suena_mas": "A",
+    "proporcion": 0.4,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "segundos": 69.6,
+    "suena_mas": "E",
+    "proporcion": 0.93,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A",
+    "segundos": 62.1,
+    "suena_mas": "A",
+    "proporcion": 0.81,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A4",
+    "segundos": 46.7,
+    "suena_mas": "A",
+    "proporcion": 0.48,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "segundos": 12.7,
+    "suena_mas": "D",
+    "proporcion": 0.29,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 2.0,
+    "suena_mas": "G",
+    "proporcion": 0.55,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/tronic/otra-vez/": {
+  "estado": "sin acordes en la hoja"
+ },
+ "https://www.cifraclub.com/mike-shinoda/worlds-on-fire/": {
+  "estado": "ok",
+  "video": "zmp4Zo2bB0s",
+  "duracion": 200,
+  "acordes_hoja": 65,
+  "distintos": 4,
+  "cejilla": 0,
+  "transposicion": 0,
+  "calce_tono": 0.979,
+  "coinciden": 0.755,
+  "hoja_suena_desde": 0,
+  "hoja_suena_hasta": 200,
+  "desfase_acordes": {
+   "segundos": 4.8,
+   "calce": 0.797,
+   "calce_sin_corregir": 0.728,
+   "nitidez": 0.025
+  },
+  "desfase_voz": {
+   "segundos": 4.1,
+   "ancho": 0.5,
+   "inicios_sin_corregir": 0.169,
+   "inicios_corregido": 0.409,
+   "reentradas": 4.13
+  },
+  "acordes": [
+   {
+    "acorde": "D",
+    "segundos": 92.3,
+    "suena_mas": "D",
+    "proporcion": 0.53,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "segundos": 48.1,
+    "suena_mas": "C",
+    "proporcion": 0.49,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "segundos": 7.9,
+    "suena_mas": "G",
+    "proporcion": 0.94,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "segundos": 2.7,
+    "suena_mas": "Bm",
+    "proporcion": 0.45,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ }
+}
