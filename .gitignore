@@ -18,3 +18,6 @@ experiments/**/audio/
 
 # Registros de corridas largas (experiments/)
 experiments/**/*.log
+
+# Caché de Whisper (experiments/)
+experiments/**/aligned_raw.json

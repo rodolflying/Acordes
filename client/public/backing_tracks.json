@@ -17,18 +17,6 @@
         "youtube_url": "https://www.youtube.com/watch?v=t_zDBSAiQ_M"
       }
     },
-    "https://acordes.lacuerda.net/ases_falsos/mi_ejercito-3.shtml": {
-      "Karaoke": {
-        "id": "kTOZOgkEIxw",
-        "title": "Ases Falsos - Mi ejercito | Karaoke con Letra",
-        "youtube_url": "https://www.youtube.com/watch?v=kTOZOgkEIxw"
-      },
-      "Instrumental": {
-        "id": "QktRXb56lO4",
-        "title": "Ases Falsos - Mi ejercito | Instrumental (Sin Voces)",
-        "youtube_url": "https://www.youtube.com/watch?v=QktRXb56lO4"
-      }
-    },
     "https://acordes.lacuerda.net/lucybell/familiar.shtml": {
       "Karaoke": {
         "id": "p2UjVxa6tF0",
@@ -434,23 +422,6 @@
         "youtube_url": "https://www.youtube.com/watch?v=Kzxi7Sp-Eu4"
       }
     },
-    "https://www.cifraclub.com/vance-joy/riptide/": {
-      "Karaoke": {
-        "id": "tYg9kFzpLis",
-        "title": "Vance Joy - Riptide | Karaoke with Lyrics",
-        "youtube_url": "https://www.youtube.com/watch?v=tYg9kFzpLis"
-      },
-      "Instrumental": {
-        "id": "q9rstNSTIo4",
-        "title": "Vance Joy - Riptide | Instrumental (No Vocals)",
-        "youtube_url": "https://www.youtube.com/watch?v=q9rstNSTIo4"
-      },
-      "Backtrack": {
-        "id": "B-QKU_8F2fc",
-        "title": "Vance Joy - Riptide | Backtrack",
-        "youtube_url": "https://www.youtube.com/watch?v=B-QKU_8F2fc"
-      }
-    },
     "https://www.cifraclub.com/kidd-voodoo/angeles/": {
       "Karaoke": {
         "id": "Hs4cU-RH2Jk",
@@ -551,23 +522,6 @@
         "id": "R1SY9RN0HY4",
         "title": "Billie Eilish - CHIHIRO | Backtrack",
         "youtube_url": "https://www.youtube.com/watch?v=R1SY9RN0HY4"
-      }
-    },
-    "https://www.cifraclub.com/oliver-tree/hurt/": {
-      "Karaoke": {
-        "id": "-5kSB2Jkblw",
-        "title": "Oliver Tree - Hurt | Karaoke with Lyrics",
-        "youtube_url": "https://www.youtube.com/watch?v=-5kSB2Jkblw"
-      },
-      "Instrumental": {
-        "id": "dWSQjpsNkPI",
-        "title": "Oliver Tree - Hurt | Instrumental (No Vocals)",
-        "youtube_url": "https://www.youtube.com/watch?v=dWSQjpsNkPI"
-      },
-      "Backtrack": {
-        "id": "_MjvlxCdTEY",
-        "title": "Oliver Tree - Hurt | Backtrack",
-        "youtube_url": "https://www.youtube.com/watch?v=_MjvlxCdTEY"
       }
     },
     "https://www.cifraclub.com/oliver-tree/alien-boy/": {
@@ -776,13 +730,6 @@
         "youtube_url": "https://www.youtube.com/watch?v=x_UzPZuS2a8"
       }
     },
-    "https://www.cifraclub.com/los-autenticos-decadentes/corazon/": {
-      "Karaoke": {
-        "id": "ighAHtVFhxs",
-        "title": "Los Autenticos Decadentes - Corazon | Karaoke con Letra",
-        "youtube_url": "https://www.youtube.com/watch?v=ighAHtVFhxs"
-      }
-    },
     "https://www.cifraclub.com/los-bunkers/llueve-sobre-la-ciudad/": {
       "Karaoke": {
         "id": "i9GkqJabukw",
@@ -917,23 +864,6 @@
         "id": "RulPwdA4Aw4",
         "title": "Oliver Tree - Miracle Man | Backtrack",
         "youtube_url": "https://www.youtube.com/watch?v=RulPwdA4Aw4"
-      }
-    },
-    "https://acordes.lacuerda.net/rosalia/la_perla.shtml": {
-      "Karaoke": {
-        "id": "rfJNr_Zh9Is",
-        "title": "ROSALIA - La Perla ft Yahritza Y Su Esencia | Karaoke con Letra",
-        "youtube_url": "https://www.youtube.com/watch?v=rfJNr_Zh9Is"
-      },
-      "Instrumental": {
-        "id": "Wcz4_DmLCmQ",
-        "title": "ROSALIA - La Perla ft Yahritza Y Su Esencia | Instrumental (Sin Voces)",
-        "youtube_url": "https://www.youtube.com/watch?v=Wcz4_DmLCmQ"
-      },
-      "Backtrack": {
-        "id": "e1xSBzYYVBw",
-        "title": "ROSALIA - La Perla ft Yahritza Y Su Esencia | Backtrack",
-        "youtube_url": "https://www.youtube.com/watch?v=e1xSBzYYVBw"
       }
     },
     "https://www.cifraclub.com/rayos-laser/ya-me-hiciste-mal/": {

@@ -19,7 +19,7 @@
   },
   "desfase_voz": {
    "segundos": 0.5,
-   "ancho": 0.4,
+   "ancho": 0.5,
    "inicios_sin_corregir": 0.051,
    "inicios_corregido": 0.673,
    "reentradas": 0.54
@@ -72,14 +72,14 @@
   "hoja_suena_desde": 0,
   "hoja_suena_hasta": 197,
   "desfase_acordes": {
-   "segundos": -0.1,
+   "segundos": -1.3,
    "calce": 0.703,
-   "calce_sin_corregir": 0.701,
+   "calce_sin_corregir": 0.683,
    "nitidez": 0.027
   },
   "desfase_voz": {
    "segundos": 1.2,
-   "ancho": 0.35,
+   "ancho": 3.8,
    "inicios_sin_corregir": -0.065,
    "inicios_corregido": 0.364,
    "reentradas": 1.29
@@ -148,17 +148,17 @@
   "hoja_suena_desde": 0,
   "hoja_suena_hasta": 383,
   "desfase_acordes": {
-   "segundos": 1.6,
+   "segundos": -0.1,
    "calce": 0.659,
-   "calce_sin_corregir": 0.601,
-   "nitidez": 0.029
+   "calce_sin_corregir": 0.657,
+   "nitidez": 0.016
   },
   "desfase_voz": {
    "segundos": 1.7,
-   "ancho": 0.35,
+   "ancho": 0.4,
    "inicios_sin_corregir": -0.04,
    "inicios_corregido": 0.627,
-   "reentradas": 1.57
+   "reentradas": 1.56
   },
   "acordes": [
    {
@@ -225,11 +225,11 @@
    "nitidez": 0.009
   },
   "desfase_voz": {
-   "segundos": 10.0,
-   "ancho": 0.45,
+   "segundos": 21.4,
+   "ancho": 0.65,
    "inicios_sin_corregir": 0.093,
-   "inicios_corregido": 0.044,
-   "reentradas": 9.85
+   "inicios_corregido": 0.4,
+   "reentradas": 21.38
   },
   "acordes": [
    {
@@ -320,11 +320,11 @@
   "hoja_suena_hasta": 215,
   "desfase_acordes": null,
   "desfase_voz": {
-   "segundos": 9.25,
-   "ancho": 4.05,
+   "segundos": 11.1,
+   "ancho": 8.2,
    "inicios_sin_corregir": -0.043,
-   "inicios_corregido": 0.123,
-   "reentradas": 8.63
+   "inicios_corregido": 0.119,
+   "reentradas": 10.47
   },
   "acordes": [
    {
@@ -501,11 +501,11 @@
    "nitidez": 0.011
   },
   "desfase_voz": {
-   "segundos": -6.7,
-   "ancho": 6.55,
+   "segundos": -32.05,
+   "ancho": 4.75,
    "inicios_sin_corregir": 0.024,
-   "inicios_corregido": 0.042,
-   "reentradas": -6.64
+   "inicios_corregido": 0.118,
+   "reentradas": -31.95
   },
   "acordes": [
    {
@@ -570,7 +570,7 @@
   },
   "desfase_voz": {
    "segundos": -8.85,
-   "ancho": 7.35,
+   "ancho": 7.4,
    "inicios_sin_corregir": -0.036,
    "inicios_corregido": 0.505,
    "reentradas": -8.87
@@ -719,10 +719,10 @@
   },
   "desfase_voz": {
    "segundos": 6.25,
-   "ancho": 14.6,
+   "ancho": 45.15,
    "inicios_sin_corregir": -0.018,
    "inicios_corregido": 0.08,
-   "reentradas": 3.35
+   "reentradas": 5.56
   },
   "acordes": [
    {
@@ -779,7 +779,7 @@
   },
   "desfase_voz": {
    "segundos": 0.45,
-   "ancho": 2.9,
+   "ancho": 5.4,
    "inicios_sin_corregir": 0.017,
    "inicios_corregido": 0.242,
    "reentradas": 0.2
@@ -863,10 +863,10 @@
   },
   "desfase_voz": {
    "segundos": 0.55,
-   "ancho": 0.3,
+   "ancho": 0.35,
    "inicios_sin_corregir": -0.11,
    "inicios_corregido": 0.658,
-   "reentradas": 0.62
+   "reentradas": 0.61
   },
   "acordes": [
    {
@@ -950,7 +950,7 @@
    "ancho": 0.4,
    "inicios_sin_corregir": -0.042,
    "inicios_corregido": 0.611,
-   "reentradas": 0.72
+   "reentradas": 0.73
   },
   "acordes": [
    {
@@ -1015,10 +1015,10 @@
   },
   "desfase_voz": {
    "segundos": 0.3,
-   "ancho": 0.9,
+   "ancho": 1.25,
    "inicios_sin_corregir": 0.237,
    "inicios_corregido": 0.27,
-   "reentradas": -0.01
+   "reentradas": 0.04
   },
   "acordes": [
    {
@@ -1059,10 +1059,10 @@
   },
   "desfase_voz": {
    "segundos": 0.5,
-   "ancho": 3.0,
+   "ancho": 3.05,
    "inicios_sin_corregir": 0.028,
    "inicios_corregido": 0.242,
-   "reentradas": -0.24
+   "reentradas": -0.09
   },
   "acordes": [
    {
@@ -1151,7 +1151,7 @@
   },
   "desfase_voz": {
    "segundos": 0.3,
-   "ancho": 0.4,
+   "ancho": 0.5,
    "inicios_sin_corregir": 0.126,
    "inicios_corregido": 0.393,
    "reentradas": 0.4
@@ -1220,17 +1220,17 @@
   "hoja_suena_desde": 0,
   "hoja_suena_hasta": 256,
   "desfase_acordes": {
-   "segundos": -1.6,
-   "calce": 0.849,
-   "calce_sin_corregir": 0.743,
-   "nitidez": 0.03
+   "segundos": -6.7,
+   "calce": 0.847,
+   "calce_sin_corregir": 0.792,
+   "nitidez": 0.013
   },
   "desfase_voz": {
    "segundos": 5.15,
-   "ancho": 0.4,
+   "ancho": 0.45,
    "inicios_sin_corregir": -0.036,
    "inicios_corregido": 0.262,
-   "reentradas": 4.85
+   "reentradas": 5.05
   },
   "acordes": [
    {
@@ -1310,11 +1310,11 @@
    "nitidez": 0.003
   },
   "desfase_voz": {
-   "segundos": 9.0,
-   "ancho": 1.2,
+   "segundos": 20.3,
+   "ancho": 0.5,
    "inicios_sin_corregir": 0.113,
-   "inicios_corregido": 0.123,
-   "reentradas": 8.67
+   "inicios_corregido": 0.526,
+   "reentradas": 20.39
   },
   "acordes": [
    {
@@ -1388,17 +1388,17 @@
   "hoja_suena_desde": 0,
   "hoja_suena_hasta": 233,
   "desfase_acordes": {
-   "segundos": 7.2,
-   "calce": 0.807,
-   "calce_sin_corregir": 0.775,
-   "nitidez": 0.031
+   "segundos": -0.0,
+   "calce": 0.806,
+   "calce_sin_corregir": 0.806,
+   "nitidez": 0.001
   },
   "desfase_voz": {
-   "segundos": 7.25,
-   "ancho": 0.35,
+   "segundos": 14.7,
+   "ancho": 0.45,
    "inicios_sin_corregir": 0.022,
-   "inicios_corregido": 0.29,
-   "reentradas": 7.36
+   "inicios_corregido": 0.437,
+   "reentradas": 14.9
   },
   "acordes": [
    {
@@ -1455,7 +1455,7 @@
   },
   "desfase_voz": {
    "segundos": 0.35,
-   "ancho": 0.4,
+   "ancho": 0.55,
    "inicios_sin_corregir": 0.196,
    "inicios_corregido": 0.546,
    "reentradas": 0.29
@@ -1516,17 +1516,17 @@
   "hoja_suena_desde": 0,
   "hoja_suena_hasta": 303,
   "desfase_acordes": {
-   "segundos": 1.3,
+   "segundos": 0.2,
    "calce": 0.85,
-   "calce_sin_corregir": 0.748,
+   "calce_sin_corregir": 0.845,
    "nitidez": 0.029
   },
   "desfase_voz": {
    "segundos": 1.1,
-   "ancho": 0.6,
+   "ancho": 5.15,
    "inicios_sin_corregir": -0.031,
    "inicios_corregido": 0.258,
-   "reentradas": 0.91
+   "reentradas": 1.0
   },
   "acordes": [
    {
@@ -1568,17 +1568,17 @@
   "hoja_suena_desde": 0,
   "hoja_suena_hasta": 227,
   "desfase_acordes": {
-   "segundos": 3.3,
-   "calce": 0.891,
-   "calce_sin_corregir": 0.604,
-   "nitidez": 0.064
+   "segundos": -0.4,
+   "calce": 0.892,
+   "calce_sin_corregir": 0.874,
+   "nitidez": 0.037
   },
   "desfase_voz": {
    "segundos": 3.85,
-   "ancho": 0.3,
+   "ancho": 0.4,
    "inicios_sin_corregir": -0.007,
    "inicios_corregido": 0.33,
-   "reentradas": 3.87
+   "reentradas": 3.86
   },
   "acordes": [
    {
@@ -1683,10 +1683,10 @@
   },
   "desfase_voz": {
    "segundos": 0.55,
-   "ancho": 0.3,
+   "ancho": 0.35,
    "inicios_sin_corregir": -0.11,
    "inicios_corregido": 0.658,
-   "reentradas": 0.62
+   "reentradas": 0.61
   },
   "acordes": [
    {
@@ -1770,7 +1770,7 @@
   },
   "desfase_voz": {
    "segundos": -0.1,
-   "ancho": 7.25,
+   "ancho": 14.25,
    "inicios_sin_corregir": 0.441,
    "inicios_corregido": 0.466,
    "reentradas": 0.17
@@ -1853,8 +1853,8 @@
    "nitidez": 0.002
   },
   "desfase_voz": {
-   "segundos": 0.0,
-   "ancho": 0.35,
+   "segundos": -0.0,
+   "ancho": 0.45,
    "inicios_sin_corregir": 0.516,
    "inicios_corregido": 0.516,
    "reentradas": 0.31
@@ -1969,7 +1969,7 @@
   },
   "desfase_voz": {
    "segundos": -0.9,
-   "ancho": 0.35,
+   "ancho": 0.4,
    "inicios_sin_corregir": -0.014,
    "inicios_corregido": 0.364,
    "reentradas": -0.6
@@ -2069,7 +2069,7 @@
   },
   "desfase_voz": {
    "segundos": 0.85,
-   "ancho": 8.0,
+   "ancho": 37.6,
    "inicios_sin_corregir": -0.026,
    "inicios_corregido": 0.01,
    "reentradas": 2.05
@@ -2130,14 +2130,14 @@
   "hoja_suena_desde": 0,
   "hoja_suena_hasta": 190,
   "desfase_acordes": {
-   "segundos": 0.7,
+   "segundos": -0.5,
    "calce": 0.952,
-   "calce_sin_corregir": 0.904,
+   "calce_sin_corregir": 0.944,
    "nitidez": 0.049
   },
   "desfase_voz": {
    "segundos": 1.2,
-   "ancho": 0.6,
+   "ancho": 0.75,
    "inicios_sin_corregir": -0.003,
    "inicios_corregido": 0.189,
    "reentradas": 1.74
@@ -2262,7 +2262,7 @@
   },
   "desfase_voz": {
    "segundos": 0.55,
-   "ancho": 0.5,
+   "ancho": 0.6,
    "inicios_sin_corregir": -0.015,
    "inicios_corregido": 0.3,
    "reentradas": 0.9
@@ -2349,7 +2349,7 @@
    "ancho": 0.3,
    "inicios_sin_corregir": 0.4,
    "inicios_corregido": 0.537,
-   "reentradas": 0.09
+   "reentradas": 0.12
   },
   "acordes": [
    {
@@ -2417,10 +2417,10 @@
   },
   "desfase_voz": {
    "segundos": 0.15,
-   "ancho": 0.3,
+   "ancho": 0.4,
    "inicios_sin_corregir": 0.368,
    "inicios_corregido": 0.477,
-   "reentradas": 0.44
+   "reentradas": 0.45
   },
   "acordes": [
    {
@@ -2469,10 +2469,10 @@
   },
   "desfase_voz": {
    "segundos": 0.25,
-   "ancho": 0.4,
+   "ancho": 3.45,
    "inicios_sin_corregir": 0.146,
    "inicios_corregido": 0.219,
-   "reentradas": 0.15
+   "reentradas": 0.16
   },
   "acordes": [
    {
@@ -2521,10 +2521,10 @@
   },
   "desfase_voz": {
    "segundos": 0.25,
-   "ancho": 0.4,
+   "ancho": 3.45,
    "inicios_sin_corregir": 0.146,
    "inicios_corregido": 0.219,
-   "reentradas": 0.15
+   "reentradas": 0.16
   },
   "acordes": [
    {
@@ -2576,10 +2576,10 @@
   },
   "desfase_voz": {
    "segundos": 0.05,
-   "ancho": 0.3,
+   "ancho": 0.4,
    "inicios_sin_corregir": 0.423,
    "inicios_corregido": 0.456,
-   "reentradas": 0.05
+   "reentradas": 0.08
   },
   "acordes": [
    {
@@ -2653,17 +2653,17 @@
   "hoja_suena_desde": 1,
   "hoja_suena_hasta": 223,
   "desfase_acordes": {
-   "segundos": -0.5,
+   "segundos": 4.5,
    "calce": 0.864,
-   "calce_sin_corregir": 0.856,
+   "calce_sin_corregir": 0.693,
    "nitidez": 0.056
   },
   "desfase_voz": {
    "segundos": -5.0,
-   "ancho": 0.6,
+   "ancho": 0.7,
    "inicios_sin_corregir": -0.08,
    "inicios_corregido": 0.215,
-   "reentradas": -4.76
+   "reentradas": -4.79
   },
   "acordes": [
    {
@@ -2792,10 +2792,10 @@
   },
   "desfase_voz": {
    "segundos": 0.15,
-   "ancho": 0.85,
+   "ancho": 0.9,
    "inicios_sin_corregir": 0.273,
    "inicios_corregido": 0.301,
-   "reentradas": -0.01
+   "reentradas": 0.02
   },
   "acordes": [
    {
@@ -2884,7 +2884,7 @@
   },
   "desfase_voz": {
    "segundos": 2.35,
-   "ancho": 4.2,
+   "ancho": 4.3,
    "inicios_sin_corregir": -0.019,
    "inicios_corregido": 0.457,
    "reentradas": 2.22
@@ -3037,11 +3037,11 @@
    "nitidez": 0.036
   },
   "desfase_voz": {
-   "segundos": 6.25,
+   "segundos": 12.2,
    "ancho": 0.5,
    "inicios_sin_corregir": -0.008,
-   "inicios_corregido": 0.163,
-   "reentradas": 4.9
+   "inicios_corregido": 0.446,
+   "reentradas": 12.21
   },
   "acordes": [
    {
@@ -3097,11 +3097,11 @@
    "nitidez": 0.003
   },
   "desfase_voz": {
-   "segundos": 8.25,
-   "ancho": 1.6,
+   "segundos": 40.0,
+   "ancho": 32.0,
    "inicios_sin_corregir": 0.042,
-   "inicios_corregido": 0.089,
-   "reentradas": 7.69
+   "inicios_corregido": 0.04,
+   "reentradas": 40.02
   },
   "acordes": [
    {
@@ -3205,11 +3205,11 @@
    "nitidez": 0.017
   },
   "desfase_voz": {
-   "segundos": -9.3,
-   "ancho": 3.35,
+   "segundos": -14.55,
+   "ancho": 7.95,
    "inicios_sin_corregir": -0.018,
-   "inicios_corregido": 0.061,
-   "reentradas": -9.07
+   "inicios_corregido": 0.256,
+   "reentradas": -14.43
   },
   "acordes": [
    {
@@ -3310,14 +3310,14 @@
   "hoja_suena_desde": 0,
   "hoja_suena_hasta": 252,
   "desfase_acordes": {
-   "segundos": 1.5,
+   "segundos": -0.2,
    "calce": 0.83,
-   "calce_sin_corregir": 0.737,
+   "calce_sin_corregir": 0.823,
    "nitidez": 0.072
   },
   "desfase_voz": {
    "segundos": 1.7,
-   "ancho": 0.5,
+   "ancho": 1.0,
    "inicios_sin_corregir": -0.044,
    "inicios_corregido": 0.317,
    "reentradas": 1.76
@@ -3393,10 +3393,10 @@
   },
   "desfase_voz": {
    "segundos": -3.75,
-   "ancho": 6.4,
+   "ancho": 8.55,
    "inicios_sin_corregir": -0.017,
    "inicios_corregido": 0.072,
-   "reentradas": -3.71
+   "reentradas": -3.64
   },
   "acordes": [
    {
@@ -3477,7 +3477,7 @@
   },
   "desfase_voz": {
    "segundos": 5.0,
-   "ancho": 6.1,
+   "ancho": 6.5,
    "inicios_sin_corregir": 0.045,
    "inicios_corregido": 0.056,
    "reentradas": 5.1
@@ -3601,7 +3601,7 @@
   },
   "desfase_voz": {
    "segundos": 0.9,
-   "ancho": 0.35,
+   "ancho": 0.4,
    "inicios_sin_corregir": -0.067,
    "inicios_corregido": 0.691,
    "reentradas": 0.87
@@ -3701,7 +3701,7 @@
   },
   "desfase_voz": {
    "segundos": 3.05,
-   "ancho": 4.15,
+   "ancho": 4.3,
    "inicios_sin_corregir": -0.043,
    "inicios_corregido": 0.485,
    "reentradas": 3.13
@@ -3761,7 +3761,7 @@
   },
   "desfase_voz": {
    "segundos": 0.6,
-   "ancho": 0.3,
+   "ancho": 0.35,
    "inicios_sin_corregir": -0.1,
    "inicios_corregido": 0.351,
    "reentradas": 0.83
@@ -3824,7 +3824,7 @@
   },
   "desfase_voz": {
    "segundos": 1.7,
-   "ancho": 7.1,
+   "ancho": 55.15,
    "inicios_sin_corregir": -0.027,
    "inicios_corregido": 0.243,
    "reentradas": 1.55
@@ -3904,10 +3904,10 @@
   "hoja_suena_desde": 0,
   "hoja_suena_hasta": 245,
   "desfase_acordes": {
-   "segundos": 2.9,
+   "segundos": -0.6,
    "calce": 0.786,
-   "calce_sin_corregir": 0.633,
-   "nitidez": 0.02
+   "calce_sin_corregir": 0.754,
+   "nitidez": 0.06
   },
   "desfase_voz": {
    "segundos": 3.5,
@@ -3979,10 +3979,10 @@
   },
   "desfase_voz": {
    "segundos": 0.35,
-   "ancho": 0.7,
+   "ancho": 3.3,
    "inicios_sin_corregir": 0.084,
    "inicios_corregido": 0.21,
-   "reentradas": 0.59
+   "reentradas": 0.56
   },
   "acordes": [
    {
@@ -4047,7 +4047,7 @@
   },
   "desfase_voz": {
    "segundos": 6.35,
-   "ancho": 1.0,
+   "ancho": 1.1,
    "inicios_sin_corregir": -0.008,
    "inicios_corregido": 0.236,
    "reentradas": 6.48
@@ -4119,14 +4119,14 @@
   "hoja_suena_desde": 0,
   "hoja_suena_hasta": 200,
   "desfase_acordes": {
-   "segundos": 4.8,
+   "segundos": 0.7,
    "calce": 0.797,
-   "calce_sin_corregir": 0.728,
-   "nitidez": 0.025
+   "calce_sin_corregir": 0.779,
+   "nitidez": 0.029
   },
   "desfase_voz": {
    "segundos": 4.1,
-   "ancho": 0.5,
+   "ancho": 0.6,
    "inicios_sin_corregir": 0.169,
    "inicios_corregido": 0.409,
    "reentradas": 4.13

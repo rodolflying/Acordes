@@ -7,7 +7,11 @@ precargada. Genera client/public/sync_points.json:
 La app usa esos puntos para avanzar línea a línea; sin ellos la hoja avanza en proporción
 al video.
 
-sync_offsets.json corrige canciones cuyo video va corrido respecto de la letra de LRCLIB:
+aligned_lyrics.json trae, para las canciones con video Karaoke, la misma letra de LRCLIB con los
+tiempos de tu video: Whisper ubicó cada línea en la voz guía (experiments/chord_check/align_lyrics.py).
+Así la hoja calza aunque el video tenga otra intro u otra edición del tema. Si ahí "lrc" es null, la
+letra de LRCLIB es de otra versión y la canción se queda con el avance proporcional al video.
+sync_offsets.json corrige, en las demás, un video corrido en bloque respecto de la letra de LRCLIB:
     { "<url de la canción>": {"segundos": 1.2, ...} }   (positivo: en el video se canta después)
 Lo genera experiments/chord_check/offsets.py midiendo la voz guía de tus karaokes.
 
@@ -29,6 +33,7 @@ ROOT = Path(__file__).parent
 PUBLIC = ROOT / 'client' / 'public'
 CACHE_FILE = ROOT / 'lrclib_cache.json'  # respuestas de LRCLIB, para no repetir descargas
 OFFSETS_FILE = ROOT / 'sync_offsets.json'  # desfase medido de cada video respecto de la letra
+ALIGNED_FILE = ROOT / 'aligned_lyrics.json'  # la letra con los tiempos reales de tu video
 
 SECTION = re.compile(r'^(intro|coro|estribillo|verso|puente|solo|final|outro|chorus|verse|bridge|'
                      r'pre ?coro|pre ?chorus|interludio|interlude|first part|second part|parte|tab|riff)\b')
@@ -164,6 +169,7 @@ def generate_sync_points():
     tracks = json.loads(tracks_path.read_text(encoding='utf-8'))['backing_tracks'] if tracks_path.exists() else {}
     cache = json.loads(CACHE_FILE.read_text(encoding='utf-8')) if CACHE_FILE.exists() else {}
     offsets = json.loads(OFFSETS_FILE.read_text(encoding='utf-8')) if OFFSETS_FILE.exists() else {}
+    aligned = json.loads(ALIGNED_FILE.read_text(encoding='utf-8')) if ALIGNED_FILE.exists() else {}
 
     # Solo importa en canciones con video: pistas de Karaokes o videos vinculados a mano
     urls = set(tracks) | {url for url, e in enriched.items() if e.get('youtube_video')}
@@ -172,12 +178,15 @@ def generate_sync_points():
         song, sheet = enriched.get(url), preloaded.get(url)
         if not song or not sheet or not sheet.get('content'):
             continue
-        lrc_text = fetch_synced_lyrics(song['artist'], song['title'], cache)
+        if url in aligned and aligned[url]['lrc'] is None:  # la letra de LRCLIB es de otra versión del tema
+            sin_letra.append(f"{song['title']} — {song['artist']} (letra de otra versión)")
+            continue
+        lrc_text = aligned[url]['lrc'] if url in aligned else fetch_synced_lyrics(song['artist'], song['title'], cache)
         lrc = parse_lrc(lrc_text) if lrc_text else []
         points = align(lrc, sheet_lyric_lines(sheet['content'])) if lrc else []
         # Una letra que casi no calza con la hoja es otra versión (u otra canción): mejor el modo aproximado
         if len(points) >= 8 and len(points) >= 0.5 * len(lrc):
-            shift = offsets.get(url, {}).get('segundos', 0)
+            shift = 0 if url in aligned else offsets.get(url, {}).get('segundos', 0)
             sync_points[url] = [[round(t + shift, 2), line] for t, line in points]
         else:
             sin_letra.append(f"{song['title']} — {song['artist']}")
@@ -185,7 +194,8 @@ def generate_sync_points():
     CACHE_FILE.write_text(json.dumps(cache, ensure_ascii=False), encoding='utf-8')
     (PUBLIC / 'sync_points.json').write_text(json.dumps(sync_points, ensure_ascii=False), encoding='utf-8')
     print(f"Se generó sync_points.json: {len(sync_points)} de {len(urls)} canciones con video sincronizadas línea a línea"
-          f" ({sum(url in offsets for url in sync_points)} con desfase del video corregido)")
+          f" ({sum(url in aligned for url in sync_points)} con los tiempos de tu video,"
+          f" {sum(url in offsets and url not in aligned for url in sync_points)} con desfase corregido en bloque)")
     if sin_letra:
         print("  Sin letra con tiempos (quedan en modo aproximado): " + ', '.join(sin_letra))
 

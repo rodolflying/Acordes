@@ -1,21 +1,25 @@
 # Backlog - Acordes
 
 ## 🌟 Focus (Esta Semana)
-- [ ] Videos caídos: Mi Ejército, Riptide, Corazón y La Perla (las 3 versiones "no disponible") y Hurt (pide confirmar edad): el reproductor no funciona en el sitio <!-- priority: HIGH, type: FIX, est: 30 -->
+- [ ] Re-subir o reemplazar los karaokes caídos (Mi Ejército, Riptide, Corazón, La Perla) y subir Hurt sin restricción de edad; después `python check_videos.py` y el pipeline <!-- priority: MEDIUM, type: FIX, est: 30 -->
 - [ ] Renovar la clave de Qwen (DashScope responde 401: el mood y la temática caen al respaldo genérico) y reclasificar las ~60 canciones con "Reflexivo / Existencial / Media" <!-- priority: MEDIUM, type: FIX, est: 20 -->
 
 ## 📋 Backlog General
+- [ ] Corregir acordes mal escritos que el audio detecta (Fénix: D suena Dm), dejando la hoja original como alternativa <!-- priority: MEDIUM, type: FEATURE, est: 60 -->
+- [ ] Canciones que Whisper no pudo alinear y siguen con los tiempos de LRCLIB (Nada Nuevo Bajo el Sol, Sign of the Times, M.A.I, Mil Derrotas): revisar con 🎯 o alinear por tramos <!-- priority: LOW, type: FIX, est: 30 -->
 - [ ] Ofrecer el tono del video: transposición medida cuando la hoja está en otro tono (Talk Is Cheap +3, Mr. Brightside y Turista −1) <!-- priority: MEDIUM, type: FEATURE, est: 30 -->
 - [ ] Probar una red neuronal ya entrenada (BTC o Basic Pitch) para reconocer acordes y compararla con el método de plantillas <!-- priority: MEDIUM, type: FEATURE, est: 90 -->
-- [ ] Desfases dudosos (la letra con tiempos es de otra edición del tema): Fix You, The A Team, Virtual Insanity, Familiar, Going Shopping, Nada Nuevo, No Me Hables de Sufrir <!-- priority: LOW, type: FIX, est: 30 -->
 - [ ] Acordes versión propia: generar o corregir hojas desde el audio, dejando la original como versión alternativa <!-- priority: MEDIUM, type: FEATURE, est: 120 -->
-- [ ] Exportar desde el proyecto Karaokes los tiempos de `stable_whisper` de cada video (JSON por canción): sincronía exacta sin calibrar, también para los 15 videos que no duran lo mismo que la grabación original <!-- priority: MEDIUM, type: FEATURE, est: 60 -->
 - [ ] Desarrollar módulo de extracción y generación automática de tablaturas musicalizadas <!-- priority: MEDIUM, type: FEATURE, est: 60 -->
 - [ ] Optimizar almacenamiento y búsqueda rápida en chords_db.json y enriched_songs.json <!-- priority: MEDIUM, type: REFACTOR, est: 45 -->
 - [ ] Integrar pruebas unitarias para el motor enricher.py (ya hay tests del parser de nombres en `tests/test_enricher.py`) <!-- priority: LOW, type: DEV, est: 30 -->
 - [ ] Bajar efectos visuales: un solo protagonista (íconos celestes o fondo 3D), notas flotantes fuera del texto, sin blur en las tarjetas <!-- priority: MEDIUM, type: UX, est: 45 -->
 
 ## ✅ Completadas
+- [x] Letra alineada con Whisper en la voz guía de cada karaoke (`experiments/chord_check/align_lyrics.py` → `aligned_lyrics.json`): 39 canciones con cada línea en su tiempo real del video, aunque el video tenga otra intro (Familiar +21 s, The A Team +20 s, Pompeii +15 s) u otra edición. Corrigió dos corrimientos en bloque que eran falsos calces (Pompeii +7 s, Niño −5 s). 5 canciones con letra de otra versión vuelven al avance proporcional <!-- priority: HIGH, type: FIX, done: 2026-10-16 -->
+- [x] Acordes completados donde la hoja dice "igual que arriba" (`complete_chords.py`, paso del pipeline): 41 canciones, 83 líneas por bloque repetido (mismo rótulo o letra parecida), 110 por línea repetida y 16 oídas en tu video, solo donde el audio acierta ≥ 75% en las líneas que sí traen acordes. Se ven subrayados y la hoja original queda en `content_original` <!-- priority: HIGH, type: FEATURE, done: 2026-10-16 -->
+- [x] Videos caídos fuera del sitio (`check_videos.py` → `unavailable_videos.json`): Mi Ejército, Riptide, Corazón, La Perla y Hurt ya no muestran un reproductor roto <!-- priority: HIGH, type: FIX, done: 2026-10-16 -->
+- [x] Se pinta lo que suena (idea de "Escuchar artículo" del blog): la línea que se canta se ilumina junto con su línea de acordes, el acorde que suena brilla, una barra avanza bajo la letra y la hoja queda quieta, dando vuelta la página cuando la línea iluminada llega a los 3/4 de la pantalla. Intro y solos (líneas solo de acordes) se reparten el hueco entre líneas cantadas <!-- priority: HIGH, type: UX, done: 2026-10-16 -->
 - [x] Sincronía robusta al zoom (Ctrl +/−), al tamaño de ventana y a A+/A−: el reacomodo de la página ya no se confunde con mover la hoja a mano, que la dejaba corrida (~45 líneas en el celular con A+). En el celular la barra de Reproducir queda entre la hoja y el video, sin tapar las versiones ni esconderse bajo la barra del navegador. Medido: la línea que se canta queda a 0–3 px de la altura de lectura en 375, 960, 1280 y 1700 px de ancho <!-- priority: HIGH, type: FIX, done: 2026-10-16 -->
 - [x] Desfase de la letra auto-calibrado con la voz guía de tus karaokes (`sync_offsets.json`, lo aplica `lyrics_sync.py`): 11 canciones corregidas (Fénix +1,2 s, Pompeii +7,25 s, Clocks +5,15 s, Niño −5 s…), cada una confirmada por dos mediciones independientes <!-- priority: HIGH, type: FEATURE, done: 2026-10-16 -->
 - [x] Fact-check de acordes en las 54 canciones con pista disponible (`experiments/chord_check/batch.py`): stem other + bajo separado con Demucs (da lo mismo que el stem real), tono que calza, acordes que suenan distinto y ranking de hojas <!-- priority: HIGH, type: FEATURE, done: 2026-10-16 -->

@@ -155,7 +155,7 @@ def anchored_offset(C, voiced, content, sync_points, k, best_any, span=8.0):
     return float(shifts[i]), float(scores[i]), float(scores[np.argmin(np.abs(shifts))]), sharpness
 
 
-def vocal_offset(vocal, lrc_times, span=10.0):
+def vocal_offset(vocal, lrc_times, span=40.0):
     """Desfase de la letra con tiempos (LRCLIB) respecto del video, medido con la voz guía del Karaoke.
 
     Se corre la letra en bloque entre -span y +span s y se compara con la voz de dos formas: cada línea
@@ -193,7 +193,8 @@ def vocal_offset(vocal, lrc_times, span=10.0):
 
 def reentry_offset(vocal, lrc_times, shift):
     """Comprobación independiente del desfase: dónde vuelve a entrar la voz después de cada pausa
-    larga de la letra (y al principio), tomando la entrada más cercana a `shift`. Devuelve la mediana."""
+    larga de la letra (y al principio), tomando la entrada más cercana a `shift`. Devuelve la mediana.
+    Un video puede tener mucha más intro que la grabación de la letra (Familiar: 21 s)."""
     lv = scipy.ndimage.gaussian_filter1d(np.log(vocal + 1e-4), 2)
     on = lv > np.percentile(lv, 30) + 0.5 * (np.percentile(lv, 90) - np.percentile(lv, 30))
     starts = np.where(on[1:] & ~on[:-1])[0] * FRAME + FRAME
@@ -201,7 +202,7 @@ def reentry_offset(vocal, lrc_times, shift):
     entries = [pts[0]] + [b for a, b in zip(pts, pts[1:]) if b - a >= 4]
     deltas = []
     for t in entries:
-        cand = starts[np.abs(starts - t) < 12] - t
+        cand = starts[np.abs(starts - t - shift) < 4] - t
         if len(cand):
             deltas.append(cand[np.argmin(np.abs(cand - shift))])
     return float(np.median(deltas)) if deltas else None

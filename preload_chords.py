@@ -76,6 +76,11 @@ def main():
     # Generar backing_tracks.json en la carpeta pública del cliente
     generate_backing_tracks()
 
+    # Acordes que la hoja escribe una sola vez ("igual que arriba"); antes de los tiempos de letra,
+    # que se ubican en la hoja ya completada
+    from complete_chords import main as complete_chords
+    complete_chords()
+
     # Tiempos de cada línea de la letra, para que la hoja siga al video línea a línea
     from lyrics_sync import generate_sync_points
     generate_sync_points()
@@ -148,7 +153,13 @@ def generate_backing_tracks():
     walk_nodes(songs_data)
     
     backing_tracks_map = {}
-    
+    # Videos que YouTube ya no deja ver (bajados, privados o con restricción de edad): reproductor roto
+    unavailable_path = os.path.join(root_dir, 'unavailable_videos.json')
+    unavailable = {}
+    if os.path.exists(unavailable_path):
+        with open(unavailable_path, 'r', encoding='utf-8') as f:
+            unavailable = json.load(f)
+
     for url, name in url_to_name.items():
         enriched = enriched_data.get("songs", {}).get(url, {})
         artist = enriched.get("artist")
@@ -165,7 +176,7 @@ def generate_backing_tracks():
 
         candidate_tracks = {}
         for key, info in uploads.items():
-            if info.get("status") != "uploaded" or "video_id" not in info:
+            if info.get("status") != "uploaded" or "video_id" not in info or info["video_id"] in unavailable:
                 continue
             if '/' not in key:
                 continue
