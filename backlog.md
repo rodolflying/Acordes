@@ -1,8 +1,7 @@
 # Backlog - Acordes
 
 ## 🌟 Focus (Esta Semana)
-- [ ] Diseñar pipeline de actualización automática para ingesta de acordes y sincronización con videos de YouTube <!-- priority: HIGH, type: FEATURE, est: 60 -->
-- [ ] Implementar script de carga masiva para canciones personales y repertorio karaokeable <!-- priority: HIGH, type: FEATURE, est: 45 -->
+- [ ] Renovar la clave de Qwen (DashScope responde 401: el mood y la temática caen al respaldo genérico) y reclasificar las ~60 canciones con "Reflexivo / Existencial / Media" <!-- priority: MEDIUM, type: FIX, est: 20 -->
 
 ## 📋 Backlog General
 - [ ] Exportar desde el proyecto Karaokes los tiempos de `stable_whisper` de cada video (JSON por canción): sincronía exacta sin calibrar, también para los 15 videos que no duran lo mismo que la grabación original <!-- priority: MEDIUM, type: FEATURE, est: 60 -->
@@ -12,6 +11,8 @@
 - [ ] Bajar efectos visuales: un solo protagonista (íconos celestes o fondo 3D), notas flotantes fuera del texto, sin blur en las tarjetas <!-- priority: MEDIUM, type: UX, est: 45 -->
 
 ## ✅ Completadas
+- [x] Pipeline de actualización en 4 pasos (`Actualizar-Acordes`): marcadores → canciones de tus karaokes → enriquecimiento → acordes, pistas y tiempos de letra. Nombre desde la URL para marcadores sin nombre útil, LaCuerda baja el `.shtml` de las páginas índice y el emparejador de karaokes tolera "(Acoustic version)", "M.A.I" y "30/Thirty" (43 → 64 canciones con pista) <!-- priority: HIGH, type: FEATURE, done: 2026-10-14 -->
+- [x] Carga masiva del repertorio karaokeable (`karaoke_songs.py`): busca en Cifra Club y LaCuerda la hoja de cada karaoke subido sin marcador; 21 de 39 encontradas, 20 confirmadas por la letra. Karaokes visibles en la app: 35 → 59 de 77 <!-- priority: HIGH, type: FEATURE, done: 2026-10-14 -->
 - [x] Solo páginas de acordes y una tarjeta por canción: fuera los 33 marcadores que no son canciones (herramientas, tiendas, videos) y las 11 canciones guardadas dos veces (móvil/escritorio, .com/.com.br, dos sitios), conservando la versión con pista, letra con tiempos o acordes. De 261 tarjetas a 213 canciones <!-- priority: MEDIUM, type: FIX, done: 2026-10-14 -->
 - [x] Sincronización real, línea a línea: `lyrics_sync.py` baja la letra con tiempos de LRCLIB y la alinea con cada hoja (alineación global con repeticiones, con tests); 40 de 41 canciones con video. La línea de lectura queda bajo el header fijo, la hoja tiene espacio al final y la calibración 🎯 (tocar la línea que suena) guarda el desfase de los videos que no duran lo mismo que la grabación (15 de 34) <!-- priority: HIGH, type: FEATURE, done: 2026-10-12 -->
 - [x] Móvil: filtros plegables (primera canción de y=1.224 a y=522), botones del header en grilla (¿Qué cantar? ya no se sale), visor con botones de ícono (Cerrar visible), "atrás" del celular cierra la canción, panel de video compacto (400 → 313 px), hoja con todo el ancho (de ~40 a 50 caracteres por línea) y control A−/A+ del tamaño de letra <!-- priority: HIGH, type: UX, done: 2026-10-12 -->

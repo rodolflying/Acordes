@@ -109,6 +109,18 @@
         "youtube_url": "https://www.youtube.com/watch?v=BD6rHmdzn7I"
       }
     },
+    "https://www.cifraclub.com/30-seconds-to-mars/a-modern-myth-acustica/": {
+      "Karaoke": {
+        "id": "HZicaBu45y4",
+        "title": "30 Seconds to Mars - A Modern Myth | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=HZicaBu45y4"
+      },
+      "Instrumental": {
+        "id": "PF5fCWJc6g4",
+        "title": "30 Seconds to Mars - A Modern Myth | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=PF5fCWJc6g4"
+      }
+    },
     "https://www.cifraclub.com/30-seconds-to-mars/beautiful-lie/": {
       "Karaoke": {
         "id": "Li17K5ycr9Q",
@@ -192,6 +204,18 @@
         "id": "curu5Mhqy6E",
         "title": "Arctic Monkeys - 505 | Backtrack",
         "youtube_url": "https://www.youtube.com/watch?v=curu5Mhqy6E"
+      }
+    },
+    "https://chordify.net/chords/times-of-grace-songs/willing-acoustic-version-chords": {
+      "Karaoke": {
+        "id": "Wf7W5qhEg9k",
+        "title": "Times of Grace - Willing | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=Wf7W5qhEg9k"
+      },
+      "Instrumental": {
+        "id": "7UkKOjpQS-s",
+        "title": "Times of Grace - Willing | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=7UkKOjpQS-s"
       }
     },
     "https://acordes.lacuerda.net/smitten/bitacora-2.shtml": {
@@ -444,6 +468,23 @@
         "youtube_url": "https://www.youtube.com/watch?v=2reyEaMng0U"
       }
     },
+    "https://www.cifraclub.com/milo-j/m-a-i/": {
+      "Karaoke": {
+        "id": "jSxUClW6EAg",
+        "title": "MILO J - M A I | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=jSxUClW6EAg"
+      },
+      "Instrumental": {
+        "id": "_AuMOCWNKu0",
+        "title": "MILO J - M A I | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=_AuMOCWNKu0"
+      },
+      "Backtrack": {
+        "id": "HrcPEEqNKuQ",
+        "title": "MILO J - M A I | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=HrcPEEqNKuQ"
+      }
+    },
     "https://www.cifraclub.com/milo-j/tu-manta/": {
       "Karaoke": {
         "id": "kQNIvEGdH5o",
@@ -459,6 +500,23 @@
         "id": "qokqfOX8-cI",
         "title": "MILO J - TU MANTA | Backtrack",
         "youtube_url": "https://www.youtube.com/watch?v=qokqfOX8-cI"
+      }
+    },
+    "https://www.cifraclub.com/milo-j/el-bolero/": {
+      "Karaoke": {
+        "id": "c--Ew6-P2zA",
+        "title": "Yami Safdie Milo J - El Bolero | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=c--Ew6-P2zA"
+      },
+      "Instrumental": {
+        "id": "RQrij92y0bE",
+        "title": "Yami Safdie Milo J - El Bolero | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=RQrij92y0bE"
+      },
+      "Backtrack": {
+        "id": "Kzxi7Sp-Eu4",
+        "title": "Yami Safdie Milo J - El Bolero | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=Kzxi7Sp-Eu4"
       }
     },
     "https://www.cifraclub.com/fother-muckers/explorador/#key=10": {
@@ -641,6 +699,343 @@
         "id": "OhVhsTVE-b8",
         "title": "BAD BUNNY - TURiSTA | Backtrack",
         "youtube_url": "https://www.youtube.com/watch?v=OhVhsTVE-b8"
+      }
+    },
+    "https://www.cifraclub.com/los-bunkers/bailando-solo/": {
+      "Karaoke": {
+        "id": "VasxtGxGMyQ",
+        "title": "Bailando Solo - Los Bunkers | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=VasxtGxGMyQ"
+      },
+      "Instrumental": {
+        "id": "1eWvExAELC0",
+        "title": "Bailando Solo - Los Bunkers | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=1eWvExAELC0"
+      },
+      "Backtrack": {
+        "id": "ap3eQLDprTI",
+        "title": "Bailando Solo - Los Bunkers | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=ap3eQLDprTI"
+      }
+    },
+    "https://www.cifraclub.com/chet-faker/talk-is-cheap/": {
+      "Instrumental": {
+        "id": "lzoD-IVxGhU",
+        "title": "Chet Faker - Talk Is Cheap | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=lzoD-IVxGhU"
+      }
+    },
+    "https://www.cifraclub.com/fother-muckers/2022/": {
+      "Karaoke": {
+        "id": "5W83sbSaeX0",
+        "title": "FOTHER MUCKERS - 2022 | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=5W83sbSaeX0"
+      },
+      "Instrumental": {
+        "id": "wz4GcnRQIBA",
+        "title": "FOTHER MUCKERS - 2022 | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=wz4GcnRQIBA"
+      },
+      "Backtrack": {
+        "id": "_H07M8AGLYo",
+        "title": "FOTHER MUCKERS - 2022 | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=_H07M8AGLYo"
+      }
+    },
+    "https://www.cifraclub.com/fother-muckers/aunque-todo-salio-mal/": {
+      "Karaoke": {
+        "id": "2RrGmnJJBvY",
+        "title": "Fother Muckers - Aunque todo salio mal | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=2RrGmnJJBvY"
+      },
+      "Instrumental": {
+        "id": "lHYy9zZpyNM",
+        "title": "Fother Muckers - Aunque todo salio mal | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=lHYy9zZpyNM"
+      },
+      "Backtrack": {
+        "id": "eoGjOOKjN5M",
+        "title": "Fother Muckers - Aunque todo salio mal | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=eoGjOOKjN5M"
+      }
+    },
+    "https://www.cifraclub.com/jamiroquai/virtual-insanity/": {
+      "Karaoke": {
+        "id": "lXD_-qI-mPA",
+        "title": "Jamiroquai - Virtual Insanity | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=lXD_-qI-mPA"
+      },
+      "Instrumental": {
+        "id": "214VZe4vwig",
+        "title": "Jamiroquai - Virtual Insanity | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=214VZe4vwig"
+      },
+      "Backtrack": {
+        "id": "x_UzPZuS2a8",
+        "title": "Jamiroquai - Virtual Insanity | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=x_UzPZuS2a8"
+      }
+    },
+    "https://www.cifraclub.com/los-autenticos-decadentes/corazon/": {
+      "Karaoke": {
+        "id": "ighAHtVFhxs",
+        "title": "Los Autenticos Decadentes - Corazon | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=ighAHtVFhxs"
+      }
+    },
+    "https://www.cifraclub.com/los-bunkers/llueve-sobre-la-ciudad/": {
+      "Karaoke": {
+        "id": "i9GkqJabukw",
+        "title": "Los Bunkers - Llueve Sobre La Ciudad | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=i9GkqJabukw"
+      },
+      "Instrumental": {
+        "id": "XVyGjC9cUus",
+        "title": "Los Bunkers - Llueve Sobre La Ciudad | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=XVyGjC9cUus"
+      },
+      "Backtrack": {
+        "id": "Wd40SvEoo9A",
+        "title": "Los Bunkers - Llueve Sobre La Ciudad | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=Wd40SvEoo9A"
+      }
+    },
+    "https://www.cifraclub.com/los-bunkers/nada-nuevo-bajo-el-sol/": {
+      "Karaoke": {
+        "id": "scC79T8oqAQ",
+        "title": "Los Bunkers - Nada Nuevo Bajo el Sol | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=scC79T8oqAQ"
+      },
+      "Instrumental": {
+        "id": "xSBxR9gIIcQ",
+        "title": "Los Bunkers - Nada Nuevo Bajo el Sol | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=xSBxR9gIIcQ"
+      },
+      "Backtrack": {
+        "id": "3oFD1bwyUGk",
+        "title": "Los Bunkers - Nada Nuevo Bajo el Sol | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=3oFD1bwyUGk"
+      }
+    },
+    "https://www.cifraclub.com/los-bunkers/no-me-hables-de-sufrir/": {
+      "Karaoke": {
+        "id": "5Opn6N3yBnU",
+        "title": "Los Bunkers - No me hables de sufrir | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=5Opn6N3yBnU"
+      },
+      "Instrumental": {
+        "id": "sxUVJKbRdcc",
+        "title": "Los Bunkers - No me hables de sufrir | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=sxUVJKbRdcc"
+      },
+      "Backtrack": {
+        "id": "EBxpjQ9M4Io",
+        "title": "Los Bunkers - No me hables de sufrir | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=EBxpjQ9M4Io"
+      }
+    },
+    "https://www.cifraclub.com/los-bunkers/quien-fuera/": {
+      "Karaoke": {
+        "id": "Hz9DEKdsun0",
+        "title": "Los Bunkers - Quien Fuera | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=Hz9DEKdsun0"
+      },
+      "Instrumental": {
+        "id": "EYVwi8TBne0",
+        "title": "Los Bunkers - Quien Fuera | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=EYVwi8TBne0"
+      },
+      "Backtrack": {
+        "id": "pAcUkiyjQcs",
+        "title": "Los Bunkers - Quien Fuera | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=pAcUkiyjQcs"
+      }
+    },
+    "https://acordes.lacuerda.net/milo_j/rara_vez.shtml": {
+      "Karaoke": {
+        "id": "A_CrmMrWdN0",
+        "title": "MILO J - MILO J RARA VEZ | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=A_CrmMrWdN0"
+      },
+      "Instrumental": {
+        "id": "nUnaPUmdB-E",
+        "title": "MILO J - MILO J RARA VEZ | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=nUnaPUmdB-E"
+      },
+      "Backtrack": {
+        "id": "vsUPy2xHEo4",
+        "title": "MILO J - MILO J RARA VEZ | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=vsUPy2xHEo4"
+      }
+    },
+    "https://acordes.lacuerda.net/milo_j/gil.shtml": {
+      "Karaoke": {
+        "id": "UnkNRaJvGUg",
+        "title": "Milo J Trueno - Gil | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=UnkNRaJvGUg"
+      },
+      "Instrumental": {
+        "id": "RF8KiqblX9g",
+        "title": "Milo J Trueno - Gil | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=RF8KiqblX9g"
+      },
+      "Backtrack": {
+        "id": "OpTOAkHXv88",
+        "title": "Milo J Trueno - Gil | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=OpTOAkHXv88"
+      }
+    },
+    "https://www.cifraclub.com/oliver-tree/im-gone/": {
+      "Karaoke": {
+        "id": "coe0dmNVc50",
+        "title": "Oliver Tree - I m Gone | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=coe0dmNVc50"
+      },
+      "Instrumental": {
+        "id": "WBFP8zB5eRw",
+        "title": "Oliver Tree - I m Gone | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=WBFP8zB5eRw"
+      },
+      "Backtrack": {
+        "id": "yDRmJvVoTUI",
+        "title": "Oliver Tree - I m Gone | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=yDRmJvVoTUI"
+      }
+    },
+    "https://www.cifraclub.com/oliver-tree/miracle-man/": {
+      "Karaoke": {
+        "id": "Ip65sryh_xs",
+        "title": "Oliver Tree - Miracle Man | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=Ip65sryh_xs"
+      },
+      "Instrumental": {
+        "id": "l9GAJSUnJjo",
+        "title": "Oliver Tree - Miracle Man | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=l9GAJSUnJjo"
+      },
+      "Backtrack": {
+        "id": "RulPwdA4Aw4",
+        "title": "Oliver Tree - Miracle Man | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=RulPwdA4Aw4"
+      }
+    },
+    "https://acordes.lacuerda.net/rosalia/la_perla.shtml": {
+      "Karaoke": {
+        "id": "rfJNr_Zh9Is",
+        "title": "ROSALIA - La Perla ft Yahritza Y Su Esencia | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=rfJNr_Zh9Is"
+      },
+      "Instrumental": {
+        "id": "Wcz4_DmLCmQ",
+        "title": "ROSALIA - La Perla ft Yahritza Y Su Esencia | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=Wcz4_DmLCmQ"
+      },
+      "Backtrack": {
+        "id": "e1xSBzYYVBw",
+        "title": "ROSALIA - La Perla ft Yahritza Y Su Esencia | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=e1xSBzYYVBw"
+      }
+    },
+    "https://www.cifraclub.com/rayos-laser/ya-me-hiciste-mal/": {
+      "Karaoke": {
+        "id": "ihkuY98RIy8",
+        "title": "Rayos Laser - Ya Me Hiciste Mal | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=ihkuY98RIy8"
+      },
+      "Instrumental": {
+        "id": "AEv436qieOI",
+        "title": "Rayos Laser - Ya Me Hiciste Mal | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=AEv436qieOI"
+      },
+      "Backtrack": {
+        "id": "8U0m3avRTqs",
+        "title": "Rayos Laser - Ya Me Hiciste Mal | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=8U0m3avRTqs"
+      }
+    },
+    "https://www.cifraclub.com/tronic/fenix/": {
+      "Karaoke": {
+        "id": "2_QpDKt40Jc",
+        "title": "TRONIC - FENIX | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=2_QpDKt40Jc"
+      },
+      "Instrumental": {
+        "id": "8pc5ND21zgU",
+        "title": "TRONIC - FENIX | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=8pc5ND21zgU"
+      },
+      "Backtrack": {
+        "id": "_t01L4XhFAE",
+        "title": "TRONIC - FENIX | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=_t01L4XhFAE"
+      }
+    },
+    "https://www.cifraclub.com/tronic/prendan-la-radio/": {
+      "Karaoke": {
+        "id": "vRfce_adwBg",
+        "title": "TRONIC - Prendan la Radio | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=vRfce_adwBg"
+      },
+      "Instrumental": {
+        "id": "J6r9UyQCfJA",
+        "title": "TRONIC - Prendan la Radio | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=J6r9UyQCfJA"
+      },
+      "Backtrack": {
+        "id": "drKBbpP44ZU",
+        "title": "TRONIC - Prendan la Radio | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=drKBbpP44ZU"
+      }
+    },
+    "https://www.cifraclub.com/the-strokes/going-shopping/": {
+      "Karaoke": {
+        "id": "QEX94Vf_Uik",
+        "title": "The Strokes - Going Shopping | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=QEX94Vf_Uik"
+      },
+      "Instrumental": {
+        "id": "ycEJ4fMfmR4",
+        "title": "The Strokes - Going Shopping | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=ycEJ4fMfmR4"
+      },
+      "Backtrack": {
+        "id": "3rU5of1bXsk",
+        "title": "The Strokes - Going Shopping | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=3rU5of1bXsk"
+      }
+    },
+    "https://www.cifraclub.com/tronic/otra-vez/": {
+      "Karaoke": {
+        "id": "0DtMjn1uBiQ",
+        "title": "Tronic - Otra Vez | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=0DtMjn1uBiQ"
+      },
+      "Instrumental": {
+        "id": "Ar7-ZH63kXg",
+        "title": "Tronic - Otra Vez | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=Ar7-ZH63kXg"
+      },
+      "Backtrack": {
+        "id": "bhwHuiYdzFU",
+        "title": "Tronic - Otra Vez | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=bhwHuiYdzFU"
+      }
+    },
+    "https://www.cifraclub.com/mike-shinoda/worlds-on-fire/": {
+      "Karaoke": {
+        "id": "zmp4Zo2bB0s",
+        "title": "World s On Fire - Mike Shinoda | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=zmp4Zo2bB0s"
+      },
+      "Instrumental": {
+        "id": "tmWMvOkp1ng",
+        "title": "World s On Fire - Mike Shinoda | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=tmWMvOkp1ng"
+      },
+      "Backtrack": {
+        "id": "S2S_B0UUfGg",
+        "title": "World s On Fire - Mike Shinoda | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=S2S_B0UUfGg"
       }
     }
   }

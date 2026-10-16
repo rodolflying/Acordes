@@ -43,7 +43,8 @@ def main():
                 if "error" not in res:
                     preloaded[url] = res
             elif 'lacuerda' in url:
-                res = scrape_lacuerda(url)
+                # Un marcador sin ".shtml" es la página índice de la canción; los acordes están en <url>.shtml
+                res = scrape_lacuerda(url if url.endswith('.shtml') else url.rstrip('/') + '.shtml')
                 if "error" not in res:
                     preloaded[url] = res
             else:
@@ -158,7 +159,10 @@ def generate_backing_tracks():
             
         norm_artist = normalize_string(artist)
         norm_title = normalize_string(title)
-        
+        # Para la pasada tolerante: título sin notas como "(Acoustic version)" y sin espacios ("M.A.I" = "M A I")
+        compact_title = normalize_string(re.sub(r'\([^)]*\)', '', title)).replace(' ', '')
+        compact_artist = norm_artist.replace(' ', '')
+
         candidate_tracks = {}
         for key, info in uploads.items():
             if info.get("status") != "uploaded" or "video_id" not in info:
@@ -178,7 +182,14 @@ def generate_backing_tracks():
                     p1, p2 = parts[0], parts[1]
                     if (norm_artist in p1 and norm_title in p2) or (norm_title in p1 and norm_artist in p2):
                         is_match = True
-            
+            if not is_match and len(compact_title) >= 3:
+                # Pasada tolerante: el artista vale si comparte una palabra distintiva
+                # ("Thirty Seconds To Mars" = "30 Seconds to Mars")
+                compact_key = norm_key.replace(' ', '')
+                key_words = set(norm_key.split())
+                artist_ok = compact_artist in compact_key or any(len(w) >= 4 and w in key_words for w in norm_artist.split())
+                is_match = artist_ok and compact_title in compact_key
+
             if is_match:
                 v_lower = version.lower()
                 if "karaoke" in v_lower:

@@ -287,7 +287,7 @@ function App() {
   const songs = useMemo(() => {
     const key = s => s.clean_title ? `${normKey(s.folder)}|${normKey(s.clean_title)}` : s.url;
     const score = s => (backingTracksDict[s.url] ? 4 : 0) + (syncPointsDict[s.url] ? 2 : 0)
-      - (s.source === 'LaCuerda' && !s.url.includes('.shtml') ? 3 : 0) // a LaCuerda index page has no chords
+      - (s.source === 'LaCuerda' && !s.url.includes('.shtml') ? 3 : 0) // prefer the song page over a LaCuerda index page
       - (s.url.includes('//m.') ? 1 : 0);
     const best = new Map();
     allSongs.forEach(s => {

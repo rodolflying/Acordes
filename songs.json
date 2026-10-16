@@ -2881,6 +2881,165 @@
             "name": "My Heart - Paramore - Cifra Club",
             "type": "url",
             "url": "https://www.cifraclub.com/paramore/my-heart/wzjgw.html?keyShape=5"
+        },
+        {
+            "date_added": "13432022380300317",
+            "date_last_used": "0",
+            "guid": "0a872869-35e6-49c3-85ab-f3ed5122ac7d",
+            "id": "1054",
+            "meta_info": {
+                "power_bookmark_meta": ""
+            },
+            "name": "Waiting For Love - Avicii - Cifra Club",
+            "type": "url",
+            "url": "https://www.cifraclub.com/avicii/waiting-for-love/"
+        },
+        {
+            "date_added": "13432595534821725",
+            "date_last_used": "0",
+            "guid": "4e89d56b-b14b-4cf8-acfd-2350ef47fb26",
+            "id": "1056",
+            "meta_info": {
+                "power_bookmark_meta": ""
+            },
+            "name": "(396) Cómo tocar ‘TURISTA’ de Bad Bunny (Requinto) - YouTube",
+            "type": "url",
+            "url": "https://www.youtube.com/watch?v=VEf3GSiAJzM"
+        },
+        {
+            "date_added": "13434431708977785",
+            "date_last_used": "13435034189511279",
+            "guid": "2335bacd-fecc-4276-99b2-eb7a7f35482e",
+            "id": "1058",
+            "meta_info": {
+                "power_bookmark_meta": ""
+            },
+            "name": "Self Aware (acordes) - Temper City - Cifra Club",
+            "type": "url",
+            "url": "https://www.cifraclub.com/temper-city/self-aware/"
+        },
+        {
+            "date_added": "13435284217587091",
+            "date_last_used": "0",
+            "guid": "57c22cef-750e-47e0-a633-90da3f71adcb",
+            "id": "1060",
+            "meta_info": {
+                "power_bookmark_meta": ""
+            },
+            "name": "Cool & Calm (acordes) - Sticky Fingers - Cifra Club",
+            "type": "url",
+            "url": "https://www.cifraclub.com/sticky-fingers/cool-e-calm/"
+        },
+        {
+            "name": "Karaokes",
+            "type": "folder",
+            "children": [
+                {
+                    "name": "Bailando Solo - Los Bunkers - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/los-bunkers/bailando-solo/"
+                },
+                {
+                    "name": "Talk Is Cheap - Chet Faker - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/chet-faker/talk-is-cheap/"
+                },
+                {
+                    "name": "2022 - FOTHER MUCKERS - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/fother-muckers/2022/"
+                },
+                {
+                    "name": "Aunque todo salio mal - Fother Muckers - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/fother-muckers/aunque-todo-salio-mal/"
+                },
+                {
+                    "name": "Virtual Insanity - Jamiroquai - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/jamiroquai/virtual-insanity/"
+                },
+                {
+                    "name": "Corazon - Los Autenticos Decadentes - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/los-autenticos-decadentes/corazon/"
+                },
+                {
+                    "name": "Llueve Sobre La Ciudad - Los Bunkers - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/los-bunkers/llueve-sobre-la-ciudad/"
+                },
+                {
+                    "name": "Nada Nuevo Bajo el Sol - Los Bunkers - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/los-bunkers/nada-nuevo-bajo-el-sol/"
+                },
+                {
+                    "name": "No me hables de sufrir - Los Bunkers - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/los-bunkers/no-me-hables-de-sufrir/"
+                },
+                {
+                    "name": "Quien Fuera - Los Bunkers - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/los-bunkers/quien-fuera/"
+                },
+                {
+                    "name": "RARA VEZ - MILO J - LaCuerda",
+                    "type": "url",
+                    "url": "https://acordes.lacuerda.net/milo_j/rara_vez.shtml"
+                },
+                {
+                    "name": "Gil - Milo J - LaCuerda",
+                    "type": "url",
+                    "url": "https://acordes.lacuerda.net/milo_j/gil.shtml"
+                },
+                {
+                    "name": "I'm Gone - Oliver Tree - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/oliver-tree/im-gone/"
+                },
+                {
+                    "name": "Miracle Man - Oliver Tree - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/oliver-tree/miracle-man/"
+                },
+                {
+                    "name": "La Perla - ROSALIA - LaCuerda",
+                    "type": "url",
+                    "url": "https://acordes.lacuerda.net/rosalia/la_perla.shtml"
+                },
+                {
+                    "name": "Ya Me Hiciste Mal - Rayos Laser - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/rayos-laser/ya-me-hiciste-mal/"
+                },
+                {
+                    "name": "FENIX - TRONIC - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/tronic/fenix/"
+                },
+                {
+                    "name": "Prendan la Radio - TRONIC - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/tronic/prendan-la-radio/"
+                },
+                {
+                    "name": "Going Shopping - The Strokes - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/the-strokes/going-shopping/"
+                },
+                {
+                    "name": "Otra Vez - Tronic - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/tronic/otra-vez/"
+                },
+                {
+                    "name": "World's On Fire - Mike Shinoda - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/mike-shinoda/worlds-on-fire/"
+                }
+            ]
         }
     ]
 }

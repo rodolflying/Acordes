@@ -1,7 +1,7 @@
 Fase, Tarea, Estimación_min, Prioridad, MoSCoW, Tipo, Depende_De, Bloquea, Estado
 Fase 1, Extraer URLs locales hardcodeadas en App.jsx y SongViewer.jsx a .env, 30, HIGH, Must, FIX, Ninguno, Pipeline ingesta, completada
-Fase 1, Diseñar pipeline de actualización para ingesta de acordes y YouTube, 60, HIGH, Must, FEATURE, Ninguno, Carga canciones, pendiente
-Fase 1, Implementar script de carga masiva para canciones y repertorio karaokeable, 45, HIGH, Must, FEATURE, Pipeline ingesta, Tablaturas, pendiente
+Fase 1, Diseñar pipeline de actualización para ingesta de acordes y YouTube, 60, HIGH, Must, FEATURE, Ninguno, Carga canciones, completada
+Fase 1, Implementar script de carga masiva para canciones y repertorio karaokeable, 45, HIGH, Must, FEATURE, Pipeline ingesta, Tablaturas, completada
 Fase 2, Desarrollar módulo de generación automática de tablaturas musicalizadas, 60, MEDIUM, Should, FEATURE, Carga canciones, Ninguno, backlog
 Fase 2, Optimizar almacenamiento y búsqueda en chords_db.json y enriched_songs.json, 45, MEDIUM, Should, REFACTOR, Ninguno, Ninguno, backlog
 Fase 3, Integrar pruebas unitarias para el motor enricher.py, 30, LOW, Could, DEV, Ninguno, Ninguno, backlog
@@ -13,3 +13,4 @@ Mejoras, Sincronización línea a línea con LRCLIB y calibración del desfase, 
 Mejoras, Bajar efectos visuales (un protagonista / notas fuera del texto / sin blur en tarjetas), 45, MEDIUM, Could, UX, Ninguno, Ninguno, backlog
 Mejoras, Ocultar marcadores que no son canciones y unificar canciones repetidas, 30, MEDIUM, Should, FIX, Ninguno, Ninguno, completada
 Mejoras, Exportar desde Karaokes los tiempos de stable_whisper para sincronía exacta, 60, MEDIUM, Could, FEATURE, Ninguno, Ninguno, backlog
+Mejoras, Renovar la clave de Qwen (DashScope responde 401) y reclasificar las canciones con mood genérico, 20, MEDIUM, Should, FIX, Ninguno, Ninguno, pendiente

@@ -96,13 +96,16 @@ def refresh_bookmarks():
         # 1. extract bookmarks
         script_path = os.path.join(root_dir, "extract_bookmarks.py")
         subprocess.run(["python", script_path], check=True, cwd=root_dir)
+
+        # 2. songs with an uploaded karaoke but no chords bookmark
+        subprocess.run(["python", os.path.join(root_dir, "karaoke_songs.py")], check=True, cwd=root_dir)
         
-        # 2. enrich new songs
+        # 3. enrich new songs
         enricher_path = os.path.join(root_dir, "enricher.py")
         if os.path.exists(enricher_path):
             subprocess.run(["python", enricher_path], check=True, cwd=root_dir)
             
-        # 3. preload chords & backing tracks mapping
+        # 4. preload chords, backing tracks mapping and lyric times
         preload_path = os.path.join(root_dir, "preload_chords.py")
         if os.path.exists(preload_path):
             subprocess.run(["python", preload_path], check=True, cwd=root_dir)

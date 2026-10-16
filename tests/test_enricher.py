@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from enricher import parse_song_name  # noqa: E402
+from enricher import parse_song_name, parse_song_url  # noqa: E402
 
 
 @pytest.mark.parametrize("name, expected", [
@@ -33,3 +33,14 @@ from enricher import parse_song_name  # noqa: E402
 ])
 def test_parse_song_name(name, expected):
     assert parse_song_name(name) == expected
+
+
+@pytest.mark.parametrize("url, expected", [
+    # Marcadores sin nombre útil (se llamaban solo "acordes.lacuerda.net")
+    ("https://acordes.lacuerda.net/maluma/admv", ("Maluma", "Admv")),
+    ("https://acordes.lacuerda.net/los_bunkers/bailando_solo-2.shtml", ("Los Bunkers", "Bailando Solo")),
+    ("https://www.cifraclub.com/linkin-park/shadow-of-the-day/szww/", ("Linkin Park", "Shadow of the Day")),
+    ("https://www.youtube.com/watch?v=abc", None),
+])
+def test_parse_song_url(url, expected):
+    assert parse_song_url(url) == expected

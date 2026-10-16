@@ -152,6 +152,21 @@ def parse_song_name(name: str) -> tuple[str, str]:
     return ('Unknown', _title_case(original))
 
 
+def parse_song_url(url: str) -> tuple[str, str] | None:
+    """
+    (artist, title) desde la URL de Cifra Club o LaCuerda, para marcadores cuyo nombre no
+    sirve (uno se llamaba solo "acordes.lacuerda.net"):
+    - ".../maluma/admv"                                 → ("Maluma", "Admv")
+    - "cifraclub.com/linkin-park/shadow-of-the-day/..." → ("Linkin Park", "Shadow of the Day")
+    """
+    m = (re.search(r'lacuerda\.net/([^/?#]+)/([^/?#.]+?)(?:-\d+)?(?:\.shtml)?(?:[/?#]|$)', url)
+         or re.search(r'cifraclub\.com(?:\.br)?/([^/?#]+)/([^/?#]+)', url))
+    if not m:
+        return None
+    words = lambda slug: _title_case(re.sub(r'[-_]+', ' ', slug).strip())
+    return (words(m.group(1)), words(m.group(2)))
+
+
 def _title_case(s: str) -> str:
     """Smart title case que preserva partículas como 'de', 'la', etc."""
     if s.isupper() or s.islower():
@@ -516,6 +531,8 @@ def detect_source(url: str) -> str:
 def enrich_song(song: dict) -> dict:
     """Enriquece una sola canción con todas las fuentes."""
     artist, title = parse_song_name(song['name'])
+    if artist == 'Unknown':  # el nombre del marcador no sirve: se intenta con la URL
+        artist, title = parse_song_url(song['url']) or (artist, title)
     source = detect_source(song['url'])
     
     print(f"  🎵 {artist} — {title}")
