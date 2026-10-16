@@ -32,15 +32,20 @@ def scrape_cifraclub(url: str):
         capo_text = capo_el.text.strip()
         capo_info = f'<div class="capo-info" style="color: var(--primary); font-weight: bold; margin-bottom: 1rem; font-size: 1.2rem;"><i class="fas fa-guitar"></i> {capo_text}</div>\n'
     
-    # Cifraclub usa <b> para los acordes. Reemplazamos sus tags con unos genéricos nuestros.
-    content = str(pre)
-    content = content.replace('<b>', '<span class="chord">')
+    return {"source": "CifraClub", "content": capo_info + clean_cifraclub_html(str(pre))}
+
+
+def clean_cifraclub_html(pre_html: str) -> str:
+    """El <pre> de Cifra Club a nuestro formato, con los acordes en <span class="chord">.
+
+    Cifra Club marca los acordes con <b> (en su HTML nuevo, con atributos data-chord-*) y agrupa
+    las líneas en <div class="kvMV">, que se quitan sin tocar los saltos de línea.
+    """
+    content = re.sub(r'<b(?:\s[^>]*)?>', '<span class="chord">', pre_html)
     content = content.replace('</b>', '</span>')
-    
-    # Clean up structure
+    content = re.sub(r'</?div[^>]*>', '', content)
     content = re.sub(r'<pre.*?>', '', content)
-    content = content.replace('</pre>', '')
-    return {"source": "CifraClub", "content": capo_info + content}
+    return content.replace('</pre>', '')
 
 def scrape_lacuerda(url: str):
     r = requests.get(url, impersonate='chrome110')

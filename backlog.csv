@@ -14,3 +14,7 @@ Mejoras, Bajar efectos visuales (un protagonista / notas fuera del texto / sin b
 Mejoras, Ocultar marcadores que no son canciones y unificar canciones repetidas, 30, MEDIUM, Should, FIX, Ninguno, Ninguno, completada
 Mejoras, Exportar desde Karaokes los tiempos de stable_whisper para sincronía exacta, 60, MEDIUM, Could, FEATURE, Ninguno, Ninguno, backlog
 Mejoras, Renovar la clave de Qwen (DashScope responde 401) y reclasificar las canciones con mood genérico, 20, MEDIUM, Should, FIX, Ninguno, Ninguno, pendiente
+Mejoras, Arreglar el scraper de Cifra Club (HTML nuevo con atributos data-chord) y reparar las 20 hojas sin acordes marcados, 20, HIGH, Must, FIX, Ninguno, Ninguno, completada
+Mejoras, Fact-check de acordes contra el audio (prueba de concepto en experiments/chord_check: tono / acordes mal escritos / tramos que no calzan), 60, HIGH, Should, FEATURE, Ninguno, Acordes propios, pendiente
+Mejoras, Auto-calibrar el desfase de la letra con los acordes del audio (Fénix: la hoja iba 3 s adelantada), 45, HIGH, Should, FEATURE, Fact-check de acordes, Ninguno, pendiente
+Mejoras, Acordes versión propia: generar o corregir hojas desde el audio y dejar la original como versión alternativa, 120, MEDIUM, Could, FEATURE, Fact-check de acordes, Ninguno, backlog
