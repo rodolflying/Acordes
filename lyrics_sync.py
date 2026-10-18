@@ -49,11 +49,15 @@ def norm(s: str) -> str:
 
 
 def sheet_lyric_lines(content: str) -> list[tuple[int, str]]:
-    """Líneas de letra de la hoja: [(índice de línea, texto normalizado)], sin acordes ni títulos de sección."""
+    """Líneas de letra de la hoja: [(índice de línea, texto normalizado)], sin acordes (también los que
+    agregó complete_chords, class="chord chord-added"), títulos de sección ni tablaturas."""
     lyrics = []
     for i, line in enumerate(content.split('\n')):
-        no_chords = re.sub(r'<span class="chord">.*?</span>', '', line)
-        text = norm(html.unescape(re.sub(r'<[^>]+>', '', no_chords)))
+        no_chords = re.sub(r'<span class="chord[^"]*"[^>]*>.*?</span>', '', line)
+        plain = html.unescape(re.sub(r'<[^>]+>', '', no_chords))
+        if plain.count('-') >= 8 or re.match(r'\s*[A-Ga-g1-6]\s*\|', plain):  # "G|--9--x-12-x-10--|"
+            continue
+        text = norm(plain)
         if len(text.split()) >= 2 and not SECTION.match(text):
             lyrics.append((i, text))
     return lyrics
@@ -171,6 +175,12 @@ def word_anchors(sheet_line: str, words: list, used: set | None = None) -> list[
     return anchors
 
 
+def crammed(anchors: list | None) -> bool:
+    """Palabras amontonadas (varias en una décima de segundo): nadie canta así, es un tramo donde los
+    subtítulos del karaoke fallaron, y seguirlo haría parpadear la hoja."""
+    return bool(anchors) and len(anchors) >= 2 and (anchors[-1][1] - anchors[0][1]) / (len(anchors) - 1) < 0.08
+
+
 def region_points(sung_lines: list, sheet_lines: list, region: list) -> list[list]:
     """Las palabras cantadas de un tramo puestas sobre los renglones de la hoja de ese tramo.
 
@@ -196,10 +206,57 @@ def region_points(sung_lines: list, sheet_lines: list, region: list) -> list[lis
     points = []
     for line in region:
         a = anchors.get(line)
+        if crammed(a):
+            continue
         if a and (len(a) >= 2 or a[0][0] <= 2):  # una palabra suelta en medio del renglón no basta
             # Si el renglón empieza con palabras que no calzaron, empieza un poco antes de la primera que sí
             points.append([round(a[0][1] - min(a[0][0] * 0.06, 1.5), 2), line, a])
     return points
+
+
+def merge_rows(points: list) -> list:
+    """Un renglón con palabras de dos líneas cantadas (la hoja corta distinto que el karaoke) sale de dos
+    tramos: queda un solo punto, desde su primera palabra, con las anclas de los dos. Solo si son las mismas
+    palabras o si las del segundo siguen más a la derecha: un renglón que se canta otra vez ("You are",
+    "You are") vuelve a empezar desde la izquierda y es otro punto."""
+    out = []
+    for p in sorted(points, key=lambda p: p[0]):
+        q = out[-1] if out else None
+        same = q and len(p) > 2 and len(q) > 2 and p[1] == q[1]
+        if same and ({a[1] for a in p[2]} & {a[1] for a in q[2]}
+                     or (p[2][0][0] > q[2][-1][0] and p[2][0][1] <= q[2][-1][1] + 3)):
+            anchors = []
+            for col, t in sorted({tuple(a) for a in q[2] + p[2]}, key=lambda a: a[1]):
+                if not anchors or (col > anchors[-1][0] and t > anchors[-1][1]):
+                    anchors.append([col, t])
+            out[-1] = [min(q[0], p[0]), q[1], anchors]
+        else:
+            out.append(p)
+    # Las mismas palabras cantadas puestas en dos renglones (la hoja escribe dos veces la misma frase): queda
+    # el que calza mejor (más palabras, desde el comienzo del renglón), así la banda no salta entre los dos
+    owner, keep = {}, [True] * len(out)
+    for k, p in enumerate(out):
+        if len(p) < 3:
+            continue
+        rivals = {owner[t] for _, t in p[2] if t in owner and out[owner[t]][1] != p[1]}
+        for r in rivals:
+            shared = len({t for _, t in p[2]} & {t for _, t in out[r][2]})
+            if keep[r] and shared * 2 >= min(len(p[2]), len(out[r][2])):
+                worse = k if (-len(p[2]), p[2][0][0]) > (-len(out[r][2]), out[r][2][0][0]) else r
+                keep[worse] = False
+        if keep[k]:
+            owner.update({t: k for _, t in p[2]})
+    return [p for k, p in enumerate(out) if keep[k]]
+
+
+def no_early(points: list) -> list:
+    """Un renglón no se ilumina antes de que se cante la última palabra del anterior: su comienzo estimado
+    (un poco antes de la primera palabra que calzó) le ganaba a esa palabra, que quedaba sin marcar. Espera
+    0,3 s después de ella, pero nunca más allá de su propia primera palabra."""
+    for p, q in zip(points, points[1:]):
+        if len(p) > 2 and len(q) > 2 and q[1] != p[1] and q[0] < p[2][-1][1] + 0.3:
+            q[0] = round(max(q[0], min(p[2][-1][1] + 0.3, q[2][0][1])), 2)
+    return sorted(points, key=lambda p: p[0])
 
 
 def line_points(t: float, line: int, words: list, sheet_lines: list, lyric_order: list) -> list[list]:
@@ -212,6 +269,8 @@ def line_points(t: float, line: int, words: list, sheet_lines: list, lyric_order
     """
     used = set()
     anchors = word_anchors(sheet_lines[line], words, used)
+    if crammed(anchors):
+        return []
     if not anchors:
         return [[round(t, 2), line]]
     first_col, first_time = anchors[0]
@@ -269,6 +328,9 @@ def generate_sync_points():
     aligned = json.loads(ALIGNED_FILE.read_text(encoding='utf-8')) if ALIGNED_FILE.exists() else {}
     # Lo que pinta tu video karaoke manda: es la misma letra y los mismos tiempos que se ven en el video
     karaoke = json.loads(KARAOKE_FILE.read_text(encoding='utf-8')) if KARAOKE_FILE.exists() else {}
+    # ...salvo donde esos subtítulos fallaron (muchas palabras amontonadas) y Whisper sí alineó la canción
+    karaoke = {url: k for url, k in karaoke.items()
+               if k.get('amontonadas', 0) <= 0.10 or not aligned.get(url, {}).get('lrc')}
     aligned = {**aligned, **karaoke}
 
     # Solo importa en canciones con video: pistas de Karaokes o videos vinculados a mano
@@ -303,14 +365,20 @@ def generate_sync_points():
                 if next_line is not None and next_line > line:
                     # Hasta la próxima línea calzada incluida: la hoja puede escribir en un renglón anterior
                     # el comienzo de esa línea cantada ("Tus palabras se tornan cristal," / "no las voy...");
-                    # el renglón de la próxima lo pone su propio tramo
-                    region = [x for x in lyric_order[k:] if x <= next_line]
-                    found = [p for p in region_points(words[first_i:next_i + 1], sheet_lines, region) if p[1] != next_line]
+                    # lo que se canta desde la próxima línea lo pone su propio tramo. Y un poco más allá: el
+                    # karaoke junta en una línea lo que la hoja escribe en tres ("But if you close your eyes
+                    # (Eheu...), does it almost feel like nothing changed at all?") y la próxima línea puede
+                    # haber calzado con uno de esos renglones; los que se cantan antes de ella son de este tramo
+                    after = points[j + 2][1] if j + 2 < len(points) and points[j + 2][1] > next_line else next_line
+                    region = [x for x in lyric_order[k:] if x <= after]
+                    next_start = words[next_i][0][1] if words[next_i:next_i + 1] and words[next_i] else t
+                    found = [p for p in region_points(words[first_i:next_i + 1], sheet_lines, region)
+                             if p[1] < next_line or p[2][0][1] < next_start]
                 else:  # vuelve a una parte escrita más arriba, o es el final: tantos renglones como lo cantado
                     region = lyric_order[k:k + (next_i - i) + 1]
                     found = region_points(words[first_i:next_i], sheet_lines, region)
                 sync_points[url] += found or line_points(t, line, words[i], sheet_lines, lyric_order)
-            sync_points[url].sort(key=lambda p: p[0])
+            sync_points[url] = no_early(merge_rows(sync_points[url]))
         else:
             sin_letra.append(f"{song['title']} — {song['artist']}")
 

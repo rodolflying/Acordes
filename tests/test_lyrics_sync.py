@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from lyrics_sync import align, parse_lrc, sheet_lyric_lines  # noqa: E402
+from lyrics_sync import align, no_early, parse_lrc, sheet_lyric_lines  # noqa: E402
 
 SHEET = "\n".join([
     'Intro: <span class="chord">E</span> <span class="chord">C#m</span>',  # 0: solo acordes
@@ -115,3 +115,25 @@ def test_words_the_sheet_writes_differently_are_skipped_and_time_only_moves_forw
                             ['día', 12.0], ['no', 15.0], ['empieza', 15.3]])
     assert [c for c, _ in anchors] == [0, 5, 8, 20, 27, 30]  # "ke" no calza y "día" vendría antes de tiempo
     assert all(b[1] > a[1] for a, b in zip(anchors, anchors[1:]))
+
+
+def test_a_line_does_not_light_up_before_the_last_word_of_the_one_before_is_sung():
+    points = [[10.0, 1, [[0, 10.0], [6, 11.0], [12, 12.0]]],
+              [11.5, 3, [[20, 12.8], [26, 13.4]]],  # estimated start before "12.0" is sung
+              [20.0, 5, [[0, 20.0]]]]
+    out = no_early(points)
+    assert out[1][0] == 12.3  # 0.3 s after the last word of the line before
+    assert no_early([[10.0, 1, [[0, 10.0], [6, 12.0]]], [11.0, 3, [[0, 12.1]]]])[1][0] == 12.1  # never after its own first word
+    assert out[2][0] == 20.0
+
+
+def test_rows_split_between_two_sung_lines_are_one_point_and_repeated_rows_stay_apart():
+    from lyrics_sync import merge_rows
+    # the row gets the end of one sung line and the start of the next from two tramos
+    out = merge_rows([[10.0, 4, [[0, 10.0], [6, 10.5]]], [11.0, 4, [[12, 11.0], [18, 11.4]]]])
+    assert out == [[10.0, 4, [[0, 10.0], [6, 10.5], [12, 11.0], [18, 11.4]]]]
+    # "You are" sung twice on the same row: two points
+    assert len(merge_rows([[10.0, 4, [[0, 10.0], [4, 10.3]]], [11.0, 4, [[0, 11.0], [4, 11.3]]]])) == 2
+    # the same sung words placed on two rows that write the same phrase: the one that fits best stays
+    out = merge_rows([[20.0, 7, [[8, 20.2], [11, 20.6], [17, 21.0]]], [20.2, 5, [[0, 20.2], [2, 20.6], [8, 21.0]]]])
+    assert [p[1] for p in out] == [5]

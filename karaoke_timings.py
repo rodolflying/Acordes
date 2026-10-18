@@ -89,8 +89,12 @@ def main():
         if len(lines) < 4:
             missing.append(url)
             continue
+        # Qué parte de las palabras salen amontonadas (varias en una décima de segundo): tramos donde los
+        # subtítulos del karaoke fallaron (Fuego, Virtual Insanity); con muchas, lyrics_sync.py prefiere Whisper
+        gaps = [b - a for _, words in lines for (_, a), (_, b) in zip(words, words[1:])]
         out[url] = {'video': video, 'carpeta': folder, 'lrc': to_lrc(lines),
-                    'words': [[[w, t] for w, t in words] for _, words in lines]}
+                    'words': [[[w, t] for w, t in words] for _, words in lines],
+                    'amontonadas': round(sum(g < 0.08 for g in gaps) / max(len(gaps), 1), 3)}
     OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding='utf-8')
     print(f"Tiempos de tus karaokes: {len(out)} de {len(tracks)} canciones con pista"
           + (f" (sin subtitles.ass: {len(missing)})" if missing else ''))

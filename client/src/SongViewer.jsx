@@ -44,16 +44,22 @@ const measureLineTops = (pre, origin, lineHeight) => {
 // Each source line of the sheet: its length in characters, its chords (element and column) and
 // whether it only holds chords (a chord line above the lyrics, an intro or a solo)
 const indexSheet = (pre) => {
-  const lines = [{ length: 0, chords: [], letters: 0 }];
+  const newLine = () => ({ length: 0, chords: [], letters: 0, text: '', parts: [] });
+  const lines = [newLine()];
   const walker = document.createTreeWalker(pre, NodeFilter.SHOW_TEXT);
   for (let node = walker.nextNode(); node; node = walker.nextNode()) {
     const chord = node.parentElement.closest('.chord');
+    let i = 0;
     for (const ch of node.data) {
       const line = lines[lines.length - 1];
-      if (ch === '\n') { lines.push({ length: 0, chords: [], letters: 0 }); continue; }
+      if (ch === '\n') { lines.push(newLine()); i++; continue; }
+      // Where each piece of the line's text lives in the DOM, to light up the words being sung
+      if (!line.parts.length || line.parts[line.parts.length - 1].node !== node) line.parts.push({ node, offset: i, col: line.length });
       if (chord && line.chords[line.chords.length - 1]?.el !== chord) line.chords.push({ col: line.length, el: chord });
       if (!chord && ch.trim()) line.letters++;
+      line.text += ch;
       line.length++;
+      i++;
     }
   }
   // A few letters next to the chords are labels ("Intro: RE-SOL (x2)"), not lyrics
@@ -123,6 +129,29 @@ const buildTimeline = (points, lines) => {
   segments.sort((a, b) => a.start - b.start);
   return { segments, events: segments.flatMap(s => s.events).sort((a, b) => a.t - b.t) };
 };
+
+// The words of a line already sung (from its first letter to the end of the word at `col`) and the word being
+// sung, as DOM ranges, to paint them like the karaoke does. Uses the CSS Custom Highlight API, which colors
+// text without touching the sheet, so the chord columns never move
+const sungRanges = (line, col) => {
+  const { text, parts } = line;
+  const first = text.search(/\S/);
+  if (first < 0 || col < first) return null;
+  let at = Math.min(Math.floor(col), text.length - 1);
+  while (at > first && /\s/.test(text[at])) at--; // on a space: the word just sung
+  let start = at;
+  while (start > first && /\S/.test(text[start - 1])) start--;
+  let end = at;
+  while (end < text.length && /\S/.test(text[end])) end++;
+  const pos = c => {
+    const part = parts.filter(p => p.col <= c).pop() || parts[0];
+    return [part.node, Math.min(part.offset + (c - part.col), part.node.data.length)];
+  };
+  const range = (a, b) => { const r = new Range(); r.setStart(...pos(a)); r.setEnd(...pos(b)); return r; };
+  return { sung: range(first, end), now: range(start, end), key: `${first}-${end}` };
+};
+const canHighlight = typeof CSS !== 'undefined' && 'highlights' in CSS && typeof Highlight !== 'undefined';
+const clearSung = () => { if (canHighlight) { CSS.highlights.delete('sung'); CSS.highlights.delete('sung-now'); } };
 
 // Piecewise-linear map from xs to ys (both increasing), held flat outside the ends
 const interpolate = (x, xs, ys) => {
@@ -581,7 +610,12 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     const band = bandRef.current;
     const progress = progressRef.current;
     if (!pre || !band || !progress) return undefined;
-    const { segments, events } = buildTimeline(syncPoints, indexSheet(pre));
+    const lines = indexSheet(pre);
+    const { segments, events } = buildTimeline(syncPoints, lines);
+    let sungKey = null; // the words lit now, to touch the highlights only when they change
+    band.classList.toggle('words', canHighlight);
+    // Highlights read custom properties from the root, so the song's mood color goes there
+    if (canHighlight) document.documentElement.style.setProperty('--sing-ink', getComputedStyle(scroller).getPropertyValue('--mood-ink').trim() || 'var(--signal)');
 
     let lastGesture = -Infinity;
     const gesture = () => { lastGesture = performance.now(); };
@@ -646,8 +680,21 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
           progress.style.width = `${seg.sung ? layout.widths.get(seg.bottom) : 0}px`;
         }
       }
-      // The bar runs under the words already sung (word by word when the line has word timings)
-      if (seg?.sung) progress.style.transform = `scaleX(${Math.min(interpolate(t, seg.times, seg.cols) / seg.length, 1)})`;
+      // The words already sung light up, word by word (a bar under the line where the browser can't)
+      if (seg?.sung) {
+        const col = interpolate(t, seg.times, seg.cols);
+        if (canHighlight) {
+          const lit = sungRanges(lines[seg.bottom], col);
+          const key = lit && `${seg.bottom}:${lit.key}`;
+          if (key !== sungKey) {
+            sungKey = key;
+            if (lit) {
+              CSS.highlights.set('sung', new Highlight(lit.sung));
+              CSS.highlights.set('sung-now', new Highlight(lit.now));
+            } else clearSung();
+          }
+        } else progress.style.transform = `scaleX(${Math.min(col / seg.length, 1)})`;
+      } else if (sungKey !== null) { sungKey = null; clearSung(); }
       // A chord keeps sounding until the next one; long after the last written one (a part the sheet
       // writes without chords, "same as above") it is no longer what sounds
       const last = lastAt(events, t, e => e.t);
@@ -679,6 +726,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     frame = requestAnimationFrame(tick);
     return () => {
       cancelAnimationFrame(frame);
+      clearSung();
       scroller.removeEventListener('wheel', gesture);
       scroller.removeEventListener('touchmove', gesture);
       scroller.removeEventListener('pointerdown', scrollbarGesture);
@@ -690,6 +738,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   useEffect(() => {
     if (syncing && syncPoints?.length) return;
     bandRef.current?.classList.remove('on');
+    clearSung();
     nowChordRef.current?.classList.remove('chord-now');
     nowChordRef.current = null;
   }, [syncing, syncPoints, displayContent]);

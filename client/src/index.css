@@ -2177,9 +2177,13 @@ input#search:focus {
     }
 }
 
-/* Room after the last line so the end of the song can also reach the reading line while the sheet follows the video */
-#song-viewer.with-youtube .chords-scroll-container {
-    padding-bottom: 70vh;
+/* Room after the last line so the end of the song can also reach the reading line while the sheet follows the video.
+   A block after the content, not padding: on phones the panel is shorter than 70vh and the padding stretched the
+   scroller past it, so the line being sung could sit hidden under the play controls */
+#song-viewer.with-youtube .chords-scroll-container::after {
+    content: '';
+    display: block;
+    height: 70vh;
 }
 
 /* Song viewer sync helpers: offset label, hint bubbles above the autoscroll panel, tap-to-calibrate cursor */
@@ -2207,8 +2211,8 @@ input#search:focus {
     cursor: crosshair;
 }
 
-/* The line being sung lights up under the text (the blog's "Escuchar artículo" idea), a bar runs
-   under the lyrics as they're sung and the chord sounding now glows */
+/* The line being sung lights up under the text (the blog's "Escuchar artículo" idea), its words light up
+   as they're sung and the chord sounding now glows */
 #viewer-content {
     position: relative;
 }
@@ -2239,6 +2243,20 @@ input#search:focus {
     background: var(--mood-ink, var(--signal));
     transform: scaleX(0);
     transform-origin: left;
+}
+/* The words already sung take the mood color and the one being sung gets a marker, like the karaoke
+   paints them (CSS Custom Highlight API; --sing-ink is set on the root because highlights read it there) */
+::highlight(sung) {
+    color: var(--sing-ink, var(--signal));
+}
+::highlight(sung-now) {
+    color: #ffffff;
+    background-color: color-mix(in srgb, var(--sing-ink, var(--signal)) 30%, transparent);
+    text-decoration: underline 2px var(--sing-ink, var(--signal));
+    text-underline-offset: 4px;
+}
+.sing-band.words .sing-progress {
+    display: none; /* the words themselves show where the singing is */
 }
 .chord.chord-now {
     color: #0b0b10;
