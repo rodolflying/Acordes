@@ -1,16 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
 
+/* Palette (see DESIGN.md): grays in three planes and ONE signal color. The signal marks the main action of
+   each screen, what is selected and the chord sounding now; everything else stays neutral. Mood colors live
+   on the song cards (and as a dot on the mood filters), never on the interface around them */
 :root {
-    --primary: #00f2ff; /* Cyan Electric */
-    --secondary: #7000ff; /* Purple Electric */
-    --accent: #ff007a; /* Neon Pink */
-    --bg-dark: #050505;
-    --bg-gradient: radial-gradient(circle at top right, #1a1a2e 0%, #050505 100%);
+    color-scheme: dark; /* native scrollbars, selects and inputs in dark */
+    --signal: #f2b84b;
+    --signal-rgb: 242, 184, 75;
+    --signal-ink: #2a1d04; /* text on a signal fill */
+    --signal-soft: rgba(242, 184, 75, 0.12); /* selected background */
+    --primary: var(--signal);
+    --secondary: var(--signal);
+    --accent: var(--signal);
+    --bg-dark: #07070b;
+    --bg-gradient: #07070b;
+    --surface: #0f0f16;
+    --raised: #161620;
+    --line: #24242f;
+    --line-strong: #34343f;
     --glass: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.08);
-    --text-main: #ffffff;
-    --text-muted: rgba(255, 255, 255, 0.5);
+    --text-main: #f1f1f4;
+    --text-soft: #c9c9d3;
+    --text-muted: #8c8c99;
     --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
 }
 
 * {
@@ -36,6 +54,7 @@ body {
     height: 100%;
     z-index: -1;
     background: var(--bg-gradient);
+    opacity: 0.35;
 }
 
 /* Custom Scrollbar */
@@ -46,7 +65,7 @@ body {
     background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-    background: var(--glass-border);
+    background: var(--line-strong);
     border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -61,9 +80,8 @@ body {
 
 /* Sidebar */
 aside {
-    background: rgba(10, 10, 10, 0.4);
-    backdrop-filter: blur(40px);
-    border-right: 1px solid var(--glass-border);
+    background: var(--surface);
+    border-right: 1px solid var(--line);
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -81,12 +99,12 @@ aside {
 .logo-icon {
     width: 42px;
     height: 42px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: var(--signal);
+    color: var(--signal-ink);
     border-radius: 12px;
     display: grid;
     place-items: center;
     font-size: 1.4rem;
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
 }
 
 .folder-list {
@@ -116,8 +134,10 @@ aside {
 }
 
 .folder-item.active {
-    background: linear-gradient(90deg, rgba(0, 242, 255, 0.1), transparent);
-    border-left: 3px solid var(--primary);
+    background: var(--signal-soft);
+    border-color: transparent;
+    border-left: 3px solid var(--signal);
+    border-radius: 0 14px 14px 0;
 }
 
 /* Main Content */
@@ -147,18 +167,17 @@ input#search {
     padding: 1.1rem 1.5rem;
     padding-left: 3.5rem;
     border-radius: 20px;
-    border: 1px solid var(--glass-border);
-    background: rgba(255, 255, 255, 0.03);
-    color: white;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text-main);
     font-size: 1rem;
     outline: none;
     transition: var(--transition);
 }
 
 input#search:focus {
-    border-color: var(--primary);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
+    border-color: var(--signal);
+    box-shadow: 0 0 0 3px var(--signal-soft);
 }
 
 .search-icon {
@@ -166,8 +185,7 @@ input#search:focus {
     left: 1.5rem;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--primary);
-    opacity: 0.7;
+    color: var(--text-muted);
 }
 
 .clear-icon {
@@ -181,7 +199,7 @@ input#search:focus {
 }
 
 .clear-icon:hover {
-    color: var(--accent);
+    color: var(--text-main);
     transform: translateY(-50%) scale(1.1);
 }
 
@@ -200,21 +218,35 @@ input#search:focus {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: var(--glass);
-    color: white;
+    background: transparent;
+    border-color: var(--line-strong);
+    color: var(--text-soft);
 }
 
+.btn:hover {
+    background: var(--raised);
+    color: var(--text-main);
+}
+
+/* Toggles that are on (fast mode, track panel open) */
+.btn.btn-on {
+    background: var(--signal-soft);
+    border-color: var(--signal);
+    color: var(--text-main);
+}
+
+/* The one main action of each screen */
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border: none;
-    color: #000;
-    box-shadow: 0 8px 25px rgba(0, 242, 255, 0.2);
+    background: var(--signal);
+    border: 1px solid var(--signal);
+    color: var(--signal-ink);
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 12px 35px rgba(0, 242, 255, 0.4);
-    filter: brightness(1.1);
+    background: var(--signal);
+    color: var(--signal-ink);
+    filter: brightness(1.08);
+    transform: translateY(-1px);
 }
 
 /* Song Grid */
@@ -281,15 +313,14 @@ input#search:focus {
 }
 
 .page-btn:hover:not(:disabled) {
-    border-color: var(--primary);
-    color: var(--primary);
+    border-color: var(--line-strong);
+    background: var(--raised);
 }
 
 .page-btn.active {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-color: transparent;
-    color: #000;
-    box-shadow: 0 0 18px rgba(0, 242, 255, 0.35);
+    background: var(--signal);
+    border-color: var(--signal);
+    color: var(--signal-ink);
 }
 
 .page-btn:disabled {
@@ -303,17 +334,6 @@ input#search:focus {
 }
 
 :root {
-    --primary: #00f2ff; /* Cyan Electric */
-    --secondary: #7000ff; /* Purple Electric */
-    --accent: #ff007a; /* Neon Pink */
-    --bg-dark: #050505;
-    --bg-gradient: radial-gradient(circle at top right, #1a1a2e 0%, #050505 100%);
-    --glass: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --text-main: #ffffff;
-    --text-muted: rgba(255, 255, 255, 0.5);
-    --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    
     /* Mood specific color tokens */
     --mood-romantico: #ff007a;
     --mood-melancolico: #5e60ce;
@@ -394,8 +414,8 @@ input#search:focus {
 
 /* Interactive Filters Container */
 .filters-container {
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px solid var(--glass-border);
+    background: rgba(15, 15, 22, 0.85);
+    border: 1px solid var(--line);
     padding: 1.2rem;
     border-radius: 20px;
     margin-bottom: 2rem;
@@ -412,13 +432,11 @@ input#search:focus {
 }
 
 .filter-label {
-    font-size: 0.75rem;
-    font-weight: 800;
+    font-size: 0.85rem;
+    font-weight: 600;
     color: var(--text-muted);
-    letter-spacing: 1.5px;
     width: 90px;
     flex-shrink: 0;
-    text-transform: uppercase;
 }
 
 .filter-buttons {
@@ -429,29 +447,36 @@ input#search:focus {
 
 .filter-tag {
     padding: 0.45rem 0.9rem;
-    border-radius: 12px;
-    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text-soft);
     font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
 }
 
 .filter-tag:hover {
-    transform: translateY(-2px);
-    border-color: var(--mood-color, var(--primary));
-    color: var(--text-main) !important;
+    border-color: var(--line-strong);
+    background: var(--raised);
+    color: var(--text-main);
 }
 
 .filter-tag.active {
-    transform: translateY(-1px);
+    background: var(--signal-soft);
+    border-color: var(--signal);
+    color: var(--text-main);
 }
 
-.filter-emoji {
-    font-size: 0.95rem;
+.filter-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
 }
 
 /* Card details adjustments */
@@ -466,7 +491,7 @@ input#search:focus {
 }
 
 .viewer-artist {
-    color: var(--active-mood-color, var(--primary));
+    color: var(--text-soft);
     font-weight: 600;
     margin-top: 0.3rem;
 }
@@ -531,7 +556,7 @@ input#search:focus {
     width: 120px;
     height: 120px;
     pointer-events: none;
-    opacity: 0.55; /* Boosted default opacity so it's clearly visible */
+    opacity: 0.35; /* Boosted default opacity so it's clearly visible */
     transition: var(--transition);
     transform-style: preserve-3d;
 }
@@ -887,7 +912,7 @@ input#search:focus {
 }
 
 .chord {
-    color: var(--active-mood-color, var(--primary));
+    color: var(--signal);
     font-weight: bold;
     cursor: pointer;
     transition: var(--transition);
@@ -895,7 +920,6 @@ input#search:focus {
 
 .chord:hover {
     color: var(--text-main);
-    text-shadow: 0 0 10px rgba(var(--active-mood-rgb), 0.85);
 }
 
 .diagrams-scroll {
@@ -978,14 +1002,13 @@ input#search:focus {
 }
 
 .btn-icon:hover {
-    background: rgba(255,255,255,0.1);
-    color: var(--primary);
+    background: var(--raised);
+    color: var(--text-main);
 }
 
 .btn-icon.sync-on {
-    color: var(--primary);
-    background: rgba(0, 242, 255, 0.12);
-    box-shadow: 0 0 12px rgba(0, 242, 255, 0.35);
+    color: var(--signal);
+    background: var(--signal-soft);
 }
 
 #scroll-speed-display {
@@ -1023,10 +1046,10 @@ input#search:focus {
     transform: translateY(-50%);
     background: rgba(10, 10, 15, 0.8);
     backdrop-filter: blur(20px);
-    border: 1px solid var(--active-mood-color, var(--primary));
+    border: 1px solid var(--line-strong);
     border-radius: 20px;
     padding: 2.5rem 2rem;
-    box-shadow: 0 0 30px rgba(var(--active-mood-rgb), 0.25);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
     z-index: 10;
     display: flex;
     flex-direction: column;
@@ -1092,32 +1115,6 @@ input#search:focus {
     z-index: 2000;
     overflow: hidden;
     transition: var(--transition);
-}
-
-/* Theme gradients for the full screen song viewer */
-#song-viewer.theme-amor {
-    background: radial-gradient(circle at 50% 30%, rgba(255, 0, 122, 0.15) 0%, transparent 60%), var(--bg-dark);
-}
-#song-viewer.theme-desamor {
-    background: radial-gradient(circle at 50% 30%, rgba(94, 96, 206, 0.12) 0%, transparent 60%), var(--bg-dark);
-}
-#song-viewer.theme-libertad {
-    background: radial-gradient(circle at 50% 30%, rgba(0, 242, 255, 0.12) 0%, transparent 60%), var(--bg-dark);
-}
-#song-viewer.theme-existencial {
-    background: radial-gradient(circle at 50% 30%, rgba(112, 0, 255, 0.15) 0%, transparent 60%), var(--bg-dark);
-}
-#song-viewer.theme-fiesta {
-    background: radial-gradient(circle at 50% 30%, rgba(255, 112, 150, 0.12) 0%, transparent 60%), var(--bg-dark);
-}
-#song-viewer.theme-protesta {
-    background: radial-gradient(circle at 50% 30%, rgba(230, 57, 70, 0.15) 0%, transparent 60%), var(--bg-dark);
-}
-#song-viewer.theme-naturaleza {
-    background: radial-gradient(circle at 50% 30%, rgba(56, 176, 0, 0.12) 0%, transparent 60%), var(--bg-dark);
-}
-#song-viewer.theme-cotidiano {
-    background: radial-gradient(circle at 50% 30%, rgba(244, 162, 97, 0.12) 0%, transparent 60%), var(--bg-dark);
 }
 
 .thematic-pattern {
@@ -1271,15 +1268,15 @@ input#search:focus {
 }
 
 .dashboard-modal {
-    background: radial-gradient(circle at top left, rgba(20, 20, 35, 0.6) 0%, rgba(5, 5, 10, 0.8) 100%);
-    border: 1px solid var(--glass-border);
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: 28px;
     width: 100%;
     max-width: 1200px;
     max-height: 88vh;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 242, 255, 0.08);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
     overflow: hidden;
     position: relative;
 }
@@ -1312,13 +1309,12 @@ input#search:focus {
 .dashboard-title-icon {
     width: 48px;
     height: 48px;
-    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    background: var(--signal);
     border-radius: 14px;
     display: grid;
     place-items: center;
     font-size: 1.5rem;
-    color: white;
-    box-shadow: 0 0 20px rgba(112, 0, 255, 0.4);
+    color: var(--signal-ink);
 }
 
 .dashboard-header h2 {
@@ -1348,9 +1344,9 @@ input#search:focus {
 }
 
 .dashboard-close-btn:hover {
-    background: rgba(255, 0, 122, 0.15);
-    border-color: var(--accent);
-    color: var(--accent);
+    background: var(--raised);
+    border-color: var(--line-strong);
+    color: var(--text-main);
     transform: scale(1.08) rotate(90deg);
 }
 
@@ -1398,7 +1394,7 @@ input#search:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0, 242, 255, 0.05), rgba(112, 0, 255, 0.05));
+    background: none;
     opacity: 0;
     transition: var(--transition);
     pointer-events: none;
@@ -1874,7 +1870,7 @@ input#search:focus {
     cursor: pointer;
     text-align: left;
     transition: var(--transition);
-    color: var(--text-muted);
+    color: var(--text-soft);
 }
 
 .version-btn:hover:not(:disabled) {
@@ -1885,9 +1881,8 @@ input#search:focus {
 }
 
 .version-btn.active {
-    background: rgba(0, 242, 255, 0.1);
-    border-color: var(--primary);
-    box-shadow: 0 0 15px rgba(0, 242, 255, 0.15);
+    background: var(--signal-soft);
+    border-color: var(--signal);
     color: var(--text-main);
 }
 
@@ -1955,7 +1950,7 @@ input#search:focus {
         border-radius: 16px;
         gap: 1.5rem;
         z-index: 2500;
-        box-shadow: 0 -10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(var(--active-mood-rgb), 0.2);
+        box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
     }
 }
 
@@ -2071,8 +2066,8 @@ input#search:focus {
 }
 
 .filters-count {
-    background: var(--accent);
-    color: #fff;
+    background: var(--signal);
+    color: var(--signal-ink);
     border-radius: 10px;
     padding: 0 0.45rem;
     font-size: 0.75rem;
@@ -2223,8 +2218,8 @@ input#search:focus {
     opacity: 0;
     pointer-events: none;
     border-radius: 10px;
-    background: rgba(var(--active-mood-rgb), 0.09);
-    box-shadow: inset 3px 0 0 rgba(var(--active-mood-rgb), 0.85), 0 0 28px rgba(var(--active-mood-rgb), 0.1);
+    background: rgba(var(--signal-rgb), 0.07);
+    box-shadow: inset 3px 0 0 var(--signal);
     transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), height 0.35s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s;
 }
 .sing-band.on {
@@ -2235,13 +2230,15 @@ input#search:focus {
     bottom: 3px;
     height: 2px;
     border-radius: 2px;
-    background: linear-gradient(90deg, rgba(var(--active-mood-rgb), 0.15), rgba(var(--active-mood-rgb), 0.9));
+    background: var(--signal);
     transform: scaleX(0);
     transform-origin: left;
 }
 .chord.chord-now {
-    color: #fff;
-    text-shadow: 0 0 6px rgba(var(--active-mood-rgb), 1), 0 0 18px rgba(var(--active-mood-rgb), 0.8);
+    color: var(--signal-ink);
+    background: var(--signal);
+    border-radius: 3px;
+    box-shadow: 0 0 0 2px var(--signal); /* a marker around the name without moving the columns */
 }
 @media (prefers-reduced-motion: reduce) {
     .sing-band {
@@ -2252,7 +2249,7 @@ input#search:focus {
 /* Chords the sheet left out and complete_chords.py filled in (a repeated part, or heard in your video) */
 .chord.chord-added,
 .chord-added-sample {
-    text-decoration: underline dotted rgba(var(--active-mood-rgb), 0.75);
+    text-decoration: underline dotted rgba(var(--signal-rgb), 0.7);
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
 }
@@ -2266,5 +2263,5 @@ input#search:focus {
     color: var(--text-muted);
 }
 .added-note i {
-    color: var(--active-mood-color, var(--primary));
+    color: var(--signal);
 }

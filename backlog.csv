@@ -34,3 +34,5 @@ Mejoras, Tiempo de cada palabra (Whisper) en la hoja: el acorde entra cuando se 
 Mejoras, Revisión de acordes anclada a la letra (experiments/chord_check/anchored_check.py): cada acorde se evalúa cuando suena / tríada contra tríada / alertas con cuántas apariciones fallan (The A Team 43% -> 83%), 45, HIGH, Should, FEATURE, Ninguno, Ninguno, completada
 Mejoras, Una calibración con 🎯 deja de aplicarse sola cuando cambian los tiempos de letra de la canción (Familiar arrastraba -44.6 s), 10, HIGH, Must, FIX, Ninguno, Ninguno, completada
 Mejoras, Ajustar los cambios de acorde al pulso de la canción (beat tracking) para la revisión y para el brillo del acorde, 30, LOW, Could, FEATURE, Ninguno, Ninguno, backlog
+Mejoras, Paleta de la interfaz: grises en tres planos y un solo color de señal (ámbar) / chips neutros con punto de mood / sin degradados ni neón / scroll y controles oscuros / fondo 3D en ámbar y gris (DESIGN.md), 35, MEDIUM, Should, UX, Ninguno, Ninguno, completada
+Mejoras, Nombre del sitio: Acordate (acorde + acordarse) en vez de Musica / la carpeta de marcadores original, 10, MEDIUM, Should, UX, Ninguno, Ninguno, completada

@@ -17,6 +17,8 @@
 - [ ] Bajar efectos visuales: un solo protagonista (íconos celestes o fondo 3D), notas flotantes fuera del texto, sin blur en las tarjetas <!-- priority: MEDIUM, type: UX, est: 45 -->
 
 ## ✅ Completadas
+- [x] Nombre del sitio: **Acordate** (acorde + acordarse) en el logo y en el título de la pestaña, en vez de "Musica", el nombre de la carpeta de marcadores original <!-- priority: MEDIUM, type: UX, done: 2026-10-18 -->
+- [x] Paleta de la interfaz ordenada (`DESIGN.md`): grises en tres planos y un solo color de señal, ámbar, para la acción principal, lo seleccionado y lo que suena. Chips de filtro neutros con un punto de mood, sin degradados ni neón, scroll y controles oscuros, fondo 3D en ámbar y gris. De 147 colores sueltos a una paleta con contraste AA <!-- priority: MEDIUM, type: UX, done: 2026-10-18 -->
 - [x] Tiempo de cada palabra en la hoja (Whisper sobre la voz guía): el acorde entra cuando se canta su sílaba y la barra avanza palabra por palabra, en 39 canciones (1.176 líneas). Dos frases cantadas en una misma línea de la hoja son una sola pasada <!-- priority: HIGH, type: FEATURE, done: 2026-10-17 -->
 - [x] Revisión de acordes anclada a la letra (`experiments/chord_check/anchored_check.py`): cada acorde se evalúa en el momento en que suena, tríada contra tríada, con alertas que dicen cuántas apariciones fallan. The A Team 43% → 83%, Ya Me Hiciste Mal 60% → 98%; 29 alertas en 20 canciones (Fénix: D suena Dm) <!-- priority: HIGH, type: FEATURE, done: 2026-10-17 -->
 - [x] Una calibración con 🎯 deja de aplicarse sola cuando cambian los tiempos de letra de la canción (Familiar arrastraba −44,6 s de antes de alinearla) <!-- priority: HIGH, type: FIX, done: 2026-10-17 -->

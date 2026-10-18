@@ -16,15 +16,15 @@ const ThreeBackground = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // Lights
+    // Lights and colors follow the site palette (see DESIGN.md): the amber signal and warm grays
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
     
-    const pointLight1 = new THREE.PointLight(0x00f2ff, 5, 100);
+    const pointLight1 = new THREE.PointLight(0xf2b84b, 4, 100);
     pointLight1.position.set(5, 5, 5);
     scene.add(pointLight1);
 
-    const pointLight2 = new THREE.PointLight(0x7000ff, 5, 100);
+    const pointLight2 = new THREE.PointLight(0x8c8c99, 3, 100);
     pointLight2.position.set(-5, -5, -5);
     scene.add(pointLight2);
 
@@ -32,8 +32,8 @@ const ThreeBackground = () => {
     const coreGeometry = new THREE.IcosahedronGeometry(1.5, 2);
     const coreMaterial = new THREE.MeshStandardMaterial({
         color: 0x000000,
-        emissive: 0x7000ff,
-        emissiveIntensity: 0.8,
+        emissive: 0x3a2a0c,
+        emissiveIntensity: 0.6,
         wireframe: false,
         transparent: true,
         opacity: 0.9,
@@ -45,12 +45,12 @@ const ThreeBackground = () => {
     // Outer Wireframe
     const wireGeometry = new THREE.IcosahedronGeometry(2.2, 1);
     const wireMaterial = new THREE.MeshStandardMaterial({ 
-        color: 0x00f2ff, 
-        emissive: 0x00f2ff,
-        emissiveIntensity: 0.5,
+        color: 0xf2b84b, 
+        emissive: 0xf2b84b,
+        emissiveIntensity: 0.35,
         wireframe: true,
         transparent: true,
-        opacity: 0.8
+        opacity: 0.45
     });
     const wireframe = new THREE.Mesh(wireGeometry, wireMaterial);
 
@@ -108,9 +108,9 @@ const ThreeBackground = () => {
     };
 
     // Create different groups of notes
-    createParticleSystem(texture1, 300, 1.2, 0x00f2ff); // Cyan
-    createParticleSystem(texture2, 200, 1.5, 0x7000ff); // Purple
-    createParticleSystem(texture1, 150, 0.8, 0xff007a); // Pink
+    createParticleSystem(texture1, 300, 1.2, 0xf2b84b); // Amber
+    createParticleSystem(texture2, 200, 1.5, 0x8c8c99); // Gray
+    createParticleSystem(texture1, 150, 0.8, 0xc9c9d3); // Light gray
 
     camera.position.z = 10;
 

@@ -832,20 +832,13 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                 {!loadingTracks && (backingTracks || API_URL) && (
                   <button 
                     onClick={() => setShowYoutube(!showYoutube)} 
-                    className={`btn ${showYoutube ? 'btn-primary' : ''}`}
-                    style={{ 
-                      background: showYoutube ? 'rgba(255, 0, 122, 0.2)' : 'var(--glass)', 
-                      color: showYoutube ? 'var(--accent)' : 'white',
-                      borderColor: showYoutube ? 'var(--accent)' : 'var(--glass-border)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px'
-                    }}
+                    className={`btn ${showYoutube ? 'btn-on' : ''}`}
+                    style={{ gap: '6px' }}
                     title="Pistas oficiales de acompañamiento"
                     aria-label={showYoutube ? 'Ocultar pista' : 'Mostrar pista'}
                   >
-                    <i className="fab fa-youtube" style={{ color: showYoutube ? 'var(--accent)' : '#ff0000' }}></i>
-                    <span className="btn-label">{showYoutube ? 'Pista Activa' : 'Acompañar'}</span>
+                    <i className="fab fa-youtube" style={{ color: '#ff3b3b' }}></i>
+                    <span className="btn-label">{showYoutube ? 'Pista activa' : 'Acompañar'}</span>
                   </button>
                 )}
 
@@ -853,7 +846,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                   <button onClick={() => setTransposeDelta(p => p - 1)} className="btn-icon" style={{ width: '30px', height: '30px', fontSize: '0.9rem' }} title="Bajar medio tono">
                       <i className="fas fa-minus"></i>
                   </button>
-                  <div style={{ minWidth: '80px', textAlign: 'center', fontSize: '0.85rem', fontWeight: 'bold', color: transposeDelta !== 0 ? 'var(--active-mood-color, var(--primary))' : 'var(--text-main)' }}>
+                  <div style={{ minWidth: '80px', textAlign: 'center', fontSize: '0.85rem', fontWeight: 'bold', color: transposeDelta !== 0 ? 'var(--signal)' : 'var(--text-main)' }}>
                       {getTransposeLabel()}
                   </div>
                   <button onClick={() => setTransposeDelta(p => p + 1)} className="btn-icon" style={{ width: '30px', height: '30px', fontSize: '0.9rem' }} title="Subir medio tono">
@@ -879,7 +872,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
             
             {loading && <div style={{ textAlign: 'center', padding: '3rem' }}><i className="fas fa-spinner fa-spin fa-3x"></i><br/><br/>Cargando acordes...</div>}
             
-            {error && <div style={{ color: 'var(--active-mood-color, var(--primary))', padding: '2rem' }}>{error}</div>}
+            {error && <div style={{ color: 'var(--text-soft)', padding: '2rem' }}>{error}</div>}
             
             {!loading && !error && (
               <>
@@ -911,7 +904,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
 
         {selectedChordSvg && (
           <div className="selected-chord-panel animate-in">
-             <div style={{ color: 'var(--active-mood-color, var(--primary))', fontWeight: 'bold', fontSize: '1.5rem', letterSpacing: '1px' }}>{selectedChordSvg.name}</div>
+             <div style={{ color: 'var(--signal)', fontWeight: 'bold', fontSize: '1.5rem', letterSpacing: '1px' }}>{selectedChordSvg.name}</div>
              <div dangerouslySetInnerHTML={{ __html: selectedChordSvg.svg }} style={{ transform: 'scale(1.2)', transformOrigin: 'center' }} />
              <button onClick={() => setSelectedChordSvg(null)} className="btn-icon" style={{background: 'var(--glass)', width: '40px', height: '40px'}}>
                  <i className="fas fa-times"></i>
@@ -924,7 +917,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       {showYoutube && (
         <div className="viewer-right-panel animate-in">
           <div className="youtube-sidebar-header">
-            <h3><i className="fab fa-youtube" style={{ color: '#ff0000', marginRight: '8px' }}></i>Acompañamiento</h3>
+            <h3><i className="fab fa-youtube" style={{ color: '#ff3b3b', marginRight: '8px' }}></i>Acompañamiento</h3>
             <div style={{ display: 'flex', gap: '8px' }}>
               {API_URL && (
               <button
@@ -938,7 +931,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                 }}
                 className={`btn-icon ${isSearching ? 'active' : ''}`}
                 title="Buscar otro video de YouTube"
-                style={{ width: '32px', height: '32px', fontSize: '0.9rem', color: isSearching ? 'var(--primary)' : 'white', background: isSearching ? 'rgba(0, 242, 255, 0.1)' : 'transparent', border: 'none', borderRadius: '50%', cursor: 'pointer' }}
+                style={{ width: '32px', height: '32px', fontSize: '0.9rem', color: isSearching ? 'var(--primary)' : 'white', background: isSearching ? 'var(--signal-soft)' : 'transparent', border: 'none', borderRadius: '50%', cursor: 'pointer' }}
               >
                 <i className="fas fa-search"></i>
               </button>
@@ -1031,7 +1024,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                             <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>{video.channelTitle}</span>
                             <button 
                               className="btn" 
-                              style={{ padding: '2px 8px', fontSize: '0.7rem', background: 'var(--accent)', color: 'white', borderRadius: '8px', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}
+                              style={{ padding: '2px 8px', fontSize: '0.7rem', background: 'var(--signal)', color: 'var(--signal-ink)', borderRadius: '8px', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}
                               disabled={linkingVideo}
                               onClick={() => handleLinkVideo(video.id, video.title)}
                             >

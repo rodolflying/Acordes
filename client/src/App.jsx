@@ -557,11 +557,11 @@ function App() {
                 <div className="logo-icon">
                     <i className="fas fa-music"></i>
                 </div>
-                <h2>Musica</h2>
+                <h2>Acordate</h2>
             </div>
             
             <nav>
-                <div style={{marginTop: '2rem', marginBottom: '1rem', fontSize: '0.8rem', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: '700', letterSpacing: '1px'}}>
+                <div style={{marginTop: '2rem', marginBottom: '1rem', fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '600'}}>
                     Carpetas
                 </div>
                 <ul className="folder-list">
@@ -603,23 +603,17 @@ function App() {
                     )}
                 </div>
                 <div className="actions">
-                    <button 
-                      className={`btn ${performanceMode ? 'btn-active' : ''}`}
-                      style={{
-                        background: performanceMode ? 'rgba(255, 183, 3, 0.2)' : 'var(--glass)', 
-                        color: performanceMode ? '#ffb703' : 'white',
-                        borderColor: performanceMode ? '#ffb703' : 'var(--glass-border)',
-                      }}
+                    <button
+                      className={`btn ${performanceMode ? 'btn-on' : ''}`}
                       onClick={() => setPerformanceMode(!performanceMode)}
                       title={performanceMode ? "Activar animaciones" : "Desactivar animaciones para mejorar rendimiento"}
                     >
-                        <i className={`fas ${performanceMode ? 'fa-bolt' : 'fa-film'}`} style={{ color: performanceMode ? '#ffb703' : 'white' }}></i>
-                        {performanceMode ? 'Modo Rápido' : 'Animaciones'}
+                        <i className={`fas ${performanceMode ? 'fa-bolt' : 'fa-film'}`}></i>
+                        {performanceMode ? 'Modo rápido' : 'Animaciones'}
                     </button>
                     {API_URL && (
                     <button
-                      className="btn btn-primary"
-                      style={{background: 'var(--glass)', color: 'white'}}
+                      className="btn"
                       onClick={handleSync}
                       disabled={syncing}
                     >
@@ -629,9 +623,8 @@ function App() {
                          <><i className="fas fa-sync-alt"></i> Sincronizar</>}
                     </button>
                     )}
-                    <button 
-                      className="btn btn-primary" 
-                      style={{background: 'var(--glass)', color: 'white'}}
+                    <button
+                      className="btn"
                       onClick={() => setShowDashboard(true)}
                     >
                         <i className="fas fa-chart-pie"></i>
@@ -654,58 +647,42 @@ function App() {
             </button>
             <div className={`filters-container ${filtersOpen ? 'open' : ''}`}>
                 <div className="filter-row">
-                    <span className="filter-label">MOOD</span>
+                    <span className="filter-label">Mood</span>
                     <div className="filter-buttons">
                         {Object.entries(MOODS_CONFIG).map(([moodName, config]) => (
                             <button
                                 key={moodName}
                                 className={`filter-tag mood-btn ${activeMood === moodName ? 'active' : ''}`}
                                 onClick={() => setActiveMood(activeMood === moodName ? null : moodName)}
-                                style={{
-                                    '--mood-color': config.color,
-                                    borderColor: activeMood === moodName ? config.color : 'var(--glass-border)',
-                                    background: activeMood === moodName ? `rgba(${config.rgb}, 0.15)` : 'var(--glass)',
-                                    color: activeMood === moodName ? config.color : 'var(--text-muted)'
-                                }}
                             >
-                                <span className="filter-emoji">{config.emoji}</span> {moodName}
+                                {/* The mood keeps its color only as a dot: the cards are where moods get colored */}
+                                <span className="filter-dot" style={{ background: config.color }}></span>{moodName}
                             </button>
                         ))}
                     </div>
                 </div>
                 <div className="filter-row" style={{ marginTop: '0.8rem' }}>
-                    <span className="filter-label">TEMÁTICA</span>
+                    <span className="filter-label">Temática</span>
                     <div className="filter-buttons">
-                        {Object.entries(THEMES_CONFIG).map(([themeName, config]) => (
+                        {Object.keys(THEMES_CONFIG).map(themeName => (
                             <button
                                 key={themeName}
                                 className={`filter-tag theme-btn ${activeTheme === themeName ? 'active' : ''}`}
                                 onClick={() => setActiveTheme(activeTheme === themeName ? null : themeName)}
-                                style={{
-                                    borderColor: activeTheme === themeName ? 'var(--primary)' : 'var(--glass-border)',
-                                    background: activeTheme === themeName ? 'rgba(0, 242, 255, 0.15)' : 'var(--glass)',
-                                    color: activeTheme === themeName ? 'var(--primary)' : 'var(--text-muted)'
-                                }}
                             >
-                                <span className="filter-emoji">{config.emoji}</span> {themeName}
+                                {themeName}
                             </button>
                         ))}
                     </div>
                 </div>
                 <div className="filter-row" style={{ marginTop: '0.8rem' }}>
-                    <span className="filter-label">PISTAS</span>
+                    <span className="filter-label">Pistas</span>
                     <div className="filter-buttons">
                         <button
                             className={`filter-tag ${filterHasBackingTrack ? 'active' : ''}`}
                             onClick={() => setFilterHasBackingTrack(!filterHasBackingTrack)}
-                            style={{
-                                borderColor: filterHasBackingTrack ? 'var(--accent)' : 'var(--glass-border)',
-                                background: filterHasBackingTrack ? 'rgba(255, 0, 122, 0.15)' : 'var(--glass)',
-                                color: filterHasBackingTrack ? 'var(--accent)' : 'var(--text-muted)',
-                                fontWeight: '700'
-                            }}
                         >
-                            <span className="filter-emoji">🎤</span> Solo con Pista Oficial
+                            <i className="fas fa-microphone"></i> Solo con pista oficial
                         </button>
                     </div>
                 </div>
