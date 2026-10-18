@@ -12,7 +12,7 @@ Mejoras, Arreglos móviles: filtros plegables / Cerrar visible / atrás cierra l
 Mejoras, Sincronización línea a línea con LRCLIB y calibración del desfase, 120, HIGH, Should, FEATURE, Ninguno, Ninguno, completada
 Mejoras, Bajar efectos visuales (un protagonista / notas fuera del texto / sin blur en tarjetas), 45, MEDIUM, Could, UX, Ninguno, Ninguno, backlog
 Mejoras, Ocultar marcadores que no son canciones y unificar canciones repetidas, 30, MEDIUM, Should, FIX, Ninguno, Ninguno, completada
-Mejoras, Exportar desde Karaokes los tiempos de stable_whisper para sincronía exacta, 60, MEDIUM, Could, FEATURE, Ninguno, Ninguno, descartada
+Mejoras, Letra con los tiempos exactos de tus karaokes: karaoke_timings.py lee el subtitles.ass de cada canción en el Drive (lo que se pinta en el video) / 59 de 61 canciones con video sincronizadas (antes 52), 30, HIGH, Must, FEATURE, Ninguno, Ninguno, completada
 Mejoras, Renovar la clave de Qwen (DashScope responde 401) y reclasificar las canciones con mood genérico, 20, MEDIUM, Should, FIX, Ninguno, Ninguno, pendiente
 Mejoras, Arreglar el scraper de Cifra Club (HTML nuevo con atributos data-chord) y reparar las 20 hojas sin acordes marcados, 20, HIGH, Must, FIX, Ninguno, Ninguno, completada
 Mejoras, Fact-check de acordes contra el audio en las 54 canciones con pista disponible (experiments/chord_check/batch.py: stem other + bajo con Demucs / tono / acordes que suenan distinto / ranking de hojas), 60, HIGH, Should, FEATURE, Ninguno, Acordes propios, completada
@@ -36,3 +36,4 @@ Mejoras, Una calibración con 🎯 deja de aplicarse sola cuando cambian los tie
 Mejoras, Ajustar los cambios de acorde al pulso de la canción (beat tracking) para la revisión y para el brillo del acorde, 30, LOW, Could, FEATURE, Ninguno, Ninguno, backlog
 Mejoras, Paleta de la interfaz: grises en tres planos y un solo color de señal (ámbar) / chips neutros con punto de mood / sin degradados ni neón / scroll y controles oscuros / fondo 3D en ámbar y gris (DESIGN.md), 35, MEDIUM, Should, UX, Ninguno, Ninguno, completada
 Mejoras, Nombre del sitio: Acordate (acorde + acordarse) en vez de Musica / la carpeta de marcadores original, 10, MEDIUM, Should, UX, Ninguno, Ninguno, completada
+Mejoras, Tu (Lucybell) tenía la pista de Cuando Respiro En Tu Boca: el emparejador exige el título como palabras completas y lo demás solo invitados o relleno, 15, HIGH, Must, FIX, Ninguno, Ninguno, completada

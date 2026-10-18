@@ -7,7 +7,8 @@ precargada. Genera client/public/sync_points.json:
 La app usa esos puntos para avanzar línea a línea; sin ellos la hoja avanza en proporción
 al video.
 
-aligned_lyrics.json trae, para las canciones con video Karaoke, la misma letra de LRCLIB con los
+karaoke_lyrics.json trae la letra exacta que pinta cada video karaoke (karaoke_timings.py, desde el
+proyecto Karaokes) y manda sobre todo lo demás. aligned_lyrics.json trae, para las canciones con video Karaoke, la misma letra de LRCLIB con los
 tiempos de tu video (y el de cada palabra, que va como tercer elemento del punto: [[columna en la
 hoja, segundo], ...], para que cada acorde entre justo cuando se canta su sílaba): Whisper ubicó cada línea en la voz guía (experiments/chord_check/align_lyrics.py).
 Así la hoja calza aunque el video tenga otra intro u otra edición del tema. Si ahí "lrc" es null, la
@@ -35,6 +36,7 @@ PUBLIC = ROOT / 'client' / 'public'
 CACHE_FILE = ROOT / 'lrclib_cache.json'  # respuestas de LRCLIB, para no repetir descargas
 OFFSETS_FILE = ROOT / 'sync_offsets.json'  # desfase medido de cada video respecto de la letra
 ALIGNED_FILE = ROOT / 'aligned_lyrics.json'  # la letra con los tiempos reales de tu video
+KARAOKE_FILE = ROOT / 'karaoke_lyrics.json'  # la letra exacta que pinta tu video karaoke (karaoke_timings.py)
 
 SECTION = re.compile(r'^(intro|coro|estribillo|verso|puente|solo|final|outro|chorus|verse|bridge|'
                      r'pre ?coro|pre ?chorus|interludio|interlude|first part|second part|parte|tab|riff)\b')
@@ -201,6 +203,9 @@ def generate_sync_points():
     cache = json.loads(CACHE_FILE.read_text(encoding='utf-8')) if CACHE_FILE.exists() else {}
     offsets = json.loads(OFFSETS_FILE.read_text(encoding='utf-8')) if OFFSETS_FILE.exists() else {}
     aligned = json.loads(ALIGNED_FILE.read_text(encoding='utf-8')) if ALIGNED_FILE.exists() else {}
+    # Lo que pinta tu video karaoke manda: es la misma letra y los mismos tiempos que se ven en el video
+    karaoke = json.loads(KARAOKE_FILE.read_text(encoding='utf-8')) if KARAOKE_FILE.exists() else {}
+    aligned = {**aligned, **karaoke}
 
     # Solo importa en canciones con video: pistas de Karaokes o videos vinculados a mano
     urls = set(tracks) | {url for url, e in enriched.items() if e.get('youtube_video')}

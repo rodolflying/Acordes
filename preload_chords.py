@@ -81,6 +81,10 @@ def main():
     from complete_chords import main as complete_chords
     complete_chords()
 
+    # La letra exacta que pinta cada video karaoke, desde el proyecto Karaokes (Google Drive)
+    from karaoke_timings import main as karaoke_timings
+    karaoke_timings()
+
     # Tiempos de cada línea de la letra, para que la hoja siga al video línea a línea
     from lyrics_sync import generate_sync_points
     generate_sync_points()
@@ -99,6 +103,27 @@ def generate_backing_tracks():
         s = re.sub(r'[^a-z0-9\s]', '', s)
         return " ".join(s.split())
         
+    # Palabras que el nombre de un video agrega además del título ("Oficial Familiar", "(Official Video)")
+    noise = {'oficial', 'official', 'video', 'videoclip', 'clip', 'lyric', 'lyrics', 'letra', 'audio', 'version',
+             'acoustic', 'acustica', 'acustico', 'live', 'vivo', 'remastered', 'remaster', 'hd', 'hq', 'mv',
+             'music', 'musical', 'sub', 'subtitulado', 'tv', 'karaoke', 'instrumental'}
+
+    featuring = {'ft', 'feat', 'featuring', 'part', 'with'}
+
+    def title_fits(title: str, text: str, artist: str) -> bool:
+        """El título está en el texto como palabras seguidas y lo demás es el artista, un invitado ("ft Peso
+        Pluma") o relleno: "Tu" no calza con "Cuando Respiro En Tu Boca", "Familiar" sí con "Oficial Familiar"."""
+        t, w = title.split(), text.split()
+        at = next((i for i in range(len(w) - len(t) + 1) if w[i:i + len(t)] == t), None) if t else None
+        if at is None:
+            return False
+        after = w[at + len(t):]
+        cut = next((i for i, x in enumerate(after) if x in featuring), len(after))
+        compact_artist = artist.replace(' ', '')
+        rest = [x for x in w[:at] + after[:cut]
+                if x not in artist.split() and not (compact_artist and compact_artist in x)]
+        return all(x in noise for x in rest)
+
     root_dir = os.path.dirname(os.path.abspath(__file__))
     candidates = [
         os.path.join(os.path.dirname(root_dir), "Karaokes", "data", "youtube_upload_state.json"),
@@ -169,7 +194,7 @@ def generate_backing_tracks():
             artist, title = parse_song_name(name)
             
         norm_artist = normalize_string(artist)
-        norm_title = normalize_string(title)
+        norm_title = normalize_string(re.sub(r'\([^)]*\)', '', title))  # "(acustica)", "(part. ...)" son notas
         # Para la pasada tolerante: título sin notas como "(Acoustic version)" y sin espacios ("M.A.I" = "M A I")
         compact_title = normalize_string(re.sub(r'\([^)]*\)', '', title)).replace(' ', '')
         compact_artist = norm_artist.replace(' ', '')
@@ -183,23 +208,30 @@ def generate_backing_tracks():
                 
             clean_key, version = key.rsplit('/', 1)
             norm_key = normalize_string(clean_key)
-            
+
             is_match = False
-            if norm_artist in norm_key and norm_title in norm_key:
+            if norm_artist in norm_key and title_fits(norm_title, norm_key, norm_artist):
                 is_match = True
             else:
                 parts = [normalize_string(p) for p in clean_key.split(' - ')]
                 if len(parts) >= 2:
                     p1, p2 = parts[0], parts[1]
-                    if (norm_artist in p1 and norm_title in p2) or (norm_title in p1 and norm_artist in p2):
+                    if (norm_artist in p1 and title_fits(norm_title, p2, norm_artist)) or \
+                       (norm_artist in p2 and title_fits(norm_title, p1, norm_artist)):
                         is_match = True
             if not is_match and len(compact_title) >= 3:
                 # Pasada tolerante: el artista vale si comparte una palabra distintiva
-                # ("Thirty Seconds To Mars" = "30 Seconds to Mars")
+                # ("Thirty Seconds To Mars" = "30 Seconds to Mars"), y el título tiene que ser lo principal
+                # del nombre del video, no una palabra suelta dentro de otro título
                 compact_key = norm_key.replace(' ', '')
                 key_words = set(norm_key.split())
                 artist_ok = compact_artist in compact_key or any(len(w) >= 4 and w in key_words for w in norm_artist.split())
-                is_match = artist_ok and compact_title in compact_key
+                # Lo que queda del nombre sin el artista: la parte del "Artista - Título" que no lo nombra
+                artist_words = [w for w in norm_artist.split() if len(w) >= 4]
+                parts = [normalize_string(p).replace(' ', '') for p in clean_key.split(' - ')]
+                titled = [p for p in parts if compact_artist not in p and not any(w in p for w in artist_words)]
+                rest = titled[0] if len(titled) == 1 else compact_key.replace(compact_artist, '')
+                is_match = artist_ok and compact_title in compact_key and len(compact_title) >= 0.5 * len(rest)
 
             if is_match:
                 v_lower = version.lower()

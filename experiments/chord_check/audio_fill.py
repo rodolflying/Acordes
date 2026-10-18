@@ -31,6 +31,8 @@ def line_times(url, content):
     """{línea de la hoja: segundo en tu video en que se empieza a cantar} (la primera vez)."""
     enriched = json.loads((ROOT / 'client/public/enriched_songs.json').read_text(encoding='utf-8'))['songs']
     aligned = json.loads((ROOT / 'aligned_lyrics.json').read_text(encoding='utf-8')) if (ROOT / 'aligned_lyrics.json').exists() else {}
+    if (ROOT / 'karaoke_lyrics.json').exists():  # lo que pinta tu video karaoke manda
+        aligned = {**aligned, **json.loads((ROOT / 'karaoke_lyrics.json').read_text(encoding='utf-8'))}
     offsets = json.loads((ROOT / 'sync_offsets.json').read_text(encoding='utf-8')) if (ROOT / 'sync_offsets.json').exists() else {}
     cache = json.loads((ROOT / 'lrclib_cache.json').read_text(encoding='utf-8'))
     song = enriched.get(url, {})
