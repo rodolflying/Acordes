@@ -149,23 +149,87 @@ def sung_words(lrc_text: str, words: list) -> list:
     return out
 
 
-def word_anchors(sheet_line: str, words: list) -> list[list]:
+def word_anchors(sheet_line: str, words: list, used: set | None = None) -> list[list]:
     """[[columna, segundo], ...]: dónde está escrita en la hoja cada palabra cantada y cuándo se canta.
 
     Un acorde va escrito sobre una sílaba: con esto la app sabe en qué segundo entra, aunque la
-    línea no se cante a velocidad pareja.
+    línea no se cante a velocidad pareja. Si se pasa `used`, ahí quedan las palabras cantadas que
+    calzaron (su posición en `words`).
     """
     text = html.unescape(re.sub(r'<[^>]+>', '', sheet_line))
     written = [(m.start(), norm(m.group()).split()[0]) for m in re.finditer(r'\S+', text) if norm(m.group())]
-    sung = [(norm(w).split()[0], t) for w, t in words if norm(w)]
-    matcher = difflib.SequenceMatcher(None, [w for _, w in written], [w for w, _ in sung], autojunk=False)
+    sung = [(norm(w).split()[0], t, k) for k, (w, t) in enumerate(words) if norm(w)]
+    matcher = difflib.SequenceMatcher(None, [w for _, w in written], [w for w, _, _ in sung], autojunk=False)
     anchors = []
     for a, b, size in matcher.get_matching_blocks():
         for j in range(size):
-            col, t = written[a + j][0], sung[b + j][1]
+            col, t, k = written[a + j][0], sung[b + j][1], sung[b + j][2]
             if not anchors or t > anchors[-1][1]:  # siempre hacia adelante
                 anchors.append([col, round(t, 2)])
+                if used is not None:
+                    used.add(k)
     return anchors
+
+
+def region_points(sung_lines: list, sheet_lines: list, region: list) -> list[list]:
+    """Las palabras cantadas de un tramo puestas sobre los renglones de la hoja de ese tramo.
+
+    sung_lines: [[palabra, segundo], ...] de cada línea cantada del tramo, en orden; region: los
+    renglones de letra de la hoja donde van. Se alinean palabra por palabra todas juntas, así da lo
+    mismo cómo corta los renglones la hoja ("Un camino sin fe, melodía una dulce canción" toma media
+    línea cantada y media de la siguiente). Devuelve [[segundo, renglón, anclas], ...].
+    """
+    written = []
+    for line in region:
+        text = html.unescape(re.sub(r'<[^>]+>', '', sheet_lines[line]))
+        written += [(line, m.start(), norm(m.group()).split()[0]) for m in re.finditer(r'\S+', text) if norm(m.group())]
+    sung = [(norm(w).split()[0], t) for words in sung_lines for w, t in words if norm(w)]
+    matcher = difflib.SequenceMatcher(None, [w for _, _, w in written], [w for w, _ in sung], autojunk=False)
+    anchors, last = {}, -1.0
+    for a, b, size in matcher.get_matching_blocks():
+        for j in range(size):
+            line, col, _ = written[a + j]
+            t = sung[b + j][1]
+            if t > last:  # siempre hacia adelante
+                anchors.setdefault(line, []).append([col, round(t, 2)])
+                last = t
+    points = []
+    for line in region:
+        a = anchors.get(line)
+        if a and (len(a) >= 2 or a[0][0] <= 2):  # una palabra suelta en medio del renglón no basta
+            # Si el renglón empieza con palabras que no calzaron, empieza un poco antes de la primera que sí
+            points.append([round(a[0][1] - min(a[0][0] * 0.06, 1.5), 2), line, a])
+    return points
+
+
+def line_points(t: float, line: int, words: list, sheet_lines: list, lyric_order: list) -> list[list]:
+    """Los puntos de una línea cantada sobre la hoja: [[segundo, renglón, anclas], ...].
+
+    El renglón se ilumina cuando se canta su primera palabra (el karaoke muestra la línea antes). Y la
+    hoja a veces parte en dos renglones lo que se canta como una línea ("Tus palabras se tornan cristal,"
+    / "no las voy a entender"): las palabras que no están en el renglón calzado se buscan en el
+    renglón de letra anterior y en el siguiente, que también reciben su tiempo.
+    """
+    used = set()
+    anchors = word_anchors(sheet_lines[line], words, used)
+    if not anchors:
+        return [[round(t, 2), line]]
+    first_col, first_time = anchors[0]
+    # Si el renglón empieza con palabras que no calzaron, empieza un poco antes de la primera que sí
+    points = [[round(max(t, first_time - min(first_col * 0.06, 1.5)), 2), line, anchors]]
+    rest = [w if k not in used else ['', 0] for k, w in enumerate(words)]
+    if len(used) < 0.8 * len([w for w, _ in words if norm(w)]):
+        j = lyric_order.index(line)
+        for n, before in ((lyric_order[j - 1] if j > 0 else None, True),
+                          (lyric_order[j + 1] if j + 1 < len(lyric_order) else None, False)):
+            if n is None:
+                continue
+            extra = word_anchors(sheet_lines[n], rest)
+            n_words = len(norm(html.unescape(re.sub(r'<[^>]+>', '', sheet_lines[n]))).split())
+            in_order = extra and (extra[-1][1] < anchors[0][1] if before else extra[0][1] > anchors[-1][1])
+            if len(extra) >= 2 and len(extra) >= 0.6 * n_words and in_order:
+                points.append([extra[0][1], n, extra])
+    return sorted(points)
 
 
 def _get_json(url: str):
@@ -225,10 +289,28 @@ def generate_sync_points():
             shift = 0 if url in aligned else offsets.get(url, {}).get('segundos', 0)
             words = sung_words(lrc_text, aligned[url].get('words', [])) if url in aligned else []
             sheet_lines = sheet['content'].split('\n')
+            lyric_order = [k for k, _ in sheet_lyric_lines(sheet['content'])]
             sync_points[url] = []
-            for t, line, i in points:
-                anchors = word_anchors(sheet_lines[line], words[i]) if i < len(words) and words[i] else []
-                sync_points[url].append([round(t + shift, 2), line] + ([anchors] if anchors else []))
+            for j, (t, line, i) in enumerate(points):
+                if not any(words[i:i + 1]):  # sin el tiempo de cada palabra: el renglón calzado, entero
+                    sync_points[url].append([round(t + shift, 2), line])
+                    continue
+                # El tramo hasta la próxima línea calzada: lo cantado entre medio (aunque no haya calzado
+                # sola) va sobre los renglones de la hoja que hay entre medio
+                next_i, next_line = (points[j + 1][2], points[j + 1][1]) if j + 1 < len(points) else (len(lrc), None)
+                k = lyric_order.index(line)
+                first_i = 0 if j == 0 else i  # lo cantado antes de la primera línea que calzó también cuenta
+                if next_line is not None and next_line > line:
+                    # Hasta la próxima línea calzada incluida: la hoja puede escribir en un renglón anterior
+                    # el comienzo de esa línea cantada ("Tus palabras se tornan cristal," / "no las voy...");
+                    # el renglón de la próxima lo pone su propio tramo
+                    region = [x for x in lyric_order[k:] if x <= next_line]
+                    found = [p for p in region_points(words[first_i:next_i + 1], sheet_lines, region) if p[1] != next_line]
+                else:  # vuelve a una parte escrita más arriba, o es el final: tantos renglones como lo cantado
+                    region = lyric_order[k:k + (next_i - i) + 1]
+                    found = region_points(words[first_i:next_i], sheet_lines, region)
+                sync_points[url] += found or line_points(t, line, words[i], sheet_lines, lyric_order)
+            sync_points[url].sort(key=lambda p: p[0])
         else:
             sin_letra.append(f"{song['title']} — {song['artist']}")
 

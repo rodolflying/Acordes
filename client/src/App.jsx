@@ -305,13 +305,12 @@ function App() {
   };
 
   const filteredSongs = useMemo(() => {
+    // Without accents or case: "angeles" finds "Ángeles", "fenix" finds "Fénix"
+    const fold = s => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    const query = fold(searchQuery.trim());
     return songs.filter(song => {
-      const hasSearch = searchQuery.trim() !== '';
-      const matchesSearch = song.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                           song.folder.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           song.source.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           (song.mood && song.mood.toLowerCase().includes(searchQuery.toLowerCase())) ||
-                           (song.theme && song.theme.toLowerCase().includes(searchQuery.toLowerCase()));
+      const hasSearch = query !== '';
+      const matchesSearch = [song.title, song.folder, song.source, song.mood, song.theme].some(field => fold(field).includes(query));
       
       const matchesFolder = hasSearch ? true : (currentFilter === 'all' || song.folder === currentFilter);
       const matchesMood = activeMood === null || song.mood === activeMood;
@@ -714,7 +713,7 @@ function App() {
                     style={{
                       animationDelay: `${Math.min(index * 0.05, 1)}s`,
                       '--active-mood-color': song.mood ? (MOODS_CONFIG[song.mood]?.color || '#ffffff') : 'var(--primary)',
-                      '--active-mood-rgb': song.mood ? (MOODS_CONFIG[song.mood]?.rgb || '255,255,255') : '0,242,255'
+                      '--active-mood-rgb': song.mood ? (MOODS_CONFIG[song.mood]?.rgb || '255,255,255') : '242,184,75'
                     }}
                     onClick={() => handleOpenSong(song)}
                   >

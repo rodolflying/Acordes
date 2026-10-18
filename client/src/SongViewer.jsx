@@ -813,7 +813,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       className={`${song.theme ? `theme-${song.theme.toLowerCase()}` : ''} ${showYoutube ? 'with-youtube' : ''}`}
       style={{
         '--active-mood-color': song.mood ? (MOODS_CONFIG[song.mood]?.color || '#ffffff') : 'var(--primary)',
-        '--active-mood-rgb': song.mood ? (MOODS_CONFIG[song.mood]?.rgb || '255,255,255') : '0,242,255'
+        '--active-mood-rgb': song.mood ? (MOODS_CONFIG[song.mood]?.rgb || '255,255,255') : '242,184,75'
       }}
     >
       <div className="thematic-pattern" style={{ opacity: 0.07, zIndex: 0 }}></div>
@@ -904,7 +904,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
 
         {selectedChordSvg && (
           <div className="selected-chord-panel animate-in">
-             <div style={{ color: 'var(--signal)', fontWeight: 'bold', fontSize: '1.5rem', letterSpacing: '1px' }}>{selectedChordSvg.name}</div>
+             <div style={{ color: 'var(--mood-ink, var(--signal))', fontWeight: 'bold', fontSize: '1.5rem', letterSpacing: '1px' }}>{selectedChordSvg.name}</div>
              <div dangerouslySetInnerHTML={{ __html: selectedChordSvg.svg }} style={{ transform: 'scale(1.2)', transformOrigin: 'center' }} />
              <button onClick={() => setSelectedChordSvg(null)} className="btn-icon" style={{background: 'var(--glass)', width: '40px', height: '40px'}}>
                  <i className="fas fa-times"></i>

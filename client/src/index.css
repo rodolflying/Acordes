@@ -491,7 +491,7 @@ input#search:focus {
 }
 
 .viewer-artist {
-    color: var(--text-soft);
+    color: var(--mood-ink, var(--text-soft));
     font-weight: 600;
     margin-top: 0.3rem;
 }
@@ -911,8 +911,14 @@ input#search:focus {
     overflow-x: auto;
 }
 
+/* Inside a song, the sheet takes the song's mood color, lightened so it reads on the dark sheet (the
+   purple of Melancólico alone falls under 4.5:1); the buttons around it stay in the signal color */
+#song-viewer {
+    --mood-ink: color-mix(in srgb, var(--active-mood-color, var(--signal)) 72%, #ffffff);
+}
+
 .chord {
-    color: var(--signal);
+    color: var(--mood-ink, var(--signal));
     font-weight: bold;
     cursor: pointer;
     transition: var(--transition);
@@ -2218,8 +2224,8 @@ input#search:focus {
     opacity: 0;
     pointer-events: none;
     border-radius: 10px;
-    background: rgba(var(--signal-rgb), 0.07);
-    box-shadow: inset 3px 0 0 var(--signal);
+    background: color-mix(in srgb, var(--mood-ink, var(--signal)) 8%, transparent);
+    box-shadow: inset 3px 0 0 var(--mood-ink, var(--signal));
     transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), height 0.35s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s;
 }
 .sing-band.on {
@@ -2230,15 +2236,15 @@ input#search:focus {
     bottom: 3px;
     height: 2px;
     border-radius: 2px;
-    background: var(--signal);
+    background: var(--mood-ink, var(--signal));
     transform: scaleX(0);
     transform-origin: left;
 }
 .chord.chord-now {
-    color: var(--signal-ink);
-    background: var(--signal);
+    color: #0b0b10;
+    background: var(--mood-ink, var(--signal));
     border-radius: 3px;
-    box-shadow: 0 0 0 2px var(--signal); /* a marker around the name without moving the columns */
+    box-shadow: 0 0 0 2px var(--mood-ink, var(--signal)); /* a marker around the name without moving the columns */
 }
 @media (prefers-reduced-motion: reduce) {
     .sing-band {
@@ -2249,7 +2255,7 @@ input#search:focus {
 /* Chords the sheet left out and complete_chords.py filled in (a repeated part, or heard in your video) */
 .chord.chord-added,
 .chord-added-sample {
-    text-decoration: underline dotted rgba(var(--signal-rgb), 0.7);
+    text-decoration: underline dotted color-mix(in srgb, var(--mood-ink, var(--signal)) 75%, transparent);
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
 }
