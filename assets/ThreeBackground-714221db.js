@@ -1,4 +1,4 @@
-import{r as Ma,j as gl}from"./index-cf10cadf.js";/**
+import{r as Ma,j as gl}from"./index-1f56e0e5.js";/**
  * @license
  * Copyright 2010-2026 Three.js Authors
  * SPDX-License-Identifier: MIT
