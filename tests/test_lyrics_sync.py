@@ -98,3 +98,20 @@ def test_align_ignores_short_or_repetitive_lines_and_prefers_the_nearest_good_ma
         "[00:50.00] A mi boca con la tuya, ah, ay",
     ]))
     assert align(lrc, sheet_lyric_lines(sheet)) == [[10.0, 0], [20.0, 1], [40.0, 2]]
+
+
+def test_each_sung_word_is_placed_on_its_column_in_the_sheet():
+    from lyrics_sync import word_anchors
+    words = [['El', 11.48], ['gallo', 11.62], ['no', 12.04], ['canta', 12.24], ['la', 13.14], ['canción', 13.52]]
+    assert word_anchors('El gallo no canta la canción', words) == [
+        [0, 11.48], [3, 11.62], [9, 12.04], [12, 12.24], [18, 13.14], [21, 13.52]]
+
+
+def test_words_the_sheet_writes_differently_are_skipped_and_time_only_moves_forward():
+    from lyrics_sync import word_anchors
+    # La hoja dice "ke" donde se canta "que", y Whisper devolvió un tiempo fuera de orden
+    anchors = word_anchors('todo es extraño, ke el día no empieza',
+                           [['Todo', 13.0], ['es', 13.4], ['extraño', 13.6], ['que', 14.1], ['el', 14.5],
+                            ['día', 12.0], ['no', 15.0], ['empieza', 15.3]])
+    assert [c for c, _ in anchors] == [0, 5, 8, 20, 27, 30]  # "ke" no calza y "día" vendría antes de tiempo
+    assert all(b[1] > a[1] for a, b in zip(anchors, anchors[1:]))

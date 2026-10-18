@@ -9,7 +9,8 @@ Para cada canción con letra de LRCLIB y video Karaoke (que trae la voz guía al
    pocas líneas buenas, la canción se descarta (letra de otra versión).
 
 Resultado: ROOT/aligned_lyrics.json  { url: {"video": id, "lrc": "[mm:ss.xx] línea ..."} }: la misma
-letra de LRCLIB con los tiempos de tu video, que lyrics_sync.py usa en vez de la original. "lrc": null
+letra de LRCLIB con los tiempos de tu video, que lyrics_sync.py usa en vez de la original, y "words": el
+tiempo de cada palabra por línea (vacío donde Whisper no fue confiable). "lrc": null
 marca una letra que es de otra versión (no calza ni línea a línea ni corrida en bloque): esa canción
 vuelve a avanzar en proporción al video.
 Uso:  python align_lyrics.py [palabras de la URL ...]
@@ -74,7 +75,9 @@ def align(vocal_path, lines):
         _model = stable_whisper.load_model('large-v3-turbo', device='cuda')
     result = _model.align(str(vocal_path), '\n'.join(t for _, t in lines), language=language(lines),
                           original_split=True, verbose=None)
-    return [(s.start, s.end, s.text.strip()) for s in result.segments]
+    # Por línea: inicio, fin, texto y el tiempo de cada palabra (el acorde va sobre una palabra)
+    return [(s.start, s.end, s.text.strip(), [(w.word.strip(), round(w.start, 2)) for w in s.words])
+            for s in result.segments]
 
 
 def check(aligned, lines, vocal_env):
@@ -86,17 +89,17 @@ def check(aligned, lines, vocal_env):
     edición del tema (corrimiento que cambia a mitad de la canción) también queda bien.
     """
     if len(aligned) != len(lines):
-        return None, f'{len(aligned)} segmentos para {len(lines)} líneas', None
+        return None, f'{len(aligned)} segmentos para {len(lines)} líneas', None, None
     frame = batch.FRAME
     lv = np.log(vocal_env + 1e-4)
     singing = lv > np.percentile(lv, 30) + 0.4 * (np.percentile(lv, 90) - np.percentile(lv, 30))
     shift = np.full(len(lines), np.nan)
-    for i, ((start, end, _), (t, _)) in enumerate(zip(aligned, lines)):
+    for i, ((start, end, *_), (t, _)) in enumerate(zip(aligned, lines)):
         a, b = int(start / frame), max(int(end / frame), int(start / frame) + 1)
         if b <= len(singing) and singing[a:b].mean() >= 0.5 and end - start >= 0.3:
             shift[i] = start - t
     if np.isnan(shift).all():
-        return None, 'ninguna línea cae donde hay voz', 0.0
+        return None, 'ninguna línea cae donde hay voz', 0.0, None
     overall = np.nanmedian(shift)
     local = np.array([np.nanmedian(w) if np.sum(~np.isnan(w := shift[max(i - 4, 0):i + 5])) >= 3 else overall
                       for i in range(len(lines))])
@@ -107,8 +110,9 @@ def check(aligned, lines, vocal_env):
             times[i] = times[i - 1] + 0.1
     share = trusted.sum() / len(lines)
     if trusted.sum() < max(6, 0.6 * len(lines)):
-        return None, f'solo {trusted.sum()}/{len(lines)} líneas calzan con la voz', share
-    return [round(float(x), 2) for x in times], f'{trusted.sum()}/{len(lines)} líneas, corrimiento {overall:+.1f}s', share
+        return None, f'solo {trusted.sum()}/{len(lines)} líneas calzan con la voz', share, None
+    return ([round(float(x), 2) for x in times], f'{trusted.sum()}/{len(lines)} líneas, corrimiento {overall:+.1f}s',
+            share, trusted.tolist())
 
 
 def to_lrc(times, lines):
@@ -133,15 +137,19 @@ if __name__ == '__main__':
         t0 = time.time()
         try:
             cached = raw.get(url)
-            if not cached or cached['video'] != r['video'] or len(cached['segments']) != len(lines):
+            if (not cached or cached['video'] != r['video'] or len(cached['segments']) != len(lines)
+                    or len(cached['segments'][0]) < 4):  # sin el tiempo de cada palabra
                 cached = {'video': r['video'], 'segments': align(vocals_for_video(r['video']), lines)}
                 raw[url] = cached
                 RAW.write_text(json.dumps(raw, ensure_ascii=False), encoding='utf-8')
-            times, why, share = check(cached['segments'], lines, batch.chroma_for_video(r['video'])[4])
+            times, why, share, trusted = check(cached['segments'], lines, batch.chroma_for_video(r['video'])[4])
         except Exception as e:
-            times, why, share = None, f'error: {type(e).__name__}: {e}'[:200], None
+            times, why, share, trusted = None, f'error: {type(e).__name__}: {e}'[:200], None, None
         if times:
-            out[url] = {'video': r['video'], 'lrc': to_lrc(times, lines)}
+            # Palabras con su tiempo solo en las líneas confiables (en las demás, el acorde se ubica
+            # por su columna, como antes)
+            words = [[[w, t] for w, t in seg[3] if w] if ok else [] for seg, ok in zip(cached['segments'], trusted)]
+            out[url] = {'video': r['video'], 'lrc': to_lrc(times, lines), 'words': words}
         elif share is not None and share < 0.4 and r['desfase_voz']['ancho'] > 2:
             # Ni Whisper ni un corrimiento en bloque calzan: la letra de LRCLIB es de otra versión.
             # Mejor que la hoja avance en proporción al video que iluminar líneas equivocadas

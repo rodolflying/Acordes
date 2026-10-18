@@ -1,0 +1,2584 @@
+{
+ "https://www.cifraclub.com/los-bunkers/bailando-solo/": {
+  "transposicion": 0,
+  "coinciden": 0.997,
+  "acordes_evaluados": 40,
+  "lineas_con_palabras": 20,
+  "lineas": 24,
+  "acordes": [
+   {
+    "acorde": "Dm",
+    "veces": 15,
+    "calza": 15,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "veces": 15,
+    "calza": 15,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "veces": 5,
+    "calza": 5,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "veces": 5,
+    "calza": 4,
+    "suena_cuando_no": "Dm",
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/tronic/fenix/": {
+  "transposicion": 0,
+  "coinciden": 0.758,
+  "acordes_evaluados": 35,
+  "lineas_con_palabras": 25,
+  "lineas": 28,
+  "acordes": [
+   {
+    "acorde": "D",
+    "veces": 9,
+    "calza": 4,
+    "suena_cuando_no": "Dm",
+    "tercera": "menor",
+    "problema": "suena Dm"
+   },
+   {
+    "acorde": "D#",
+    "veces": 7,
+    "calza": 6,
+    "suena_cuando_no": "F",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "veces": 7,
+    "calza": 6,
+    "suena_cuando_no": "D#",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "A#",
+    "veces": 7,
+    "calza": 6,
+    "suena_cuando_no": "C",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "veces": 3,
+    "calza": 2,
+    "suena_cuando_no": "Gm",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "veces": 2,
+    "calza": 2,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/mato_a_un_policia_motorizado/el_tesoro-4.shtml": {
+  "transposicion": 0,
+  "coinciden": 0.542,
+  "acordes_evaluados": 34,
+  "lineas_con_palabras": 19,
+  "lineas": 24,
+  "acordes": [
+   {
+    "acorde": "E",
+    "veces": 12,
+    "calza": 8,
+    "suena_cuando_no": "C#m",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C#m",
+    "veces": 11,
+    "calza": 11,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A",
+    "veces": 4,
+    "calza": 4,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "B",
+    "veces": 4,
+    "calza": 0,
+    "suena_cuando_no": "G#m",
+    "tercera": "mayor",
+    "problema": "suena G#m"
+   },
+   {
+    "acorde": "G#m",
+    "veces": 3,
+    "calza": 0,
+    "suena_cuando_no": "E",
+    "tercera": "menor",
+    "problema": "suena E"
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/lucybell/familiar.shtml": {
+  "transposicion": 0,
+  "coinciden": 0.66,
+  "acordes_evaluados": 42,
+  "lineas_con_palabras": 26,
+  "lineas": 31,
+  "acordes": [
+   {
+    "acorde": "SOL",
+    "veces": 13,
+    "calza": 7,
+    "suena_cuando_no": "D",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "MI",
+    "veces": 13,
+    "calza": 6,
+    "suena_cuando_no": "D",
+    "tercera": "menor",
+    "problema": "suena Em"
+   },
+   {
+    "acorde": "RE",
+    "veces": 8,
+    "calza": 8,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "LA",
+    "veces": 3,
+    "calza": 2,
+    "suena_cuando_no": "Em",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "LA7",
+    "veces": 2,
+    "calza": 2,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "MIm",
+    "veces": 1,
+    "calza": 1,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "SOLm",
+    "veces": 1,
+    "calza": 1,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "FA#",
+    "veces": 1,
+    "calza": 1,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/coldplay/fix-you/": {
+  "transposicion": 3,
+  "coinciden": 0.677,
+  "acordes_evaluados": 75,
+  "lineas_con_palabras": 0,
+  "lineas": 27,
+  "acordes": [
+   {
+    "acorde": "C",
+    "veces": 16,
+    "calza": 13,
+    "suena_cuando_no": "G",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G4(6)",
+    "veces": 10,
+    "calza": 2,
+    "suena_cuando_no": "C",
+    "tercera": "mayor",
+    "problema": "suena C"
+   },
+   {
+    "acorde": "G",
+    "veces": 10,
+    "calza": 10,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "veces": 9,
+    "calza": 5,
+    "suena_cuando_no": "Am",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F7M",
+    "veces": 9,
+    "calza": 6,
+    "suena_cuando_no": "C",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C/E",
+    "veces": 9,
+    "calza": 7,
+    "suena_cuando_no": "G",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Am7",
+    "veces": 7,
+    "calza": 3,
+    "suena_cuando_no": "Em",
+    "tercera": "menor",
+    "problema": "suena Em"
+   },
+   {
+    "acorde": "C11",
+    "veces": 4,
+    "calza": 3,
+    "suena_cuando_no": "F",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "veces": 1,
+    "calza": 1,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/tronic/bajo_llave.shtml": {
+  "transposicion": 0,
+  "coinciden": 0.736,
+  "acordes_evaluados": 12,
+  "lineas_con_palabras": 28,
+  "lineas": 30,
+  "acordes": [
+   {
+    "acorde": "A",
+    "veces": 5,
+    "calza": 4,
+    "suena_cuando_no": "C#m",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "veces": 3,
+    "calza": 3,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C#m",
+    "veces": 2,
+    "calza": 2,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A#",
+    "veces": 2,
+    "calza": 0,
+    "suena_cuando_no": "B",
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/harry-styles/as-it-was/": {
+  "transposicion": 0,
+  "coinciden": 0.928,
+  "acordes_evaluados": 50,
+  "lineas_con_palabras": 33,
+  "lineas": 35,
+  "acordes": [
+   {
+    "acorde": "E",
+    "veces": 13,
+    "calza": 12,
+    "suena_cuando_no": "A",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A7M",
+    "veces": 8,
+    "calza": 8,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D7M(9)",
+    "veces": 7,
+    "calza": 5,
+    "suena_cuando_no": "Bm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm7(9)",
+    "veces": 7,
+    "calza": 5,
+    "suena_cuando_no": "E",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D2",
+    "veces": 5,
+    "calza": 5,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm7(11)",
+    "veces": 5,
+    "calza": 5,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A2",
+    "veces": 5,
+    "calza": 5,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/harry-styles/sign-of-the-times/": {
+  "transposicion": 0,
+  "coinciden": 0.96,
+  "acordes_evaluados": 52,
+  "lineas_con_palabras": 0,
+  "lineas": 54,
+  "acordes": [
+   {
+    "acorde": "Dm",
+    "veces": 15,
+    "calza": 15,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "veces": 15,
+    "calza": 15,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "veces": 15,
+    "calza": 13,
+    "suena_cuando_no": "Dm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C7",
+    "veces": 4,
+    "calza": 4,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#",
+    "veces": 3,
+    "calza": 3,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/arctic-monkeys/505/": {
+  "transposicion": 0,
+  "coinciden": 0.947,
+  "acordes_evaluados": 25,
+  "lineas_con_palabras": 22,
+  "lineas": 24,
+  "acordes": [
+   {
+    "acorde": "Em",
+    "veces": 16,
+    "calza": 15,
+    "suena_cuando_no": "Dm",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Dm",
+    "veces": 9,
+    "calza": 8,
+    "suena_cuando_no": "Em",
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/little_jesus/azul.shtml": {
+  "transposicion": 0,
+  "coinciden": 0.871,
+  "acordes_evaluados": 77,
+  "lineas_con_palabras": 27,
+  "lineas": 32,
+  "acordes": [
+   {
+    "acorde": "G",
+    "veces": 18,
+    "calza": 15,
+    "suena_cuando_no": "C",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "veces": 17,
+    "calza": 13,
+    "suena_cuando_no": "G",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "veces": 15,
+    "calza": 5,
+    "suena_cuando_no": "Am",
+    "tercera": "dudoso",
+    "problema": "suena Am"
+   },
+   {
+    "acorde": "Am",
+    "veces": 13,
+    "calza": 13,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "veces": 11,
+    "calza": 11,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "veces": 3,
+    "calza": 3,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/coldplay/clocks/": {
+  "transposicion": 0,
+  "coinciden": 0.802,
+  "acordes_evaluados": 56,
+  "lineas_con_palabras": 20,
+  "lineas": 33,
+  "acordes": [
+   {
+    "acorde": "D#",
+    "veces": 16,
+    "calza": 11,
+    "suena_cuando_no": "A#m",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#m",
+    "veces": 16,
+    "calza": 16,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Fm",
+    "veces": 14,
+    "calza": 12,
+    "suena_cuando_no": "D#",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F#7M",
+    "veces": 4,
+    "calza": 2,
+    "suena_cuando_no": "C#",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C#",
+    "veces": 3,
+    "calza": 2,
+    "suena_cuando_no": "G#",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G#",
+    "veces": 2,
+    "calza": 0,
+    "suena_cuando_no": "C#",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Fm/G#",
+    "veces": 1,
+    "calza": 0,
+    "suena_cuando_no": "D#",
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/ed-sheeran/the-a-team/": {
+  "transposicion": 2,
+  "coinciden": 0.832,
+  "acordes_evaluados": 117,
+  "lineas_con_palabras": 49,
+  "lineas": 57,
+  "acordes": [
+   {
+    "acorde": "G",
+    "veces": 35,
+    "calza": 31,
+    "suena_cuando_no": "C",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "veces": 28,
+    "calza": 21,
+    "suena_cuando_no": "G",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "veces": 24,
+    "calza": 16,
+    "suena_cuando_no": "G",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D/F#",
+    "veces": 16,
+    "calza": 6,
+    "suena_cuando_no": "G",
+    "tercera": "mayor",
+    "problema": "suena G"
+   },
+   {
+    "acorde": "Am7",
+    "veces": 8,
+    "calza": 8,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D4/F#",
+    "veces": 5,
+    "calza": 3,
+    "suena_cuando_no": "Em",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em7",
+    "veces": 1,
+    "calza": 1,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/bastille/pompeii/": {
+  "transposicion": 0,
+  "coinciden": 0.86,
+  "acordes_evaluados": 68,
+  "lineas_con_palabras": 30,
+  "lineas": 34,
+  "acordes": [
+   {
+    "acorde": "D",
+    "veces": 25,
+    "calza": 23,
+    "suena_cuando_no": "A",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A",
+    "veces": 23,
+    "calza": 19,
+    "suena_cuando_no": "F#m",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "veces": 13,
+    "calza": 12,
+    "suena_cuando_no": "A",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "veces": 7,
+    "calza": 7,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/mato_a_un_policia_motorizado/fuego-2.shtml": {
+  "transposicion": 0,
+  "coinciden": 0.812,
+  "acordes_evaluados": 41,
+  "lineas_con_palabras": 24,
+  "lineas": 38,
+  "acordes": [
+   {
+    "acorde": "D",
+    "veces": 14,
+    "calza": 14,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "veces": 12,
+    "calza": 9,
+    "suena_cuando_no": "D",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "veces": 11,
+    "calza": 11,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "veces": 4,
+    "calza": 1,
+    "suena_cuando_no": "Gm",
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com.br/los-choclok/bonita/": {
+  "transposicion": 0,
+  "coinciden": 0.712,
+  "acordes_evaluados": 43,
+  "lineas_con_palabras": 27,
+  "lineas": 34,
+  "acordes": [
+   {
+    "acorde": "Cm",
+    "veces": 16,
+    "calza": 13,
+    "suena_cuando_no": "Gm",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D7",
+    "veces": 16,
+    "calza": 8,
+    "suena_cuando_no": "Gm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Gm",
+    "veces": 11,
+    "calza": 8,
+    "suena_cuando_no": "Cm",
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://m.cifraclub.com/the-killers/mr-brightside/": {
+  "transposicion": 11,
+  "coinciden": 0.753,
+  "acordes_evaluados": 58,
+  "lineas_con_palabras": 32,
+  "lineas": 42,
+  "acordes": [
+   {
+    "acorde": "A5",
+    "veces": 12,
+    "calza": 6,
+    "suena_cuando_no": "D",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "D5",
+    "veces": 10,
+    "calza": 10,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G5",
+    "veces": 8,
+    "calza": 8,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "B5",
+    "veces": 8,
+    "calza": 8,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G7M(6)",
+    "veces": 4,
+    "calza": 3,
+    "suena_cuando_no": "D",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D9",
+    "veces": 4,
+    "calza": 4,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D9/C#",
+    "veces": 4,
+    "calza": 4,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A4",
+    "veces": 3,
+    "calza": 3,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G6",
+    "veces": 3,
+    "calza": 3,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm11",
+    "veces": 2,
+    "calza": 0,
+    "suena_cuando_no": "G",
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://m.cifraclub.com/harry-styles/as-it-was/": {
+  "transposicion": 0,
+  "coinciden": 0.928,
+  "acordes_evaluados": 50,
+  "lineas_con_palabras": 33,
+  "lineas": 35,
+  "acordes": [
+   {
+    "acorde": "E",
+    "veces": 13,
+    "calza": 12,
+    "suena_cuando_no": "A",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A7M",
+    "veces": 8,
+    "calza": 8,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D7M(9)",
+    "veces": 7,
+    "calza": 5,
+    "suena_cuando_no": "Bm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm7(9)",
+    "veces": 7,
+    "calza": 5,
+    "suena_cuando_no": "E",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D2",
+    "veces": 5,
+    "calza": 5,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm7(11)",
+    "veces": 5,
+    "calza": 5,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A2",
+    "veces": 5,
+    "calza": 5,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/santiago_motorizado/mil_derrotas.shtml": {
+  "transposicion": 0,
+  "coinciden": 0.922,
+  "acordes_evaluados": 73,
+  "lineas_con_palabras": 0,
+  "lineas": 30,
+  "acordes": [
+   {
+    "acorde": "C",
+    "veces": 20,
+    "calza": 19,
+    "suena_cuando_no": "G",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Dm",
+    "veces": 14,
+    "calza": 14,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "veces": 11,
+    "calza": 11,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Fm",
+    "veces": 9,
+    "calza": 4,
+    "suena_cuando_no": "Dm",
+    "tercera": "dudoso",
+    "problema": "suena Dm"
+   },
+   {
+    "acorde": "G",
+    "veces": 9,
+    "calza": 6,
+    "suena_cuando_no": "Fm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A7",
+    "veces": 5,
+    "calza": 5,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "veces": 5,
+    "calza": 4,
+    "suena_cuando_no": "Fm",
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/milo_j/una_bala.shtml": {
+  "transposicion": 0,
+  "coinciden": 0.947,
+  "acordes_evaluados": 64,
+  "lineas_con_palabras": 31,
+  "lineas": 42,
+  "acordes": [
+   {
+    "acorde": "G",
+    "veces": 22,
+    "calza": 22,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A",
+    "veces": 21,
+    "calza": 16,
+    "suena_cuando_no": "Bm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "veces": 21,
+    "calza": 21,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/milo_j/el_bolero.shtml": {
+  "transposicion": 0,
+  "coinciden": 0.869,
+  "acordes_evaluados": 87,
+  "lineas_con_palabras": 36,
+  "lineas": 40,
+  "acordes": [
+   {
+    "acorde": "Cm",
+    "veces": 34,
+    "calza": 30,
+    "suena_cuando_no": "Em",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "veces": 31,
+    "calza": 25,
+    "suena_cuando_no": "Em",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#",
+    "veces": 11,
+    "calza": 9,
+    "suena_cuando_no": "Gm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "veces": 11,
+    "calza": 10,
+    "suena_cuando_no": "Dm",
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/kidd-voodoo/angeles/": {
+  "transposicion": 0,
+  "coinciden": 0.816,
+  "acordes_evaluados": 81,
+  "lineas_con_palabras": 32,
+  "lineas": 42,
+  "acordes": [
+   {
+    "acorde": "Em",
+    "veces": 27,
+    "calza": 22,
+    "suena_cuando_no": "G",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "veces": 21,
+    "calza": 20,
+    "suena_cuando_no": "Em",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "veces": 14,
+    "calza": 9,
+    "suena_cuando_no": "Bm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#7",
+    "veces": 7,
+    "calza": 6,
+    "suena_cuando_no": "Bm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#",
+    "veces": 5,
+    "calza": 2,
+    "suena_cuando_no": "B",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "veces": 3,
+    "calza": 3,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "F#m7",
+    "veces": 2,
+    "calza": 0,
+    "suena_cuando_no": "G",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "veces": 1,
+    "calza": 0,
+    "suena_cuando_no": "Bm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G7M",
+    "veces": 1,
+    "calza": 1,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/milo-j/m-a-i/": {
+  "transposicion": 1,
+  "coinciden": 0.347,
+  "acordes_evaluados": 30,
+  "lineas_con_palabras": 0,
+  "lineas": 43,
+  "acordes": [
+   {
+    "acorde": "F",
+    "veces": 9,
+    "calza": 6,
+    "suena_cuando_no": "Am",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "veces": 8,
+    "calza": 2,
+    "suena_cuando_no": "F",
+    "tercera": "menor",
+    "problema": "suena F"
+   },
+   {
+    "acorde": "G",
+    "veces": 8,
+    "calza": 1,
+    "suena_cuando_no": "F",
+    "tercera": "mayor",
+    "problema": "suena F"
+   },
+   {
+    "acorde": "F/C",
+    "veces": 4,
+    "calza": 2,
+    "suena_cuando_no": "Am",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "veces": 1,
+    "calza": 0,
+    "suena_cuando_no": "Am",
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/milo-j/tu-manta/": {
+  "transposicion": 3,
+  "coinciden": 0.965,
+  "acordes_evaluados": 29,
+  "lineas_con_palabras": 25,
+  "lineas": 27,
+  "acordes": [
+   {
+    "acorde": "Bm",
+    "veces": 6,
+    "calza": 6,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "veces": 6,
+    "calza": 6,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "veces": 6,
+    "calza": 6,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "veces": 5,
+    "calza": 5,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#m",
+    "veces": 5,
+    "calza": 1,
+    "suena_cuando_no": "A",
+    "tercera": "dudoso",
+    "problema": "suena A"
+   },
+   {
+    "acorde": "A#",
+    "veces": 1,
+    "calza": 1,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/fother-muckers/explorador/#key=10": {
+  "transposicion": 0,
+  "coinciden": 0.866,
+  "acordes_evaluados": 55,
+  "lineas_con_palabras": 24,
+  "lineas": 27,
+  "acordes": [
+   {
+    "acorde": "A#m",
+    "veces": 16,
+    "calza": 15,
+    "suena_cuando_no": "F#m",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "C#",
+    "veces": 14,
+    "calza": 12,
+    "suena_cuando_no": "A#m",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G#",
+    "veces": 13,
+    "calza": 10,
+    "suena_cuando_no": "F#m",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Fm",
+    "veces": 6,
+    "calza": 6,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D#",
+    "veces": 3,
+    "calza": 1,
+    "suena_cuando_no": "A#m",
+    "tercera": "dudoso",
+    "problema": "suena A#m"
+   },
+   {
+    "acorde": "F#m",
+    "veces": 2,
+    "calza": 0,
+    "suena_cuando_no": "D#",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Cm",
+    "veces": 1,
+    "calza": 1,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/billie-eilish/chihiro/": {
+  "transposicion": 0,
+  "coinciden": 0.834,
+  "acordes_evaluados": 54,
+  "lineas_con_palabras": 38,
+  "lineas": 55,
+  "acordes": [
+   {
+    "acorde": "C7M",
+    "veces": 14,
+    "calza": 11,
+    "suena_cuando_no": "Em",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "veces": 14,
+    "calza": 13,
+    "suena_cuando_no": "C",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Am7",
+    "veces": 13,
+    "calza": 11,
+    "suena_cuando_no": "G",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "veces": 12,
+    "calza": 8,
+    "suena_cuando_no": "Em",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em7",
+    "veces": 1,
+    "calza": 0,
+    "suena_cuando_no": "C",
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/oliver-tree/alien-boy/": {
+  "transposicion": 6,
+  "coinciden": 0.156,
+  "acordes_evaluados": 43,
+  "lineas_con_palabras": 24,
+  "lineas": 29,
+  "acordes": [
+   {
+    "acorde": "F7M",
+    "veces": 17,
+    "calza": 2,
+    "suena_cuando_no": "Am",
+    "tercera": "mayor",
+    "problema": "suena Am"
+   },
+   {
+    "acorde": "Am",
+    "veces": 14,
+    "calza": 3,
+    "suena_cuando_no": "Bm",
+    "tercera": "menor",
+    "problema": "suena Bm"
+   },
+   {
+    "acorde": "Em7",
+    "veces": 12,
+    "calza": 0,
+    "suena_cuando_no": "G",
+    "tercera": "menor",
+    "problema": "suena G"
+   }
+  ]
+ },
+ "https://www.cifraclub.com/cardellino/nino-eterno/": {
+  "transposicion": 0,
+  "coinciden": 0.975,
+  "acordes_evaluados": 27,
+  "lineas_con_palabras": 35,
+  "lineas": 35,
+  "acordes": [
+   {
+    "acorde": "G#7M",
+    "veces": 11,
+    "calza": 10,
+    "suena_cuando_no": "Fm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D#7M",
+    "veces": 9,
+    "calza": 9,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G#m",
+    "veces": 7,
+    "calza": 7,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com.br/cardellino/nino-eterno/": {
+  "transposicion": 0,
+  "coinciden": 0.975,
+  "acordes_evaluados": 27,
+  "lineas_con_palabras": 35,
+  "lineas": 35,
+  "acordes": [
+   {
+    "acorde": "G#7M",
+    "veces": 11,
+    "calza": 10,
+    "suena_cuando_no": "Fm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D#7M",
+    "veces": 9,
+    "calza": 9,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G#m",
+    "veces": 7,
+    "calza": 7,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/kidd-voodoo/destello/": {
+  "transposicion": 0,
+  "coinciden": 0.759,
+  "acordes_evaluados": 48,
+  "lineas_con_palabras": 35,
+  "lineas": 38,
+  "acordes": [
+   {
+    "acorde": "E",
+    "veces": 13,
+    "calza": 8,
+    "suena_cuando_no": "D",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "veces": 12,
+    "calza": 9,
+    "suena_cuando_no": "E",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "veces": 9,
+    "calza": 7,
+    "suena_cuando_no": "A",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "veces": 5,
+    "calza": 5,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "C#m",
+    "veces": 4,
+    "calza": 2,
+    "suena_cuando_no": "F#m",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "E7",
+    "veces": 3,
+    "calza": 3,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E6",
+    "veces": 2,
+    "calza": 2,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com.br/milo-j/nino/": {
+  "transposicion": 0,
+  "coinciden": 0.702,
+  "acordes_evaluados": 48,
+  "lineas_con_palabras": 28,
+  "lineas": 32,
+  "acordes": [
+   {
+    "acorde": "B7",
+    "veces": 12,
+    "calza": 8,
+    "suena_cuando_no": "F#m",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "veces": 5,
+    "calza": 5,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G7M",
+    "veces": 5,
+    "calza": 3,
+    "suena_cuando_no": "Em",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G/F",
+    "veces": 4,
+    "calza": 2,
+    "suena_cuando_no": "Em",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D4",
+    "veces": 4,
+    "calza": 4,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Cm",
+    "veces": 3,
+    "calza": 1,
+    "suena_cuando_no": "Gm",
+    "tercera": "menor",
+    "problema": "suena Gm"
+   },
+   {
+    "acorde": "C7M",
+    "veces": 3,
+    "calza": 3,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "veces": 3,
+    "calza": 3,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A7",
+    "veces": 3,
+    "calza": 3,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "veces": 3,
+    "calza": 2,
+    "suena_cuando_no": "C",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Em/C",
+    "veces": 2,
+    "calza": 0,
+    "suena_cuando_no": "C",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "veces": 1,
+    "calza": 0,
+    "suena_cuando_no": "Am",
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/el-mato-un-policia-motorizado/el-universo/": {
+  "transposicion": 0,
+  "coinciden": 0.786,
+  "acordes_evaluados": 31,
+  "lineas_con_palabras": 14,
+  "lineas": 14,
+  "acordes": [
+   {
+    "acorde": "B7",
+    "veces": 6,
+    "calza": 6,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "veces": 5,
+    "calza": 5,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "veces": 5,
+    "calza": 3,
+    "suena_cuando_no": "A",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A7",
+    "veces": 5,
+    "calza": 4,
+    "suena_cuando_no": "Em",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D7M",
+    "veces": 4,
+    "calza": 3,
+    "suena_cuando_no": "F#m",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D7",
+    "veces": 4,
+    "calza": 2,
+    "suena_cuando_no": "Bm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "veces": 1,
+    "calza": 0,
+    "suena_cuando_no": "D",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "veces": 1,
+    "calza": 0,
+    "suena_cuando_no": "F#m",
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/bad-bunny/turista/simplificada.html": {
+  "transposicion": 11,
+  "coinciden": 0.561,
+  "acordes_evaluados": 30,
+  "lineas_con_palabras": 23,
+  "lineas": 25,
+  "acordes": [
+   {
+    "acorde": "D7M",
+    "veces": 7,
+    "calza": 6,
+    "suena_cuando_no": "F#m",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em7",
+    "veces": 6,
+    "calza": 6,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "A7",
+    "veces": 6,
+    "calza": 1,
+    "suena_cuando_no": "D",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm7",
+    "veces": 4,
+    "calza": 1,
+    "suena_cuando_no": "D",
+    "tercera": "menor",
+    "problema": "suena D"
+   },
+   {
+    "acorde": "C#m7(5-)",
+    "veces": 3,
+    "calza": 1,
+    "suena_cuando_no": "Em",
+    "tercera": "menor",
+    "problema": "suena Em"
+   },
+   {
+    "acorde": "F#7",
+    "veces": 3,
+    "calza": 2,
+    "suena_cuando_no": "D",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "Gm",
+    "veces": 1,
+    "calza": 1,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/chet-faker/talk-is-cheap/": {
+  "transposicion": 3,
+  "coinciden": 0.924,
+  "acordes_evaluados": 78,
+  "lineas_con_palabras": 0,
+  "lineas": 45,
+  "acordes": [
+   {
+    "acorde": "Am",
+    "veces": 22,
+    "calza": 19,
+    "suena_cuando_no": "A",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "veces": 19,
+    "calza": 17,
+    "suena_cuando_no": "Am",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "veces": 19,
+    "calza": 19,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "veces": 18,
+    "calza": 16,
+    "suena_cuando_no": "G",
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/fother-muckers/2022/": {
+  "transposicion": 0,
+  "coinciden": 0.667,
+  "acordes_evaluados": 61,
+  "lineas_con_palabras": 0,
+  "lineas": 27,
+  "acordes": [
+   {
+    "acorde": "C#maj7",
+    "veces": 20,
+    "calza": 15,
+    "suena_cuando_no": "A#m",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A#m",
+    "veces": 15,
+    "calza": 12,
+    "suena_cuando_no": "C#",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F#",
+    "veces": 13,
+    "calza": 10,
+    "suena_cuando_no": "Fm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G#",
+    "veces": 13,
+    "calza": 4,
+    "suena_cuando_no": "Fm",
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/jamiroquai/virtual-insanity/": {
+  "transposicion": 0,
+  "coinciden": 0.628,
+  "acordes_evaluados": 116,
+  "lineas_con_palabras": 39,
+  "lineas": 52,
+  "acordes": [
+   {
+    "acorde": "D#m7",
+    "veces": 20,
+    "calza": 17,
+    "suena_cuando_no": "Dm",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "B7M",
+    "veces": 20,
+    "calza": 17,
+    "suena_cuando_no": "D#m",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D°",
+    "veces": 13,
+    "calza": 7,
+    "suena_cuando_no": "D#m",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "A#m7",
+    "veces": 13,
+    "calza": 0,
+    "suena_cuando_no": "D#m",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "G#m7",
+    "veces": 12,
+    "calza": 2,
+    "suena_cuando_no": "D#m",
+    "tercera": "dudoso",
+    "problema": "suena D#m"
+   },
+   {
+    "acorde": "G#7",
+    "veces": 10,
+    "calza": 8,
+    "suena_cuando_no": "D#m",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "C#7",
+    "veces": 8,
+    "calza": 7,
+    "suena_cuando_no": "F#",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "F#7M",
+    "veces": 7,
+    "calza": 7,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Cm7(b5)",
+    "veces": 7,
+    "calza": 7,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "A#7(13-)",
+    "veces": 6,
+    "calza": 6,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/los-bunkers/llueve-sobre-la-ciudad/": {
+  "transposicion": 0,
+  "coinciden": 0.801,
+  "acordes_evaluados": 106,
+  "lineas_con_palabras": 36,
+  "lineas": 39,
+  "acordes": [
+   {
+    "acorde": "Am",
+    "veces": 36,
+    "calza": 33,
+    "suena_cuando_no": "F#m",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "veces": 33,
+    "calza": 26,
+    "suena_cuando_no": "Em",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "veces": 20,
+    "calza": 10,
+    "suena_cuando_no": "G",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Dm",
+    "veces": 9,
+    "calza": 9,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "veces": 8,
+    "calza": 8,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/los-bunkers/nada-nuevo-bajo-el-sol/": {
+  "transposicion": 0,
+  "coinciden": 0.566,
+  "acordes_evaluados": 61,
+  "lineas_con_palabras": 0,
+  "lineas": 38,
+  "acordes": [
+   {
+    "acorde": "F#m",
+    "veces": 14,
+    "calza": 8,
+    "suena_cuando_no": "C#m",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "C#m",
+    "veces": 13,
+    "calza": 10,
+    "suena_cuando_no": "A",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "veces": 10,
+    "calza": 7,
+    "suena_cuando_no": "Bm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm7",
+    "veces": 8,
+    "calza": 3,
+    "suena_cuando_no": "D",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "veces": 8,
+    "calza": 4,
+    "suena_cuando_no": "A",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A",
+    "veces": 6,
+    "calza": 2,
+    "suena_cuando_no": "C#m",
+    "tercera": "mayor",
+    "problema": "suena C#m"
+   },
+   {
+    "acorde": "G",
+    "veces": 2,
+    "calza": 0,
+    "suena_cuando_no": "F#m",
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/los-bunkers/no-me-hables-de-sufrir/": {
+  "transposicion": 0,
+  "coinciden": 0.842,
+  "acordes_evaluados": 90,
+  "lineas_con_palabras": 39,
+  "lineas": 43,
+  "acordes": [
+   {
+    "acorde": "E5",
+    "veces": 16,
+    "calza": 11,
+    "suena_cuando_no": "F",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "veces": 15,
+    "calza": 15,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Dm",
+    "veces": 13,
+    "calza": 12,
+    "suena_cuando_no": "A",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "G5",
+    "veces": 11,
+    "calza": 7,
+    "suena_cuando_no": "C",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F5",
+    "veces": 9,
+    "calza": 6,
+    "suena_cuando_no": "Am",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "A5",
+    "veces": 8,
+    "calza": 6,
+    "suena_cuando_no": "Em",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "A",
+    "veces": 6,
+    "calza": 6,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Dm6",
+    "veces": 4,
+    "calza": 0,
+    "suena_cuando_no": "G",
+    "tercera": "mayor",
+    "problema": "suena D"
+   },
+   {
+    "acorde": "F#m",
+    "veces": 4,
+    "calza": 4,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "veces": 4,
+    "calza": 4,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/los-bunkers/quien-fuera/": {
+  "transposicion": 0,
+  "coinciden": 0.823,
+  "acordes_evaluados": 61,
+  "lineas_con_palabras": 23,
+  "lineas": 32,
+  "acordes": [
+   {
+    "acorde": "A",
+    "veces": 17,
+    "calza": 14,
+    "suena_cuando_no": "F#m",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F#m",
+    "veces": 13,
+    "calza": 10,
+    "suena_cuando_no": "A",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "veces": 10,
+    "calza": 10,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "veces": 7,
+    "calza": 6,
+    "suena_cuando_no": "C#m",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "veces": 4,
+    "calza": 4,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "Bm7",
+    "veces": 4,
+    "calza": 2,
+    "suena_cuando_no": "C#m",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "C#m",
+    "veces": 4,
+    "calza": 4,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "D#°",
+    "veces": 1,
+    "calza": 1,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "F°",
+    "veces": 1,
+    "calza": 1,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/milo_j/rara_vez.shtml": {
+  "transposicion": 0,
+  "coinciden": 0.641,
+  "acordes_evaluados": 46,
+  "lineas_con_palabras": 33,
+  "lineas": 34,
+  "acordes": [
+   {
+    "acorde": "Gm7b13",
+    "veces": 13,
+    "calza": 3,
+    "suena_cuando_no": "D#",
+    "tercera": "dudoso",
+    "problema": "suena D#"
+   },
+   {
+    "acorde": "Fm7",
+    "veces": 12,
+    "calza": 12,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Cm7",
+    "veces": 12,
+    "calza": 12,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Cm9",
+    "veces": 9,
+    "calza": 3,
+    "suena_cuando_no": "Dm",
+    "tercera": "dudoso",
+    "problema": "suena Dm"
+   }
+  ]
+ },
+ "https://acordes.lacuerda.net/milo_j/gil.shtml": {
+  "transposicion": 0,
+  "coinciden": 0.655,
+  "acordes_evaluados": 81,
+  "lineas_con_palabras": 48,
+  "lineas": 71,
+  "acordes": [
+   {
+    "acorde": "Em",
+    "veces": 29,
+    "calza": 17,
+    "suena_cuando_no": "G",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "F#",
+    "veces": 21,
+    "calza": 15,
+    "suena_cuando_no": "Bm",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Bm",
+    "veces": 17,
+    "calza": 11,
+    "suena_cuando_no": "F#m",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "veces": 14,
+    "calza": 9,
+    "suena_cuando_no": "F#",
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/oliver-tree/miracle-man/": {
+  "transposicion": 0,
+  "coinciden": 0.641,
+  "acordes_evaluados": 68,
+  "lineas_con_palabras": 17,
+  "lineas": 28,
+  "acordes": [
+   {
+    "acorde": "C",
+    "veces": 18,
+    "calza": 10,
+    "suena_cuando_no": "Am",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "veces": 18,
+    "calza": 14,
+    "suena_cuando_no": "G",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Am",
+    "veces": 14,
+    "calza": 10,
+    "suena_cuando_no": "Em",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "veces": 10,
+    "calza": 5,
+    "suena_cuando_no": "C",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E",
+    "veces": 4,
+    "calza": 2,
+    "suena_cuando_no": "Em",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "E7",
+    "veces": 2,
+    "calza": 1,
+    "suena_cuando_no": "F",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "veces": 2,
+    "calza": 2,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/rayos-laser/ya-me-hiciste-mal/": {
+  "transposicion": 0,
+  "coinciden": 0.976,
+  "acordes_evaluados": 34,
+  "lineas_con_palabras": 39,
+  "lineas": 43,
+  "acordes": [
+   {
+    "acorde": "Am",
+    "veces": 16,
+    "calza": 16,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "Dm",
+    "veces": 10,
+    "calza": 9,
+    "suena_cuando_no": "F",
+    "tercera": "menor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "veces": 4,
+    "calza": 4,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "F",
+    "veces": 2,
+    "calza": 2,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "Em",
+    "veces": 2,
+    "calza": 2,
+    "suena_cuando_no": null,
+    "tercera": "menor",
+    "problema": null
+   }
+  ]
+ },
+ "https://www.cifraclub.com/tronic/prendan-la-radio/": {
+  "transposicion": 0,
+  "coinciden": 0.911,
+  "acordes_evaluados": 45,
+  "lineas_con_palabras": 37,
+  "lineas": 43,
+  "acordes": [
+   {
+    "acorde": "A#",
+    "veces": 13,
+    "calza": 13,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "C5",
+    "veces": 13,
+    "calza": 12,
+    "suena_cuando_no": "Dm",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "F5",
+    "veces": 8,
+    "calza": 8,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "D5",
+    "veces": 8,
+    "calza": 8,
+    "suena_cuando_no": null,
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "A5",
+    "veces": 3,
+    "calza": 0,
+    "suena_cuando_no": "F",
+    "tercera": "menor",
+    "problema": "suena F"
+   }
+  ]
+ },
+ "https://www.cifraclub.com/the-strokes/going-shopping/": {
+  "transposicion": 0,
+  "coinciden": 0.666,
+  "acordes_evaluados": 135,
+  "lineas_con_palabras": 42,
+  "lineas": 47,
+  "acordes": [
+   {
+    "acorde": "E",
+    "veces": 50,
+    "calza": 42,
+    "suena_cuando_no": "A",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A",
+    "veces": 39,
+    "calza": 32,
+    "suena_cuando_no": "E",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "E4",
+    "veces": 17,
+    "calza": 15,
+    "suena_cuando_no": "A",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "D",
+    "veces": 14,
+    "calza": 2,
+    "suena_cuando_no": "A",
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "A4",
+    "veces": 9,
+    "calza": 9,
+    "suena_cuando_no": null,
+    "tercera": "mayor",
+    "problema": null
+   },
+   {
+    "acorde": "G",
+    "veces": 6,
+    "calza": 0,
+    "suena_cuando_no": "A",
+    "tercera": "dudoso",
+    "problema": "suena A"
+   }
+  ]
+ },
+ "https://www.cifraclub.com/mike-shinoda/worlds-on-fire/": {
+  "transposicion": 0,
+  "coinciden": 0.476,
+  "acordes_evaluados": 55,
+  "lineas_con_palabras": 28,
+  "lineas": 32,
+  "acordes": [
+   {
+    "acorde": "D",
+    "veces": 21,
+    "calza": 19,
+    "suena_cuando_no": "Am",
+    "tercera": "dudoso",
+    "problema": null
+   },
+   {
+    "acorde": "C",
+    "veces": 16,
+    "calza": 4,
+    "suena_cuando_no": "G",
+    "tercera": "dudoso",
+    "problema": "suena G"
+   },
+   {
+    "acorde": "G",
+    "veces": 10,
+    "calza": 0,
+    "suena_cuando_no": "C",
+    "tercera": "dudoso",
+    "problema": "suena C"
+   },
+   {
+    "acorde": "Bm",
+    "veces": 8,
+    "calza": 0,
+    "suena_cuando_no": "C",
+    "tercera": "menor",
+    "problema": "suena C"
+   }
+  ]
+ }
+}

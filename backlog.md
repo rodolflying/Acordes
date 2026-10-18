@@ -5,6 +5,7 @@
 - [ ] Renovar la clave de Qwen (DashScope responde 401: el mood y la temática caen al respaldo genérico) y reclasificar las ~60 canciones con "Reflexivo / Existencial / Media" <!-- priority: MEDIUM, type: FIX, est: 20 -->
 
 ## 📋 Backlog General
+- [ ] Ajustar los cambios de acorde al pulso de la canción (beat tracking) para la revisión y para el brillo del acorde <!-- priority: LOW, type: FEATURE, est: 30 -->
 - [ ] Corregir acordes mal escritos que el audio detecta (Fénix: D suena Dm), dejando la hoja original como alternativa <!-- priority: MEDIUM, type: FEATURE, est: 60 -->
 - [ ] Canciones que Whisper no pudo alinear y siguen con los tiempos de LRCLIB (Nada Nuevo Bajo el Sol, Sign of the Times, M.A.I, Mil Derrotas): revisar con 🎯 o alinear por tramos <!-- priority: LOW, type: FIX, est: 30 -->
 - [ ] Ofrecer el tono del video: transposición medida cuando la hoja está en otro tono (Talk Is Cheap +3, Mr. Brightside y Turista −1) <!-- priority: MEDIUM, type: FEATURE, est: 30 -->
@@ -16,6 +17,9 @@
 - [ ] Bajar efectos visuales: un solo protagonista (íconos celestes o fondo 3D), notas flotantes fuera del texto, sin blur en las tarjetas <!-- priority: MEDIUM, type: UX, est: 45 -->
 
 ## ✅ Completadas
+- [x] Tiempo de cada palabra en la hoja (Whisper sobre la voz guía): el acorde entra cuando se canta su sílaba y la barra avanza palabra por palabra, en 39 canciones (1.176 líneas). Dos frases cantadas en una misma línea de la hoja son una sola pasada <!-- priority: HIGH, type: FEATURE, done: 2026-10-17 -->
+- [x] Revisión de acordes anclada a la letra (`experiments/chord_check/anchored_check.py`): cada acorde se evalúa en el momento en que suena, tríada contra tríada, con alertas que dicen cuántas apariciones fallan. The A Team 43% → 83%, Ya Me Hiciste Mal 60% → 98%; 29 alertas en 20 canciones (Fénix: D suena Dm) <!-- priority: HIGH, type: FEATURE, done: 2026-10-17 -->
+- [x] Una calibración con 🎯 deja de aplicarse sola cuando cambian los tiempos de letra de la canción (Familiar arrastraba −44,6 s de antes de alinearla) <!-- priority: HIGH, type: FIX, done: 2026-10-17 -->
 - [x] Letra alineada con Whisper en la voz guía de cada karaoke (`experiments/chord_check/align_lyrics.py` → `aligned_lyrics.json`): 39 canciones con cada línea en su tiempo real del video, aunque el video tenga otra intro (Familiar +21 s, The A Team +20 s, Pompeii +15 s) u otra edición. Corrigió dos corrimientos en bloque que eran falsos calces (Pompeii +7 s, Niño −5 s). 5 canciones con letra de otra versión vuelven al avance proporcional <!-- priority: HIGH, type: FIX, done: 2026-10-16 -->
 - [x] Acordes completados donde la hoja dice "igual que arriba" (`complete_chords.py`, paso del pipeline): 41 canciones, 83 líneas por bloque repetido (mismo rótulo o letra parecida), 110 por línea repetida y 16 oídas en tu video, solo donde el audio acierta ≥ 75% en las líneas que sí traen acordes. Se ven subrayados y la hoja original queda en `content_original` <!-- priority: HIGH, type: FEATURE, done: 2026-10-16 -->
 - [x] Videos caídos fuera del sitio (`check_videos.py` → `unavailable_videos.json`): Mi Ejército, Riptide, Corazón, La Perla y Hurt ya no muestran un reproductor roto <!-- priority: HIGH, type: FIX, done: 2026-10-16 -->

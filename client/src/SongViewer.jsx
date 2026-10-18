@@ -78,20 +78,59 @@ const buildTimeline = (points, lines) => {
       segments.push({ start: events[0].t, top: l, bottom: l, events });
     });
   };
-  points.forEach(([t, line], j) => {
+  // A sheet line can hold two sung phrases ("Y todo es extraño" + "Y el día no empieza"): when the second
+  // one's words continue further right on the same line, both are one pass over that line
+  const merged = [];
+  points.forEach(([t, line, anchors]) => {
+    const prev = merged[merged.length - 1];
+    const lastCol = prev?.[2]?.[prev[2].length - 1]?.[0];
+    if (prev && prev[1] === line && lastCol !== undefined && anchors?.length && anchors[0][0] > lastCol) {
+      prev[2] = [...prev[2], ...anchors];
+    } else {
+      merged.push([t, line, anchors ? [...anchors] : anchors]);
+    }
+  });
+  points = merged;
+  points.forEach(([t, line, anchors], j) => {
     const next = points[j + 1]?.[0] ?? t + 6;
     const above = lines[line - 1]?.chordsOnly ? line - 1 : line;
-    const dur = singing(next - t, line);
     const length = Math.max(lines[line]?.length || 0, 1);
+    // Column -> second while the line is sung: with the time of each word (Whisper on your video)
+    // a chord comes in exactly when its syllable is sung; without it, at its share of the line
+    const curve = [[0, t]];
+    (anchors || []).forEach(([c, s]) => {
+      const [pc, ps] = curve[curve.length - 1];
+      if (c > pc && s > ps && s < next) curve.push([c, s]);
+    });
+    const [lastCol, lastTime] = curve[curve.length - 1];
+    const end = Math.min(Math.max(t + singing(next - t, line), lastTime + 0.5), next);
+    curve.push([Math.max(length, lastCol + 1), Math.max(end, lastTime + 0.01)]);
+    const cols = curve.map(p => p[0]);
+    const times = curve.map(p => p[1]);
     const events = [...(above < line ? lines[above].chords : []), ...(lines[line]?.chords || [])]
-      .map(c => ({ t: t + dur * Math.min(c.col / length, 0.95), el: c.el }));
+      .map(c => ({ t: interpolate(c.col, cols, times), el: c.el }));
     if (j === 0) addChordLines(0, above, 0, t); // the intro, before the first sung line
-    segments.push({ start: t, top: above, bottom: line, sung: dur, events });
-    const nextLine = points[j + 1]?.[1];
-    if (nextLine > line + 1) addChordLines(line + 1, nextLine - 1, t + dur, next);
+    segments.push({ start: t, top: above, bottom: line, sung: end - t, cols, times, length, events });
+    // Lines that only have chords (a solo, a bridge) between this sung line and the next one; when the
+    // song goes back to a part written above, the ones right after this line
+    let nextLine = points[j + 1]?.[1];
+    if (nextLine !== undefined && nextLine <= line) {
+      nextLine = line + 1;
+      while (nextLine < lines.length && (lines[nextLine].chordsOnly || !lines[nextLine].length)) nextLine++;
+    }
+    if (nextLine > line + 1) addChordLines(line + 1, lines[nextLine - 1]?.chordsOnly ? nextLine - 1 : nextLine, end, next);
   });
   segments.sort((a, b) => a.start - b.start);
   return { segments, events: segments.flatMap(s => s.events).sort((a, b) => a.t - b.t) };
+};
+
+// Piecewise-linear map from xs to ys (both increasing), held flat outside the ends
+const interpolate = (x, xs, ys) => {
+  if (x <= xs[0]) return ys[0];
+  for (let i = 1; i < xs.length; i++) {
+    if (x <= xs[i]) return ys[i - 1] + (ys[i] - ys[i - 1]) * (x - xs[i - 1]) / ((xs[i] - xs[i - 1]) || 1);
+  }
+  return ys[ys.length - 1];
 };
 
 // Last item of a list sorted by `key` whose key is <= t
@@ -154,7 +193,11 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   const [timeOffsets, setTimeOffsets] = useState(() => {
     try { return JSON.parse(localStorage.getItem('syncTimeOffsets')) || {}; } catch { return {}; }
   });
-  const timeOffset = timeOffsets[song.url] || 0;
+  // A correction belongs to the lyric times it was made with: once those change (the song gets
+  // re-aligned with your video), an old correction would push the sheet off, so it no longer applies
+  const lyricTimesKey = syncPoints?.length ? `${syncPoints.length}:${syncPoints[0][0]}` : '';
+  const savedOffset = timeOffsets[song.url];
+  const timeOffset = savedOffset?.times === lyricTimesKey ? savedOffset.s : 0;
   const [calibrating, setCalibrating] = useState(false);
   const [playHint, setPlayHint] = useState(false); // phones only let YouTube start with a tap on the video
 
@@ -603,7 +646,8 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
           progress.style.width = `${seg.sung ? layout.widths.get(seg.bottom) : 0}px`;
         }
       }
-      if (seg?.sung) progress.style.transform = `scaleX(${Math.min(Math.max((t - seg.start) / seg.sung, 0), 1)})`;
+      // The bar runs under the words already sung (word by word when the line has word timings)
+      if (seg?.sung) progress.style.transform = `scaleX(${Math.min(interpolate(t, seg.times, seg.cols) / seg.length, 1)})`;
       // A chord keeps sounding until the next one; long after the last written one (a part the sheet
       // writes without chords, "same as above") it is no longer what sounds
       const last = lastAt(events, t, e => e.t);
@@ -667,7 +711,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       const score = Math.abs(p[1] - line) * 1000 + Math.abs(now - timeOffset - p[0]);
       return score < best.score ? { p, score } : best;
     }, { p: null, score: Infinity }).p;
-    setTimeOffsets(offsets => ({ ...offsets, [song.url]: Math.round((now - lyricTime) * 10) / 10 }));
+    setTimeOffsets(offsets => ({ ...offsets, [song.url]: { s: Math.round((now - lyricTime) * 10) / 10, times: lyricTimesKey } }));
     syncOffsetRef.current = 0;
     setCalibrating(false);
   };

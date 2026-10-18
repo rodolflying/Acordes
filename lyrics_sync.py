@@ -8,7 +8,8 @@ La app usa esos puntos para avanzar línea a línea; sin ellos la hoja avanza en
 al video.
 
 aligned_lyrics.json trae, para las canciones con video Karaoke, la misma letra de LRCLIB con los
-tiempos de tu video: Whisper ubicó cada línea en la voz guía (experiments/chord_check/align_lyrics.py).
+tiempos de tu video (y el de cada palabra, que va como tercer elemento del punto: [[columna en la
+hoja, segundo], ...], para que cada acorde entre justo cuando se canta su sílaba): Whisper ubicó cada línea en la voz guía (experiments/chord_check/align_lyrics.py).
 Así la hoja calza aunque el video tenga otra intro u otra edición del tema. Si ahí "lrc" es null, la
 letra de LRCLIB es de otra versión y la canción se queda con el avance proporcional al video.
 sync_offsets.json corrige, en las demás, un video corrido en bloque respecto de la letra de LRCLIB:
@@ -82,7 +83,8 @@ def similarity(a: str, b: str) -> float:
 
 
 def align(lrc: list[tuple[float, str]], lyrics: list[tuple[int, str]],
-          min_score: float = 0.6, skip_cost: float = 0.05, back_cost: float = 1.2) -> list[list]:
+          min_score: float = 0.6, skip_cost: float = 0.05, back_cost: float = 1.2,
+          with_index: bool = False) -> list[list]:
     """Para cada línea con tiempo, la línea de la hoja donde está escrita: [[segundo, línea], ...].
 
     Alinea la canción entera de una vez (programación dinámica), como una partitura con
@@ -131,8 +133,37 @@ def align(lrc: list[tuple[float, str]], lyrics: list[tuple[int, str]],
     node, points = trail[max(range(m), key=lambda k: best[k])], []
     while node:
         i, k, node = node
-        points.append([round(lrc[i][0], 2), lyrics[k][0]])
+        points.append([round(lrc[i][0], 2), lyrics[k][0]] + ([i] if with_index else []))
     return points[::-1]
+
+
+def sung_words(lrc_text: str, words: list) -> list:
+    """Las palabras con tiempo de aligned_lyrics.json, una lista por línea de parse_lrc(lrc_text)."""
+    out = []
+    for line, line_words in zip(lrc_text.splitlines(), words):
+        m = re.match(r'\[(\d+):(\d+(?:\.\d+)?)\]\s*(.*)', line)
+        if m and norm(m.group(3)):  # las mismas líneas que se queda parse_lrc
+            out.append(line_words)
+    return out
+
+
+def word_anchors(sheet_line: str, words: list) -> list[list]:
+    """[[columna, segundo], ...]: dónde está escrita en la hoja cada palabra cantada y cuándo se canta.
+
+    Un acorde va escrito sobre una sílaba: con esto la app sabe en qué segundo entra, aunque la
+    línea no se cante a velocidad pareja.
+    """
+    text = html.unescape(re.sub(r'<[^>]+>', '', sheet_line))
+    written = [(m.start(), norm(m.group()).split()[0]) for m in re.finditer(r'\S+', text) if norm(m.group())]
+    sung = [(norm(w).split()[0], t) for w, t in words if norm(w)]
+    matcher = difflib.SequenceMatcher(None, [w for _, w in written], [w for w, _ in sung], autojunk=False)
+    anchors = []
+    for a, b, size in matcher.get_matching_blocks():
+        for j in range(size):
+            col, t = written[a + j][0], sung[b + j][1]
+            if not anchors or t > anchors[-1][1]:  # siempre hacia adelante
+                anchors.append([col, round(t, 2)])
+    return anchors
 
 
 def _get_json(url: str):
@@ -183,11 +214,16 @@ def generate_sync_points():
             continue
         lrc_text = aligned[url]['lrc'] if url in aligned else fetch_synced_lyrics(song['artist'], song['title'], cache)
         lrc = parse_lrc(lrc_text) if lrc_text else []
-        points = align(lrc, sheet_lyric_lines(sheet['content'])) if lrc else []
+        points = align(lrc, sheet_lyric_lines(sheet['content']), with_index=True) if lrc else []
         # Una letra que casi no calza con la hoja es otra versión (u otra canción): mejor el modo aproximado
         if len(points) >= 8 and len(points) >= 0.5 * len(lrc):
             shift = 0 if url in aligned else offsets.get(url, {}).get('segundos', 0)
-            sync_points[url] = [[round(t + shift, 2), line] for t, line in points]
+            words = sung_words(lrc_text, aligned[url].get('words', [])) if url in aligned else []
+            sheet_lines = sheet['content'].split('\n')
+            sync_points[url] = []
+            for t, line, i in points:
+                anchors = word_anchors(sheet_lines[line], words[i]) if i < len(words) and words[i] else []
+                sync_points[url].append([round(t + shift, 2), line] + ([anchors] if anchors else []))
         else:
             sin_letra.append(f"{song['title']} — {song['artist']}")
 
