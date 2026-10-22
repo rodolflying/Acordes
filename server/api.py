@@ -104,6 +104,9 @@ def refresh_bookmarks():
 
         # 2. songs with an uploaded karaoke but no chords bookmark
         subprocess.run(["python", os.path.join(root_dir, "karaoke_songs.py")], check=True, cwd=root_dir)
+
+        # 2b. songs requested outside the bookmarks (pedidos.json)
+        subprocess.run(["python", os.path.join(root_dir, "pedidos.py")], check=True, cwd=root_dir)
         
         # 3. enrich new songs
         enricher_path = os.path.join(root_dir, "enricher.py")

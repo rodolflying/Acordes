@@ -32,6 +32,16 @@ if ($LASTEXITCODE -ne 0) {
 }
 Write-Host ""
 
+# 2b. Canciones pedidas (el setlist de la banda y, más adelante, los pedidos desde la página)
+Write-Host "[2b] 🙋 Buscando la hoja de las canciones pedidas (pedidos.json)..." -ForegroundColor Yellow
+python pedidos.py
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "⚠ Error al buscar los pedidos. Continuando..." -ForegroundColor Red
+} else {
+    Write-Host "✔ Pedidos agregados a songs.json" -ForegroundColor Green
+}
+Write-Host ""
+
 # 3. Enriquecer canciones nuevas
 Write-Host "[3/4] 🧠 Enriqueciendo nuevas canciones (Last.fm / MusicBrainz / Qwen)..." -ForegroundColor Yellow
 python enricher.py

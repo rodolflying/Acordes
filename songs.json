@@ -3040,6 +3040,302 @@
                     "url": "https://www.cifraclub.com/mike-shinoda/worlds-on-fire/"
                 }
             ]
+        },
+        {
+            "name": "Pedidos",
+            "type": "folder",
+            "children": [
+                {
+                    "name": "Mi historia entre tus dedos - Gianluca Grignani - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/gianluca-grignani/mi-historia-entre-tus-dedos/"
+                },
+                {
+                    "name": "La playa - La Oreja de Van Gogh - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/la-oreja-de-van-gogh-musicas/la-playa/"
+                },
+                {
+                    "name": "Que lloro - Sin Bandera - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/sin-bandera/que-lloro/"
+                },
+                {
+                    "name": "El baile de los que sobran - Los Prisioneros - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/los-prisioneros/el-baile-de-los-que-sobran/"
+                },
+                {
+                    "name": "Para amar - Los Prisioneros - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/los-prisioneros/para-amar/"
+                },
+                {
+                    "name": "Tu falta de querer - Mon Laferte - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/mon-laferte/tu-falta-de-querer/"
+                },
+                {
+                    "name": "De música ligera - Soda Stereo - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/soda-stereo/de-musica-ligera/"
+                },
+                {
+                    "name": "Un día normal - Juanes - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/juanes/un-dia-normal/"
+                },
+                {
+                    "name": "Tabaco y Chanel - Bacilos - LaCuerda",
+                    "type": "url",
+                    "url": "https://acordes.lacuerda.net/bacilos/tabaco_y_chanel.shtml"
+                },
+                {
+                    "name": "Miño - Los Bunkers - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/los-bunkers/mino/"
+                },
+                {
+                    "name": "Ahora que no estás - Los Bunkers - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/los-bunkers/ahora-que-no-estas/"
+                },
+                {
+                    "name": "Nada fue un error - Coti - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/coti/nada-fue-un-error/"
+                },
+                {
+                    "name": "Enamorado de ti - Glup! - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/glup/enamorado-de-ti/"
+                },
+                {
+                    "name": "Labios compartidos - Maná - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/mana/labios-compartidos/"
+                },
+                {
+                    "name": "A Sky Full of Stars - Coldplay - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/coldplay/a-sky-full-of-stars/"
+                },
+                {
+                    "name": "Chop Suey! - System of a Down - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/system-of-a-down/chop-suey/"
+                },
+                {
+                    "name": "B.Y.O.B. - System of a Down - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/system-of-a-down/byob-2/"
+                },
+                {
+                    "name": "Spiders - System of a Down - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/system-of-a-down/spiders/"
+                },
+                {
+                    "name": "Lonely Day - System of a Down - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/system-of-a-down/lonely-day/"
+                },
+                {
+                    "name": "Bring Me to Life - Evanescence - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/evanescence/bring-me-to-life/"
+                },
+                {
+                    "name": "Going Under - Evanescence - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/evanescence/going-under/"
+                },
+                {
+                    "name": "Lithium - Evanescence - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/evanescence/lithium/"
+                },
+                {
+                    "name": "My Immortal - Evanescence - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/evanescence/my-immortal/"
+                },
+                {
+                    "name": "Ya son las 4 - Fakie - LaCuerda",
+                    "type": "url",
+                    "url": "https://acordes.lacuerda.net/fakie/ya_son_las_cuatro.shtml"
+                },
+                {
+                    "name": "Buenas noches hasta siempre - Fakie - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/fakie/buenas-noches-hasta-siempre/"
+                },
+                {
+                    "name": "Mateo - Tronic - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/tronic/mateo/"
+                },
+                {
+                    "name": "Combo final - Tronic - LaCuerda",
+                    "type": "url",
+                    "url": "https://acordes.lacuerda.net/tronic/combo_final.shtml"
+                },
+                {
+                    "name": "Mejor muertos - Guffi - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/guffi/mejor-muertos/"
+                },
+                {
+                    "name": "Paul - Guffi - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/guffi/paul/"
+                },
+                {
+                    "name": "La historia de Juan - Guffi - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/guffi/la-historia-de-juan/"
+                },
+                {
+                    "name": "Por ella - Guffi - LaCuerda",
+                    "type": "url",
+                    "url": "https://acordes.lacuerda.net/guffi/por_ella.shtml"
+                },
+                {
+                    "name": "My Heroine - Silverstein - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/silverstein/my-heroine/"
+                },
+                {
+                    "name": "Voices - Saosin - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/saosin/voices/"
+                },
+                {
+                    "name": "Fe - Lucybell - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/lucybell/fe/"
+                },
+                {
+                    "name": "Sparks - Coldplay - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/coldplay/sparks/"
+                },
+                {
+                    "name": "Yellow - Coldplay - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/coldplay/yellow/"
+                },
+                {
+                    "name": "Trouble - Coldplay - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/coldplay/trouble/"
+                },
+                {
+                    "name": "The Scientist - Coldplay - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/coldplay/the-scientist/"
+                },
+                {
+                    "name": "One - U2 - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/u2/one/"
+                },
+                {
+                    "name": "With or Without You - U2 - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/u2/with-or-without-you/"
+                },
+                {
+                    "name": "Crawling - Linkin Park - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/linkin-park/crawling/"
+                },
+                {
+                    "name": "Stand by Me - Oasis - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/oasis/stand-by-me/"
+                },
+                {
+                    "name": "When You Were Young - The Killers - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/the-killers/when-you-were-young/"
+                },
+                {
+                    "name": "Ángel para un final - Los Bunkers - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/los-bunkers/angel-para-un-final/"
+                },
+                {
+                    "name": "Miéntele - Los Bunkers - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/los-bunkers/mientele/"
+                },
+                {
+                    "name": "Ho Hey - The Lumineers - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/the-lumineers/ho-hey/"
+                },
+                {
+                    "name": "Stubborn Love - The Lumineers - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/the-lumineers/stubborn-love/"
+                },
+                {
+                    "name": "One - Metallica - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/metallica/one/"
+                },
+                {
+                    "name": "Master of Puppets - Metallica - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/metallica/master-of-puppets/"
+                },
+                {
+                    "name": "El amante - Daddy Yankee - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/daddy-yankee/el-amante/"
+                },
+                {
+                    "name": "Las de la intuición - Shakira - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/shakira/las-de-la-intuicion/"
+                },
+                {
+                    "name": "Girlfriend - Avril Lavigne - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/avril-lavigne/girlfriend/"
+                },
+                {
+                    "name": "Complicated - Avril Lavigne - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/avril-lavigne/complicated/"
+                },
+                {
+                    "name": "I'm with You - Avril Lavigne - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/avril-lavigne/im-with-you-8570/"
+                },
+                {
+                    "name": "Sk8er Boi - Avril Lavigne - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/avril-lavigne/sk8er-boy/"
+                },
+                {
+                    "name": "When You're Gone - Avril Lavigne - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/avril-lavigne/when-youre-gone/"
+                },
+                {
+                    "name": "My Happy Ending - Avril Lavigne - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/avril-lavigne/my-happy-ending/"
+                },
+                {
+                    "name": "What the Hell - Avril Lavigne - Cifra Club",
+                    "type": "url",
+                    "url": "https://www.cifraclub.com/avril-lavigne/what-the-hell/"
+                }
+            ]
         }
     ]
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, Suspense } from 'react';
 import CelestialIcon from './CelestialIcon';
+import { buildSongs, pickBest, isViewable } from './catalog';
 import './index.css';
 
 const ThreeBackground = React.lazy(() => import('./ThreeBackground'));
@@ -9,10 +10,19 @@ const DashboardModal = React.lazy(() => import('./DashboardModal'));
 // Only defined in dev (client/.env.development); undefined in the GitHub Pages build
 const API_URL = import.meta.env.VITE_API_URL;
 
-const PAGE_SIZES = [24, 48, 96, Infinity]; // Infinity = all songs on one page
+// Where the site lives: '/' in dev, '/Acordes/' on GitHub Pages
+const BASE = import.meta.env.BASE_URL;
+const SITE_TITLE = 'Acordate · Acordes que siguen a tu video';
 
-// Comparable form of a name: no accents, case or punctuation ("I Won't Give Up" = "I Wont Give Up")
-const normKey = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+// Each song has its own address, /cancion/artista/titulo/ (see catalog.js)
+const songPath = song => `${BASE}cancion/${song.slug}/`;
+const slugInPath = () => {
+  const path = window.location.pathname;
+  const m = path.startsWith(BASE) && path.slice(BASE.length).match(/^cancion\/([^/]+\/[^/]+)\/?$/);
+  return m ? m[1] : null;
+};
+
+const PAGE_SIZES = [24, 48, 96, Infinity]; // Infinity = all songs on one page
 
 // Page numbers to show: first, last and the current page's neighbours, with gaps as '…'
 const pageItems = (current, total) => {
@@ -45,57 +55,6 @@ const THEMES_CONFIG = {
   "Cotidiano": { emoji: "🏠" }
 };
 
-const detectSource = (url) => {
-    if (url.includes('cifraclub.com') || url.includes('cifraclub.com.br')) return 'Cifra Club';
-    if (url.includes('lacuerda.net')) return 'LaCuerda';
-    if (url.includes('ukulele-tabs.com')) return 'Uku-Tabs';
-    if (url.includes('ultimate-guitar.com')) return 'Ultimate Guitar';
-    if (url.includes('chordify.net')) return 'Chordify';
-    return 'Web';
-};
-
-const extractArtist = (title, source) => {
-    try {
-        if (source === 'Cifra Club') {
-            const parts = title.split('-');
-            if (parts.length >= 3) {
-                return parts[parts.length - 2].trim();
-            } else if (parts.length === 2) {
-                return parts[1].trim();
-            }
-        } else if (source === 'LaCuerda') {
-            const match = title.match(/,\s*(.+?):/);
-            if (match && match[1]) {
-                return match[1].trim();
-            }
-        } else if (source === 'Uku-Tabs') {
-            const match = title.match(/by\s+(.+?)\s+-/);
-            if (match && match[1]) {
-                return match[1].trim();
-            }
-        }
-    } catch(e) {}
-    
-    return 'Otros';
-};
-
-const processData = (node, songs = []) => {
-    if (node.type === 'url') {
-        const source = detectSource(node.url);
-        const artist = extractArtist(node.name, source);
-        
-        songs.push({
-            title: node.name,
-            url: node.url,
-            folder: artist,
-            source: source
-        });
-    } else if (node.children) {
-        node.children.forEach(child => processData(child, songs));
-    }
-    return songs;
-};
-
 function App() {
   const [allSongs, setAllSongs] = useState([]);
   const [folders, setFolders] = useState(['all']);
@@ -109,7 +68,8 @@ function App() {
   const [syncing, setSyncing] = useState(false);
   const [syncStatus, setSyncStatus] = useState(null); // 'success', 'error', null
   
-  const [selectedSong, setSelectedSong] = useState(null);
+  // The open song is the one in the address (/cancion/artista/titulo/), so a shared link opens it
+  const [selectedSlug, setSelectedSlug] = useState(slugInPath);
   const [randomModal, setRandomModal] = useState(null); // contains random song obj
   const [backingTracksDict, setBackingTracksDict] = useState({});
   const [syncPointsDict, setSyncPointsDict] = useState({});
@@ -149,70 +109,25 @@ function App() {
 
   const loadData = async () => {
     try {
-        const response = await fetch('./songs.json');
+        const response = await fetch(`${BASE}songs.json`);
         const data = await response.json();
         
         let enrichedData = { songs: {} };
         try {
-            const enrichedRes = await fetch('./enriched_songs.json');
+            const enrichedRes = await fetch(`${BASE}enriched_songs.json`);
             enrichedData = await enrichedRes.json();
         } catch (e) {
             console.log('No se pudo cargar la metadata enriquecida, usando datos básicos.');
         }
 
         try {
-            const dbRes = await fetch('./chords_db.json');
+            const dbRes = await fetch(`${BASE}chords_db.json`);
             setChordDb(await dbRes.json());
         } catch(e) {
             console.log('No se pudo cargar la base de datos de acordes');
         }
 
-        // Only chord pages: the bookmark folders also hold music-related links that aren't
-        // songs (tools, shops, tutorials and covers on YouTube…)
-        const rawSongs = processData(data).filter(song => song.source !== 'Web');
-
-        // Merge enriched data. Title and folder (artist) use the names cleaned by
-        // enricher.py when available, instead of the raw bookmark name
-        const mergedSongs = rawSongs.map(song => {
-            const enriched = enrichedData.songs[song.url] || {};
-            const hasArtist = enriched.artist && enriched.artist !== 'Unknown';
-            return {
-                ...song,
-                title: enriched.title || song.title,
-                folder: hasArtist ? enriched.artist : song.folder,
-                mood: enriched.mood || null,
-                mood_emoji: enriched.mood_emoji || null,
-                theme: enriched.theme || null,
-                theme_emoji: enriched.theme_emoji || null,
-                energy: enriched.energy || null,
-                year: enriched.year || null,
-                genre: enriched.genre || null,
-                youtube_video: enriched.youtube_video || null,
-                clean_artist: enriched.artist || null,
-                clean_title: enriched.title || null,
-            };
-        });
-
-        // Normalize folder names ignoring case and accents, keeping the best spelling:
-        // accented over plain ("El Mató…" over "El Mato…"), capitalized over all-lowercase
-        const folderKey = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
-        const spellingScore = s => (/[̀-ͯ]/.test(s.normalize('NFD')) ? 2 : 0) + (s !== s.toLowerCase() ? 1 : 0);
-        const folderMap = new Map();
-        mergedSongs.forEach(song => {
-            if (song.folder && song.folder !== 'Otros') {
-                const key = folderKey(song.folder);
-                const existing = folderMap.get(key);
-                if (!existing || spellingScore(song.folder) > spellingScore(existing)) {
-                    folderMap.set(key, song.folder);
-                }
-            }
-        });
-
-        mergedSongs.forEach(song => {
-            if (song.folder && song.folder !== 'Otros') {
-                song.folder = folderMap.get(folderKey(song.folder));
-            }
-        });
+        const mergedSongs = buildSongs(data, enrichedData.songs);
 
         setAllSongs(mergedSongs);
         
@@ -236,7 +151,7 @@ function App() {
 
   const loadBackingTracksList = async () => {
     try {
-      const res = await fetch('./backing_tracks.json');
+      const res = await fetch(`${BASE}backing_tracks.json`);
       if (res.ok) {
         const data = await res.json();
         setBackingTracksDict(data.backing_tracks || {});
@@ -249,7 +164,7 @@ function App() {
   // Seconds at which each lyric line is sung (lyrics_sync.py), so the sheet follows the video line by line
   const loadSyncPoints = async () => {
     try {
-      const res = await fetch('./sync_points.json');
+      const res = await fetch(`${BASE}sync_points.json`);
       if (res.ok) setSyncPointsDict(await res.json());
     } catch(e) {
       console.log("No se pudieron cargar los tiempos de las letras");
@@ -282,20 +197,9 @@ function App() {
     }
   };
 
-  // One card per song: when the same song was bookmarked twice (mobile and desktop Cifra Club,
-  // .com and .com.br, two sites) keep the most complete one — backing tracks, synced lyrics, chords
-  const songs = useMemo(() => {
-    const key = s => s.clean_title ? `${normKey(s.folder)}|${normKey(s.clean_title)}` : s.url;
-    const score = s => (backingTracksDict[s.url] ? 4 : 0) + (syncPointsDict[s.url] ? 2 : 0)
-      - (s.source === 'LaCuerda' && !s.url.includes('.shtml') ? 3 : 0) // prefer the song page over a LaCuerda index page
-      - (s.url.includes('//m.') ? 1 : 0);
-    const best = new Map();
-    allSongs.forEach(s => {
-      const k = key(s);
-      if (!best.has(k) || score(s) > score(best.get(k))) best.set(k, s);
-    });
-    return allSongs.filter(s => best.get(key(s)) === s);
-  }, [allSongs, backingTracksDict, syncPointsDict]);
+  // One card per song (catalog.js)
+  const songs = useMemo(() => pickBest(allSongs, backingTracksDict, syncPointsDict),
+    [allSongs, backingTracksDict, syncPointsDict]);
 
   const handleRandom = () => {
     if (songs.length > 0) {
@@ -505,47 +409,56 @@ function App() {
       }
       return song;
     }));
-
-    setSelectedSong(prevSelected => {
-      if (prevSelected && prevSelected.url === url) {
-        return {
-          ...prevSelected,
-          youtube_video: {
-            id: videoId,
-            title: videoTitle
-          }
-        };
-      }
-      return prevSelected;
-    });
   };
 
+  const selectedSong = selectedSlug ? songs.find(s => s.slug === selectedSlug) : null;
+
   const handleOpenSong = (song) => {
-    if (song.source !== 'Cifra Club' && song.source !== 'LaCuerda') {
+    if (!isViewable(song)) {
       window.open(song.url, '_blank');
     } else {
-      setSelectedSong(song);
+      setSelectedSlug(song.slug);
+      window.history.pushState({ songOpen: true }, '', songPath(song));
     }
   };
 
-  // The phone's "back" closes the open song instead of leaving the page
-  const songOpen = Boolean(selectedSong);
+  // Arriving from a shared link, "back" goes to the song list instead of leaving the site
   useEffect(() => {
-    if (!songOpen) return;
-    if (!window.history.state?.songOpen) window.history.pushState({ songOpen: true }, '');
-    const onBack = () => setSelectedSong(null);
-    window.addEventListener('popstate', onBack);
-    return () => window.removeEventListener('popstate', onBack);
-  }, [songOpen]);
+    if (!selectedSlug || window.history.state?.songOpen) return;
+    window.history.replaceState(null, '', BASE);
+    window.history.pushState({ songOpen: true }, '', `${BASE}cancion/${selectedSlug}/`);
+  }, []);
+
+  // "Back" and "forward" follow the address
+  useEffect(() => {
+    const onPop = () => setSelectedSlug(slugInPath());
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  // An address with no song (renamed or removed) shows the list
+  useEffect(() => {
+    if (allSongs.length && selectedSlug && !allSongs.some(s => s.slug === selectedSlug)) {
+      window.history.replaceState(null, '', BASE);
+      setSelectedSlug(null);
+    }
+  }, [allSongs, selectedSlug]);
+
+  useEffect(() => {
+    document.title = selectedSong ? `${selectedSong.title} — ${selectedSong.folder} · Acordate` : SITE_TITLE;
+  }, [selectedSong]);
 
   const closeSong = () => {
     if (window.history.state?.songOpen) window.history.back(); // its popstate closes the song
-    else setSelectedSong(null);
+    else {
+      window.history.replaceState(null, '', BASE);
+      setSelectedSlug(null);
+    }
   };
 
   return (
     <>
-      {!selectedSong && !performanceMode && (
+      {!selectedSlug && !performanceMode && (
         <Suspense fallback={<div className="three-placeholder" />}>
           <ThreeBackground />
         </Suspense>

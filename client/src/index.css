@@ -1045,6 +1045,13 @@ input#search:focus {
     gap: 1rem;
     align-items: center;
 }
+/* With the video panel open the sheet gets narrower: icon-only buttons so Close always fits */
+#song-viewer.with-youtube .viewer-controls .btn-label {
+    display: none;
+}
+#song-viewer.with-youtube .viewer-controls {
+    gap: 0.6rem;
+}
 .viewer-left-panel .selected-chord-panel {
     position: absolute;
     left: 2rem;

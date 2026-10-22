@@ -409,7 +409,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       try {
         let contentData = null;
         try {
-            const staticRes = await fetch('./preloaded_songs.json');
+            const staticRes = await fetch(`${import.meta.env.BASE_URL}preloaded_songs.json`);
             if (staticRes.ok) {
                 const preloaded = await staticRes.json();
                 if (preloaded[song.url]) {
@@ -856,6 +856,19 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     }
   };
 
+  // The song's own address (/cancion/artista/titulo/): the phone's share sheet, or copied on a computer
+  const [shared, setShared] = useState(false);
+  const shareSong = async () => {
+    const url = window.location.href;
+    if (navigator.share && matchMedia('(pointer: coarse)').matches) {
+      try { await navigator.share({ title: `${song.title} — ${song.folder}`, url }); } catch (e) { /* cancelado */ }
+      return;
+    }
+    await navigator.clipboard.writeText(url);
+    setShared(true);
+    setTimeout(() => setShared(false), 2000);
+  };
+
   return (
     <div 
       id="song-viewer" 
@@ -912,6 +925,10 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                   <button onClick={() => changeFontScale(-1)} className="btn-icon" title="Letra más chica" aria-label="Letra más chica">A−</button>
                   <button onClick={() => changeFontScale(1)} className="btn-icon" title="Letra más grande" aria-label="Letra más grande">A+</button>
                 </div>
+
+                <button onClick={shareSong} className={`btn ${shared ? 'btn-on' : ''}`} title="Compartir el link de esta canción" aria-label="Compartir">
+                  <i className={`fas ${shared ? 'fa-check' : 'fa-share-nodes'}`}></i> <span className="btn-label">{shared ? 'Link copiado' : 'Compartir'}</span>
+                </button>
 
                 <button onClick={onClose} className="btn" style={{ background: 'var(--glass)', color: 'white' }} aria-label="Cerrar">
                   <i className="fas fa-times"></i> <span className="btn-label">Cerrar</span>

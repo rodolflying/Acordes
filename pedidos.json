@@ -1,0 +1,582 @@
+{
+ "pedidos": [
+  {
+   "artista": "Gianluca Grignani",
+   "titulo": "Mi historia entre tus dedos",
+   "escrito": "Mi historia entre tus manos - Gianluca",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/gianluca-grignani/mi-historia-entre-tus-dedos/"
+  },
+  {
+   "artista": "La Oreja de Van Gogh",
+   "titulo": "La playa",
+   "escrito": "La playa - La Oreja",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/la-oreja-de-van-gogh-musicas/la-playa/"
+  },
+  {
+   "artista": "Sin Bandera",
+   "titulo": "Que lloro",
+   "escrito": "Que lloro - Sin Bandera",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/sin-bandera/que-lloro/"
+  },
+  {
+   "artista": "Los Prisioneros",
+   "titulo": "El baile de los que sobran",
+   "escrito": "El Baile - Los Prisioneros",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/los-prisioneros/el-baile-de-los-que-sobran/"
+  },
+  {
+   "artista": "Los Prisioneros",
+   "titulo": "Para amar",
+   "escrito": "Para amar - Los Prisioneros",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/los-prisioneros/para-amar/"
+  },
+  {
+   "artista": "Mon Laferte",
+   "titulo": "Tu falta de querer",
+   "escrito": "Tu Falta - Monlafuerte",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/mon-laferte/tu-falta-de-querer/"
+  },
+  {
+   "artista": "Soda Stereo",
+   "titulo": "De música ligera",
+   "escrito": "Música Ligera - SODA",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/soda-stereo/de-musica-ligera/"
+  },
+  {
+   "artista": "Juanes",
+   "titulo": "Un día normal",
+   "escrito": "Un día normal - Juanes",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/juanes/un-dia-normal/"
+  },
+  {
+   "artista": "Bacilos",
+   "titulo": "Tabaco y Chanel",
+   "escrito": "Tabaco y Chanelfo - Bacilosgram",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://acordes.lacuerda.net/bacilos/tabaco_y_chanel.shtml"
+  },
+  {
+   "artista": "Los Bunkers",
+   "titulo": "Miño",
+   "escrito": "Miño - Los bunkers",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/los-bunkers/mino/"
+  },
+  {
+   "artista": "Los Bunkers",
+   "titulo": "Ahora que no estás",
+   "escrito": "Ahora que no estás - Los bunkers",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/los-bunkers/ahora-que-no-estas/"
+  },
+  {
+   "artista": "Coti",
+   "titulo": "Nada fue un error",
+   "escrito": "Nada fue un error - Julieta Venegas",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/coti/nada-fue-un-error/"
+  },
+  {
+   "artista": "Glup!",
+   "titulo": "Enamorado de ti",
+   "escrito": "Enamorado de ti de Glup",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/glup/enamorado-de-ti/"
+  },
+  {
+   "artista": "Maná",
+   "titulo": "Labios compartidos",
+   "escrito": "Labios compartidos - Mana",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/mana/labios-compartidos/"
+  },
+  {
+   "artista": "Coldplay",
+   "titulo": "A Sky Full of Stars",
+   "escrito": "Coldplay Sky full Star",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/coldplay/a-sky-full-of-stars/"
+  },
+  {
+   "artista": "System of a Down",
+   "titulo": "Toxicity",
+   "escrito": "SOAD Toxicity",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "sin_hoja"
+  },
+  {
+   "artista": "System of a Down",
+   "titulo": "Chop Suey!",
+   "escrito": "SOAD Chop Suey",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/system-of-a-down/chop-suey/"
+  },
+  {
+   "artista": "System of a Down",
+   "titulo": "B.Y.O.B.",
+   "escrito": "SOAD Byob",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/system-of-a-down/byob-2/"
+  },
+  {
+   "artista": "System of a Down",
+   "titulo": "Spiders",
+   "escrito": "SOAD Spiders",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/system-of-a-down/spiders/"
+  },
+  {
+   "artista": "System of a Down",
+   "titulo": "Lonely Day",
+   "escrito": "SOAD lonely day",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/system-of-a-down/lonely-day/"
+  },
+  {
+   "artista": "Evanescence",
+   "titulo": "Bring Me to Life",
+   "escrito": "Evanescense Bring Me",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/evanescence/bring-me-to-life/"
+  },
+  {
+   "artista": "Evanescence",
+   "titulo": "Going Under",
+   "escrito": "Evanescense Goin Under",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/evanescence/going-under/"
+  },
+  {
+   "artista": "Evanescence",
+   "titulo": "Lithium",
+   "escrito": "Evanescense Lithium",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/evanescence/lithium/"
+  },
+  {
+   "artista": "Evanescence",
+   "titulo": "My Immortal",
+   "escrito": "Evanescense Inmortal",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/evanescence/my-immortal/"
+  },
+  {
+   "artista": "Fakie",
+   "titulo": "Ya son las 4",
+   "escrito": "Fakie Ya son las 4",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://acordes.lacuerda.net/fakie/ya_son_las_cuatro.shtml"
+  },
+  {
+   "artista": "Fakie",
+   "titulo": "Buenas noches hasta siempre",
+   "escrito": "Fakie buenas noches",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/fakie/buenas-noches-hasta-siempre/"
+  },
+  {
+   "artista": "Tronic",
+   "titulo": "Mateo",
+   "escrito": "Tronic Mateo",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/tronic/mateo/"
+  },
+  {
+   "artista": "Tronic",
+   "titulo": "Combo final",
+   "escrito": "Tronic Combo Final",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://acordes.lacuerda.net/tronic/combo_final.shtml"
+  },
+  {
+   "artista": "Guffi",
+   "titulo": "Mejor muertos",
+   "escrito": "Guffi Mejor Muertos",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/guffi/mejor-muertos/"
+  },
+  {
+   "artista": "Guffi",
+   "titulo": "Paul",
+   "escrito": "Guffi Paul",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/guffi/paul/"
+  },
+  {
+   "artista": "Guffi",
+   "titulo": "La historia de Juan",
+   "escrito": "Guffi La historia de Juan",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/guffi/la-historia-de-juan/"
+  },
+  {
+   "artista": "Guffi",
+   "titulo": "Por ella",
+   "escrito": "Gufi Por ella",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://acordes.lacuerda.net/guffi/por_ella.shtml"
+  },
+  {
+   "artista": "Silverstein",
+   "titulo": "My Heroine",
+   "escrito": "Silverstein My Heroine",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/silverstein/my-heroine/"
+  },
+  {
+   "artista": "Silverstein",
+   "titulo": "Discovering the Waterfront",
+   "escrito": "Silverstein Dicovering",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "sin_hoja"
+  },
+  {
+   "artista": "Saosin",
+   "titulo": "Voices",
+   "escrito": "Saosin Voices",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/saosin/voices/"
+  },
+  {
+   "artista": "Saosin",
+   "titulo": "Seven Years",
+   "escrito": "Saosin Seven Years",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "sin_hoja"
+  },
+  {
+   "artista": "Lucybell",
+   "titulo": "Fe",
+   "escrito": "Lucybell Fe",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/lucybell/fe/"
+  },
+  {
+   "artista": "Coldplay",
+   "titulo": "Sparks",
+   "escrito": "Coldplay Spark",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/coldplay/sparks/"
+  },
+  {
+   "artista": "Coldplay",
+   "titulo": "Yellow",
+   "escrito": "Coldplay Yellow",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/coldplay/yellow/"
+  },
+  {
+   "artista": "Coldplay",
+   "titulo": "Trouble",
+   "escrito": "Coldplay Trouble",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/coldplay/trouble/"
+  },
+  {
+   "artista": "Coldplay",
+   "titulo": "The Scientist",
+   "escrito": "Coldplay Scientist",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/coldplay/the-scientist/"
+  },
+  {
+   "artista": "U2",
+   "titulo": "One",
+   "escrito": "U2 One",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/u2/one/"
+  },
+  {
+   "artista": "U2",
+   "titulo": "With or Without You",
+   "escrito": "U2 Without You",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/u2/with-or-without-you/"
+  },
+  {
+   "artista": "Linkin Park",
+   "titulo": "Crawling",
+   "escrito": "Linkinpark Crawling",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/linkin-park/crawling/"
+  },
+  {
+   "artista": "Linkin Park",
+   "titulo": "Runaway",
+   "escrito": "Linkinpark Runaway",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "sin_hoja"
+  },
+  {
+   "artista": "Linkin Park",
+   "titulo": "One Step Closer",
+   "escrito": "Linkinpark One Step",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "sin_hoja"
+  },
+  {
+   "artista": "Oasis",
+   "titulo": "Stand by Me",
+   "escrito": "Oasis Stand by me",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/oasis/stand-by-me/"
+  },
+  {
+   "artista": "The Killers",
+   "titulo": "When You Were Young",
+   "escrito": "The Killers When you where",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/the-killers/when-you-were-young/"
+  },
+  {
+   "artista": "Los Bunkers",
+   "titulo": "Ángel para un final",
+   "escrito": "Los Bunkers Angel para un final",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/los-bunkers/angel-para-un-final/"
+  },
+  {
+   "artista": "Los Bunkers",
+   "titulo": "Miéntele",
+   "escrito": "Los Bunkers Mientele",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/los-bunkers/mientele/"
+  },
+  {
+   "artista": "The Lumineers",
+   "titulo": "Ho Hey",
+   "escrito": "The Luminiers Hey",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/the-lumineers/ho-hey/"
+  },
+  {
+   "artista": "The Lumineers",
+   "titulo": "Stubborn Love",
+   "escrito": "The Luminiers Love",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/the-lumineers/stubborn-love/"
+  },
+  {
+   "artista": "Metallica",
+   "titulo": "One",
+   "escrito": "Metallica One",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/metallica/one/"
+  },
+  {
+   "artista": "Metallica",
+   "titulo": "Master of Puppets",
+   "escrito": "Metallica Master",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/metallica/master-of-puppets/"
+  },
+  {
+   "artista": "Karkú",
+   "titulo": "Cada vez",
+   "escrito": "Karku arco cada vez",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "sin_hoja"
+  },
+  {
+   "artista": "Karkú",
+   "titulo": "Chico malo",
+   "escrito": "Karku chico malo",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "sin_hoja"
+  },
+  {
+   "artista": "Daddy Yankee",
+   "titulo": "El amante",
+   "escrito": "Daddy Yankee El Amante",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/daddy-yankee/el-amante/"
+  },
+  {
+   "artista": "Shakira",
+   "titulo": "Las de la intuición",
+   "escrito": "Shakira Las de la Intuición",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/shakira/las-de-la-intuicion/"
+  },
+  {
+   "artista": "Avril Lavigne",
+   "titulo": "Girlfriend",
+   "escrito": "Avril Lavigne Girlfriend",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/avril-lavigne/girlfriend/"
+  },
+  {
+   "artista": "Avril Lavigne",
+   "titulo": "Complicated",
+   "escrito": "Avril Lavigne Complicated",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/avril-lavigne/complicated/"
+  },
+  {
+   "artista": "Avril Lavigne",
+   "titulo": "I'm with You",
+   "escrito": "Avril Lavigne Withyou",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/avril-lavigne/im-with-you-8570/"
+  },
+  {
+   "artista": "Avril Lavigne",
+   "titulo": "Sk8er Boi",
+   "escrito": "Avril Lavigne Skaterboy",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/avril-lavigne/sk8er-boy/"
+  },
+  {
+   "artista": "Avril Lavigne",
+   "titulo": "When You're Gone",
+   "escrito": "Avril Lavigne When your gone",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/avril-lavigne/when-youre-gone/"
+  },
+  {
+   "artista": "Avril Lavigne",
+   "titulo": "My Happy Ending",
+   "escrito": "Avril Lavigne Happy Ending",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/avril-lavigne/my-happy-ending/"
+  },
+  {
+   "artista": "Avril Lavigne",
+   "titulo": "What the Hell",
+   "escrito": "Avril Lavigne What The Hell",
+   "pedido_por": "setlist de la banda",
+   "fecha": "2026-10-21",
+   "estado": "encontrada",
+   "url": "https://www.cifraclub.com/avril-lavigne/what-the-hell/"
+  }
+ ]
+}
