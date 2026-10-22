@@ -947,10 +947,12 @@ input#search:focus {
     border-radius: 12px;
     padding: 1rem;
     width: 120px;
-    height: 150px;
+    min-height: 150px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 0.2rem;
     flex-shrink: 0;
     transition: var(--transition);
 }
@@ -1027,8 +1029,9 @@ input#search:focus {
 /* ====== Song Viewer Mobile ====== */
 .viewer-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* the title on its own line: next to all the buttons it got squeezed */
+    align-items: flex-start;
+    gap: 0.8rem;
     margin-bottom: 2rem;
     position: sticky;
     top: 0;
@@ -1042,16 +1045,12 @@ input#search:focus {
 
 .viewer-controls {
     display: flex;
-    gap: 1rem;
+    gap: 0.8rem;
     align-items: center;
+    flex-wrap: wrap;
 }
 /* With the video panel open the sheet gets narrower: the title on its own line and icon-only buttons
    below it, so neither the name nor Close get squeezed */
-#song-viewer.with-youtube .viewer-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
-}
 #song-viewer.with-youtube .viewer-controls .btn-label {
     display: none;
 }
@@ -2581,5 +2580,119 @@ input#search:focus {
     }
     .view-switch-note {
         font-size: 0.72rem;
+    }
+}
+
+/* What a diagram shows when it isn't exactly the written chord: "bajo en G", "forma de Em7" */
+.diagram-note {
+    font-size: 0.72rem;
+    line-height: 1.25;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* ====== Acorde en pantalla: the chord you're at, big, and the next one ====== */
+.chord-live-panel {
+    gap: 1.2rem;
+    padding: 1.4rem 1.2rem;
+}
+.chord-live-now,
+.chord-live-next {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.chord-live-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+.chord-live-now svg {
+    width: 190px;
+    height: 218px;
+}
+.chord-live-next svg {
+    width: 100px;
+    height: 115px;
+    opacity: 0.75;
+}
+
+/* The slider: where you are in the song */
+.song-scrubber {
+    width: 160px;
+    accent-color: var(--signal);
+    cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+    .chord-live-panel {
+        padding: 0.6rem 1rem;
+        align-items: center;
+        bottom: 5.5rem;
+    }
+    .chord-live-now svg {
+        width: 120px;
+        height: 138px;
+    }
+    .chord-live-next svg {
+        width: 72px;
+        height: 83px;
+    }
+}
+
+@media (max-width: 900px) {
+    .song-scrubber {
+        width: 110px;
+    }
+}
+
+/* With the video open the sheet is already narrow: the chord panel docks at the bottom of the sheet
+   instead of taking a column on its left */
+@media (min-width: 1201px) {
+    #song-viewer.with-youtube .viewer-left-panel.with-selected-chord .chords-scroll-container {
+        padding-left: 2rem;
+    }
+    #song-viewer.with-youtube .viewer-left-panel .selected-chord-panel {
+        top: auto;
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0.6rem 1rem;
+        min-width: unset;
+    }
+    #song-viewer.with-youtube .chord-live-now svg {
+        width: 120px;
+        height: 138px;
+    }
+    #song-viewer.with-youtube .chord-live-next svg {
+        width: 72px;
+        height: 83px;
+    }
+}
+
+/* Phones: a compact chord panel so the sheet stays readable, and the play button on one line */
+@media (max-width: 600px) {
+    .viewer-left-panel .chord-live-panel {
+        padding: 0.4rem 0.8rem;
+        gap: 1rem;
+        bottom: 5rem;
+    }
+    .chord-live-now svg {
+        width: 88px;
+        height: 101px;
+    }
+    .chord-live-next svg {
+        width: 56px;
+        height: 64px;
+    }
+    .autoscroll-panel .btn-primary {
+        white-space: nowrap;
+    }
+    .song-scrubber {
+        width: 90px;
     }
 }

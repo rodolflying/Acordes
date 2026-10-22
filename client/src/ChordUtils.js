@@ -68,6 +68,54 @@ export function parseChord(chordStr) {
     return { key: rootKey, suffix: suffixKey };
 }
 
+// Chord names the sites write that chords_db doesn't have as such, turned into the same chord in its
+// naming: Em7(9) = Em9, A7(4) = A7sus4, D5(9) = Dsus2 (D A E), C#m7(5-) = C#m7b5
+const SAME_CHORD = [
+    [/^m79$/, 'm9'], [/^m7(?:9\/)?11$/, 'm11'], [/^m911$/, 'm11'], [/^79$/, '9'], [/^911$/, '11'],
+    [/^maj79(?:\/13)?$/, 'maj9'], [/^(?:74|47)$/, '7sus4'], [/^4$/, 'sus4'], [/^59$/, 'sus2'],
+    [/^m75-(?:\/9-?)?$/, 'm7b5'], [/^75?aug$/, 'aug7'], [/^5aug$/, 'aug'],
+];
+// When even that doesn't exist, the chord without its extensions: Em7(13-) → Em7, F6(11+) → F6, G4(6) → Gsus4
+const QUALITY = /^(mmaj7|maj7|m7b5|m7|m6|m9|m11|dim7|dim|aug7|aug|7sus4|sus4|sus2|maj9|13|11|9|7|6|5|m)/;
+const QUALITY_ALIASES = { '4': 'sus4' };
+const dbSuffix = body => (body === '' ? 'major' : body === 'm' ? 'minor' : body);
+const shownSuffix = s => (s === 'major' ? '' : s === 'minor' ? 'm' : s);
+
+// The diagram for a chord as the sheet writes it: { pos, note } or null when it isn't a chord ("Am-C-D",
+// several chords written together, or a tuning). `note` says what the diagram shows when it isn't exactly
+// the written chord: "bajo en G" (the shape without its bass note) or "forma de Em7" (without extensions)
+export function findChordShape(chordDb, chordName) {
+    const name = chordName.replace(/\*/g, '').trim();
+    const { key, suffix } = parseChord(name);
+    const variations = chordDb?.chords?.[key];
+    if (!variations || /-[A-G]/.test(suffix)) return null;
+    const find = s => variations.find(v => v.suffix === s && v.positions?.length)?.positions[0];
+    if (find(suffix)) return { pos: find(suffix), note: null };
+
+    const [, rawBody, bass] = suffix.match(/^(.*?)(?:\/([A-G][#b]?))?$/);
+    const body = rawBody === 'major' ? '' : rawBody === 'minor' ? 'm' : rawBody;
+    const same = SAME_CHORD.filter(([re]) => re.test(body)).map(([, s]) => s);
+    const quality = body.match(QUALITY)?.[1] ?? QUALITY_ALIASES[body.match(/^\d/)?.[0]];
+    // Names as the sheet writes them (in sharps), not as chords_db spells them (Eb, Bb)
+    const root = name.match(/^((?:Do|Re|Mi|Fa|Sol|La|Si|[A-H])[#b]?)/i)?.[1] || '';
+    const writtenBass = name.match(/\/((?:Do|Re|Mi|Fa|Sol|La|Si|[A-H])[#b]?)$/i)?.[1] || bass;
+    const candidates = [...new Set([body, ...same, quality])].filter(b => b !== undefined);
+    for (const b of candidates) {
+        const exact = b === body || same.includes(b);
+        const s = dbSuffix(b);
+        if (bass) {
+            const withBass = find(s === 'major' ? `/${bass}` : `${shownSuffix(s)}/${bass}`);
+            if (withBass) return { pos: withBass, note: exact ? null : `forma de ${root}${shownSuffix(s)}/${writtenBass}` };
+        }
+        const pos = find(s);
+        if (pos) {
+            const parts = [!exact && `forma de ${root}${shownSuffix(s)}`, bass && `bajo en ${writtenBass}`].filter(Boolean);
+            return { pos, note: parts.join(' · ') || null };
+        }
+    }
+    return null;
+}
+
 // The songbook writes every chord with sharps, never flats: Bb → A#, Ebm7 → D#m7, Fm/Ab → Fm/G#.
 // Keeps the sheet's language (Sib → La#)
 const FLAT_TO_SHARP = {

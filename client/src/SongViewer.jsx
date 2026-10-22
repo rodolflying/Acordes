@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { parseChord, renderSVGChord, sharpChord, transposeChord } from './ChordUtils';
+import { findChordShape, renderSVGChord, sharpChord, transposeChord } from './ChordUtils';
 import { SaveStar } from './Listas';
 
 const MOODS_CONFIG = {
@@ -180,6 +180,10 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   const [transposeDelta, setTransposeDelta] = useState(0);
   const [diagrams, setDiagrams] = useState([]);
   const [selectedChordSvg, setSelectedChordSvg] = useState(null);
+  // "Acorde en pantalla": the chord you're at, big, and the one that comes next. Off until you turn it on;
+  // then it stays on for every song
+  const [chordOnScreen, setChordOnScreen] = useState(() => localStorage.getItem('chordOnScreen') === 'true');
+  const [liveChord, setLiveChord] = useState(null); // { now, next } chord names
   
   const scrollSpeeds = [0.5, 0.65, 0.8, 1.0, 1.15, 1.3, 1.5, 1.65, 1.8, 2.0];
   const [scrollSpeedIndex, setScrollSpeedIndex] = useState(3); // Corresponde a 1.0
@@ -344,6 +348,10 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     syncOffsetRef.current = 0;
   }, [activeVideoId, hasVideo]);
 
+  const postToPlayer = (func, args = []) => {
+    iframeRef.current?.contentWindow?.postMessage(JSON.stringify({ event: 'command', func, args, id: 1, channel: 'widget' }), 'https://www.youtube.com');
+  };
+
   // YouTube Player synchronization using window messages
   useEffect(() => {
     const handleMessage = (event) => {
@@ -355,8 +363,15 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       try {
         const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
         const player = playerRef.current;
-        player.ready = true;
-        const info = data && data.info;
+        // Only the player's own widget messages mean it heard us (keep saying 'listening' until then)
+        if (['initialDelivery', 'onReady', 'infoDelivery'].includes(data?.event)) player.ready = true;
+        // Like YouTube's own API: once the player is ready, subscribe to its state changes, so a play
+        // pressed on the video itself starts the sheet just like Reproducir
+        if (data?.event === 'onReady' && !player.subscribed) {
+          player.subscribed = true;
+          ['onStateChange', 'onPlaybackRateChange'].forEach(ev => postToPlayer('addEventListener', [ev]));
+        }
+        const info = data?.event === 'onStateChange' && typeof data.info === 'number' ? { playerState: data.info } : data && data.info;
         if (!info || typeof info !== 'object') return;
 
         if (info.currentTime !== undefined) {
@@ -393,7 +408,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     playerRef.current = freshPlayer();
     let tries = 0;
     const timer = setInterval(() => {
-      if (playerRef.current.ready || !iframe.contentWindow || ++tries > 20) {
+      if (playerRef.current.ready || !iframe.contentWindow || ++tries > 40) {
         clearInterval(timer);
         return;
       }
@@ -401,9 +416,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     }, 250);
   };
 
-  const sendPlayerCommand = (func) => {
-    iframeRef.current?.contentWindow?.postMessage(JSON.stringify({ event: 'command', func, args: [], id: 1, channel: 'widget' }), 'https://www.youtube.com');
-  };
+  const sendPlayerCommand = (func) => postToPlayer(func);
 
   useEffect(() => {
     const fetchSong = async () => {
@@ -471,39 +484,13 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       const chordElements = contentRef.current.querySelectorAll('.chord');
       const uniqueChords = [...new Set(Array.from(chordElements).map(el => el.innerText.trim()))];
       
-      const newDiagrams = uniqueChords.map(chordName => {
-        const parsed = parseChord(chordName);
-        let posData = null;
-        
-        if (chordDb.chords[parsed.key]) {
-            const variations = chordDb.chords[parsed.key];
-            const def = variations.find(v => v.suffix === parsed.suffix);
-            if (def && def.positions && def.positions.length > 0) {
-                posData = def.positions[0]; 
-            }
-        }
-        return { name: chordName, svg: renderSVGChord(posData, chordName) };
-      });
-      
-      setDiagrams(newDiagrams);
-      
+      // Several chords written together ("Am-C-D") or a tuning aren't a chord: no diagram
+      setDiagrams(uniqueChords.map(chordDiagram).filter(Boolean));
+
       const handleClick = (e) => {
-          const el = e.target;
-          const chordName = el.innerText.trim();
-          const parsed = parseChord(chordName);
-          let posData = null;
-          
-          if (chordDb && chordDb.chords[parsed.key]) {
-              const variations = chordDb.chords[parsed.key];
-              const def = variations.find(v => v.suffix === parsed.suffix);
-              if (def && def.positions) posData = def.positions[0];
-          }
-          
-          if (posData) {
-              setSelectedChordSvg({ name: chordName, svg: renderSVGChord(posData, chordName) });
-          } else {
-              setSelectedChordSvg(null);
-          }
+          const chordName = e.target.innerText.trim();
+          setSelectedChordSvg(chordDiagram(chordName));
+          if (chordOnScreen) setLiveChord(live => ({ ...live, now: chordName }));
       };
 
       chordElements.forEach(el => {
@@ -516,7 +503,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
           });
       };
     }
-  }, [displayContent, chordDb]);
+  }, [displayContent, chordDb, chordOnScreen]);
 
   useEffect(() => {
     if (isScrolling && !syncing) {
@@ -766,6 +753,75 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     setCalibrating(false);
   };
 
+  // { name, svg, note } for a chord as the sheet writes it, or null if it isn't one
+  const chordDiagram = (chordName) => {
+    const shape = findChordShape(chordDb, chordName);
+    return shape && { name: chordName, svg: renderSVGChord(shape.pos, chordName), note: shape.note };
+  };
+
+  useEffect(() => {
+    localStorage.setItem('chordOnScreen', chordOnScreen);
+  }, [chordOnScreen]);
+
+  // Which chord you're at: with the lyrics following the video, the one sounding; otherwise the first one
+  // at the top of what you see (the line you're reading as the sheet goes up). And the next different one
+  useEffect(() => {
+    if (!chordOnScreen || loading) return;
+    const pick = () => {
+      const scroller = viewerRef.current;
+      const sheet = contentRef.current;
+      if (!scroller || !sheet) return;
+      const chords = [...sheet.querySelectorAll('.chord')].filter(c => findChordShape(chordDb, c.innerText.trim()));
+      if (!chords.length) return;
+      let now = syncing && syncPoints?.length && nowChordRef.current?.isConnected ? nowChordRef.current : null;
+      if (!now) {
+        const headerBottom = scroller.querySelector('.viewer-header')?.getBoundingClientRect().bottom ?? 0;
+        now = chords.find(c => c.getBoundingClientRect().top >= headerBottom) || chords[chords.length - 1];
+      }
+      const name = now.innerText.trim();
+      const next = chords.slice(chords.indexOf(now) + 1).find(c => c.innerText.trim() !== name)?.innerText.trim() || null;
+      setLiveChord(live => (live?.now === name && live?.next === next ? live : { now: name, next }));
+    };
+    pick();
+    const timer = setInterval(pick, 200);
+    return () => clearInterval(timer);
+  }, [chordOnScreen, loading, displayContent, syncing, syncPoints, chordDb]);
+
+  // The slider: where you are in the song. With the video, its time (moving it seeks the video); without
+  // it, how far down the sheet you are (moving it scrolls)
+  const [scrub, setScrub] = useState(0);
+  const scrubbingRef = useRef(false);
+  useEffect(() => {
+    if (loading) return;
+    const timer = setInterval(() => {
+      if (scrubbingRef.current) return;
+      const player = playerRef.current;
+      const scroller = viewerRef.current;
+      if (syncing && player.duration) {
+        const elapsed = player.state === 1 ? (performance.now() - player.stamp) / 1000 * player.rate : 0;
+        setScrub(Math.min(1, (player.time + elapsed) / player.duration));
+      } else if (scroller) {
+        const max = scroller.scrollHeight - scroller.clientHeight;
+        setScrub(max > 0 ? scroller.scrollTop / max : 0);
+      }
+    }, 250);
+    return () => clearInterval(timer);
+  }, [loading, syncing]);
+
+  const seek = (fraction) => {
+    setScrub(fraction);
+    const player = playerRef.current;
+    if (syncing && player.duration) {
+      const t = fraction * player.duration;
+      postToPlayer('seekTo', [t, true]);
+      player.time = t;
+      player.stamp = performance.now();
+    } else if (viewerRef.current) {
+      const scroller = viewerRef.current;
+      scroller.scrollTop = fraction * (scroller.scrollHeight - scroller.clientHeight);
+    }
+  };
+
   const toggleScroll = () => {
     if (syncing) {
       const playing = [1, 3].includes(playerRef.current.state); // playing or buffering
@@ -881,7 +937,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     >
       <div className="thematic-pattern" style={{ opacity: 0.07, zIndex: 0 }}></div>
       
-      <div className={`viewer-left-panel ${selectedChordSvg ? 'with-selected-chord' : ''}`}>
+      <div className={`viewer-left-panel ${selectedChordSvg || chordOnScreen ? 'with-selected-chord' : ''}`}>
         <div className="chords-scroll-container" ref={viewerRef}>
           <div className="chords-content-wrapper" style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1rem', position: 'relative', zIndex: 2 }}>
             <div className="viewer-header">
@@ -891,6 +947,15 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
               </div>
               
               <div className="viewer-controls">
+                <button
+                  onClick={() => setChordOnScreen(on => !on)}
+                  className={`btn ${chordOnScreen ? 'btn-on' : ''}`}
+                  aria-pressed={chordOnScreen}
+                  title={chordOnScreen ? 'Ocultar el acorde en pantalla' : 'Ver en grande el acorde en que vas y el que sigue (queda activo para todas las canciones)'}
+                >
+                  <i className="fas fa-table-cells-large"></i> <span className="btn-label">Acorde en pantalla</span>
+                </button>
+
                 {/* YouTube Toggle Button (without the local server, only for songs that have tracks) */}
                 {!loadingTracks && (backingTracks || API_URL) && (
                   <button 
@@ -930,7 +995,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                 <SaveStar saved={saved} onClick={onSave} withLabel />
 
                 <button onClick={shareSong} className={`btn ${shared ? 'btn-on' : ''}`} title="Compartir el link de esta canción" aria-label="Compartir">
-                  <i className={`fas ${shared ? 'fa-check' : 'fa-share-nodes'}`}></i> <span className="btn-label">{shared ? 'Link copiado' : 'Compartir'}</span>
+                  <i className={`fas ${shared ? 'fa-check' : 'fa-share-nodes'}`}></i>{shared && <span className="btn-label"> Link copiado</span>}
                 </button>
 
                 <button onClick={onClose} className="btn" style={{ background: 'var(--glass)', color: 'white' }} aria-label="Cerrar">
@@ -947,7 +1012,10 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
               <>
                 <div id="diagrams-container" className="diagrams-scroll">
                   {diagrams.map((d, i) => (
-                    <div key={i} className="diagram-item animate-in" dangerouslySetInnerHTML={{ __html: d.svg }} />
+                    <div key={i} className="diagram-item animate-in" title={d.note ? `${d.name}: ${d.note}` : d.name}>
+                      <div dangerouslySetInnerHTML={{ __html: d.svg }} />
+                      {d.note && <div className="diagram-note">{d.note}</div>}
+                    </div>
                   ))}
                 </div>
                 {addedChords && (addedChords.bloque + addedChords.linea + addedChords.audio) > 0 && (
@@ -971,7 +1039,27 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
           </div>
         </div>
 
-        {selectedChordSvg && (
+        {chordOnScreen && liveChord?.now && (() => {
+          const now = chordDiagram(liveChord.now);
+          const next = liveChord.next && chordDiagram(liveChord.next);
+          return now && (
+            <div className="selected-chord-panel chord-live-panel" aria-live="polite">
+              <div className="chord-live-now">
+                <div className="chord-live-label">Ahora</div>
+                <div className="chord-live-svg" dangerouslySetInnerHTML={{ __html: now.svg }} />
+                {now.note && <div className="diagram-note">{now.note}</div>}
+              </div>
+              {next && (
+                <div className="chord-live-next">
+                  <div className="chord-live-label">Sigue</div>
+                  <div dangerouslySetInnerHTML={{ __html: next.svg }} />
+                </div>
+              )}
+            </div>
+          );
+        })()}
+
+        {selectedChordSvg && !chordOnScreen && (
           <div className="selected-chord-panel animate-in">
              <div style={{ color: 'var(--mood-ink, var(--signal))', fontWeight: 'bold', fontSize: '1.5rem', letterSpacing: '1px' }}>{selectedChordSvg.name}</div>
              <div dangerouslySetInnerHTML={{ __html: selectedChordSvg.svg }} style={{ transform: 'scale(1.2)', transformOrigin: 'center' }} />
@@ -1122,7 +1210,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                         ref={iframeRef}
                         onLoad={(e) => connectPlayer(e.currentTarget)}
                         id="youtube-player-iframe"
-                        src={`https://www.youtube.com/embed/${activeVideoId}?enablejsapi=1&origin=${window.location.origin}`}
+                        src={`https://www.youtube.com/embed/${activeVideoId}?enablejsapi=1&playsinline=1&origin=${window.location.origin}`}
                         title="YouTube Backing Track Player"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1197,6 +1285,15 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
 
       {!loading && !error && (
         <div id="autoscroll-controls" className="autoscroll-panel">
+          <input
+            type="range" className="song-scrubber" min="0" max="1000" step="1"
+            value={Math.round(scrub * 1000)}
+            onPointerDown={() => { scrubbingRef.current = true; }}
+            onPointerUp={() => { scrubbingRef.current = false; }}
+            onChange={e => seek(Number(e.target.value) / 1000)}
+            aria-label={syncing ? 'Ir a otro momento del video' : 'Ir a otra parte de la hoja'}
+            title={syncing ? 'Ir a otro momento del video' : 'Ir a otra parte de la hoja'}
+          />
           {hasVideo && (
             <button
               onClick={toggleSync}
