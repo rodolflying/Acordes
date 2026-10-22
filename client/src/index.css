@@ -2617,11 +2617,24 @@ input#search:focus {
     opacity: 0.75;
 }
 
-/* The slider: where you are in the song */
-.song-scrubber {
-    width: 160px;
+/* The speed slider: the video's speed (to practice slower) or the scroll's */
+.speed-slider {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+.speed-slider input {
+    width: 120px;
     accent-color: var(--signal);
     cursor: pointer;
+}
+.speed-value {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    min-width: 2.6rem;
 }
 
 @media (max-width: 1200px) {
@@ -2641,8 +2654,8 @@ input#search:focus {
 }
 
 @media (max-width: 900px) {
-    .song-scrubber {
-        width: 110px;
+    .speed-slider input {
+        width: 90px;
     }
 }
 
@@ -2692,7 +2705,89 @@ input#search:focus {
     .autoscroll-panel .btn-primary {
         white-space: nowrap;
     }
-    .song-scrubber {
-        width: 90px;
+    .speed-slider input {
+        width: 70px;
+    }
+}
+
+/* With the video open and room beside the sheet (a wide screen), the chord goes in that gap between the
+   sheet and the video instead of over the lyrics */
+.viewer-left-panel {
+    container-type: inline-size;
+}
+@container (min-width: 1150px) {
+    #song-viewer.with-youtube .viewer-left-panel.with-selected-chord .chords-scroll-container {
+        padding-left: 2rem;
+        padding-right: 280px;
+    }
+    #song-viewer.with-youtube .viewer-left-panel .selected-chord-panel {
+        top: 50%;
+        bottom: auto;
+        left: auto;
+        right: 2rem;
+        transform: translateY(-50%);
+        flex-direction: column;
+        padding: 1.4rem 1.2rem;
+    }
+    #song-viewer.with-youtube .chord-live-now svg {
+        width: 190px;
+        height: 218px;
+    }
+    #song-viewer.with-youtube .chord-live-next svg {
+        width: 100px;
+        height: 115px;
+    }
+}
+
+/* Minimized video: a small player in a corner that keeps playing and the sheet keeps following it
+   (YouTube asks for players of at least about 200 px) */
+#song-viewer .viewer-right-panel.mini {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 5.5rem;
+    width: min(360px, calc(100vw - 2rem));
+    height: auto;
+    max-height: none;
+    border: 1px solid var(--line-strong);
+    border-radius: 16px;
+    z-index: 2150;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+}
+.viewer-right-panel.mini .youtube-sidebar-header {
+    padding: 0.4rem 0.6rem 0.4rem 0.9rem;
+}
+.viewer-right-panel.mini .youtube-sidebar-header h3 {
+    font-size: 0.85rem;
+}
+.viewer-right-panel.mini .youtube-sidebar-content {
+    padding: 0;
+    overflow: hidden;
+}
+.viewer-right-panel.mini .youtube-player-container {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+.viewer-right-panel.mini .youtube-video-current-title,
+.viewer-right-panel.mini .version-selector-container {
+    display: none;
+}
+
+/* The chord panel takes width from the sheet: icon-only buttons (they keep their tooltip) so they fit on one line */
+.viewer-left-panel.with-selected-chord .viewer-controls .btn-label {
+    display: none;
+}
+
+/* Phones: the video already sits under the sheet, so minimized it stays there (without the versions),
+   shorter instead of floating over the lyrics */
+@media (max-width: 900px) {
+    #song-viewer .viewer-right-panel.mini {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        border-radius: 0;
+        border-width: 1px 0 0;
+        box-shadow: none;
     }
 }

@@ -19,6 +19,8 @@ const API_URL = import.meta.env.VITE_API_URL;
 // area below the sticky header
 const READING_LINE = 0.3;
 const freshPlayer = () => ({ time: 0, stamp: 0, duration: 0, rate: 1, state: -1, ready: false });
+// Speeds the slider offers for the video: slower to practice a part, a bit faster once it's learned
+const VIDEO_RATES = [0.5, 0.75, 1, 1.25, 1.5];
 
 // Top (px from `origin`) of each source line of the chord sheet. Measured in the DOM because on
 // phones long lines wrap, so a line's position isn't its index × line height
@@ -197,6 +199,8 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
 
   // YouTube States
   const [showYoutube, setShowYoutube] = useState(false);
+  // The video panel minimized to a small player in a corner: it keeps playing and the sheet keeps following
+  const [videoMini, setVideoMini] = useState(false);
   const [activeVideoId, setActiveVideoId] = useState(null);
   const [backingTracks, setBackingTracks] = useState(null);
   const [loadingTracks, setLoadingTracks] = useState(true);
@@ -371,7 +375,9 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
           player.subscribed = true;
           ['onStateChange', 'onPlaybackRateChange'].forEach(ev => postToPlayer('addEventListener', [ev]));
         }
-        const info = data?.event === 'onStateChange' && typeof data.info === 'number' ? { playerState: data.info } : data && data.info;
+        const info = typeof data?.info !== 'number' ? data?.info
+          : data.event === 'onStateChange' ? { playerState: data.info }
+          : data.event === 'onPlaybackRateChange' ? { playbackRate: data.info } : null;
         if (!info || typeof info !== 'object') return;
 
         if (info.currentTime !== undefined) {
@@ -787,39 +793,21 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     return () => clearInterval(timer);
   }, [chordOnScreen, loading, displayContent, syncing, syncPoints, chordDb]);
 
-  // The slider: where you are in the song. With the video, its time (moving it seeks the video); without
-  // it, how far down the sheet you are (moving it scrolls)
-  const [scrub, setScrub] = useState(0);
-  const scrubbingRef = useRef(false);
-  useEffect(() => {
-    if (loading) return;
-    const timer = setInterval(() => {
-      if (scrubbingRef.current) return;
-      const player = playerRef.current;
-      const scroller = viewerRef.current;
-      if (syncing && player.duration) {
-        const elapsed = player.state === 1 ? (performance.now() - player.stamp) / 1000 * player.rate : 0;
-        setScrub(Math.min(1, (player.time + elapsed) / player.duration));
-      } else if (scroller) {
-        const max = scroller.scrollHeight - scroller.clientHeight;
-        setScrub(max > 0 ? scroller.scrollTop / max : 0);
-      }
-    }, 250);
-    return () => clearInterval(timer);
-  }, [loading, syncing]);
+  // The speed slider: with the video, how fast it plays (slower to practice; the sheet keeps following it);
+  // without it, how fast the sheet scrolls (same steps as − and +)
+  const [rateIndex, setRateIndex] = useState(VIDEO_RATES.indexOf(1));
+  useEffect(() => { setRateIndex(VIDEO_RATES.indexOf(1)); }, [activeVideoId]); // a new video starts at 1x
 
-  const seek = (fraction) => {
-    setScrub(fraction);
+  const setVideoRate = (i) => {
     const player = playerRef.current;
-    if (syncing && player.duration) {
-      const t = fraction * player.duration;
-      postToPlayer('seekTo', [t, true]);
-      player.time = t;
-      player.stamp = performance.now();
-    } else if (viewerRef.current) {
-      const scroller = viewerRef.current;
-      scroller.scrollTop = fraction * (scroller.scrollHeight - scroller.clientHeight);
+    const now = performance.now();
+    if (player.state === 1) { // keep the time count right across the change
+      player.time += (now - player.stamp) / 1000 * player.rate;
+      player.stamp = now;
     }
+    player.rate = VIDEO_RATES[i];
+    setRateIndex(i);
+    postToPlayer('setPlaybackRate', [VIDEO_RATES[i]]);
   };
 
   const toggleScroll = () => {
@@ -929,7 +917,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   return (
     <div 
       id="song-viewer" 
-      className={`${song.theme ? `theme-${song.theme.toLowerCase()}` : ''} ${showYoutube ? 'with-youtube' : ''}`}
+      className={`${song.theme ? `theme-${song.theme.toLowerCase()}` : ''} ${showYoutube && !videoMini ? 'with-youtube' : ''}`}
       style={{
         '--active-mood-color': song.mood ? (MOODS_CONFIG[song.mood]?.color || '#ffffff') : 'var(--primary)',
         '--active-mood-rgb': song.mood ? (MOODS_CONFIG[song.mood]?.rgb || '255,255,255') : '242,184,75'
@@ -959,7 +947,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                 {/* YouTube Toggle Button (without the local server, only for songs that have tracks) */}
                 {!loadingTracks && (backingTracks || API_URL) && (
                   <button 
-                    onClick={() => setShowYoutube(!showYoutube)} 
+                    onClick={() => (videoMini ? setVideoMini(false) : setShowYoutube(!showYoutube))}  
                     className={`btn ${showYoutube ? 'btn-on' : ''}`}
                     style={{ gap: '6px' }}
                     title="Pistas oficiales de acompañamiento"
@@ -1072,7 +1060,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
 
       {/* YouTube Sidebar */}
       {showYoutube && (
-        <div className="viewer-right-panel animate-in">
+        <div className={`viewer-right-panel ${videoMini ? 'mini' : 'animate-in'}`}>
           <div className="youtube-sidebar-header">
             <h3><i className="fab fa-youtube" style={{ color: '#ff3b3b', marginRight: '8px' }}></i>Acompañamiento</h3>
             <div style={{ display: 'flex', gap: '8px' }}>
@@ -1093,9 +1081,20 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                 <i className="fas fa-search"></i>
               </button>
               )}
-              <button onClick={() => setShowYoutube(false)} className="btn-icon" title="Ocultar panel" style={{ width: '32px', height: '32px', border: 'none', background: 'transparent', color: 'white', cursor: 'pointer' }}>
-                <i className="fas fa-chevron-right"></i>
+              <button
+                onClick={() => setVideoMini(!videoMini)}
+                className="btn-icon"
+                title={videoMini ? 'Agrandar el panel' : 'Minimizar: el video sigue sonando en una esquina'}
+                aria-label={videoMini ? 'Agrandar el panel del video' : 'Minimizar el panel del video'}
+                style={{ width: '32px', height: '32px', border: 'none', background: 'transparent', color: 'white', cursor: 'pointer' }}
+              >
+                <i className={`fas ${videoMini ? 'fa-up-right-and-down-left-from-center' : 'fa-down-left-and-up-right-to-center'}`}></i>
               </button>
+              {videoMini && (
+                <button onClick={() => { setVideoMini(false); setShowYoutube(false); }} className="btn-icon" title="Cerrar el video" aria-label="Cerrar el video" style={{ width: '32px', height: '32px', border: 'none', background: 'transparent', color: 'white', cursor: 'pointer' }}>
+                  <i className="fas fa-times"></i>
+                </button>
+              )}
             </div>
           </div>
 
@@ -1285,15 +1284,17 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
 
       {!loading && !error && (
         <div id="autoscroll-controls" className="autoscroll-panel">
-          <input
-            type="range" className="song-scrubber" min="0" max="1000" step="1"
-            value={Math.round(scrub * 1000)}
-            onPointerDown={() => { scrubbingRef.current = true; }}
-            onPointerUp={() => { scrubbingRef.current = false; }}
-            onChange={e => seek(Number(e.target.value) / 1000)}
-            aria-label={syncing ? 'Ir a otro momento del video' : 'Ir a otra parte de la hoja'}
-            title={syncing ? 'Ir a otro momento del video' : 'Ir a otra parte de la hoja'}
-          />
+          <label className="speed-slider" title={syncing ? 'Velocidad del video: más lento para practicar' : 'Velocidad del desplazamiento'}>
+            <i className="fas fa-gauge-high"></i>
+            <input
+              type="range" min="0" step="1"
+              max={syncing ? VIDEO_RATES.length - 1 : scrollSpeeds.length - 1}
+              value={syncing ? rateIndex : scrollSpeedIndex}
+              onChange={e => (syncing ? setVideoRate(Number(e.target.value)) : setScrollSpeedIndex(Number(e.target.value)))}
+              aria-label={syncing ? 'Velocidad del video' : 'Velocidad del desplazamiento'}
+            />
+            {syncing && <span className="speed-value">x{VIDEO_RATES[rateIndex]}</span>}
+          </label>
           {hasVideo && (
             <button
               onClick={toggleSync}
