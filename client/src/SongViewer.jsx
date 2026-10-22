@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { findChordShape, renderSVGChord, sharpChord, transposeChord } from './ChordUtils';
 import { SaveStar } from './Listas';
+import Visualizer, { VISUAL_STYLES } from './Visualizer';
 
 const MOODS_CONFIG = {
   "Romántico": { color: "#ff007a", rgb: "255, 0, 122" },
@@ -199,6 +200,20 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
 
   // YouTube States
   const [showYoutube, setShowYoutube] = useState(false);
+  // The background that moves with the music (Visualizer.jsx): '' (off), 'barras', 'ondas' or 'ambiente'.
+  // On unless the phone asks for less motion or the site is in "Modo rápido"
+  const [visualStyle, setVisualStyle] = useState(() => {
+    const saved = localStorage.getItem('visualStyle');
+    if (saved !== null) return saved;
+    const calm = localStorage.getItem('performanceMode') === 'true' || matchMedia('(prefers-reduced-motion: reduce)').matches;
+    return calm ? '' : VISUAL_STYLES[0].id;
+  });
+  useEffect(() => { localStorage.setItem('visualStyle', visualStyle); }, [visualStyle]);
+  const nextVisualStyle = () => {
+    const ids = ['', ...VISUAL_STYLES.map(v => v.id)];
+    setVisualStyle(ids[(ids.indexOf(visualStyle) + 1) % ids.length]);
+  };
+
   // The video panel minimized to a small player in a corner: it keeps playing and the sheet keeps following
   const [videoMini, setVideoMini] = useState(false);
   const [activeVideoId, setActiveVideoId] = useState(null);
@@ -220,6 +235,14 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   const playerRef = useRef(freshPlayer()); // last time, duration, state and rate reported by YouTube
   const syncOffsetRef = useRef(0); // manual correction (px) made by the user while the video plays
   const hasVideo = showYoutube && !isSearching && Boolean(backingTracks && activeVideoId);
+  // The second the video is at while it plays (null when paused or without video), for the background
+  const videoTime = useCallback(() => {
+    const player = playerRef.current;
+    if (!iframeRef.current?.isConnected || player.state !== 1 || !player.duration) return null;
+    return player.time + (performance.now() - player.stamp) / 1000 * player.rate;
+  }, []);
+  // The song's analysis is saved under its first video (Karaoke, Instrumental, Backtrack): all three share timing
+  const visualsId = ['Karaoke', 'Instrumental', 'Backtrack'].map(v => backingTracks?.[v]?.id).find(Boolean) || null;
   const syncing = hasVideo && syncWithVideo;
 
   useEffect(() => {
@@ -917,12 +940,20 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   return (
     <div 
       id="song-viewer" 
-      className={`${song.theme ? `theme-${song.theme.toLowerCase()}` : ''} ${showYoutube && !videoMini ? 'with-youtube' : ''}`}
+      className={`${song.theme ? `theme-${song.theme.toLowerCase()}` : ''} ${showYoutube && !videoMini ? 'with-youtube' : ''} ${visualStyle ? 'with-visuals' : ''}`}
       style={{
         '--active-mood-color': song.mood ? (MOODS_CONFIG[song.mood]?.color || '#ffffff') : 'var(--primary)',
         '--active-mood-rgb': song.mood ? (MOODS_CONFIG[song.mood]?.rgb || '255,255,255') : '242,184,75'
       }}
     >
+      <Visualizer
+        style={visualStyle}
+        videoId={visualsId}
+        getTime={videoTime}
+        rgb={MOODS_CONFIG[song.mood]?.rgb || '242, 184, 75'}
+        theme={song.theme}
+        energy={song.energy}
+      />
       <div className="thematic-pattern" style={{ opacity: 0.07, zIndex: 0 }}></div>
       
       <div className={`viewer-left-panel ${selectedChordSvg || chordOnScreen ? 'with-selected-chord' : ''}`}>
@@ -1284,7 +1315,16 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
 
       {!loading && !error && (
         <div id="autoscroll-controls" className="autoscroll-panel">
-          <label className="speed-slider" title={syncing ? 'Velocidad del video: más lento para practicar' : 'Velocidad del desplazamiento'}>
+          <button
+            onClick={nextVisualStyle}
+            className={`btn-icon ${visualStyle ? 'sync-on' : ''}`}
+            aria-pressed={Boolean(visualStyle)}
+            title={`Fondo con la música: ${VISUAL_STYLES.find(v => v.id === visualStyle)?.name || 'apagado'} · clic para cambiar`}
+            aria-label="Cambiar el fondo con la música"
+          >
+            <i className="fas fa-wave-square"></i>
+          </button>
+          <label className="speed-slider"  title={syncing ? 'Velocidad del video: más lento para practicar' : 'Velocidad del desplazamiento'}>
             <i className="fas fa-gauge-high"></i>
             <input
               type="range" min="0" step="1"

@@ -2791,3 +2791,18 @@ input#search:focus {
         box-shadow: none;
     }
 }
+
+/* ====== The background that moves with the music (Visualizer.jsx) ======
+   Decorative like the cards and the 3D background (DESIGN.md): behind the sheet, in the song's mood color */
+.music-visualizer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+/* With the moving background the sheet gets a darker card, so the lyrics and chords read as well as ever */
+#song-viewer.with-visuals .chord-sheet {
+    background: rgba(7, 7, 11, 0.8);
+}
