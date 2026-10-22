@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { parseChord, renderSVGChord, sharpChord, transposeChord } from './ChordUtils';
+import { SaveStar } from './Listas';
 
 const MOODS_CONFIG = {
   "Romántico": { color: "#ff007a", rgb: "255, 0, 122" },
@@ -169,7 +170,7 @@ const lastAt = (list, t, key) => {
   return found;
 };
 
-const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, syncPoints, onVideoLinked }) => {
+const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, syncPoints, onVideoLinked, saved, onSave }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [content, setContent] = useState('');
@@ -925,6 +926,8 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                   <button onClick={() => changeFontScale(-1)} className="btn-icon" title="Letra más chica" aria-label="Letra más chica">A−</button>
                   <button onClick={() => changeFontScale(1)} className="btn-icon" title="Letra más grande" aria-label="Letra más grande">A+</button>
                 </div>
+
+                <SaveStar saved={saved} onClick={onSave} withLabel />
 
                 <button onClick={shareSong} className={`btn ${shared ? 'btn-on' : ''}`} title="Compartir el link de esta canción" aria-label="Compartir">
                   <i className={`fas ${shared ? 'fa-check' : 'fa-share-nodes'}`}></i> <span className="btn-label">{shared ? 'Link copiado' : 'Compartir'}</span>

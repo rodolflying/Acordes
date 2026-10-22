@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo, useRef, Suspense } from 'react';
 import CelestialIcon from './CelestialIcon';
 import { buildSongs, pickBest, isViewable } from './catalog';
+import { useCuenta, ops, isSaved, FAVORITAS } from './cuenta';
+import { SaveStar, SaveSheet, ListBar } from './Listas';
 import './index.css';
 
 const ThreeBackground = React.lazy(() => import('./ThreeBackground'));
@@ -73,7 +75,12 @@ function App() {
   const [randomModal, setRandomModal] = useState(null); // contains random song obj
   const [backingTracksDict, setBackingTracksDict] = useState({});
   const [syncPointsDict, setSyncPointsDict] = useState({});
-  const [filterHasBackingTrack, setFilterHasBackingTrack] = useState(false);
+  // The whole experience (your karaoke video + the sheet following it) is the main view, so the site starts there
+  const [filterHasBackingTrack, setFilterHasBackingTrack] = useState(true);
+  // Your lists (cuenta.js): the open one replaces the folder filter, and the song whose "Guardar en…" is open
+  const [cuenta, updateCuenta] = useCuenta();
+  const [activeList, setActiveList] = useState(null);
+  const [savingSong, setSavingSong] = useState(null);
   const [performanceMode, setPerformanceMode] = useState(() => {
     return localStorage.getItem('performanceMode') === 'true';
   });
@@ -202,28 +209,39 @@ function App() {
     [allSongs, backingTracksDict, syncPointsDict]);
 
   const handleRandom = () => {
-    if (songs.length > 0) {
-      const randomSong = songs[Math.floor(Math.random() * songs.length)];
+    const pool = filteredSongs.length ? filteredSongs : songs; // from what you're looking at (karaoke by default)
+    if (pool.length > 0) {
+      const randomSong = pool[Math.floor(Math.random() * pool.length)];
       setRandomModal(randomSong);
     }
   };
 
-  const filteredSongs = useMemo(() => {
+  // Everything the filters let through except the karaoke switch, which counts on top of it
+  const viewSongs = useMemo(() => {
     // Without accents or case: "angeles" finds "Ángeles", "fenix" finds "Fénix"
     const fold = s => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
     const query = fold(searchQuery.trim());
-    return songs.filter(song => {
+    const lista = cuenta.listas.find(l => l.id === activeList);
+    const bySlug = new Map(songs.map(s => [s.slug, s]));
+    const pool = lista ? lista.canciones.map(slug => bySlug.get(slug)).filter(Boolean) : songs; // in the list's order
+    return pool.filter(song => {
       const hasSearch = query !== '';
       const matchesSearch = [song.title, song.folder, song.source, song.mood, song.theme].some(field => fold(field).includes(query));
       
-      const matchesFolder = hasSearch ? true : (currentFilter === 'all' || song.folder === currentFilter);
+      const matchesFolder = hasSearch || lista ? true : (currentFilter === 'all' || song.folder === currentFilter);
       const matchesMood = activeMood === null || song.mood === activeMood;
       const matchesTheme = activeTheme === null || song.theme === activeTheme;
-      const matchesBackingTrack = !filterHasBackingTrack || songHasBackingTrack(song);
       
-      return matchesSearch && matchesFolder && matchesMood && matchesTheme && matchesBackingTrack;
+      return matchesSearch && matchesFolder && matchesMood && matchesTheme;
     });
-  }, [songs, searchQuery, currentFilter, activeMood, activeTheme, filterHasBackingTrack, backingTracksDict]);
+  }, [songs, searchQuery, currentFilter, activeMood, activeTheme, cuenta, activeList]);
+
+  const karaokeCount = viewSongs.filter(songHasBackingTrack).length;
+  const filteredSongs = useMemo(() => {
+    if (filterHasBackingTrack) return viewSongs.filter(songHasBackingTrack);
+    // All of them, the ones with karaoke first, except in a list, which keeps its order
+    return activeList ? viewSongs : [...viewSongs].sort((a, b) => songHasBackingTrack(b) - songHasBackingTrack(a));
+  }, [viewSongs, filterHasBackingTrack, backingTracksDict, activeList]);
 
   // Back to the first page whenever the filters change the list
   const [pagedList, setPagedList] = useState(filteredSongs);
@@ -413,6 +431,46 @@ function App() {
 
   const selectedSong = selectedSlug ? songs.find(s => s.slug === selectedSlug) : null;
 
+  // The star, like saving on Instagram: the first time it goes to Favoritas and "Guardar en…" opens
+  // to add it to your lists; once saved, the star opens the same panel to change them
+  const saveSong = (song) => {
+    if (!isSaved(cuenta, song.slug)) updateCuenta(ops.add, FAVORITAS, song.slug);
+    setSavingSong(song);
+  };
+
+  const openList = (id) => {
+    setActiveList(id);
+    setFilterHasBackingTrack(false); // a list shows all its songs
+    setSearchQuery('');
+    setActiveMood(null);
+    setActiveTheme(null);
+  };
+
+  const newList = () => {
+    const nombre = window.prompt('Nombre de la lista (por ejemplo: Ensayo del sábado)');
+    if (nombre === null) return;
+    const id = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
+    updateCuenta(ops.create, nombre, [], id);
+    openList(id);
+  };
+
+  const openLista = cuenta.listas.find(l => l.id === activeList) || null;
+
+  // Your first lists: the band's setlist (listas_iniciales.json), once per browser
+  useEffect(() => {
+    if (cuenta.sembrada || !allSongs.length) return;
+    fetch(`${BASE}listas_iniciales.json`)
+      .then(res => (res.ok ? res.json() : { listas: [] }))
+      .then(({ listas }) => {
+        const slugOf = new Map(allSongs.map(s => [s.url, s.slug]));
+        updateCuenta(ops.seeded, listas.map(l => ({
+          nombre: l.nombre,
+          canciones: [...new Set(l.canciones.map(url => slugOf.get(url)).filter(Boolean))],
+        })));
+      })
+      .catch(() => {});
+  }, [allSongs, cuenta.sembrada]);
+
   const handleOpenSong = (song) => {
     if (!isViewable(song)) {
       window.open(song.url, '_blank');
@@ -474,14 +532,37 @@ function App() {
             
             <nav>
                 <div style={{marginTop: '2rem', marginBottom: '1rem', fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '600'}}>
+                    Mis listas <span className="nav-note">· en este navegador</span>
+                </div>
+                <ul className="folder-list my-lists">
+                    {cuenta.listas.map(lista => (
+                      <li
+                        key={lista.id}
+                        className={`folder-item ${activeList === lista.id ? 'active' : ''}`}
+                        onClick={() => openList(lista.id)}
+                      >
+                          <i className={`fas ${lista.id === FAVORITAS ? 'fa-star' : 'fa-list-ul'}`}></i>
+                          {lista.nombre}
+                          <span className="folder-count">{lista.canciones.length}</span>
+                      </li>
+                    ))}
+                    <li className="folder-item" onClick={newList}>
+                        <i className="fas fa-plus"></i> Nueva lista
+                    </li>
+                </ul>
+            </nav>
+
+            <nav>
+                <div style={{marginBottom: '1rem', fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '600'}}>
                     Carpetas
                 </div>
                 <ul className="folder-list">
                     {folders.map(folder => (
                       <li 
                         key={folder}
-                        className={`folder-item ${currentFilter === folder ? 'active' : ''}`} 
+                        className={`folder-item ${!activeList && currentFilter === folder ? 'active' : ''}`} 
                         onClick={() => {
+                          setActiveList(null);
                           setCurrentFilter(folder);
                           setActiveMood(null); // Reset filters on folder change to prevent empty states
                           setActiveTheme(null);
@@ -549,11 +630,29 @@ function App() {
                 </div>
             </header>
 
+            {/* The main choice, always in sight (also on phones, where the other filters fold away) */}
+            <div className="view-switch" role="group" aria-label="Qué canciones mostrar">
+                <button className={filterHasBackingTrack ? 'active' : ''} aria-pressed={filterHasBackingTrack} onClick={() => setFilterHasBackingTrack(true)}>
+                    <i className="fas fa-microphone"></i>
+                    <span className="view-switch-text">
+                        <span className="view-switch-name">Con karaoke <span className="view-switch-count">{karaokeCount}</span></span>
+                        <span className="view-switch-note">Tu video y la hoja que lo sigue</span>
+                    </span>
+                </button>
+                <button className={!filterHasBackingTrack ? 'active' : ''} aria-pressed={!filterHasBackingTrack} onClick={() => setFilterHasBackingTrack(false)}>
+                    <i className="fas fa-guitar"></i>
+                    <span className="view-switch-text">
+                        <span className="view-switch-name">Todas <span className="view-switch-count">{viewSongs.length}</span></span>
+                        <span className="view-switch-note">Solo acordes en las que no tienen video</span>
+                    </span>
+                </button>
+            </div>
+
             {/* Filter buttons */}
             <button className="filters-toggle" onClick={() => setFiltersOpen(!filtersOpen)} aria-expanded={filtersOpen}>
                 <i className="fas fa-sliders"></i> Filtros
-                {(activeMood || activeTheme || filterHasBackingTrack) && (
-                    <span className="filters-count">{[activeMood, activeTheme, filterHasBackingTrack].filter(Boolean).length}</span>
+                {(activeMood || activeTheme) && (
+                    <span className="filters-count">{[activeMood, activeTheme].filter(Boolean).length}</span>
                 )}
                 <i className={`fas fa-chevron-${filtersOpen ? 'up' : 'down'}`} style={{ marginLeft: 'auto' }}></i>
             </button>
@@ -587,18 +686,11 @@ function App() {
                         ))}
                     </div>
                 </div>
-                <div className="filter-row" style={{ marginTop: '0.8rem' }}>
-                    <span className="filter-label">Pistas</span>
-                    <div className="filter-buttons">
-                        <button
-                            className={`filter-tag ${filterHasBackingTrack ? 'active' : ''}`}
-                            onClick={() => setFilterHasBackingTrack(!filterHasBackingTrack)}
-                        >
-                            <i className="fas fa-microphone"></i> Solo con pista oficial
-                        </button>
-                    </div>
-                </div>
             </div>
+
+            {openLista && (
+                <ListBar lista={openLista} songs={filteredSongs} update={updateCuenta} onDeleted={() => setActiveList(null)} />
+            )}
 
             <div ref={resultsRef} className="results-bar">
                 <span>
@@ -617,6 +709,19 @@ function App() {
                     </select>
                 </label>
             </div>
+
+            {!filteredSongs.length && viewSongs.length > 0 && (
+                <p className="list-empty">
+                    Ninguna de estas tiene karaoke todavía.{' '}
+                    <button className="link-btn" onClick={() => setFilterHasBackingTrack(false)}>Ver las {viewSongs.length} con acordes</button>
+                </p>
+            )}
+
+            {openLista && !openLista.canciones.length && (
+                <p className="list-empty">
+                    Todavía no hay canciones en esta lista. Toca la <i className="far fa-star"></i> de una canción para guardarla aquí.
+                </p>
+            )}
 
             <div className="song-grid">
                 {visibleSongs.map((song, index) => (
@@ -647,9 +752,9 @@ function App() {
                       <div className="card-footer">
                           <div className="card-badges">
                               {songHasBackingTrack(song) && (
-                                  <span className="backing-track-badge" title="Pistas oficiales disponibles">
+                                  <span className="backing-track-badge" title="Con tu video karaoke: la hoja lo sigue">
                                       <i className="fab fa-youtube" style={{ color: 'var(--accent)', marginRight: '4px' }}></i>
-                                      Pista
+                                      Karaoke
                                   </span>
                               )}
                               {song.mood && (
@@ -674,6 +779,7 @@ function App() {
                           </div>
                           
                           <div className="card-actions">
+                              <SaveStar saved={isSaved(cuenta, song.slug)} onClick={(e) => { e.stopPropagation(); saveSong(song); }} />
                               {(song.source === 'Cifra Club' || song.source === 'LaCuerda') && (
                                   <i className="fas fa-volume-up play-indicator" title="Visualizador local disponible"></i>
                               )}
@@ -754,8 +860,14 @@ function App() {
             syncPoints={syncPointsDict[selectedSong.url]}
             onClose={closeSong}
             onVideoLinked={handleVideoLinked}
+            saved={isSaved(cuenta, selectedSong.slug)}
+            onSave={() => saveSong(selectedSong)}
           />
         </Suspense>
+      )}
+
+      {savingSong && (
+        <SaveSheet song={savingSong} cuenta={cuenta} update={updateCuenta} onClose={() => setSavingSong(null)} />
       )}
 
       {showDashboard && (
