@@ -21,6 +21,7 @@ Uso:
     python pedidos.py --retry    # vuelve a buscar las que quedaron sin hoja
 """
 
+import html
 import json
 import re
 import sys
@@ -41,11 +42,23 @@ SONGS_FILE = ROOT / 'songs.json'
 PRELOADED_FILE = ROOT / 'client' / 'public' / 'preloaded_songs.json'
 FOLDER = 'Pedidos'
 MIN_CHORDS = 4  # menos que eso es una tablatura o una página sin acordes marcados
+MIN_LYRIC_LINES = 12  # una hoja de verdad trae la letra; una partitura de ritmo marca "acordes" (S, E, Q) sin letra
 ACOUSTIC = re.compile(r'ac[uú]stic|acoustic|unplugged', re.IGNORECASE)
 
 
 def chords_in(sheet: dict) -> int:
     return len(re.findall(r'class="chord"', sheet.get('content') or '')) if 'error' not in sheet else 0
+
+
+def lyric_lines(sheet: dict) -> int:
+    """Líneas de letra de la hoja: con al menos 3 palabras, sin contar acordes ni tablaturas. La hoja de B.Y.O.B.
+    que se aceptó era una partitura de ritmo ("S S q e.") con 204 "acordes" y ninguna línea de letra."""
+    n = 0
+    for raw in (sheet.get('content') or '').split('\n'):
+        text = html.unescape(re.sub(r'<[^>]+>', '', re.sub(r'<span class="chord[^"]*"[^>]*>.*?</span>', ' ', raw)))
+        if not re.search(r'[|-]{4,}', text) and len(re.findall(r'[^\W\d_]{2,}', text)) >= 3:
+            n += 1
+    return n
 
 
 def same_name(a: str, b: str) -> bool:
@@ -81,22 +94,22 @@ def artist_pages(artist: str, title: str, artist_slugs: list[str]) -> list[str]:
     return found
 
 
-def find_sheet(artist: str, title: str) -> tuple[str, dict] | None:
-    """(url, hoja) de la primera hoja con acordes de la canción, o None."""
+def find_sheet(artist: str, title: str, skip: set = frozenset()) -> tuple[str, dict] | None:
+    """(url, hoja) de la primera hoja con acordes y letra de la canción, o None. `skip`: urls ya descartadas."""
     def scrape(url):
         time.sleep(0.3)  # amable con los sitios
         try:
             sheet = (scrape_cifraclub if 'cifraclub' in url else scrape_lacuerda)(url)
         except Exception as e:
             sheet = {'error': str(e)}
-        return sheet if chords_in(sheet) >= MIN_CHORDS else None
+        return sheet if chords_in(sheet) >= MIN_CHORDS and lyric_lines(sheet) >= MIN_LYRIC_LINES else None
 
     docs = [d for d in cifraclub_search(f'{artist} {title}') if same_name(d['a'], artist)]
     songs = [d for d in docs if same_name(d['m'], title)]
     songs.sort(key=lambda d: bool(ACOUSTIC.search(d['m'] + d['u'])))  # la versión normal antes que la acústica
     urls = [f"https://www.cifraclub.com/{d['d']}/{d['u']}/" for d in songs]
     urls += [u for u, _, _ in candidate_urls(artist, title)]
-    tried = set()
+    tried = set(skip)
     for url in urls:
         if url not in tried:
             tried.add(url)

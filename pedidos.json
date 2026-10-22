@@ -158,8 +158,8 @@
    "escrito": "SOAD Byob",
    "pedido_por": "setlist de la banda",
    "fecha": "2026-10-21",
-   "estado": "encontrada",
-   "url": "https://www.cifraclub.com/system-of-a-down/byob-2/"
+   "estado": "sin_hoja",
+   "motivo": "la hoja encontrada no trae letra (partitura de ritmo o solo la intro)"
   },
   {
    "artista": "System of a Down",
@@ -424,8 +424,8 @@
    "escrito": "The Killers When you where",
    "pedido_por": "setlist de la banda",
    "fecha": "2026-10-21",
-   "estado": "encontrada",
-   "url": "https://www.cifraclub.com/the-killers/when-you-were-young/"
+   "estado": "sin_hoja",
+   "motivo": "la hoja encontrada no trae letra (partitura de ritmo o solo la intro)"
   },
   {
    "artista": "Los Bunkers",

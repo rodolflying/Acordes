@@ -10,8 +10,10 @@ import pedidos  # noqa: E402
 from enricher import parse_song_name  # noqa: E402
 
 
-def sheet(chords):
-    return {'content': ' '.join('<span class="chord">A</span>' for _ in range(chords))}
+def sheet(chords, lyric_lines=20):
+    """Una hoja con tantos acordes y líneas de letra."""
+    chords_line = ' '.join('<span class="chord">A</span>' for _ in range(chords))
+    return {'content': chords_line + '\n' + '\n'.join('una línea de letra cantada' for _ in range(lyric_lines))}
 
 
 def test_same_name_ignores_punctuation_accents_and_extra_words():
@@ -43,3 +45,11 @@ def test_find_sheet_skips_tabs_and_leaves_the_acoustic_version_last(monkeypatch)
     url, found = pedidos.find_sheet('System of a Down', 'B.Y.O.B.')
     assert url == 'https://www.cifraclub.com/system-of-a-down/byob-2/'
     assert pedidos.chords_in(found) == 200
+
+
+def test_a_rhythm_chart_is_not_a_chord_sheet():
+    # B.Y.O.B. se aceptó con una partitura de ritmo: "acordes" marcados (E, S, Q) y ninguna línea de letra
+    rhythm = {'content': '\n'.join('<span class="chord">S</span> <span class="chord">E</span> q e. S S' for _ in range(40))}
+    lyrics = {'content': '\n'.join(f'<span class="chord">Am</span>\nYo pienso que no son tan inútiles {i}' for i in range(20))}
+    assert pedidos.lyric_lines(rhythm) == 0
+    assert pedidos.lyric_lines(lyrics) == 20
