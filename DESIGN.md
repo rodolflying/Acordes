@@ -33,8 +33,10 @@ nuevo usa `--signal`.
    filtro (`.filter-dot`). El texto de los chips es neutro.
 4. **Sin degradados, brillos ni neón en la interfaz.** Los únicos elementos decorativos son las tarjetas por mood,
    el fondo 3D (en ámbar y grises, al 35% de opacidad) y el fondo con la música de la hoja (`Visualizer.jsx`).
-   Ese fondo usa el color del mood de la canción, se mueve según su temática y su energía, y va detrás de la
-   hoja: con él encendido la hoja toma un fondo oscuro (`.with-visuals`) para que la letra se lea igual.
+   Ese fondo usa el color del mood de la canción (en Clásico, una capa de ese color sobre los colores de
+   MilkDrop), se mueve según su temática y su energía, y va detrás de la hoja: con él encendido la hoja toma
+   un fondo oscuro (`.with-visuals`) para que la letra se lea igual. Los presets de MilkDrop se eligen por no
+   cansar la vista detrás de la letra: nada de rayas blanco y negro ni ruido.
 5. **Lo no elegido se ve disponible, no apagado.** Solo lo que de verdad no se puede usar va desactivado.
 6. **Texto en minúscula normal:** "Modo rápido", "Solo con pista oficial". Nada de mayúsculas sostenidas ni
    emojis en los controles.

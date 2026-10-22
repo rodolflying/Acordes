@@ -200,10 +200,11 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
 
   // YouTube States
   const [showYoutube, setShowYoutube] = useState(false);
-  // The background that moves with the music (Visualizer.jsx): '' (off), 'barras', 'ondas' or 'ambiente'.
+  // The background that moves with the music (Visualizer.jsx): '' (off), 'clasico', 'ondas' or 'ambiente'.
   // On unless the phone asks for less motion or the site is in "Modo rápido"
   const [visualStyle, setVisualStyle] = useState(() => {
     const saved = localStorage.getItem('visualStyle');
+    if (saved === 'barras') return 'clasico'; // the bars were retired
     if (saved !== null) return saved;
     const calm = localStorage.getItem('performanceMode') === 'true' || matchMedia('(prefers-reduced-motion: reduce)').matches;
     return calm ? '' : VISUAL_STYLES[0].id;
@@ -213,6 +214,10 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     const ids = ['', ...VISUAL_STYLES.map(v => v.id)];
     setVisualStyle(ids[(ids.indexOf(visualStyle) + 1) % ids.length]);
   };
+  // In Clásico, which MilkDrop preset (counting from the one that fits the song's theme), like WMP's arrows
+  const [presetStep, setPresetStep] = useState(0);
+  useEffect(() => { setPresetStep(0); }, [song.url]);
+  const fallBackToLight = useCallback(() => setVisualStyle('ondas'), []);
 
   // The video panel minimized to a small player in a corner: it keeps playing and the sheet keeps following
   const [videoMini, setVideoMini] = useState(false);
@@ -953,6 +958,8 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
         rgb={MOODS_CONFIG[song.mood]?.rgb || '242, 184, 75'}
         theme={song.theme}
         energy={song.energy}
+        presetStep={presetStep}
+        onFallback={fallBackToLight}
       />
       <div className="thematic-pattern" style={{ opacity: 0.07, zIndex: 0 }}></div>
       
@@ -1324,6 +1331,11 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
           >
             <i className="fas fa-wave-square"></i>
           </button>
+          {visualStyle === 'clasico' && (
+            <button onClick={() => setPresetStep(n => n + 1)} className="btn-icon" title="Otro efecto" aria-label="Otro efecto del fondo">
+              <i className="fas fa-forward-step"></i>
+            </button>
+          )}
           <label className="speed-slider"  title={syncing ? 'Velocidad del video: más lento para practicar' : 'Velocidad del desplazamiento'}>
             <i className="fas fa-gauge-high"></i>
             <input

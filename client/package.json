@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "butterchurn": "^2.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "three": "^0.184.0"
@@ -21,6 +22,7 @@
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
+    "butterchurn-presets": "^2.4.7",
     "eslint": "^8.45.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
