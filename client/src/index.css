@@ -917,6 +917,12 @@ input#search:focus {
     --mood-ink: color-mix(in srgb, var(--active-mood-color, var(--signal)) 72%, #ffffff);
 }
 
+/* The chords keep the sheet's monospace: the global Outfit made them wider than the columns they are written
+   in, so each chord pushed the next ones on its line off the syllable below */
+.chord-sheet * {
+    font-family: inherit;
+}
+
 .chord {
     color: var(--mood-ink, var(--signal));
     font-weight: bold;
@@ -1094,7 +1100,7 @@ input#search:focus {
         justify-content: space-between;
     }
     .chord-sheet {
-        font-size: calc(0.8rem * var(--sheet-scale, 1));
+        font-size: calc(0.8rem * var(--sheet-fit, 1) * var(--sheet-scale, 1)); /* --sheet-fit: SongViewer, so chord lines don't wrap */
         padding: 1rem;
         border-radius: 12px;
         line-height: 1.5;
@@ -2821,4 +2827,242 @@ input#search:focus {
     inset: 0;
     mix-blend-mode: color;
     opacity: 0.4;
+}
+
+/* ====== Phones: the sheet gets the screen ======
+   On a 375×812 phone the title and the buttons took 172 px of the sticky header and the lyrics started below
+   what the sheet panel shows. Now the title and the artist share one line with Close at its end, the other
+   buttons go on one line that slides sideways, and the chord diagrams are smaller */
+@media (max-width: 600px) {
+    .viewer-header {
+        gap: 0.5rem;
+        padding: 0.6rem 0 0.5rem;
+        margin-bottom: 0.8rem;
+    }
+    .viewer-header > div:first-child {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        width: 100%;
+        min-width: 0;
+        padding-right: 5.3rem; /* Save and Close sit at the end of this line */
+    }
+    .viewer-header h2 {
+        flex-shrink: 0;
+        max-width: 65%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .viewer-header .viewer-artist {
+        margin-top: 0;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 0.85rem;
+    }
+    #song-viewer .viewer-header .viewer-controls {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    .viewer-controls::-webkit-scrollbar {
+        display: none;
+    }
+    .viewer-controls > * {
+        flex-shrink: 0;
+    }
+    /* Tighter so the whole row fits a 375 px phone: "Tono Original" on two short lines, smaller ± and A buttons */
+    #song-viewer .viewer-header .viewer-controls {
+        gap: 0.35rem;
+    }
+    .viewer-controls .btn {
+        padding: 0.5rem 0.65rem;
+    }
+    .transpose-controls {
+        padding: 0.15rem 0.3rem !important;
+    }
+    .transpose-controls > div {
+        width: 46px;
+        min-width: 44px !important;
+        font-size: 0.68rem !important;
+        line-height: 1.1;
+    }
+    .transpose-controls .btn-icon {
+        width: 28px !important;
+    }
+    .font-controls .btn-icon {
+        width: 30px;
+    }
+    /* Save (the star, third from the end) and Close sit at the end of the title line */
+    .viewer-controls .btn-close,
+    .viewer-controls > :nth-last-child(3) {
+        position: absolute;
+        top: 0.3rem;
+        right: 0;
+    }
+    .viewer-controls > :nth-last-child(3) {
+        right: 2.5rem;
+    }
+    .viewer-left-panel.with-selected-chord .chords-scroll-container {
+        padding-left: 0 !important;
+    }
+    .diagrams-scroll {
+        gap: 0.5rem;
+        margin-bottom: 0.6rem;
+        padding-bottom: 0.5rem;
+    }
+    .diagram-item {
+        width: 64px;
+        height: 80px;
+        min-height: 0;
+        padding: 0.2rem;
+        border-radius: 8px;
+    }
+    .diagram-item svg {
+        width: 100%;
+        height: 100%;
+    }
+    .added-note {
+        font-size: 0.75rem;
+        margin-bottom: 0.6rem;
+    }
+    .youtube-sidebar-header {
+        padding: 0.2rem 1rem;
+    }
+}
+
+/* ====== ?reel: the vertical 9:16 view the TikTok / Reels videos are recorded from (540×960, recorded at 2x) ======
+   Top to bottom: the title and the chord being played (below TikTok's top bar), the sheet, the translation of the
+   line being sung, and the background that moves with the music where the video would go. The right edge of the
+   sheet stays clear of TikTok's buttons */
+#song-viewer.reel {
+    --reel-stage: 30%;
+}
+#song-viewer.reel .viewer-left-panel {
+    flex: 0 0 calc(100% - var(--reel-stage));
+}
+#song-viewer.reel .music-visualizer {
+    top: auto;
+    height: calc(var(--reel-stage) + 4%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%);
+    mask-image: linear-gradient(to bottom, transparent, #000 18%);
+}
+#song-viewer.reel .music-visualizer.milkdrop canvas {
+    opacity: 1;
+}
+#song-viewer.reel .chords-scroll-container {
+    padding: 0 !important;
+    /* the sheet fades out before the translation instead of being cut by the background */
+    -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 97%);
+    mask-image: linear-gradient(to bottom, #000 82%, transparent 97%);
+}
+#song-viewer.reel .chords-content-wrapper {
+    padding: 0 1rem !important;
+}
+#song-viewer.reel .viewer-controls,
+#song-viewer.reel #diagrams-container,
+#song-viewer.reel .added-note {
+    display: none;
+}
+#song-viewer.reel .viewer-header {
+    min-height: 232px; /* the chord panel fits beside the title */
+    justify-content: flex-start;
+    padding: 80px 200px 12px 0; /* below TikTok's top bar (LIVE, For You, search) */
+    margin-bottom: 0.6rem;
+    background: linear-gradient(to bottom, rgba(5, 5, 8, 0.96) 80%, rgba(5, 5, 8, 0.8));
+    border-bottom: none;
+}
+#song-viewer.reel .viewer-header > div:first-child {
+    display: block;
+    padding-right: 0;
+}
+#song-viewer.reel .viewer-header h2 {
+    max-width: none;
+    white-space: normal;
+    font-size: 1.8rem;
+    line-height: 1.15;
+}
+#song-viewer.reel .viewer-header .viewer-artist {
+    margin-top: 0.3rem;
+    white-space: normal;
+    font-size: 1.05rem;
+}
+.reel-brand {
+    margin-top: 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-soft);
+}
+.reel-brand i {
+    color: var(--signal);
+}
+#song-viewer.reel .viewer-left-panel .chord-live-panel {
+    position: absolute;
+    top: 72px;
+    right: 1rem;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 0.6rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 16px;
+    box-shadow: none;
+    z-index: 20;
+}
+#song-viewer.reel .chord-live-now svg {
+    width: 100px;
+    height: 115px;
+}
+#song-viewer.reel .chord-live-next svg {
+    width: 58px;
+    height: 67px;
+}
+#song-viewer.reel #viewer-content {
+    margin-right: 2.5rem;
+}
+#song-viewer.reel .chord-sheet {
+    font-size: calc(1.06rem * var(--sheet-fit, 1));
+    line-height: 1.55;
+    padding: 0.9rem 1rem;
+}
+.reel-caption {
+    position: absolute;
+    left: 1rem;
+    right: 3.5rem;
+    bottom: 0.7rem;
+    z-index: 5;
+    padding: 0.55rem 0.9rem;
+    border-radius: 14px;
+    border: 1px solid var(--glass-border);
+    background: rgba(9, 9, 14, 0.96);
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.35;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+.reel-caption.on {
+    opacity: 1;
+    transform: none;
+}
+.reel-caption::before {
+    content: attr(lang);
+    margin-right: 0.5rem;
+    padding: 0.05rem 0.35rem;
+    border-radius: 6px;
+    background: var(--signal-soft);
+    color: var(--signal);
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    vertical-align: 0.15rem;
 }

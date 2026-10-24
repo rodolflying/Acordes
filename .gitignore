@@ -21,3 +21,4 @@ experiments/**/*.log
 
 # Caché de Whisper (experiments/)
 experiments/**/aligned_raw.json
+reels/

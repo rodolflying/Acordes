@@ -22,6 +22,11 @@ const READING_LINE = 0.3;
 const freshPlayer = () => ({ time: 0, stamp: 0, duration: 0, rate: 1, state: -1, ready: false });
 // Speeds the slider offers for the video: slower to practice a part, a bit faster once it's learned
 const VIDEO_RATES = [0.5, 0.75, 1, 1.25, 1.5];
+// ?reel: the vertical 9:16 view the TikTok / Reels videos are recorded from (grabar_reel.py). No buttons and no
+// YouTube player: the song's second comes from window.__reel, frame by frame, the background takes the video's
+// place at the bottom and the line being sung shows its translation (traducir_letras.py)
+const REEL_PARAMS = new URLSearchParams(window.location.search);
+const REEL = REEL_PARAMS.has('reel');
 
 // Top (px from `origin`) of each source line of the chord sheet. Measured in the DOM because on
 // phones long lines wrap, so a line's position isn't its index × line height
@@ -185,7 +190,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   const [selectedChordSvg, setSelectedChordSvg] = useState(null);
   // "Acorde en pantalla": the chord you're at, big, and the one that comes next. Off until you turn it on;
   // then it stays on for every song
-  const [chordOnScreen, setChordOnScreen] = useState(() => localStorage.getItem('chordOnScreen') === 'true');
+  const [chordOnScreen, setChordOnScreen] = useState(() => REEL || localStorage.getItem('chordOnScreen') === 'true');
   const [liveChord, setLiveChord] = useState(null); // { now, next } chord names
   
   const scrollSpeeds = [0.5, 0.65, 0.8, 1.0, 1.15, 1.3, 1.5, 1.65, 1.8, 2.0];
@@ -197,19 +202,21 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   const bandRef = useRef(null); // lights up the line being sung
   const progressRef = useRef(null); // how far into that line the singing is
   const nowChordRef = useRef(null); // the chord sounding now
+  const captionRef = useRef(null); // in ?reel, the translation of the line being sung
 
   // YouTube States
   const [showYoutube, setShowYoutube] = useState(false);
   // The background that moves with the music (Visualizer.jsx): '' (off), 'clasico', 'ondas' or 'ambiente'.
   // On unless the phone asks for less motion or the site is in "Modo rápido"
   const [visualStyle, setVisualStyle] = useState(() => {
+    if (REEL) return 'clasico';
     const saved = localStorage.getItem('visualStyle');
     if (saved === 'barras') return 'clasico'; // the bars were retired
     if (saved !== null) return saved;
     const calm = localStorage.getItem('performanceMode') === 'true' || matchMedia('(prefers-reduced-motion: reduce)').matches;
     return calm ? '' : VISUAL_STYLES[0].id;
   });
-  useEffect(() => { localStorage.setItem('visualStyle', visualStyle); }, [visualStyle]);
+  useEffect(() => { if (!REEL) localStorage.setItem('visualStyle', visualStyle); }, [visualStyle]);
   const nextVisualStyle = () => {
     const ids = ['', ...VISUAL_STYLES.map(v => v.id)];
     setVisualStyle(ids[(ids.indexOf(visualStyle) + 1) % ids.length]);
@@ -243,12 +250,58 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   // The second the video is at while it plays (null when paused or without video), for the background
   const videoTime = useCallback(() => {
     const player = playerRef.current;
-    if (!iframeRef.current?.isConnected || player.state !== 1 || !player.duration) return null;
+    if (!(REEL || iframeRef.current?.isConnected) || player.state !== 1 || !player.duration) return null;
     return player.time + (performance.now() - player.stamp) / 1000 * player.rate;
   }, []);
   // The song's analysis is saved under its first video (Karaoke, Instrumental, Backtrack): all three share timing
   const visualsId = ['Karaoke', 'Instrumental', 'Backtrack'].map(v => backingTracks?.[v]?.id).find(Boolean) || null;
-  const syncing = hasVideo && syncWithVideo;
+  const syncing = (hasVideo && syncWithVideo) || (REEL && Boolean(syncPoints?.length));
+
+  // ?reel: the translation of each sung line ({ de, a, lineas: { line: translation } }), saved under the same video
+  const [translation, setTranslation] = useState(null);
+  useEffect(() => {
+    setTranslation(null);
+    if (!REEL || !visualsId) return;
+    let cancelled = false;
+    fetch(`${import.meta.env.BASE_URL}traducciones/${visualsId}.json`)
+      .then(res => (res.ok ? res.json() : null))
+      .then(d => { if (!cancelled && d?.lineas) setTranslation(d); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [visualsId]);
+
+  // ?reel: the recorder sets the song's second for each frame; ?reel&t=18&play plays it in real time from there
+  const visualsIdRef = useRef(null);
+  visualsIdRef.current = visualsId;
+  useEffect(() => {
+    if (!REEL) return;
+    const at = (time, rate) => Object.assign(playerRef.current, { time, rate, stamp: performance.now(), state: 1, duration: 24 * 3600, ready: true });
+    at(Number(REEL_PARAMS.get('t')) || 0, REEL_PARAMS.has('play') ? 1 : 0);
+    const nextFrame = () => new Promise(resolve => requestAnimationFrame(resolve));
+    let last = null;
+    window.__reel = {
+      get video() { return visualsIdRef.current; }, // the recorder finds the song's audio by it
+      // Resolves once the frame at second t is drawn: the sheet and the background move on the first
+      // animation frame, then the chord on screen catches up and React paints it
+      frame: async (t) => {
+        const step = last === null ? 0 : Math.max(0, (t - last) * 1000);
+        last = t;
+        at(t, 0);
+        await nextFrame();
+        window.dispatchEvent(new Event('reel:frame'));
+        await nextFrame();
+        // CSS transitions (the band gliding to the next line) run on the wall clock, and a frame takes longer
+        // than that to record: hold them and move them by the song's time instead
+        for (const anim of document.getAnimations()) {
+          anim.pause();
+          anim.currentTime = (anim.currentTime || 0) + step;
+        }
+        await nextFrame();
+      },
+      play: (t) => at(t, 1),
+    };
+    return () => { delete window.__reel; };
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('syncWithVideo', syncWithVideo);
@@ -273,14 +326,14 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
 
   // Chord sheet text size, as a multiplier of the base size (bigger text wraps more lines on phones)
   const [fontScale, setFontScale] = useState(() => {
-    return Number(localStorage.getItem('sheetFontScale')) || 1;
+    return REEL ? 1 : Number(localStorage.getItem('sheetFontScale')) || 1;
   });
   const changeFontScale = (step) => {
     setFontScale(s => Math.min(1.6, Math.max(0.7, Math.round((s + step * 0.1) * 10) / 10)));
   };
 
   useEffect(() => {
-    localStorage.setItem('sheetFontScale', fontScale);
+    if (!REEL) localStorage.setItem('sheetFontScale', fontScale);
   }, [fontScale]);
 
   // Fetch Backing Tracks matching this song from local uploader JSON
@@ -513,6 +566,30 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     setDisplayContent(tempDiv.innerHTML);
   }, [content, transposeDelta]);
 
+  // The sheet's text as big as fits without wrapping a chord line or the lyrics under it (wrapped, the chords lose
+  // their columns; a long comment line may wrap). Phones and ?reel take it as the base size (--sheet-fit), which
+  // A− A+ then scale like before
+  useEffect(() => {
+    const pre = contentRef.current?.querySelector('.chord-sheet');
+    if (!displayContent || !pre) return;
+    const lines = indexSheet(pre);
+    const cols = Math.max(0, ...lines.filter((l, i) => l.chords.length || lines[i - 1]?.chordsOnly).map(l => l.text.trimEnd().length));
+    const sample = lines.flatMap(l => l.parts).find(p => /^[^\n]{8}/.test(p.node.data.slice(p.offset)));
+    if (!cols || !sample) return;
+    const fit = () => {
+      pre.style.setProperty('--sheet-fit', 1);
+      const range = document.createRange();
+      range.setStart(sample.node, sample.offset);
+      range.setEnd(sample.node, sample.offset + 8);
+      const charWidth = range.getBoundingClientRect().width / 8 / fontScale; // at A− A+ 1
+      const room = pre.clientWidth - parseFloat(getComputedStyle(pre).paddingLeft) * 2;
+      pre.style.setProperty('--sheet-fit', Math.max(REEL ? 0.6 : 0.85, Math.min(1, room / (cols * charWidth) - 0.01)));
+    };
+    fit();
+    window.addEventListener('resize', fit);
+    return () => window.removeEventListener('resize', fit);
+  }, [displayContent, fontScale]);
+
   useEffect(() => {
     if (displayContent && contentRef.current && chordDb && chordDb.chords) {
       const chordElements = contentRef.current.querySelectorAll('.chord');
@@ -561,7 +638,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   useEffect(() => {
     const scroller = viewerRef.current;
     const sheet = contentRef.current;
-    if (!syncing || !isScrolling || !scroller || !sheet) return;
+    if (!syncing || !(isScrolling || REEL) || !scroller || !sheet) return;
     if (syncPoints?.length) return followLyrics(scroller, sheet);
 
     // Only a real gesture counts as moving the sheet by hand. The page also scrolls on its own when it
@@ -624,7 +701,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       scroller.removeEventListener('pointerdown', scrollbarGesture);
       window.removeEventListener('keydown', keyGesture);
     };
-  }, [syncing, isScrolling, loading, syncPoints, timeOffset, displayContent]);
+  }, [syncing, isScrolling, loading, syncPoints, timeOffset, displayContent, translation]);
 
   // Line by line with the synced lyrics (see above). Returns the cleanup
   const followLyrics = (scroller, sheet) => {
@@ -654,6 +731,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     let holdUntil = 0;
     let layout = { size: '' }; // line positions, measured again when the sheet's size changes
     let shown = null; // segment on screen
+    let lastClock = null; // to glide by elapsed time, the same on a 60 or 120 Hz screen and in a recording
     const tick = (now) => {
       frame = requestAnimationFrame(tick);
       const player = playerRef.current;
@@ -701,6 +779,13 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
           }
           progress.style.width = `${seg.sung ? layout.widths.get(seg.bottom) : 0}px`;
         }
+        // ?reel: the sung line's translation; a part with chords only (intro, solo) has none
+        const caption = captionRef.current;
+        if (caption) {
+          const text = seg?.sung && translation?.lineas[lines[seg.bottom].text.trim()];
+          if (text) caption.textContent = text;
+          caption.classList.toggle('on', Boolean(text));
+        }
       }
       // The words already sung light up, word by word (a bar under the line where the browser can't)
       if (seg?.sung) {
@@ -739,8 +824,12 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
           target = Math.min(Math.max(sheetTop + lineTop(seg.top) - headerHeight - visible * 0.2, 0), maxScroll);
         }
       }
-      if (target !== null) {
-        pos += (target - pos) * 0.12;
+      // A recording draws frames slower than real time, so there the song's own second is the clock
+      const clock = REEL ? t * 1000 : now;
+      const dt = lastClock === null ? 16.7 : Math.min(Math.max(clock - lastClock, 0), 100);
+      lastClock = clock;
+      if (target !== null && dt > 0) {
+        pos += (target - pos) * (1 - Math.pow(0.88, dt / 16.7)); // 12% of the way per 60 Hz frame
         if (Math.abs(target - pos) < 0.5) { pos = target; target = null; }
         scroller.scrollTop = pos;
       }
@@ -794,7 +883,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   };
 
   useEffect(() => {
-    localStorage.setItem('chordOnScreen', chordOnScreen);
+    if (!REEL) localStorage.setItem('chordOnScreen', chordOnScreen);
   }, [chordOnScreen]);
 
   // Which chord you're at: with the lyrics following the video, the one sounding; otherwise the first one
@@ -817,6 +906,10 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       setLiveChord(live => (live?.now === name && live?.next === next ? live : { now: name, next }));
     };
     pick();
+    if (REEL) { // the recorder asks on every frame
+      window.addEventListener('reel:frame', pick);
+      return () => window.removeEventListener('reel:frame', pick);
+    }
     const timer = setInterval(pick, 200);
     return () => clearInterval(timer);
   }, [chordOnScreen, loading, displayContent, syncing, syncPoints, chordDb]);
@@ -945,7 +1038,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   return (
     <div 
       id="song-viewer" 
-      className={`${song.theme ? `theme-${song.theme.toLowerCase()}` : ''} ${showYoutube && !videoMini ? 'with-youtube' : ''} ${visualStyle ? 'with-visuals' : ''}`}
+      className={`${song.theme ? `theme-${song.theme.toLowerCase()}` : ''} ${showYoutube && !videoMini ? 'with-youtube' : ''} ${visualStyle ? 'with-visuals' : ''} ${REEL ? 'reel' : ''}`}
       style={{
         '--active-mood-color': song.mood ? (MOODS_CONFIG[song.mood]?.color || '#ffffff') : 'var(--primary)',
         '--active-mood-rgb': song.mood ? (MOODS_CONFIG[song.mood]?.rgb || '255,255,255') : '242,184,75'
@@ -960,6 +1053,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
         energy={song.energy}
         presetStep={presetStep}
         onFallback={fallBackToLight}
+        reel={REEL}
       />
       <div className="thematic-pattern" style={{ opacity: 0.07, zIndex: 0 }}></div>
       
@@ -970,6 +1064,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
               <div>
                 <h2 id="viewer-title">{song.title}</h2>
                 {song.folder !== 'Otros' && <div className="viewer-artist">{song.folder}</div>}
+                {REEL && <div className="reel-brand"><i className="fas fa-music"></i> Acordate · rodolflying.github.io/Acordes</div>}
               </div>
               
               <div className="viewer-controls">
@@ -1024,7 +1119,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                   <i className={`fas ${shared ? 'fa-check' : 'fa-share-nodes'}`}></i>{shared && <span className="btn-label"> Link copiado</span>}
                 </button>
 
-                <button onClick={onClose} className="btn" style={{ background: 'var(--glass)', color: 'white' }} aria-label="Cerrar">
+                <button onClick={onClose} className="btn btn-close" style={{ background: 'var(--glass)', color: 'white' }} aria-label="Cerrar">
                   <i className="fas fa-times"></i> <span className="btn-label">Cerrar</span>
                 </button>
               </div>
@@ -1085,6 +1180,8 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
           );
         })()}
 
+        {REEL && translation && <div className="reel-caption" ref={captionRef} lang={translation.a} aria-live="polite"></div>}
+
         {selectedChordSvg && !chordOnScreen && (
           <div className="selected-chord-panel animate-in">
              <div style={{ color: 'var(--mood-ink, var(--signal))', fontWeight: 'bold', fontSize: '1.5rem', letterSpacing: '1px' }}>{selectedChordSvg.name}</div>
@@ -1097,7 +1194,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       </div>
 
       {/* YouTube Sidebar */}
-      {showYoutube && (
+      {showYoutube && !REEL && (
         <div className={`viewer-right-panel ${videoMini ? 'mini' : 'animate-in'}`}>
           <div className="youtube-sidebar-header">
             <h3><i className="fab fa-youtube" style={{ color: '#ff3b3b', marginRight: '8px' }}></i>Acompañamiento</h3>
@@ -1320,7 +1417,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
         </div>
       )}
 
-      {!loading && !error && (
+      {!loading && !error && !REEL && (
         <div id="autoscroll-controls" className="autoscroll-panel">
           <button
             onClick={nextVisualStyle}

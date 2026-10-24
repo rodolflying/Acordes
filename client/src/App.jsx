@@ -483,8 +483,9 @@ function App() {
   // Arriving from a shared link, "back" goes to the song list instead of leaving the site
   useEffect(() => {
     if (!selectedSlug || window.history.state?.songOpen) return;
+    const query = window.location.search; // the song's view reads it after this runs (?reel; it loads lazily)
     window.history.replaceState(null, '', BASE);
-    window.history.pushState({ songOpen: true }, '', `${BASE}cancion/${selectedSlug}/`);
+    window.history.pushState({ songOpen: true }, '', `${BASE}cancion/${selectedSlug}/${query}`);
   }, []);
 
   // "Back" and "forward" follow the address

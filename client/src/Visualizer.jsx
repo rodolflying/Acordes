@@ -53,16 +53,18 @@ const useSongAnalysis = (videoId) => {
 // The frame of the analysis at the video's second, or null (no analysis, or the video isn't playing)
 const frameAt = (data, t) => (data && t != null ? Math.min(data.frames - 1, Math.max(0, Math.floor(t * data.fps))) : -1);
 
-export default function Visualizer({ style, videoId, getTime, rgb, theme, energy, presetStep = 0, onFallback }) {
+// `reel`: the vertical view a video is recorded from (SongViewer's ?reel). Frames come slower than real time,
+// so MilkDrop draws once per new second of the song and counts that as its elapsed time, at full resolution
+export default function Visualizer({ style, videoId, getTime, rgb, theme, energy, presetStep = 0, onFallback, reel = false }) {
   const data = useSongAnalysis(videoId);
   if (!style) return null;
   return style === 'clasico'
-    ? <MilkDrop data={data} getTime={getTime} rgb={rgb} theme={theme} step={presetStep} onFallback={onFallback} />
+    ? <MilkDrop data={data} getTime={getTime} rgb={rgb} theme={theme} step={presetStep} onFallback={onFallback} reel={reel} />
     : <Canvas2D style={style} data={data} getTime={getTime} rgb={rgb} theme={theme} energy={energy} />;
 }
 
 // ====== Clásico: MilkDrop ======
-function MilkDrop({ data, getTime, rgb, theme, step, onFallback }) {
+function MilkDrop({ data, getTime, rgb, theme, step, onFallback, reel }) {
   const canvasRef = useRef(null);
   const vizRef = useRef(null);
   const presetsRef = useRef(null);
@@ -115,6 +117,7 @@ function MilkDrop({ data, getTime, rgb, theme, step, onFallback }) {
     const phases = new Float32Array(12).map(() => Math.random() * Math.PI * 2);
     let frame;
     let last = 0;
+    let lastT = null;
     let slowFrames = 0;
     let measured = 0;
 
@@ -122,12 +125,15 @@ function MilkDrop({ data, getTime, rgb, theme, step, onFallback }) {
       frame = requestAnimationFrame(draw);
       const t = getTime();
       const playing = t != null;
-      if (now - last < (playing ? 33 : 66)) return; // 30 fps with music, 15 when calm
+      if (reel ? t === lastT : now - last < (playing ? 33 : 66)) return; // 30 fps with music, 15 when calm
+      const elapsed = reel ? Math.min(Math.max(t - (lastT ?? t - 1 / 30), 0.001), 1) : undefined;
       last = now;
+      lastT = t;
 
       // Half resolution, stretched by CSS: MilkDrop's soft plasma looks the same and costs a quarter
-      const w = Math.max(160, Math.round(canvas.clientWidth / 2));
-      const h = Math.max(90, Math.round(canvas.clientHeight / 2));
+      const scale = reel ? 1 : 0.5;
+      const w = Math.max(160, Math.round(canvas.clientWidth * scale));
+      const h = Math.max(90, Math.round(canvas.clientHeight * scale));
       if (canvas.width !== w || canvas.height !== h) {
         canvas.width = w;
         canvas.height = h;
@@ -153,14 +159,15 @@ function MilkDrop({ data, getTime, rgb, theme, step, onFallback }) {
       for (let n = 0; n < N; n++) wave[n] = 128 + Math.max(-127, Math.min(127, Math.round(sum[n] * 40)));
 
       const start = performance.now();
-      viz.render({ audioLevels: { timeByteArray: wave, timeByteArrayL: wave, timeByteArrayR: wave } });
-      // A device that can't keep up gets the light background instead (after a few seconds of trying)
+      viz.render({ audioLevels: { timeByteArray: wave, timeByteArrayL: wave, timeByteArrayR: wave }, elapsedTime: elapsed });
+      // A device that can't keep up gets the light background instead (after a few seconds of trying);
+      // a recording waits for every frame, so there it doesn't matter
       if (performance.now() - start > 28) slowFrames++;
-      if (++measured === 90 && slowFrames > 45) onFallback?.();
+      if (++measured === 90 && slowFrames > 45 && !reel) onFallback?.();
     };
     frame = requestAnimationFrame(draw);
     return () => cancelAnimationFrame(frame);
-  }, [ready, getTime]);
+  }, [ready, getTime, reel]);
 
   return (
     <div className="music-visualizer milkdrop" data-preset={presetName}>
