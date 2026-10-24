@@ -17,6 +17,23 @@
         "youtube_url": "https://www.youtube.com/watch?v=t_zDBSAiQ_M"
       }
     },
+    "https://acordes.lacuerda.net/ases_falsos/mi_ejercito-3.shtml": {
+      "Karaoke": {
+        "id": "POD7VOSbp9k",
+        "title": "Ases Falsos - Mi ejercito | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=POD7VOSbp9k"
+      },
+      "Instrumental": {
+        "id": "g06Wo2Gpk8Q",
+        "title": "Ases Falsos - Mi ejercito | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=g06Wo2Gpk8Q"
+      },
+      "Backtrack": {
+        "id": "2YkCxzwPCYE",
+        "title": "Ases Falsos - Mi ejercito | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=2YkCxzwPCYE"
+      }
+    },
     "https://acordes.lacuerda.net/lucybell/familiar.shtml": {
       "Karaoke": {
         "id": "p2UjVxa6tF0",
@@ -223,6 +240,23 @@
         "youtube_url": "https://www.youtube.com/watch?v=ncerJglnupU"
       }
     },
+    "https://acordes.lacuerda.net/bacilos/caraluna-2.shtml": {
+      "Karaoke": {
+        "id": "prSdYmeYa1Q",
+        "title": "Bacilos - Caraluna | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=prSdYmeYa1Q"
+      },
+      "Instrumental": {
+        "id": "ALaB8Zf50J4",
+        "title": "Bacilos - Caraluna | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=ALaB8Zf50J4"
+      },
+      "Backtrack": {
+        "id": "L7a2n5Kp-mU",
+        "title": "Bacilos - Caraluna | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=L7a2n5Kp-mU"
+      }
+    },
     "https://www.cifraclub.com/coldplay/clocks/": {
       "Karaoke": {
         "id": "DlmUY21StTQ",
@@ -274,6 +308,23 @@
         "youtube_url": "https://www.youtube.com/watch?v=Enikxvad6bw"
       }
     },
+    "https://www.cifraclub.com/incubus/anna-molly/wjghz.html": {
+      "Karaoke": {
+        "id": "jY7BG79V1rs",
+        "title": "Incubus - Anna Molly | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=jY7BG79V1rs"
+      },
+      "Instrumental": {
+        "id": "soH_v0B4tTM",
+        "title": "Incubus - Anna Molly | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=soH_v0B4tTM"
+      },
+      "Backtrack": {
+        "id": "aVn0daPrbPM",
+        "title": "Incubus - Anna Molly | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=aVn0daPrbPM"
+      }
+    },
     "https://acordes.lacuerda.net/mato_a_un_policia_motorizado/fuego-2.shtml": {
       "Karaoke": {
         "id": "TRC-HVgH9bA",
@@ -289,6 +340,23 @@
         "id": "lzWS8XUwHfE",
         "title": "El mato a un policia motorizado - Fuego | Backtrack",
         "youtube_url": "https://www.youtube.com/watch?v=lzWS8XUwHfE"
+      }
+    },
+    "https://www.cifraclub.com/coldplay/in-my-place/": {
+      "Karaoke": {
+        "id": "D0PDoG4s6Xo",
+        "title": "Coldplay - In My Place | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=D0PDoG4s6Xo"
+      },
+      "Instrumental": {
+        "id": "aekpjhU9CJw",
+        "title": "Coldplay - In My Place | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=aekpjhU9CJw"
+      },
+      "Backtrack": {
+        "id": "6bckZqgr3Gg",
+        "title": "Coldplay - In My Place | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=6bckZqgr3Gg"
       }
     },
     "https://www.cifraclub.com.br/los-choclok/bonita/": {
@@ -369,6 +437,11 @@
         "id": "0-B8Id8IMNo",
         "title": "Santiago Motorizado - Mil derrotas | Instrumental (Sin Voces)",
         "youtube_url": "https://www.youtube.com/watch?v=0-B8Id8IMNo"
+      },
+      "Backtrack": {
+        "id": "yz9Jw4nzp9g",
+        "title": "Santiago Motorizado - Mil derrotas | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=yz9Jw4nzp9g"
       }
     },
     "https://acordes.lacuerda.net/milo_j/una_bala.shtml": {
@@ -403,6 +476,23 @@
         "id": "Kzxi7Sp-Eu4",
         "title": "Yami Safdie Milo J - El Bolero | Backtrack",
         "youtube_url": "https://www.youtube.com/watch?v=Kzxi7Sp-Eu4"
+      }
+    },
+    "https://www.cifraclub.com/vance-joy/riptide/": {
+      "Karaoke": {
+        "id": "iC8eKa4_zzo",
+        "title": "Vance Joy - Riptide | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=iC8eKa4_zzo"
+      },
+      "Instrumental": {
+        "id": "30m-PsKRIRs",
+        "title": "Vance Joy - Riptide | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=30m-PsKRIRs"
+      },
+      "Backtrack": {
+        "id": "XBQRGnER6fc",
+        "title": "Vance Joy - Riptide | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=XBQRGnER6fc"
       }
     },
     "https://www.cifraclub.com/kidd-voodoo/angeles/": {
@@ -507,6 +597,23 @@
         "youtube_url": "https://www.youtube.com/watch?v=R1SY9RN0HY4"
       }
     },
+    "https://www.cifraclub.com/oliver-tree/life-goes-on/": {
+      "Karaoke": {
+        "id": "vE1CejAH5xg",
+        "title": "Oliver Tree - Life Goes On | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=vE1CejAH5xg"
+      },
+      "Instrumental": {
+        "id": "OA4rHiunDUc",
+        "title": "Oliver Tree - Life Goes On | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=OA4rHiunDUc"
+      },
+      "Backtrack": {
+        "id": "sLculKyot4I",
+        "title": "Oliver Tree - Life Goes On | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=sLculKyot4I"
+      }
+    },
     "https://www.cifraclub.com/oliver-tree/alien-boy/": {
       "Karaoke": {
         "id": "g0K-O0Fczt4",
@@ -575,6 +682,23 @@
         "youtube_url": "https://www.youtube.com/watch?v=tx6BPixdCsw"
       }
     },
+    "https://www.cifraclub.com.br/la-rue-morgue/sigues-dando-vueltas/": {
+      "Karaoke": {
+        "id": "Gf5QeZOSBx0",
+        "title": "La Rue Morgue - Sigues Dando Vueltas | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=Gf5QeZOSBx0"
+      },
+      "Instrumental": {
+        "id": "gvY0so-H90c",
+        "title": "La Rue Morgue - Sigues Dando Vueltas | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=gvY0so-H90c"
+      },
+      "Backtrack": {
+        "id": "wpV-8J_rngk",
+        "title": "La Rue Morgue - Sigues Dando Vueltas | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=wpV-8J_rngk"
+      }
+    },
     "https://www.cifraclub.com/kidd-voodoo/destello/": {
       "Karaoke": {
         "id": "RMWNFYCNxMo",
@@ -609,6 +733,23 @@
         "youtube_url": "https://www.youtube.com/watch?v=FPyOFlN2T68"
       }
     },
+    "https://www.cifraclub.com/bacilos/caraluna/": {
+      "Karaoke": {
+        "id": "prSdYmeYa1Q",
+        "title": "Bacilos - Caraluna | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=prSdYmeYa1Q"
+      },
+      "Instrumental": {
+        "id": "ALaB8Zf50J4",
+        "title": "Bacilos - Caraluna | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=ALaB8Zf50J4"
+      },
+      "Backtrack": {
+        "id": "L7a2n5Kp-mU",
+        "title": "Bacilos - Caraluna | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=L7a2n5Kp-mU"
+      }
+    },
     "https://www.cifraclub.com/el-mato-un-policia-motorizado/el-universo/": {
       "Karaoke": {
         "id": "WED2m1rp28Q",
@@ -619,6 +760,40 @@
         "id": "ZtsrS5i_n6k",
         "title": "El mato a un policia motorizado - El universo | Instrumental (Sin Voces)",
         "youtube_url": "https://www.youtube.com/watch?v=ZtsrS5i_n6k"
+      }
+    },
+    "https://acordes.lacuerda.net/fakie/artificial-2.shtml": {
+      "Karaoke": {
+        "id": "MWHTeyT5jf0",
+        "title": "Fakie - Artificial | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=MWHTeyT5jf0"
+      },
+      "Instrumental": {
+        "id": "EvTWP1h7_bw",
+        "title": "Fakie - Artificial | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=EvTWP1h7_bw"
+      },
+      "Backtrack": {
+        "id": "yG_xUBy5PaA",
+        "title": "Fakie - Artificial | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=yG_xUBy5PaA"
+      }
+    },
+    "https://acordes.lacuerda.net/fakie/dia_tras_dia.shtml": {
+      "Karaoke": {
+        "id": "KzxpMRQZUG8",
+        "title": "Fakie - Dia Tras Dia | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=KzxpMRQZUG8"
+      },
+      "Instrumental": {
+        "id": "T3YZJcpTMsE",
+        "title": "Fakie - Dia Tras Dia | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=T3YZJcpTMsE"
+      },
+      "Backtrack": {
+        "id": "F_VXpVSn8_k",
+        "title": "Fakie - Dia Tras Dia | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=F_VXpVSn8_k"
       }
     },
     "https://www.cifraclub.com/bad-bunny/turista/simplificada.html": {
@@ -660,6 +835,11 @@
         "id": "lzoD-IVxGhU",
         "title": "Chet Faker - Talk Is Cheap | Instrumental (No Vocals)",
         "youtube_url": "https://www.youtube.com/watch?v=lzoD-IVxGhU"
+      },
+      "Backtrack": {
+        "id": "vg5m7eUYLLI",
+        "title": "Chet Faker - Talk Is Cheap | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=vg5m7eUYLLI"
       }
     },
     "https://www.cifraclub.com/fother-muckers/2022/": {
@@ -711,6 +891,23 @@
         "id": "x_UzPZuS2a8",
         "title": "Jamiroquai - Virtual Insanity | Backtrack",
         "youtube_url": "https://www.youtube.com/watch?v=x_UzPZuS2a8"
+      }
+    },
+    "https://www.cifraclub.com/los-autenticos-decadentes/corazon/": {
+      "Instrumental": {
+        "id": "qltYenCDKu8",
+        "title": "Los Autenticos Decadentes - Corazon | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=qltYenCDKu8"
+      },
+      "Backtrack": {
+        "id": "qrYmPzWUvZU",
+        "title": "Los Autenticos Decadentes - Corazon | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=qrYmPzWUvZU"
+      },
+      "Karaoke": {
+        "id": "zqXG1wkegpg",
+        "title": "Los Autenticos Decadentes - Corazon | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=zqXG1wkegpg"
       }
     },
     "https://www.cifraclub.com/los-bunkers/llueve-sobre-la-ciudad/": {
@@ -949,6 +1146,584 @@
         "id": "S2S_B0UUfGg",
         "title": "World s On Fire - Mike Shinoda | Backtrack",
         "youtube_url": "https://www.youtube.com/watch?v=S2S_B0UUfGg"
+      }
+    },
+    "https://www.cifraclub.com/ases-falsos/mi-ejercito/": {
+      "Karaoke": {
+        "id": "POD7VOSbp9k",
+        "title": "Ases Falsos - Mi ejercito | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=POD7VOSbp9k"
+      },
+      "Instrumental": {
+        "id": "g06Wo2Gpk8Q",
+        "title": "Ases Falsos - Mi ejercito | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=g06Wo2Gpk8Q"
+      },
+      "Backtrack": {
+        "id": "2YkCxzwPCYE",
+        "title": "Ases Falsos - Mi ejercito | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=2YkCxzwPCYE"
+      }
+    },
+    "https://www.cifraclub.com/avril-lavigne/complicated/": {
+      "Karaoke": {
+        "id": "uj3jal50EEQ",
+        "title": "Avril Lavigne - Complicated | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=uj3jal50EEQ"
+      },
+      "Instrumental": {
+        "id": "TeZz9Aflxos",
+        "title": "Avril Lavigne - Complicated | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=TeZz9Aflxos"
+      },
+      "Backtrack": {
+        "id": "8vwrLNy4EmM",
+        "title": "Avril Lavigne - Complicated | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=8vwrLNy4EmM"
+      }
+    },
+    "https://www.cifraclub.com/evanescence/bring-me-to-life/": {
+      "Karaoke": {
+        "id": "EbahxHUhdHk",
+        "title": "Evanescence - Bring Me To Life ft Paul McCoy | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=EbahxHUhdHk"
+      },
+      "Instrumental": {
+        "id": "_kW-31cvcmc",
+        "title": "Evanescence - Bring Me To Life ft Paul McCoy | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=_kW-31cvcmc"
+      },
+      "Backtrack": {
+        "id": "NOvx6uSlV2o",
+        "title": "Evanescence - Bring Me To Life ft Paul McCoy | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=NOvx6uSlV2o"
+      }
+    },
+    "https://www.cifraclub.com/evanescence/going-under/": {
+      "Karaoke": {
+        "id": "E1RyR6jp-7Q",
+        "title": "Evanescence - Going Under | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=E1RyR6jp-7Q"
+      },
+      "Instrumental": {
+        "id": "s1KHouT-SKI",
+        "title": "Evanescence - Going Under | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=s1KHouT-SKI"
+      },
+      "Backtrack": {
+        "id": "r6JMVVchz_I",
+        "title": "Evanescence - Going Under | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=r6JMVVchz_I"
+      }
+    },
+    "https://www.cifraclub.com/evanescence/lithium/": {
+      "Karaoke": {
+        "id": "rslH38J9tMw",
+        "title": "Evanescence - Lithium | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=rslH38J9tMw"
+      },
+      "Instrumental": {
+        "id": "k60ecjNaFw0",
+        "title": "Evanescence - Lithium | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=k60ecjNaFw0"
+      },
+      "Backtrack": {
+        "id": "RuBuCkeaj-o",
+        "title": "Evanescence - Lithium | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=RuBuCkeaj-o"
+      }
+    },
+    "https://www.cifraclub.com/evanescence/my-immortal/": {
+      "Karaoke": {
+        "id": "qIFT_jPcTUY",
+        "title": "Evanescence - My Immortal | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=qIFT_jPcTUY"
+      },
+      "Instrumental": {
+        "id": "8m88I7WL0xA",
+        "title": "Evanescence - My Immortal | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=8m88I7WL0xA"
+      },
+      "Backtrack": {
+        "id": "W5EDi-RZLzs",
+        "title": "Evanescence - My Immortal | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=W5EDi-RZLzs"
+      }
+    },
+    "https://www.cifraclub.com/fakie/buenas-noches-hasta-siempre/": {
+      "Karaoke": {
+        "id": "FroLKcWvTh4",
+        "title": "Fakie - Buenas Noches Hasta Siempre | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=FroLKcWvTh4"
+      },
+      "Instrumental": {
+        "id": "8xCrp9XkbPo",
+        "title": "Fakie - Buenas Noches Hasta Siempre | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=8xCrp9XkbPo"
+      },
+      "Backtrack": {
+        "id": "TGlpmHvwKTg",
+        "title": "Fakie - Buenas Noches Hasta Siempre | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=TGlpmHvwKTg"
+      }
+    },
+    "https://www.cifraclub.com/fakie/ya-son-las-cuatro/": {
+      "Karaoke": {
+        "id": "xkICIw9WWRQ",
+        "title": "Fakie - Ya Son Las Cuatro | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=xkICIw9WWRQ"
+      },
+      "Instrumental": {
+        "id": "-VAEcdy4x2k",
+        "title": "Fakie - Ya Son Las Cuatro | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=-VAEcdy4x2k"
+      },
+      "Backtrack": {
+        "id": "30hr1UWVElY",
+        "title": "Fakie - Ya Son Las Cuatro | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=30hr1UWVElY"
+      }
+    },
+    "https://www.cifraclub.com/fakie/artificial/": {
+      "Karaoke": {
+        "id": "MWHTeyT5jf0",
+        "title": "Fakie - Artificial | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=MWHTeyT5jf0"
+      },
+      "Instrumental": {
+        "id": "EvTWP1h7_bw",
+        "title": "Fakie - Artificial | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=EvTWP1h7_bw"
+      },
+      "Backtrack": {
+        "id": "yG_xUBy5PaA",
+        "title": "Fakie - Artificial | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=yG_xUBy5PaA"
+      }
+    },
+    "https://www.cifraclub.com/gianluca-grignani/mi-historia-entre-tus-dedos/": {
+      "Karaoke": {
+        "id": "bKrb4Hcivsk",
+        "title": "Gianluca Grignani - Mi Historia Entre Tus Dedos | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=bKrb4Hcivsk"
+      },
+      "Instrumental": {
+        "id": "p-DYdiPa3Jc",
+        "title": "Gianluca Grignani - Mi Historia Entre Tus Dedos | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=p-DYdiPa3Jc"
+      },
+      "Backtrack": {
+        "id": "vX0XxGO8Fv8",
+        "title": "Gianluca Grignani - Mi Historia Entre Tus Dedos | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=vX0XxGO8Fv8"
+      }
+    },
+    "https://www.cifraclub.com/glup/enamorado-de-ti/": {
+      "Karaoke": {
+        "id": "RpEoqAftTlI",
+        "title": "Glup! - Enamorado de ti | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=RpEoqAftTlI"
+      },
+      "Instrumental": {
+        "id": "l0SIgto7NcQ",
+        "title": "Glup! - Enamorado de ti | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=l0SIgto7NcQ"
+      },
+      "Backtrack": {
+        "id": "SnSK6zSGDzE",
+        "title": "Glup! - Enamorado de ti | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=SnSK6zSGDzE"
+      }
+    },
+    "https://www.cifraclub.com/incubus/anna-molly/": {
+      "Karaoke": {
+        "id": "jY7BG79V1rs",
+        "title": "Incubus - Anna Molly | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=jY7BG79V1rs"
+      },
+      "Instrumental": {
+        "id": "soH_v0B4tTM",
+        "title": "Incubus - Anna Molly | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=soH_v0B4tTM"
+      },
+      "Backtrack": {
+        "id": "aVn0daPrbPM",
+        "title": "Incubus - Anna Molly | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=aVn0daPrbPM"
+      }
+    },
+    "https://www.cifraclub.com/juanes/un-dia-normal/": {
+      "Karaoke": {
+        "id": "7nTd6AIF3lg",
+        "title": "Juanes - Un Dia Normal | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=7nTd6AIF3lg"
+      },
+      "Instrumental": {
+        "id": "cV1TuM7YvTM",
+        "title": "Juanes - Un Dia Normal | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=cV1TuM7YvTM"
+      },
+      "Backtrack": {
+        "id": "oHozSW8e2PE",
+        "title": "Juanes - Un Dia Normal | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=oHozSW8e2PE"
+      }
+    },
+    "https://www.cifraclub.com/la-rue-morgue/sigues-dando-vueltas/": {
+      "Karaoke": {
+        "id": "Gf5QeZOSBx0",
+        "title": "La Rue Morgue - Sigues Dando Vueltas | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=Gf5QeZOSBx0"
+      },
+      "Instrumental": {
+        "id": "gvY0so-H90c",
+        "title": "La Rue Morgue - Sigues Dando Vueltas | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=gvY0so-H90c"
+      },
+      "Backtrack": {
+        "id": "wpV-8J_rngk",
+        "title": "La Rue Morgue - Sigues Dando Vueltas | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=wpV-8J_rngk"
+      }
+    },
+    "https://www.cifraclub.com/los-bunkers/ahora-que-no-estas/": {
+      "Karaoke": {
+        "id": "blE4rO2eHPY",
+        "title": "Los Bunkers - Ahora Que No Estas | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=blE4rO2eHPY"
+      },
+      "Instrumental": {
+        "id": "bIqziYwfsg4",
+        "title": "Los Bunkers - Ahora Que No Estas | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=bIqziYwfsg4"
+      },
+      "Backtrack": {
+        "id": "EbzlW7vESSE",
+        "title": "Los Bunkers - Ahora Que No Estas | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=EbzlW7vESSE"
+      }
+    },
+    "https://www.cifraclub.com/los-bunkers/mino/": {
+      "Instrumental": {
+        "id": "4ZZrUFi6yOM",
+        "title": "Los Bunkers - Mino | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=4ZZrUFi6yOM"
+      },
+      "Backtrack": {
+        "id": "dQlu9rb757o",
+        "title": "Los Bunkers - Mino | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=dQlu9rb757o"
+      },
+      "Karaoke": {
+        "id": "sujDrDuVO3k",
+        "title": "Los Bunkers - Mino | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=sujDrDuVO3k"
+      }
+    },
+    "https://www.cifraclub.com/los-prisioneros/el-baile-de-los-que-sobran/": {
+      "Karaoke": {
+        "id": "RRYRNTK_S_I",
+        "title": "Los Prisioneros - El Baile De Los Que Sobran | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=RRYRNTK_S_I"
+      },
+      "Instrumental": {
+        "id": "6iiPNVm8NLI",
+        "title": "Los Prisioneros - El Baile De Los Que Sobran | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=6iiPNVm8NLI"
+      },
+      "Backtrack": {
+        "id": "nzTV4pvQEss",
+        "title": "Los Prisioneros - El Baile De Los Que Sobran | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=nzTV4pvQEss"
+      }
+    },
+    "https://www.cifraclub.com/los-prisioneros/paramar/": {
+      "Karaoke": {
+        "id": "MglzFhUsDD0",
+        "title": "Los Prisioneros - Paramar | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=MglzFhUsDD0"
+      },
+      "Instrumental": {
+        "id": "SjMIQjR4oqs",
+        "title": "Los Prisioneros - Paramar | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=SjMIQjR4oqs"
+      },
+      "Backtrack": {
+        "id": "VK9QFN2PcTQ",
+        "title": "Los Prisioneros - Paramar | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=VK9QFN2PcTQ"
+      }
+    },
+    "https://www.cifraclub.com/mon-laferte/tu-falta-de-querer/": {
+      "Karaoke": {
+        "id": "RleB141gpzQ",
+        "title": "Mon Laferte - Tu Falta De Querer | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=RleB141gpzQ"
+      },
+      "Instrumental": {
+        "id": "AnVTj-IsPdc",
+        "title": "Mon Laferte - Tu Falta De Querer | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=AnVTj-IsPdc"
+      },
+      "Backtrack": {
+        "id": "1YnD0La2YK8",
+        "title": "Mon Laferte - Tu Falta De Querer | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=1YnD0La2YK8"
+      }
+    },
+    "https://www.cifraclub.com/sin-bandera/que-lloro/": {
+      "Karaoke": {
+        "id": "W9hXnMjdnMA",
+        "title": "Sin Bandera - Que Lloro | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=W9hXnMjdnMA"
+      },
+      "Instrumental": {
+        "id": "YkPv9oktSXk",
+        "title": "Sin Bandera - Que Lloro | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=YkPv9oktSXk"
+      },
+      "Backtrack": {
+        "id": "LRyfCaYrpr4",
+        "title": "Sin Bandera - Que Lloro | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=LRyfCaYrpr4"
+      }
+    },
+    "https://www.cifraclub.com/soda-stereo/de-musica-ligera/": {
+      "Karaoke": {
+        "id": "7EhSFaAjkTE",
+        "title": "Soda Stereo - De Musica Ligera | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=7EhSFaAjkTE"
+      },
+      "Instrumental": {
+        "id": "BY6JNIYqPJE",
+        "title": "Soda Stereo - De Musica Ligera | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=BY6JNIYqPJE"
+      },
+      "Backtrack": {
+        "id": "DpFW6r0r56Y",
+        "title": "Soda Stereo - De Musica Ligera | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=DpFW6r0r56Y"
+      }
+    },
+    "https://www.cifraclub.com/system-of-a-down/lonely-day/": {
+      "Karaoke": {
+        "id": "Zd_nff9KOnU",
+        "title": "System Of A Down - Lonely Day | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=Zd_nff9KOnU"
+      },
+      "Instrumental": {
+        "id": "9F35D9gsd7g",
+        "title": "System Of A Down - Lonely Day | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=9F35D9gsd7g"
+      },
+      "Backtrack": {
+        "id": "vI5blB9VEq4",
+        "title": "System Of A Down - Lonely Day | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=vI5blB9VEq4"
+      }
+    },
+    "https://www.cifraclub.com/system-of-a-down/spiders/": {
+      "Karaoke": {
+        "id": "SCZmje1JLaI",
+        "title": "System Of A Down - Spiders | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=SCZmje1JLaI"
+      },
+      "Instrumental": {
+        "id": "miq8vYBO8L8",
+        "title": "System Of A Down - Spiders | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=miq8vYBO8L8"
+      },
+      "Backtrack": {
+        "id": "WNx_ESC-soE",
+        "title": "System Of A Down - Spiders | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=WNx_ESC-soE"
+      }
+    },
+    "https://www.cifraclub.com/tronic/combo-final/": {
+      "Karaoke": {
+        "id": "q32-p2z2cgE",
+        "title": "TRONIC - Combo Final | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=q32-p2z2cgE"
+      },
+      "Instrumental": {
+        "id": "Loika8vTIVo",
+        "title": "TRONIC - Combo Final | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=Loika8vTIVo"
+      },
+      "Backtrack": {
+        "id": "k89Y24w-uk0",
+        "title": "TRONIC - Combo Final | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=k89Y24w-uk0"
+      }
+    },
+    "https://www.cifraclub.com/tronic/mateo/": {
+      "Karaoke": {
+        "id": "RL9JYMhSXx0",
+        "title": "TRONIC - Mateo | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=RL9JYMhSXx0"
+      },
+      "Instrumental": {
+        "id": "derbSuYzvm4",
+        "title": "TRONIC - Mateo | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=derbSuYzvm4"
+      },
+      "Backtrack": {
+        "id": "OTNTUAT-yPE",
+        "title": "TRONIC - Mateo | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=OTNTUAT-yPE"
+      }
+    },
+    "https://www.cifraclub.com/la-oreja-de-van-gogh-musicas/la-playa/": {
+      "Karaoke": {
+        "id": "pcDCBykL578",
+        "title": "La Oreja de Van Gogh - La Playa | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=pcDCBykL578"
+      },
+      "Instrumental": {
+        "id": "5fcgumezlTM",
+        "title": "La Oreja de Van Gogh - La Playa | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=5fcgumezlTM"
+      },
+      "Backtrack": {
+        "id": "loicHrnsMU8",
+        "title": "La Oreja de Van Gogh - La Playa | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=loicHrnsMU8"
+      }
+    },
+    "https://acordes.lacuerda.net/tronic/combo_final.shtml": {
+      "Karaoke": {
+        "id": "q32-p2z2cgE",
+        "title": "TRONIC - Combo Final | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=q32-p2z2cgE"
+      },
+      "Instrumental": {
+        "id": "Loika8vTIVo",
+        "title": "TRONIC - Combo Final | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=Loika8vTIVo"
+      },
+      "Backtrack": {
+        "id": "k89Y24w-uk0",
+        "title": "TRONIC - Combo Final | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=k89Y24w-uk0"
+      }
+    },
+    "https://www.cifraclub.com/yorghaki/capaz-merengueton-part-alleh/": {
+      "Karaoke": {
+        "id": "r57730Nfsv8",
+        "title": "Alleh Yorghaki - capaz | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=r57730Nfsv8"
+      },
+      "Instrumental": {
+        "id": "ntJHpj7hziM",
+        "title": "Alleh Yorghaki - capaz | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=ntJHpj7hziM"
+      },
+      "Backtrack": {
+        "id": "psR_RZOcgUc",
+        "title": "Alleh Yorghaki - capaz | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=psR_RZOcgUc"
+      }
+    },
+    "https://www.cifraclub.com/toro-moi/rose-quartz/": {
+      "Karaoke": {
+        "id": "H_IUyOQiGY0",
+        "title": "Carpark Records - Toro Y Moi Rose Quartz | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=H_IUyOQiGY0"
+      },
+      "Instrumental": {
+        "id": "ZJWcQCX4HHk",
+        "title": "Carpark Records - Toro Y Moi Rose Quartz | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=ZJWcQCX4HHk"
+      },
+      "Backtrack": {
+        "id": "8-AJGQzBfws",
+        "title": "Carpark Records - Toro Y Moi Rose Quartz | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=8-AJGQzBfws"
+      }
+    },
+    "https://www.cifraclub.com/kidd-voodoo/recuerdame-3/": {
+      "Karaoke": {
+        "id": "31bFul3gjVs",
+        "title": "Kidd Voodoo - Recuerdame | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=31bFul3gjVs"
+      },
+      "Instrumental": {
+        "id": "-bZYUujHLUM",
+        "title": "Kidd Voodoo - Recuerdame | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=-bZYUujHLUM"
+      },
+      "Backtrack": {
+        "id": "2SULcNrIxKw",
+        "title": "Kidd Voodoo - Recuerdame | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=2SULcNrIxKw"
+      }
+    },
+    "https://www.cifraclub.com/kidd-voodoo/incondicional-part-mon-laferte/": {
+      "Karaoke": {
+        "id": "8QiYnuPv1zY",
+        "title": "Kidd Voodoo Mon Laferte - Incondicional | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=8QiYnuPv1zY"
+      },
+      "Instrumental": {
+        "id": "3jtZJoXF98I",
+        "title": "Kidd Voodoo Mon Laferte - Incondicional | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=3jtZJoXF98I"
+      },
+      "Backtrack": {
+        "id": "xYqcVg8qW24",
+        "title": "Kidd Voodoo Mon Laferte - Incondicional | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=xYqcVg8qW24"
+      }
+    },
+    "https://www.cifraclub.com/kidd-voodoo/dando-vueltas-part-pablo-alboran/": {
+      "Karaoke": {
+        "id": "Uh96WtSBPzU",
+        "title": "Kidd Voodoo Pablo Alboran - Dando Vueltas | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=Uh96WtSBPzU"
+      },
+      "Instrumental": {
+        "id": "4SDu31VPNMg",
+        "title": "Kidd Voodoo Pablo Alboran - Dando Vueltas | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=4SDu31VPNMg"
+      },
+      "Backtrack": {
+        "id": "XsHpfZQVpPo",
+        "title": "Kidd Voodoo Pablo Alboran - Dando Vueltas | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=XsHpfZQVpPo"
+      }
+    },
+    "https://www.cifraclub.com/oliver-tree/cowboys-don-t-cry/": {
+      "Karaoke": {
+        "id": "NAaTEa3ejxY",
+        "title": "Oliver Tree - Cowboys Don t Cry | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=NAaTEa3ejxY"
+      },
+      "Instrumental": {
+        "id": "tplQM3tGEvI",
+        "title": "Oliver Tree - Cowboys Don t Cry | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=tplQM3tGEvI"
+      },
+      "Backtrack": {
+        "id": "9fDyCZn5J7Q",
+        "title": "Oliver Tree - Cowboys Don t Cry | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=9fDyCZn5J7Q"
+      }
+    },
+    "https://www.cifraclub.com/oliver-tree/me-myself-and-i/": {
+      "Karaoke": {
+        "id": "Knf_vyB740c",
+        "title": "Oliver Tree - Me Myself I | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=Knf_vyB740c"
+      },
+      "Instrumental": {
+        "id": "eL29wNHd-6I",
+        "title": "Oliver Tree - Me Myself I | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=eL29wNHd-6I"
+      },
+      "Backtrack": {
+        "id": "4IVfPVgzfu8",
+        "title": "Oliver Tree - Me Myself I | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=4IVfPVgzfu8"
       }
     }
   }
