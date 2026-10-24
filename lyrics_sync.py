@@ -317,6 +317,54 @@ def fetch_synced_lyrics(artist: str, title: str, cache: dict) -> str | None:
     return lrc
 
 
+def song_points(url: str, song: dict, content: str, aligned: dict, offsets: dict, cache: dict) -> list | None:
+    """Cuándo se canta cada renglón de una hoja: [[segundo, renglón, anclas], ...] en orden (sin anclas si la
+    letra no trae el tiempo de cada palabra). None si no hay letra con tiempos que calce con la hoja.
+
+    aligned: {url: {"lrc", "words"}} con los tiempos de tu video (karaoke_lyrics.json o aligned_lyrics.json);
+    sin la canción ahí, la letra de LRCLIB corrida según offsets. También lo usa el paso del audio de
+    complete_chords.py, para escuchar cada renglón cuando se canta."""
+    if url in aligned and aligned[url]['lrc'] is None:  # la letra de LRCLIB es de otra versión del tema
+        return None
+    lrc_text = aligned[url]['lrc'] if url in aligned else fetch_synced_lyrics(song['artist'], song['title'], cache)
+    lrc = parse_lrc(lrc_text) if lrc_text else []
+    points = align(lrc, sheet_lyric_lines(content), with_index=True) if lrc else []
+    # Una letra que casi no calza con la hoja es otra versión (u otra canción): mejor el modo aproximado
+    if len(points) < 8 or len(points) < 0.5 * len(lrc):
+        return None
+    shift = 0 if url in aligned else offsets.get(url, {}).get('segundos', 0)
+    words = sung_words(lrc_text, aligned[url].get('words', [])) if url in aligned else []
+    sheet_lines = content.split('\n')
+    lyric_order = [k for k, _ in sheet_lyric_lines(content)]
+    out = []
+    for j, (t, line, i) in enumerate(points):
+        if not any(words[i:i + 1]):  # sin el tiempo de cada palabra: el renglón calzado, entero
+            out.append([round(t + shift, 2), line])
+            continue
+        # El tramo hasta la próxima línea calzada: lo cantado entre medio (aunque no haya calzado
+        # sola) va sobre los renglones de la hoja que hay entre medio
+        next_i, next_line = (points[j + 1][2], points[j + 1][1]) if j + 1 < len(points) else (len(lrc), None)
+        k = lyric_order.index(line)
+        first_i = 0 if j == 0 else i  # lo cantado antes de la primera línea que calzó también cuenta
+        if next_line is not None and next_line > line:
+            # Hasta la próxima línea calzada incluida: la hoja puede escribir en un renglón anterior
+            # el comienzo de esa línea cantada ("Tus palabras se tornan cristal," / "no las voy...");
+            # lo que se canta desde la próxima línea lo pone su propio tramo. Y un poco más allá: el
+            # karaoke junta en una línea lo que la hoja escribe en tres ("But if you close your eyes
+            # (Eheu...), does it almost feel like nothing changed at all?") y la próxima línea puede
+            # haber calzado con uno de esos renglones; los que se cantan antes de ella son de este tramo
+            after = points[j + 2][1] if j + 2 < len(points) and points[j + 2][1] > next_line else next_line
+            region = [x for x in lyric_order[k:] if x <= after]
+            next_start = words[next_i][0][1] if words[next_i:next_i + 1] and words[next_i] else t
+            found = [p for p in region_points(words[first_i:next_i + 1], sheet_lines, region)
+                     if p[1] < next_line or p[2][0][1] < next_start]
+        else:  # vuelve a una parte escrita más arriba, o es el final: tantos renglones como lo cantado
+            region = lyric_order[k:k + (next_i - i) + 1]
+            found = region_points(words[first_i:next_i], sheet_lines, region)
+        out += found or line_points(t, line, words[i], sheet_lines, lyric_order)
+    return no_early(merge_rows(out))
+
+
 def generate_sync_points():
     print("Generando tiempos de letra (LRCLIB)...")
     preloaded = json.loads((PUBLIC / 'preloaded_songs.json').read_text(encoding='utf-8'))
@@ -340,45 +388,11 @@ def generate_sync_points():
         song, sheet = enriched.get(url), preloaded.get(url)
         if not song or not sheet or not sheet.get('content'):
             continue
-        if url in aligned and aligned[url]['lrc'] is None:  # la letra de LRCLIB es de otra versión del tema
+        points = song_points(url, song, sheet['content'], aligned, offsets, cache)
+        if points:
+            sync_points[url] = points
+        elif url in aligned and aligned[url]['lrc'] is None:
             sin_letra.append(f"{song['title']} — {song['artist']} (letra de otra versión)")
-            continue
-        lrc_text = aligned[url]['lrc'] if url in aligned else fetch_synced_lyrics(song['artist'], song['title'], cache)
-        lrc = parse_lrc(lrc_text) if lrc_text else []
-        points = align(lrc, sheet_lyric_lines(sheet['content']), with_index=True) if lrc else []
-        # Una letra que casi no calza con la hoja es otra versión (u otra canción): mejor el modo aproximado
-        if len(points) >= 8 and len(points) >= 0.5 * len(lrc):
-            shift = 0 if url in aligned else offsets.get(url, {}).get('segundos', 0)
-            words = sung_words(lrc_text, aligned[url].get('words', [])) if url in aligned else []
-            sheet_lines = sheet['content'].split('\n')
-            lyric_order = [k for k, _ in sheet_lyric_lines(sheet['content'])]
-            sync_points[url] = []
-            for j, (t, line, i) in enumerate(points):
-                if not any(words[i:i + 1]):  # sin el tiempo de cada palabra: el renglón calzado, entero
-                    sync_points[url].append([round(t + shift, 2), line])
-                    continue
-                # El tramo hasta la próxima línea calzada: lo cantado entre medio (aunque no haya calzado
-                # sola) va sobre los renglones de la hoja que hay entre medio
-                next_i, next_line = (points[j + 1][2], points[j + 1][1]) if j + 1 < len(points) else (len(lrc), None)
-                k = lyric_order.index(line)
-                first_i = 0 if j == 0 else i  # lo cantado antes de la primera línea que calzó también cuenta
-                if next_line is not None and next_line > line:
-                    # Hasta la próxima línea calzada incluida: la hoja puede escribir en un renglón anterior
-                    # el comienzo de esa línea cantada ("Tus palabras se tornan cristal," / "no las voy...");
-                    # lo que se canta desde la próxima línea lo pone su propio tramo. Y un poco más allá: el
-                    # karaoke junta en una línea lo que la hoja escribe en tres ("But if you close your eyes
-                    # (Eheu...), does it almost feel like nothing changed at all?") y la próxima línea puede
-                    # haber calzado con uno de esos renglones; los que se cantan antes de ella son de este tramo
-                    after = points[j + 2][1] if j + 2 < len(points) and points[j + 2][1] > next_line else next_line
-                    region = [x for x in lyric_order[k:] if x <= after]
-                    next_start = words[next_i][0][1] if words[next_i:next_i + 1] and words[next_i] else t
-                    found = [p for p in region_points(words[first_i:next_i + 1], sheet_lines, region)
-                             if p[1] < next_line or p[2][0][1] < next_start]
-                else:  # vuelve a una parte escrita más arriba, o es el final: tantos renglones como lo cantado
-                    region = lyric_order[k:k + (next_i - i) + 1]
-                    found = region_points(words[first_i:next_i], sheet_lines, region)
-                sync_points[url] += found or line_points(t, line, words[i], sheet_lines, lyric_order)
-            sync_points[url] = no_early(merge_rows(sync_points[url]))
         else:
             sin_letra.append(f"{song['title']} — {song['artist']}")
 

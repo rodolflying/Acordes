@@ -1,6 +1,6 @@
 """Acordes desde el audio para las líneas que la hoja deja sin acordes (paso 3 de complete_chords.py).
 
-Para cada línea de letra con su tiempo en tu video (letra alineada con Whisper o LRCLIB + desfase),
+Para cada línea de letra con su tiempo en tu video (letra alineada con Whisper, la de tu karaoke o LRCLIB + desfase),
 reconoce qué acordes suenan mientras se canta, eligiendo solo entre los que ya usa la canción y en el
 tono que suena (transposición medida en results.json). Eso es mucho más confiable que reconocer a
 ciegas: el reconocedor solo decide cuál de 4-8 acordes conocidos suena, no cuál de 24.
@@ -19,34 +19,44 @@ from chordcheck import HOP, ROOT, SCRATCH, SR, parse_chord, sharp, template
 import batch
 
 sys.path.insert(0, str(ROOT))
-from lyrics_sync import align as align_lyrics, parse_lrc, sheet_lyric_lines  # noqa: E402
+from lyrics_sync import ALIGNED_FILE, CACHE_FILE, KARAOKE_FILE, OFFSETS_FILE, song_points  # noqa: E402
 
 MIN_F1 = 0.75        # acierto mínimo en las líneas que sí traen acordes
 MIN_CHECKED = 6      # líneas para poder evaluar
 MIN_SEGMENT = 0.6    # s: un acorde más corto que esto es ruido
+KARAOKE_LEAD = 0.2   # s: el karaoke pinta cada palabra antes de cantarla (mediana contra Whisper en 37 canciones)
 FRAME = HOP / SR
 
 
+def load(path):
+    return json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
+
+
 def line_times(url, content):
-    """{línea de la hoja: segundo en tu video en que se empieza a cantar} (la primera vez)."""
-    enriched = json.loads((ROOT / 'client/public/enriched_songs.json').read_text(encoding='utf-8'))['songs']
-    aligned = json.loads((ROOT / 'aligned_lyrics.json').read_text(encoding='utf-8')) if (ROOT / 'aligned_lyrics.json').exists() else {}
-    if (ROOT / 'karaoke_lyrics.json').exists():  # lo que pinta tu video karaoke manda
-        aligned = {**aligned, **json.loads((ROOT / 'karaoke_lyrics.json').read_text(encoding='utf-8'))}
-    offsets = json.loads((ROOT / 'sync_offsets.json').read_text(encoding='utf-8')) if (ROOT / 'sync_offsets.json').exists() else {}
-    cache = json.loads((ROOT / 'lrclib_cache.json').read_text(encoding='utf-8'))
-    song = enriched.get(url, {})
-    lrc = aligned[url]['lrc'] if url in aligned else cache.get(f"{song.get('artist')}|{song.get('title')}")
-    if not lrc:
-        return {}
-    shift = 0 if url in aligned else offsets.get(url, {}).get('segundos', 0)
-    points = align_lyrics(parse_lrc(lrc), sheet_lyric_lines(content))
-    starts = sorted(t + shift for t, _ in points)
+    """{línea de la hoja: (segundo en tu video en que se empieza a cantar, el de lo que sigue)} (la primera vez).
+
+    Cada renglón con su tiempo, como lo ubica lyrics_sync para la app (aunque la letra junte dos renglones
+    en una línea), pero escuchando la voz: primero Whisper, que ubicó la letra en la voz guía de este mismo
+    video. La app sigue lo que pinta tu karaoke, que se adelanta a la voz; acá eso deja al reconocedor
+    oyendo el acorde de antes (con el karaoke primero, la autoevaluación pasaba en 8 canciones; así, en 20).
+    """
+    enriched = load(ROOT / 'client/public/enriched_songs.json').get('songs', {})
+    voice, karaoke = load(ALIGNED_FILE), load(KARAOKE_FILE)
+    if voice.get(url, {}).get('lrc'):
+        timed, lead = {url: voice[url]}, 0
+    elif url in karaoke:
+        timed, lead = {url: karaoke[url]}, KARAOKE_LEAD
+    else:  # la letra de LRCLIB corrida según el desfase medido; o nada, si Whisper vio que es de otra versión
+        timed, lead = voice, 0
+    song = enriched.get(url)
+    points = song_points(url, song, content, timed, load(OFFSETS_FILE), load(CACHE_FILE)) if song else None
+    starts = sorted(p[0] + lead for p in points or [])
     out = {}
-    for t, line in points:
+    for t, line, *_ in points or []:
+        t += lead
         if line not in out:
-            later = [s for s in starts if s > t + shift + 0.05]
-            out[line] = (t + shift, later[0] if later else t + shift + 6)
+            later = [s for s in starts if s > t + 0.05]
+            out[line] = (t, later[0] if later else t + 6)
     return out
 
 
