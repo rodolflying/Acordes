@@ -13,7 +13,7 @@ import librosa
 import numpy as np
 import scipy.ndimage
 
-ROOT = Path(r'C:\Users\usuario\Desktop\Software development\_WORK_\Acordes')
+ROOT = Path(__file__).resolve().parents[2]  # la carpeta del proyecto (también en un worktree de git)
 SCRATCH = Path(__file__).parent
 sys.path.insert(0, str(ROOT))
 
