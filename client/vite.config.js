@@ -8,5 +8,7 @@ export default defineConfig(({ mode }) => ({
   // (/Acordes/cancion/artista/titulo/), so assets and data need absolute paths
   base: mode === 'production' ? '/Acordes/' : '/', // build and preview; dev serves at /
   // dist/ is build output; watching it crashes the dev server on Windows (EBUSY) during a build
-  server: { watch: { ignored: ['**/dist/**'] } },
+  // The preview pane assigns a free port through PORT (another chat's server may hold the default)
+  server: { watch: { ignored: ['**/dist/**'] }, ...(process.env.PORT && { port: Number(process.env.PORT), strictPort: true }) },
+  preview: process.env.PORT ? { port: Number(process.env.PORT), strictPort: true } : {},
 }))
