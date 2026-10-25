@@ -1,5 +1,5 @@
 {
-  "last_enriched": "2026-10-24T13:49:53.906231",
+  "last_enriched": "2026-10-25T17:04:01.390080",
   "songs": {
     "https://www.ukulele-tabs.com/uke-songs/jason-mraz/i-won-t-give-up-uke-tab-21635.html": {
       "artist": "Jason Mraz",
@@ -6931,6 +6931,78 @@
       "listeners": 2598552,
       "playcount": 28001904,
       "enriched_at": "2026-10-24T13:49:53.906231"
+    },
+    "https://www.cifraclub.com/fakie/quizas-no-podia-ver/": {
+      "artist": "Fakie",
+      "title": "Quizas No Podia Ver",
+      "folder": "Karaokes",
+      "source": "Cifra Club",
+      "mood": "Reflexivo",
+      "mood_emoji": "🔮",
+      "theme": "Existencial",
+      "theme_emoji": "🌀",
+      "energy": "Media",
+      "genre": "Unknown",
+      "year": null,
+      "country": null,
+      "lastfm_tags": [],
+      "listeners": 172,
+      "playcount": 1081,
+      "enriched_at": "2026-10-25T17:03:43.802186"
+    },
+    "https://www.cifraclub.com/fernando-milagros/reina-japonesa/": {
+      "artist": "Fernando Milagros",
+      "title": "Reina Japonesa",
+      "folder": "Karaokes",
+      "source": "Cifra Club",
+      "mood": "Reflexivo",
+      "mood_emoji": "🔮",
+      "theme": "Existencial",
+      "theme_emoji": "🌀",
+      "energy": "Media",
+      "genre": "rock",
+      "year": 2009,
+      "country": "CL",
+      "lastfm_tags": [],
+      "listeners": 19239,
+      "playcount": 131869,
+      "enriched_at": "2026-10-25T17:03:48.232562"
+    },
+    "https://www.cifraclub.com/lucybell/raptame-del-fin/": {
+      "artist": "Lucybell",
+      "title": "Raptame del fin",
+      "folder": "Karaokes",
+      "source": "Cifra Club",
+      "mood": "Reflexivo",
+      "mood_emoji": "🔮",
+      "theme": "Existencial",
+      "theme_emoji": "🌀",
+      "energy": "Media",
+      "genre": "Unknown",
+      "year": null,
+      "country": null,
+      "lastfm_tags": [],
+      "listeners": 4516,
+      "playcount": 28419,
+      "enriched_at": "2026-10-25T17:03:51.490333"
+    },
+    "https://www.cifraclub.com/lucybell/milagro/": {
+      "artist": "Lucybell",
+      "title": "Milagro",
+      "folder": "Karaokes",
+      "source": "Cifra Club",
+      "mood": "Reflexivo",
+      "mood_emoji": "🔮",
+      "theme": "Existencial",
+      "theme_emoji": "🌀",
+      "energy": "Media",
+      "genre": "Unknown",
+      "year": 2000,
+      "country": "CL",
+      "lastfm_tags": [],
+      "listeners": 26000,
+      "playcount": 207121,
+      "enriched_at": "2026-10-25T17:04:01.390080"
     }
   }
 }
