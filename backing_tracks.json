@@ -51,6 +51,57 @@
         "youtube_url": "https://www.youtube.com/watch?v=fKGkzyrDTm8"
       }
     },
+    "https://acordes.lacuerda.net/lucybell/milagro-2.shtml": {
+      "Karaoke": {
+        "id": "cBgZ52wpDCY",
+        "title": "Lucybell - Milagro | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=cBgZ52wpDCY"
+      },
+      "Instrumental": {
+        "id": "98jRVjTcS2w",
+        "title": "Lucybell - Milagro | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=98jRVjTcS2w"
+      },
+      "Backtrack": {
+        "id": "WhH1YHANq7w",
+        "title": "Lucybell - Milagro | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=WhH1YHANq7w"
+      }
+    },
+    "https://acordes.lacuerda.net/lucybell/raptame_del_fin-2.shtml": {
+      "Karaoke": {
+        "id": "d4vZWHvIe50",
+        "title": "Lucybell - Raptame del fin | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=d4vZWHvIe50"
+      },
+      "Instrumental": {
+        "id": "PjdZEVqohx8",
+        "title": "Lucybell - Raptame del fin | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=PjdZEVqohx8"
+      },
+      "Backtrack": {
+        "id": "kJ0DOJZioO0",
+        "title": "Lucybell - Raptame del fin | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=kJ0DOJZioO0"
+      }
+    },
+    "https://acordes.lacuerda.net/lucybell/ver_el_fin.shtml": {
+      "Karaoke": {
+        "id": "ObjmSo2X1hU",
+        "title": "Lucybell - Ver el fin | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=ObjmSo2X1hU"
+      },
+      "Instrumental": {
+        "id": "2AkvObNjz2Y",
+        "title": "Lucybell - Ver el fin | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=2AkvObNjz2Y"
+      },
+      "Backtrack": {
+        "id": "Kgo_u3OcCkQ",
+        "title": "Lucybell - Ver el fin | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=Kgo_u3OcCkQ"
+      }
+    },
     "https://acordes.lacuerda.net/lucybell/voy_por_ti.shtml": {
       "Karaoke": {
         "id": "zZAyTsBhnRY",
@@ -141,6 +192,40 @@
         "id": "O4LmJM9J3hM",
         "title": "TRONIC - Bajo Llave | Backtrack",
         "youtube_url": "https://www.youtube.com/watch?v=O4LmJM9J3hM"
+      }
+    },
+    "https://www.cifraclub.com/oasis/wonderwall/": {
+      "Karaoke": {
+        "id": "tSPV586q4Xg",
+        "title": "Oasis - Wonderwall | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=tSPV586q4Xg"
+      },
+      "Instrumental": {
+        "id": "rsdxLYxUc5w",
+        "title": "Oasis - Wonderwall | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=rsdxLYxUc5w"
+      },
+      "Backtrack": {
+        "id": "O_3Y_SQ_Qng",
+        "title": "Oasis - Wonderwall | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=O_3Y_SQ_Qng"
+      }
+    },
+    "https://acordes.lacuerda.net/fernando_milagros/reina_japonesa.shtml": {
+      "Karaoke": {
+        "id": "cxWzzDkgQY0",
+        "title": "Fernando Milagros - Reina Japonesa | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=cxWzzDkgQY0"
+      },
+      "Instrumental": {
+        "id": "xXNFr2tBm7Y",
+        "title": "Fernando Milagros - Reina Japonesa | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=xXNFr2tBm7Y"
+      },
+      "Backtrack": {
+        "id": "Z4wroP0xPE4",
+        "title": "Fernando Milagros - Reina Japonesa | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=Z4wroP0xPE4"
       }
     },
     "https://www.cifraclub.com/harry-styles/as-it-was/": {
@@ -272,6 +357,23 @@
         "id": "K3ofGIsawGI",
         "title": "Coldplay - Clocks | Backtrack",
         "youtube_url": "https://www.youtube.com/watch?v=K3ofGIsawGI"
+      }
+    },
+    "https://www.cifraclub.com/linkin-park/the-messenger/": {
+      "Karaoke": {
+        "id": "L798XpJ4dis",
+        "title": "Linkin Park - The Messenger | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=L798XpJ4dis"
+      },
+      "Instrumental": {
+        "id": "5BgQHDQANEU",
+        "title": "Linkin Park - The Messenger | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=5BgQHDQANEU"
+      },
+      "Backtrack": {
+        "id": "jeP_fpp0lv8",
+        "title": "Linkin Park - The Messenger | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=jeP_fpp0lv8"
       }
     },
     "https://www.cifraclub.com/ed-sheeran/the-a-team/": {
@@ -597,21 +699,33 @@
         "youtube_url": "https://www.youtube.com/watch?v=R1SY9RN0HY4"
       }
     },
-    "https://www.cifraclub.com/oliver-tree/life-goes-on/": {
+    "https://www.cifraclub.com/oliver-tree/hurt/": {
       "Karaoke": {
-        "id": "vE1CejAH5xg",
-        "title": "Oliver Tree - Life Goes On | Karaoke with Lyrics",
-        "youtube_url": "https://www.youtube.com/watch?v=vE1CejAH5xg"
+        "id": "-5kSB2Jkblw",
+        "title": "Oliver Tree - Hurt | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=-5kSB2Jkblw"
       },
       "Instrumental": {
-        "id": "OA4rHiunDUc",
-        "title": "Oliver Tree - Life Goes On | Instrumental (No Vocals)",
-        "youtube_url": "https://www.youtube.com/watch?v=OA4rHiunDUc"
+        "id": "dWSQjpsNkPI",
+        "title": "Oliver Tree - Hurt | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=dWSQjpsNkPI"
       },
       "Backtrack": {
-        "id": "sLculKyot4I",
-        "title": "Oliver Tree - Life Goes On | Backtrack",
-        "youtube_url": "https://www.youtube.com/watch?v=sLculKyot4I"
+        "id": "_MjvlxCdTEY",
+        "title": "Oliver Tree - Hurt | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=_MjvlxCdTEY"
+      }
+    },
+    "https://www.cifraclub.com/oliver-tree/let-me-down/": {
+      "Karaoke": {
+        "id": "BB8knWWnPfA",
+        "title": "Oliver Tree - Let Me Down | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=BB8knWWnPfA"
+      },
+      "Instrumental": {
+        "id": "yJ22uRWoZgI",
+        "title": "Oliver Tree - Let Me Down | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=yJ22uRWoZgI"
       }
     },
     "https://www.cifraclub.com/oliver-tree/alien-boy/": {
@@ -794,6 +908,74 @@
         "id": "F_VXpVSn8_k",
         "title": "Fakie - Dia Tras Dia | Backtrack",
         "youtube_url": "https://www.youtube.com/watch?v=F_VXpVSn8_k"
+      }
+    },
+    "https://acordes.lacuerda.net/fakie/quizas_no_podia_ver.shtml": {
+      "Karaoke": {
+        "id": "QoXXS2Dy-F8",
+        "title": "Fakie - Quizas No Podia Ver | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=QoXXS2Dy-F8"
+      },
+      "Instrumental": {
+        "id": "B8fSYZjvwhg",
+        "title": "Fakie - Quizas No Podia Ver | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=B8fSYZjvwhg"
+      },
+      "Backtrack": {
+        "id": "Z_EY-DS4D_Q",
+        "title": "Fakie - Quizas No Podia Ver | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=Z_EY-DS4D_Q"
+      }
+    },
+    "https://www.cifraclub.com/linkin-park/shadow-of-the-day/": {
+      "Karaoke": {
+        "id": "Tp0w1AI8-l8",
+        "title": "Linkin Park - Shadow of the Day | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=Tp0w1AI8-l8"
+      },
+      "Instrumental": {
+        "id": "ytbM97UE1SA",
+        "title": "Linkin Park - Shadow of the Day | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=ytbM97UE1SA"
+      },
+      "Backtrack": {
+        "id": "Sy4GHgM4vcE",
+        "title": "Linkin Park - Shadow of the Day | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=Sy4GHgM4vcE"
+      }
+    },
+    "https://www.cifraclub.com/linkin-park/shadow-of-the-day/szwwsw.html": {
+      "Karaoke": {
+        "id": "Tp0w1AI8-l8",
+        "title": "Linkin Park - Shadow of the Day | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=Tp0w1AI8-l8"
+      },
+      "Instrumental": {
+        "id": "ytbM97UE1SA",
+        "title": "Linkin Park - Shadow of the Day | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=ytbM97UE1SA"
+      },
+      "Backtrack": {
+        "id": "Sy4GHgM4vcE",
+        "title": "Linkin Park - Shadow of the Day | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=Sy4GHgM4vcE"
+      }
+    },
+    "https://www.cifraclub.com/audioslave/like-stone/": {
+      "Karaoke": {
+        "id": "gVhtiX0TGTI",
+        "title": "Audioslave - Like a Stone | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=gVhtiX0TGTI"
+      },
+      "Instrumental": {
+        "id": "xuxE01F8aQM",
+        "title": "Audioslave - Like a Stone | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=xuxE01F8aQM"
+      },
+      "Backtrack": {
+        "id": "wj-SrvxehSA",
+        "title": "Audioslave - Like a Stone | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=wj-SrvxehSA"
       }
     },
     "https://www.cifraclub.com/bad-bunny/turista/simplificada.html": {
@@ -1046,6 +1228,23 @@
         "youtube_url": "https://www.youtube.com/watch?v=RulPwdA4Aw4"
       }
     },
+    "https://acordes.lacuerda.net/rosalia/la_perla.shtml": {
+      "Karaoke": {
+        "id": "rfJNr_Zh9Is",
+        "title": "ROSALIA - La Perla ft Yahritza Y Su Esencia | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=rfJNr_Zh9Is"
+      },
+      "Instrumental": {
+        "id": "Wcz4_DmLCmQ",
+        "title": "ROSALIA - La Perla ft Yahritza Y Su Esencia | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=Wcz4_DmLCmQ"
+      },
+      "Backtrack": {
+        "id": "e1xSBzYYVBw",
+        "title": "ROSALIA - La Perla ft Yahritza Y Su Esencia | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=e1xSBzYYVBw"
+      }
+    },
     "https://www.cifraclub.com/rayos-laser/ya-me-hiciste-mal/": {
       "Karaoke": {
         "id": "ihkuY98RIy8",
@@ -1166,16 +1365,6 @@
       }
     },
     "https://www.cifraclub.com/avril-lavigne/complicated/": {
-      "Karaoke": {
-        "id": "uj3jal50EEQ",
-        "title": "Avril Lavigne - Complicated | Karaoke with Lyrics",
-        "youtube_url": "https://www.youtube.com/watch?v=uj3jal50EEQ"
-      },
-      "Instrumental": {
-        "id": "TeZz9Aflxos",
-        "title": "Avril Lavigne - Complicated | Instrumental (No Vocals)",
-        "youtube_url": "https://www.youtube.com/watch?v=TeZz9Aflxos"
-      },
       "Backtrack": {
         "id": "8vwrLNy4EmM",
         "title": "Avril Lavigne - Complicated | Backtrack",
@@ -1573,6 +1762,380 @@
         "youtube_url": "https://www.youtube.com/watch?v=OTNTUAT-yPE"
       }
     },
+    "https://www.cifraclub.com/avril-lavigne/when-youre-gone/": {
+      "Karaoke": {
+        "id": "5iDNPGvN20Y",
+        "title": "Avril Lavigne - When You're Gone | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=5iDNPGvN20Y"
+      },
+      "Instrumental": {
+        "id": "Z7JgWWmFW2U",
+        "title": "Avril Lavigne - When You're Gone | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=Z7JgWWmFW2U"
+      },
+      "Backtrack": {
+        "id": "g_DzQhT5FP4",
+        "title": "Avril Lavigne - When You're Gone | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=g_DzQhT5FP4"
+      }
+    },
+    "https://www.cifraclub.com/coldplay/sparks/": {
+      "Karaoke": {
+        "id": "ePwkQY1xEEE",
+        "title": "Coldplay - Sparks | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=ePwkQY1xEEE"
+      },
+      "Instrumental": {
+        "id": "vom_US3Q_vI",
+        "title": "Coldplay - Sparks | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=vom_US3Q_vI"
+      },
+      "Backtrack": {
+        "id": "ioL7pfLnPEs",
+        "title": "Coldplay - Sparks | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=ioL7pfLnPEs"
+      }
+    },
+    "https://www.cifraclub.com/coldplay/the-scientist/": {
+      "Karaoke": {
+        "id": "R4Vy7Ilz424",
+        "title": "Coldplay - The Scientist | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=R4Vy7Ilz424"
+      },
+      "Instrumental": {
+        "id": "wP8AFPgBUgk",
+        "title": "Coldplay - The Scientist | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=wP8AFPgBUgk"
+      },
+      "Backtrack": {
+        "id": "e-wjvHlUtyA",
+        "title": "Coldplay - The Scientist | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=e-wjvHlUtyA"
+      }
+    },
+    "https://www.cifraclub.com/coldplay/yellow/": {
+      "Karaoke": {
+        "id": "Z33ySbMqomo",
+        "title": "Coldplay - Yellow | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=Z33ySbMqomo"
+      },
+      "Instrumental": {
+        "id": "Fr9TMP8MT5o",
+        "title": "Coldplay - Yellow | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=Fr9TMP8MT5o"
+      },
+      "Backtrack": {
+        "id": "HguxEzyOyX8",
+        "title": "Coldplay - Yellow | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=HguxEzyOyX8"
+      }
+    },
+    "https://www.cifraclub.com/linkin-park/crawling/": {
+      "Karaoke": {
+        "id": "EXhJrbwHaBw",
+        "title": "Linkin Park - Crawling | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=EXhJrbwHaBw"
+      },
+      "Instrumental": {
+        "id": "D4jOIhImBRs",
+        "title": "Linkin Park - Crawling | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=D4jOIhImBRs"
+      },
+      "Backtrack": {
+        "id": "_4YinhEb-AA",
+        "title": "Linkin Park - Crawling | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=_4YinhEb-AA"
+      }
+    },
+    "https://www.cifraclub.com/fakie/quizas-no-podia-ver/": {
+      "Karaoke": {
+        "id": "QoXXS2Dy-F8",
+        "title": "Fakie - Quizas No Podia Ver | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=QoXXS2Dy-F8"
+      },
+      "Instrumental": {
+        "id": "B8fSYZjvwhg",
+        "title": "Fakie - Quizas No Podia Ver | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=B8fSYZjvwhg"
+      },
+      "Backtrack": {
+        "id": "Z_EY-DS4D_Q",
+        "title": "Fakie - Quizas No Podia Ver | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=Z_EY-DS4D_Q"
+      }
+    },
+    "https://www.cifraclub.com/fernando-milagros/reina-japonesa/": {
+      "Karaoke": {
+        "id": "cxWzzDkgQY0",
+        "title": "Fernando Milagros - Reina Japonesa | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=cxWzzDkgQY0"
+      },
+      "Instrumental": {
+        "id": "xXNFr2tBm7Y",
+        "title": "Fernando Milagros - Reina Japonesa | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=xXNFr2tBm7Y"
+      },
+      "Backtrack": {
+        "id": "Z4wroP0xPE4",
+        "title": "Fernando Milagros - Reina Japonesa | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=Z4wroP0xPE4"
+      }
+    },
+    "https://www.cifraclub.com/kings-of-leon/use-somebody/": {
+      "Karaoke": {
+        "id": "UA-SahUVo5Q",
+        "title": "Kings Of Leon - Use Somebody | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=UA-SahUVo5Q"
+      },
+      "Instrumental": {
+        "id": "Tnc94PxqBS0",
+        "title": "Kings Of Leon - Use Somebody | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=Tnc94PxqBS0"
+      },
+      "Backtrack": {
+        "id": "fD3Y2FE9yh8",
+        "title": "Kings Of Leon - Use Somebody | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=fD3Y2FE9yh8"
+      }
+    },
+    "https://www.cifraclub.com/los-bunkers/angel-para-un-final/": {
+      "Karaoke": {
+        "id": "sL0l9pMRFfY",
+        "title": "Los Bunkers - Angel para un Final | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=sL0l9pMRFfY"
+      },
+      "Instrumental": {
+        "id": "eqUDx8SUjM4",
+        "title": "Los Bunkers - Angel para un Final | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=eqUDx8SUjM4"
+      },
+      "Backtrack": {
+        "id": "0jA6pA8lgE4",
+        "title": "Los Bunkers - Angel para un Final | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=0jA6pA8lgE4"
+      }
+    },
+    "https://www.cifraclub.com/los-bunkers/mientele/": {
+      "Karaoke": {
+        "id": "OxJRsyuxtkw",
+        "title": "Los Bunkers - Mientele | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=OxJRsyuxtkw"
+      },
+      "Instrumental": {
+        "id": "30hqDzkzKnU",
+        "title": "Los Bunkers - Mientele | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=30hqDzkzKnU"
+      },
+      "Backtrack": {
+        "id": "LRuAO_IwOsY",
+        "title": "Los Bunkers - Mientele | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=LRuAO_IwOsY"
+      }
+    },
+    "https://www.cifraclub.com/lucybell/fe/": {
+      "Karaoke": {
+        "id": "xLy9iMymGx4",
+        "title": "Lucybell - Fe | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=xLy9iMymGx4"
+      },
+      "Instrumental": {
+        "id": "qb7a6E9hYUg",
+        "title": "Lucybell - Fe | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=qb7a6E9hYUg"
+      },
+      "Backtrack": {
+        "id": "l2n6_izRjCU",
+        "title": "Lucybell - Fe | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=l2n6_izRjCU"
+      }
+    },
+    "https://www.cifraclub.com/lucybell/raptame-del-fin/": {
+      "Karaoke": {
+        "id": "d4vZWHvIe50",
+        "title": "Lucybell - Raptame del fin | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=d4vZWHvIe50"
+      },
+      "Instrumental": {
+        "id": "PjdZEVqohx8",
+        "title": "Lucybell - Raptame del fin | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=PjdZEVqohx8"
+      },
+      "Backtrack": {
+        "id": "kJ0DOJZioO0",
+        "title": "Lucybell - Raptame del fin | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=kJ0DOJZioO0"
+      }
+    },
+    "https://www.cifraclub.com/metallica/one/": {
+      "Karaoke": {
+        "id": "SJa-KokNkT8",
+        "title": "Metallica - One | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=SJa-KokNkT8"
+      },
+      "Instrumental": {
+        "id": "CvI1KoFhA-M",
+        "title": "Metallica - One | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=CvI1KoFhA-M"
+      },
+      "Backtrack": {
+        "id": "wjgstnmil2Y",
+        "title": "Metallica - One | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=wjgstnmil2Y"
+      }
+    },
+    "https://www.cifraclub.com/oasis/stand-by-me/": {
+      "Karaoke": {
+        "id": "fBp6Wm648tw",
+        "title": "Oasis - Stand By Me | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=fBp6Wm648tw"
+      },
+      "Instrumental": {
+        "id": "fdGotLwgci8",
+        "title": "Oasis - Stand By Me | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=fdGotLwgci8"
+      },
+      "Backtrack": {
+        "id": "DYfJTSMS7G4",
+        "title": "Oasis - Stand By Me | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=DYfJTSMS7G4"
+      }
+    },
+    "https://www.cifraclub.com/saosin/voices/": {
+      "Karaoke": {
+        "id": "lU6Im2T0XFo",
+        "title": "Saosin - Voices | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=lU6Im2T0XFo"
+      },
+      "Instrumental": {
+        "id": "im4YM46niCE",
+        "title": "Saosin - Voices | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=im4YM46niCE"
+      },
+      "Backtrack": {
+        "id": "l1b94L8hBSs",
+        "title": "Saosin - Voices | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=l1b94L8hBSs"
+      }
+    },
+    "https://www.cifraclub.com/shakira/las-de-la-intuicion/": {
+      "Karaoke": {
+        "id": "MGPKMDufd4w",
+        "title": "Shakira - Las de la Intuicion | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=MGPKMDufd4w"
+      },
+      "Instrumental": {
+        "id": "vc6Y5rZn03o",
+        "title": "Shakira - Las de la Intuicion | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=vc6Y5rZn03o"
+      },
+      "Backtrack": {
+        "id": "_CfyiOc4oBA",
+        "title": "Shakira - Las de la Intuicion | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=_CfyiOc4oBA"
+      }
+    },
+    "https://www.cifraclub.com/silverstein/my-heroine/": {
+      "Karaoke": {
+        "id": "XpomwanYlOc",
+        "title": "Silverstein - My Heroine | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=XpomwanYlOc"
+      },
+      "Instrumental": {
+        "id": "dfdgTO2h2Do",
+        "title": "Silverstein - My Heroine | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=dfdgTO2h2Do"
+      },
+      "Backtrack": {
+        "id": "XFg-2jBGifs",
+        "title": "Silverstein - My Heroine | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=XFg-2jBGifs"
+      }
+    },
+    "https://www.cifraclub.com/the-killers/when-you-were-young/": {
+      "Karaoke": {
+        "id": "2mw0kuRZoHY",
+        "title": "The Killers - When You Were Young | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=2mw0kuRZoHY"
+      },
+      "Instrumental": {
+        "id": "Slplrt3akN0",
+        "title": "The Killers - When You Were Young | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=Slplrt3akN0"
+      },
+      "Backtrack": {
+        "id": "ZzVfpEsZQGE",
+        "title": "The Killers - When You Were Young | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=ZzVfpEsZQGE"
+      }
+    },
+    "https://www.cifraclub.com/the-lumineers/ho-hey/": {
+      "Karaoke": {
+        "id": "Dz_Y2SLu7g8",
+        "title": "The Lumineers - Ho Hey | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=Dz_Y2SLu7g8"
+      },
+      "Instrumental": {
+        "id": "dYCuV4rPYQ0",
+        "title": "The Lumineers - Ho Hey | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=dYCuV4rPYQ0"
+      },
+      "Backtrack": {
+        "id": "3oLK6mQbxT0",
+        "title": "The Lumineers - Ho Hey | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=3oLK6mQbxT0"
+      }
+    },
+    "https://www.cifraclub.com/u2/one/": {
+      "Karaoke": {
+        "id": "3cBWJ31mFjk",
+        "title": "U2 - One | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=3cBWJ31mFjk"
+      },
+      "Instrumental": {
+        "id": "SIYBfqyapCU",
+        "title": "U2 - One | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=SIYBfqyapCU"
+      },
+      "Backtrack": {
+        "id": "l961MWHlki0",
+        "title": "U2 - One | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=l961MWHlki0"
+      }
+    },
+    "https://www.cifraclub.com/u2/with-or-without-you/": {
+      "Karaoke": {
+        "id": "kzuhEMb-tAs",
+        "title": "U2 - With Or Without You | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=kzuhEMb-tAs"
+      },
+      "Instrumental": {
+        "id": "f8Q_-4sNFSI",
+        "title": "U2 - With Or Without You | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=f8Q_-4sNFSI"
+      },
+      "Backtrack": {
+        "id": "GUVV9_f9L2s",
+        "title": "U2 - With Or Without You | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=GUVV9_f9L2s"
+      }
+    },
+    "https://www.cifraclub.com/lucybell/milagro/": {
+      "Karaoke": {
+        "id": "cBgZ52wpDCY",
+        "title": "Lucybell - Milagro | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=cBgZ52wpDCY"
+      },
+      "Instrumental": {
+        "id": "98jRVjTcS2w",
+        "title": "Lucybell - Milagro | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=98jRVjTcS2w"
+      },
+      "Backtrack": {
+        "id": "WhH1YHANq7w",
+        "title": "Lucybell - Milagro | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=WhH1YHANq7w"
+      }
+    },
     "https://www.cifraclub.com/la-oreja-de-van-gogh-musicas/la-playa/": {
       "Karaoke": {
         "id": "pcDCBykL578",
@@ -1605,6 +2168,74 @@
         "id": "k89Y24w-uk0",
         "title": "TRONIC - Combo Final | Backtrack",
         "youtube_url": "https://www.youtube.com/watch?v=k89Y24w-uk0"
+      }
+    },
+    "https://www.cifraclub.com/guffi/la-historia-de-juan/": {
+      "Karaoke": {
+        "id": "VCl0-k2dEjU",
+        "title": "GUFI - La Historia de Juan | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=VCl0-k2dEjU"
+      },
+      "Instrumental": {
+        "id": "1Cj3RZ4VwdA",
+        "title": "GUFI - La Historia de Juan | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=1Cj3RZ4VwdA"
+      },
+      "Backtrack": {
+        "id": "AtJE4x05k_k",
+        "title": "GUFI - La Historia de Juan | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=AtJE4x05k_k"
+      }
+    },
+    "https://www.cifraclub.com/daddy-yankee/el-amante/": {
+      "Karaoke": {
+        "id": "9TosfdDqVt4",
+        "title": "Daddy Yankee ft J Alvarez - El Amante | Karaoke con Letra",
+        "youtube_url": "https://www.youtube.com/watch?v=9TosfdDqVt4"
+      },
+      "Instrumental": {
+        "id": "qIMvuC9T_4Y",
+        "title": "Daddy Yankee ft J Alvarez - El Amante | Instrumental (Sin Voces)",
+        "youtube_url": "https://www.youtube.com/watch?v=qIMvuC9T_4Y"
+      },
+      "Backtrack": {
+        "id": "55NVnIZy5sg",
+        "title": "Daddy Yankee ft J Alvarez - El Amante | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=55NVnIZy5sg"
+      }
+    },
+    "https://www.cifraclub.com/avril-lavigne/im-with-you-8570/": {
+      "Karaoke": {
+        "id": "chiEo7fN9Yw",
+        "title": "Avril Lavigne - I'm With You | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=chiEo7fN9Yw"
+      },
+      "Instrumental": {
+        "id": "iF1bfnWXvYQ",
+        "title": "Avril Lavigne - I'm With You | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=iF1bfnWXvYQ"
+      },
+      "Backtrack": {
+        "id": "hdCIEfUlp4w",
+        "title": "Avril Lavigne - I'm With You | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=hdCIEfUlp4w"
+      }
+    },
+    "https://www.cifraclub.com/avril-lavigne/sk8er-boy/": {
+      "Karaoke": {
+        "id": "u9ku_0lRIgA",
+        "title": "Avril Lavigne - Sk8er Boi | Karaoke with Lyrics",
+        "youtube_url": "https://www.youtube.com/watch?v=u9ku_0lRIgA"
+      },
+      "Instrumental": {
+        "id": "I0nbQ1cH5QA",
+        "title": "Avril Lavigne - Sk8er Boi | Instrumental (No Vocals)",
+        "youtube_url": "https://www.youtube.com/watch?v=I0nbQ1cH5QA"
+      },
+      "Backtrack": {
+        "id": "jY4-b56TJVg",
+        "title": "Avril Lavigne - Sk8er Boi | Backtrack",
+        "youtube_url": "https://www.youtube.com/watch?v=jY4-b56TJVg"
       }
     },
     "https://www.cifraclub.com/yorghaki/capaz-merengueton-part-alleh/": {
