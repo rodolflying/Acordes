@@ -253,6 +253,16 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
     if (!(REEL || iframeRef.current?.isConnected) || player.state !== 1 || !player.duration) return null;
     return player.time + (performance.now() - player.stamp) / 1000 * player.rate;
   }, []);
+  // The second the video was at when its player went away (another version picked, the video closed, a
+  // search opened), so the next one starts there: the three versions share timing. Only a version change
+  // keeps it playing
+  const [resumeAt, setResumeAt] = useState(null); // { t, play }
+  const keepSpot = (keepPlaying = false) => {
+    const player = playerRef.current;
+    if (!player.ready) return; // it never loaded (a blocked video): keep the spot it was given
+    const ended = player.state === 0;
+    setResumeAt({ t: ended ? 0 : Math.floor(videoTime() ?? player.time), play: keepPlaying && player.state === 1 });
+  };
   // The song's analysis is saved under its first video (Karaoke, Instrumental, Backtrack): all three share timing
   const visualsId = ['Karaoke', 'Instrumental', 'Backtrack'].map(v => backingTracks?.[v]?.id).find(Boolean) || null;
   const syncing = (hasVideo && syncWithVideo) || (REEL && Boolean(syncPoints?.length));
@@ -338,6 +348,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
 
   // Fetch Backing Tracks matching this song from local uploader JSON
   useEffect(() => {
+    setResumeAt(null); // another song starts from the top
     if (propBackingTracks) {
       setBackingTracks(propBackingTracks);
       
@@ -1009,6 +1020,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
           }
         };
         setBackingTracks(updatedTrack);
+        setResumeAt(null);
         setActiveVideoId(videoId);
         setIsSearching(false);
         if (onVideoLinked) {
@@ -1080,7 +1092,11 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                 {/* YouTube Toggle Button (without the local server, only for songs that have tracks) */}
                 {!loadingTracks && (backingTracks || API_URL) && (
                   <button 
-                    onClick={() => (videoMini ? setVideoMini(false) : setShowYoutube(!showYoutube))}  
+                    onClick={() => {
+                      if (videoMini) return setVideoMini(false);
+                      if (showYoutube) keepSpot();
+                      setShowYoutube(!showYoutube);
+                    }}
                     className={`btn ${showYoutube ? 'btn-on' : ''}`}
                     style={{ gap: '6px' }}
                     title="Pistas oficiales de acompañamiento"
@@ -1204,6 +1220,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                 onClick={() => {
                   if (!isSearching) {
                     setSearchQuery(defaultQuery);
+                    keepSpot();
                     setIsSearching(true);
                   } else {
                     setIsSearching(false);
@@ -1226,7 +1243,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                 <i className={`fas ${videoMini ? 'fa-up-right-and-down-left-from-center' : 'fa-down-left-and-up-right-to-center'}`}></i>
               </button>
               {videoMini && (
-                <button onClick={() => { setVideoMini(false); setShowYoutube(false); }} className="btn-icon" title="Cerrar el video" aria-label="Cerrar el video" style={{ width: '32px', height: '32px', border: 'none', background: 'transparent', color: 'white', cursor: 'pointer' }}>
+                <button onClick={() => { keepSpot(); setVideoMini(false); setShowYoutube(false); }} className="btn-icon" title="Cerrar el video" aria-label="Cerrar el video" style={{ width: '32px', height: '32px', border: 'none', background: 'transparent', color: 'white', cursor: 'pointer' }}>
                   <i className="fas fa-times"></i>
                 </button>
               )}
@@ -1344,7 +1361,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                         ref={iframeRef}
                         onLoad={(e) => connectPlayer(e.currentTarget)}
                         id="youtube-player-iframe"
-                        src={`https://www.youtube.com/embed/${activeVideoId}?enablejsapi=1&playsinline=1&origin=${window.location.origin}`}
+                        src={`https://www.youtube.com/embed/${activeVideoId}?enablejsapi=1&playsinline=1&origin=${window.location.origin}${resumeAt?.t ? `&start=${resumeAt.t}` : ''}${resumeAt?.play ? '&autoplay=1' : ''}`}
                         title="YouTube Backing Track Player"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1376,7 +1393,11 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                           key={version}
                           className={`version-btn ${isActive ? 'active' : ''} ${!isAvailable ? 'disabled' : ''}`}
                           disabled={!isAvailable}
-                          onClick={() => isAvailable && setActiveVideoId(trackInfo.id)}
+                          onClick={() => {
+                            if (!isAvailable || isActive) return; // the same video would reload
+                            keepSpot(true);
+                            setActiveVideoId(trackInfo.id);
+                          }}
                         >
                           <span className="version-icon">
                             {version === 'Karaoke' && '🎤'}

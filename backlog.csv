@@ -66,3 +66,4 @@ Mejoras, Celular: encabezado de la hoja en dos líneas (título y artista con Gu
 Difusión, Mostrar el video de ejemplo a los amigos y decidir si se abre el canal de TikTok / Instagram (y probar subirlo sin audio con el sonido oficial de TikTok), 10, HIGH, Should, ADMIN, Video vertical de ejemplo, Ninguno, pendiente
 Difusión, Traducciones para todas las canciones con letra sincronizada: traducir_letras.py en lote por el LLM Router (~55 canciones / la cuota gratis de Qwen vence el 2026-10-30), 10, MEDIUM, Could, FEATURE, Video vertical de ejemplo, Ninguno, pendiente
 Difusión, Línea de traducción también en la hoja normal (no solo en ?reel) con un botón para encenderla, 10, LOW, Could, FEATURE, Traducciones, Ninguno, pendiente
+Mejoras, Cambiar de versión (Karaoke / Instrumental / Backtrack) retoma en el segundo donde ibas y sigue sonando; cerrar y reabrir el video o volver de la búsqueda también retoma ahí en pausa, 10, MEDIUM, Should, UX, Ninguno, Ninguno, completada
