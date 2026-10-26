@@ -27,6 +27,8 @@ const VIDEO_RATES = [0.5, 0.75, 1, 1.25, 1.5];
 // place at the bottom and the line being sung shows its translation (traducir_letras.py)
 const REEL_PARAMS = new URLSearchParams(window.location.search);
 const REEL = REEL_PARAMS.has('reel');
+// ?v=<video id>: the link in a video's comment on YouTube opens that same version (instrumental, backtrack…)
+const LINKED_VIDEO = REEL_PARAMS.get('v');
 
 // Top (px from `origin`) of each source line of the chord sheet. Measured in the DOM because on
 // phones long lines wrap, so a line's position isn't its index × line height
@@ -364,9 +366,10 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
       if (!defaultVer) {
         defaultVer = Object.keys(propBackingTracks)[0];
       }
-      
+      const linked = Object.values(propBackingTracks).find(t => t.id === LINKED_VIDEO);
+
       if (defaultVer) {
-        setActiveVideoId(propBackingTracks[defaultVer].id);
+        setActiveVideoId(linked ? linked.id : propBackingTracks[defaultVer].id);
         setShowYoutube(true);
       }
       setLoadingTracks(false);

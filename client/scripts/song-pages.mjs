@@ -1,8 +1,11 @@
 // After `vite build`: one HTML page per song (dist/cancion/artista/titulo/index.html) with its own
 // title, description and picture, so a link in a YouTube description or on WhatsApp shows the song;
-// 404.html, which GitHub Pages serves for any other address, and a sitemap for search engines.
+// 404.html, which GitHub Pages serves for any other address, a sitemap for search engines, and
+// paginas_videos.json: the page and chords of each song, which Karaokes reads from the live site to
+// write the comment and description of each video (sync_comentarios.py), so it only links pages that exist.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { buildSongs, pickBest, isViewable } from '../src/catalog.js';
+import { buildSongs, pickBest, isViewable, normKey } from '../src/catalog.js';
+import { sharpChord } from '../src/ChordUtils.js';
 
 const dist = new URL('../dist/', import.meta.url);
 const read = file => JSON.parse(readFileSync(new URL(file, dist), 'utf-8'));
@@ -44,6 +47,29 @@ for (const song of songs) {
   writeFileSync(new URL('index.html', dir), html);
 }
 
+// The chords of the sheet in the order they first appear (A · A7M · F#m · B), with sharps like the page.
+// Only English names: a sheet sometimes marks a word as a chord ("DO", "LA")
+const preloaded = read('preloaded_songs.json');
+const CHORD = /^[A-G][#b]?(?:$|[mM\d(/+\-º°]|maj|min|dim|aug|sus|add)/;
+const sheetChords = url => {
+  const content = preloaded[url]?.content || '';
+  const chords = [...content.matchAll(/<span class="chord">([^<]+)<\/span>/g)]
+    .map(m => sharpChord(m[1].trim())).filter(c => CHORD.test(c));
+  const capo = content.match(/Capo[^<\d]*(\d+)/);
+  return { chords: [...new Set(chords)], capo: capo ? Number(capo[1]) : null };
+};
+const paginas = { canciones: {}, videos: {} };
+for (const song of songs) {
+  const artist = song.folder !== 'Otros' ? song.folder : null;
+  const pagina = { url: `${site}cancion/${song.slug}/`, title: song.title, artist, ...sheetChords(song.url) };
+  // By name, for a video just uploaded that the repertoire doesn't know yet
+  if (artist) paginas.canciones[`${normKey(artist)}|${normKey(song.title)}`] = pagina;
+  for (const [version, track] of Object.entries(backingTracks[song.url] || {})) {
+    paginas.videos[track.id] = { ...pagina, version };
+  }
+}
+writeFileSync(new URL('paginas_videos.json', dist), JSON.stringify(paginas));
+
 writeFileSync(new URL('404.html', dist), template);
 writeFileSync(new URL('sitemap.xml', dist), [
   '<?xml version="1.0" encoding="UTF-8"?>',
@@ -52,4 +78,4 @@ writeFileSync(new URL('sitemap.xml', dist), [
   ...songs.map(s => `  <url><loc>${site}cancion/${s.slug}/</loc></url>`),
   '</urlset>', '',
 ].join('\n'));
-console.log(`Páginas de canciones: ${songs.length} (más 404.html y sitemap.xml)`);
+console.log(`Páginas de canciones: ${songs.length} (más 404.html, sitemap.xml y paginas_videos.json con ${Object.keys(paginas.videos).length} videos)`);
