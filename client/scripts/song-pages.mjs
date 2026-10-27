@@ -48,13 +48,20 @@ for (const song of songs) {
 }
 
 // The chords of the sheet in the order they first appear (A · A7M · F#m · B), with sharps like the page.
-// Only English names: a sheet sometimes marks a word as a chord ("DO", "LA")
+// In the sheet's own notation, English or Latin (Re · Sol · Sim), as the page shows them: a name in the
+// other notation is a word the sheet marked as a chord ("DO" in an English sheet)
 const preloaded = read('preloaded_songs.json');
-const CHORD = /^[A-G][#b]?(?:$|[mM\d(/+\-º°]|maj|min|dim|aug|sus|add)/;
+const SUFFIX = String.raw`(?:$|[mM\d(/+\-º°]|maj|min|dim|aug|sus|add)`;
+const ENGLISH = new RegExp(`^[A-G][#b]?${SUFFIX}`);
+const LATIN = new RegExp(`^(?:do|re|mi|fa|sol|la|si)[#b]?${SUFFIX}`, 'i');
+const latinCase = c => c.replace(/(^|\/)(do|re|mi|fa|sol|la|si)/gi,  // "SIm/RE" → "Sim/Re"
+  (_, before, note) => before + note[0].toUpperCase() + note.slice(1).toLowerCase());
 const sheetChords = url => {
   const content = preloaded[url]?.content || '';
-  const chords = [...content.matchAll(/<span class="chord">([^<]+)<\/span>/g)]
-    .map(m => sharpChord(m[1].trim())).filter(c => CHORD.test(c));
+  const names = [...content.matchAll(/<span class="chord">([^<]+)<\/span>/g)].map(m => m[1].trim());
+  const latin = names.filter(c => LATIN.test(c)).length > names.filter(c => ENGLISH.test(c)).length;
+  const chords = names.filter(c => (latin ? LATIN : ENGLISH).test(c))
+    .map(c => sharpChord(latin ? latinCase(c) : c));
   const capo = content.match(/Capo[^<\d]*(\d+)/);
   return { chords: [...new Set(chords)], capo: capo ? Number(capo[1]) : null };
 };

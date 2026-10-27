@@ -124,6 +124,15 @@ def generate_backing_tracks():
                 if x not in artist.split() and not (compact_artist and compact_artist in x)]
         return all(x in noise for x in rest)
 
+    def one_typo(a: str, b: str) -> bool:
+        """Una letra de más, de menos o cambiada: el karaoke escribe "GUFI" y la hoja "Guffi"."""
+        if len(a) > len(b):
+            a, b = b, a
+        if a == b or len(a) < 4 or len(b) - len(a) > 1:
+            return False
+        i = next((i for i, (x, y) in enumerate(zip(a, b)) if x != y), len(a))
+        return a[i + (len(a) == len(b)):] == b[i + 1:]
+
     root_dir = os.path.dirname(os.path.abspath(__file__))
     candidates = [
         os.path.join(os.path.dirname(root_dir), "Karaokes", "data", "youtube_upload_state.json"),
@@ -221,15 +230,18 @@ def generate_backing_tracks():
                         is_match = True
             if not is_match and len(compact_title) >= 3:
                 # Pasada tolerante: el artista vale si comparte una palabra distintiva
-                # ("Thirty Seconds To Mars" = "30 Seconds to Mars"), y el título tiene que ser lo principal
-                # del nombre del video, no una palabra suelta dentro de otro título
+                # ("Thirty Seconds To Mars" = "30 Seconds to Mars") o la escribe con una letra distinta
+                # ("GUFI" = "Guffi"), y el título tiene que ser lo principal del nombre del video, no una
+                # palabra suelta dentro de otro título
                 compact_key = norm_key.replace(' ', '')
                 key_words = set(norm_key.split())
-                artist_ok = compact_artist in compact_key or any(len(w) >= 4 and w in key_words for w in norm_artist.split())
-                # Lo que queda del nombre sin el artista: la parte del "Artista - Título" que no lo nombra
                 artist_words = [w for w in norm_artist.split() if len(w) >= 4]
+                artist_ok = compact_artist in compact_key or any(
+                    w in key_words or any(one_typo(w, k) for k in key_words) for w in artist_words)
+                # Lo que queda del nombre sin el artista: la parte del "Artista - Título" que no lo nombra
                 parts = [normalize_string(p).replace(' ', '') for p in clean_key.split(' - ')]
-                titled = [p for p in parts if compact_artist not in p and not any(w in p for w in artist_words)]
+                titled = [p for p in parts if compact_artist not in p
+                          and not any(w in p or one_typo(w, p) for w in artist_words)]
                 rest = titled[0] if len(titled) == 1 else compact_key.replace(compact_artist, '')
                 is_match = artist_ok and compact_title in compact_key and len(compact_title) >= 0.5 * len(rest)
 
