@@ -39,7 +39,7 @@ const pageItems = (current, total) => {
 const MOODS_CONFIG = {
   "Romántico": { emoji: "💕", color: "#ff007a", rgb: "255, 0, 122" },
   "Melancólico": { emoji: "🌙", color: "#5e60ce", rgb: "94, 96, 206" },
-  "Reflexivo": { emoji: "🔮", color: "#00f2ff", rgb: "0, 242, 255" },
+  "Reflexivo": { emoji: "🔮", color: "#38bdf8", rgb: "56, 189, 248" },
   "Enérgico": { emoji: "⚡", color: "#ffb703", rgb: "255, 183, 3" },
   "Alegre": { emoji: "☀️", color: "#ff7096", rgb: "255, 112, 150" },
   "Épico": { emoji: "🔥", color: "#ff003c", rgb: "255, 0, 60" },

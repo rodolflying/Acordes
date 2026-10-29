@@ -58,7 +58,7 @@ function DashboardModal({ stats, onClose }) {
               className="kpi-card" 
               style={{
                 borderColor: stats.dominantMood ? stats.dominantMood.color : 'var(--glass-border)',
-                boxShadow: stats.dominantMood ? `0 8px 32px rgba(${stats.dominantMood.color.replace('#', '') === 'ff007a' ? '255,0,122' : '0,242,255'}, 0.08)` : 'none'
+                boxShadow: stats.dominantMood ? `0 8px 32px ${stats.dominantMood.color}14` : 'none'
               }}
             >
               <div className="kpi-icon" style={{ color: stats.dominantMood ? stats.dominantMood.color : 'inherit' }}>
@@ -131,7 +131,7 @@ function DashboardModal({ stats, onClose }) {
                         style={{ 
                           width: animate ? `${theme.percentage}%` : '0%',
                           backgroundColor: 'var(--primary)',
-                          boxShadow: '0 0 8px rgba(0, 242, 255, 0.5)'
+                          boxShadow: '0 0 8px rgba(var(--signal-rgb), 0.5)'
                         }}
                       ></div>
                     </div>

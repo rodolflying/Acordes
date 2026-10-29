@@ -337,7 +337,7 @@ input#search:focus {
     /* Mood specific color tokens */
     --mood-romantico: #ff007a;
     --mood-melancolico: #5e60ce;
-    --mood-reflexivo: #00f2ff;
+    --mood-reflexivo: #38bdf8;
     --mood-energetico: #ffb703;
     --mood-alegre: #ff7096;
     --mood-epico: #ff003c;
@@ -1032,37 +1032,94 @@ input#search:focus {
     text-align: center;
 }
 
-/* ====== Song Viewer Mobile ====== */
+/* ====== Song viewer header ======
+   A card like the sheet's (same corners and border) that stays on top while the sheet scrolls. Every control
+   in its row is --ctl-h tall with the same corners, so the row reads as one toolbar; Close sits apart at the end */
 .viewer-header {
+    --ctl-h: 38px;
     display: flex;
     flex-direction: column; /* the title on its own line: next to all the buttons it got squeezed */
-    align-items: flex-start;
-    gap: 0.8rem;
-    margin-bottom: 2rem;
+    gap: 0.9rem;
+    margin-bottom: 1.5rem;
     position: sticky;
-    top: 0;
-    background: rgba(5, 5, 5, 0.75);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--glass-border);
+    top: 0.5rem;
+    background: rgba(7, 7, 11, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 1.1rem 1.25rem 1rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
     z-index: 10;
+}
+
+.viewer-header h2 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
 }
 
 .viewer-controls {
     display: flex;
-    gap: 0.8rem;
+    gap: 0.5rem;
     align-items: center;
     flex-wrap: wrap;
 }
-/* With the video panel open the sheet gets narrower: the title on its own line and icon-only buttons
-   below it, so neither the name nor Close get squeezed */
+.viewer-controls .btn {
+    height: var(--ctl-h);
+    min-width: var(--ctl-h);
+    padding: 0 0.85rem;
+    border-radius: 12px;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+.viewer-controls .btn-close {
+    margin-left: auto;
+}
+/* With the video panel open the sheet gets narrower: the title on its own line and square icon-only
+   buttons below it, so neither the name nor Close get squeezed */
 #song-viewer.with-youtube .viewer-controls .btn-label {
     display: none;
 }
-#song-viewer.with-youtube .viewer-controls {
-    gap: 0.6rem;
-    flex-wrap: wrap;
+#song-viewer.with-youtube .viewer-controls .btn {
+    padding: 0;
+}
+
+/* Transpose and text size: a group with the buttons' height and border, its small buttons inside */
+.transpose-controls,
+.font-controls {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    height: var(--ctl-h);
+    padding: 0 3px;
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+}
+.transpose-controls .btn-icon,
+.font-controls .btn-icon {
+    width: 32px;
+    height: calc(var(--ctl-h) - 8px);
+    border-radius: 9px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-soft);
+}
+/* Same width shifted or not (the label shrinks by the reset button), so the buttons after it don't jump */
+.transpose-label {
+    min-width: 92px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-soft);
+}
+.transpose-label.shifted {
+    min-width: 58px;
+    color: var(--signal);
+}
+.transpose-controls .transpose-reset {
+    color: var(--signal);
 }
 .viewer-left-panel .selected-chord-panel {
     position: absolute;
@@ -1086,18 +1143,12 @@ input#search:focus {
 /* ====== Chord Viewer Mobile Responsive ====== */
 @media (max-width: 900px) {
     .viewer-header {
-        flex-direction: column;
-        align-items: flex-start;
         gap: 0.8rem;
-        padding: 0.8rem 0;
+        padding: 0.8rem 1rem;
     }
     .viewer-header h2 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         line-height: 1.3;
-    }
-    .viewer-controls {
-        width: 100%;
-        justify-content: space-between;
     }
     .chord-sheet {
         font-size: calc(0.8rem * var(--sheet-fit, 1) * var(--sheet-scale, 1)); /* --sheet-fit: SongViewer, so chord lines don't wrap */
@@ -1194,26 +1245,26 @@ input#search:focus {
 
 /* Libertad (Freedom) - Seagulls & Flying Birds in the Sky */
 .song-card.theme-libertad {
-    background: radial-gradient(circle at 90% 10%, rgba(0, 242, 255, 0.16) 0%, rgba(0, 150, 255, 0.04) 50%, rgba(5, 5, 5, 0.65) 100%);
-    border-color: rgba(0, 242, 255, 0.2);
+    background: radial-gradient(circle at 90% 10%, rgba(56, 189, 248, 0.16) 0%, rgba(0, 150, 255, 0.04) 50%, rgba(5, 5, 5, 0.65) 100%);
+    border-color: rgba(56, 189, 248, 0.2);
 }
 .song-card.theme-libertad:hover {
-    border-color: rgba(0, 242, 255, 0.75);
-    background: radial-gradient(circle at 90% 10%, rgba(0, 242, 255, 0.26) 0%, rgba(0, 150, 255, 0.08) 50%, rgba(10, 10, 15, 0.7) 100%);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 242, 255, 0.38);
+    border-color: rgba(56, 189, 248, 0.75);
+    background: radial-gradient(circle at 90% 10%, rgba(56, 189, 248, 0.26) 0%, rgba(0, 150, 255, 0.08) 50%, rgba(10, 10, 15, 0.7) 100%);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 35px rgba(56, 189, 248, 0.38);
 }
 .theme-libertad .thematic-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M 10,25 C 13,18 20,18 23,23 C 26,18 33,18 36,25 C 28,28 23,26 23,26 C 23,26 18,28 10,25 Z' fill='none' stroke='rgba(0, 242, 255, 0.38)' stroke-width='1.2'/%3E%3Cpath d='M 45,55 C 47,50 52,50 54,53 C 56,50 61,50 63,55 C 57,57 54,56 54,56 C 54,56 51,57 45,55 Z' fill='none' stroke='rgba(0, 242, 255, 0.25)' stroke-width='1' transform='scale(0.85) translate(5, 5)'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M 10,25 C 13,18 20,18 23,23 C 26,18 33,18 36,25 C 28,28 23,26 23,26 C 23,26 18,28 10,25 Z' fill='none' stroke='rgba(56, 189, 248, 0.38)' stroke-width='1.2'/%3E%3Cpath d='M 45,55 C 47,50 52,50 54,53 C 56,50 61,50 63,55 C 57,57 54,56 54,56 C 54,56 51,57 45,55 Z' fill='none' stroke='rgba(56, 189, 248, 0.25)' stroke-width='1' transform='scale(0.85) translate(5, 5)'/%3E%3C/svg%3E");
 }
 
 /* Existencial (Existential) - Cosmic Infinity Loops & Constellation Star Crosses */
 .song-card.theme-existencial {
-    background: radial-gradient(circle at 90% 10%, rgba(112, 0, 255, 0.16) 0%, rgba(0, 242, 255, 0.04) 50%, rgba(5, 5, 5, 0.65) 100%);
+    background: radial-gradient(circle at 90% 10%, rgba(112, 0, 255, 0.16) 0%, rgba(56, 189, 248, 0.04) 50%, rgba(5, 5, 5, 0.65) 100%);
     border-color: rgba(112, 0, 255, 0.25);
 }
 .song-card.theme-existencial:hover {
     border-color: rgba(112, 0, 255, 0.8);
-    background: radial-gradient(circle at 90% 10%, rgba(112, 0, 255, 0.28) 0%, rgba(0, 242, 255, 0.08) 50%, rgba(10, 10, 15, 0.7) 100%);
+    background: radial-gradient(circle at 90% 10%, rgba(112, 0, 255, 0.28) 0%, rgba(56, 189, 248, 0.08) 50%, rgba(10, 10, 15, 0.7) 100%);
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 35px rgba(112, 0, 255, 0.4);
 }
 .theme-existencial .thematic-pattern {
@@ -2068,23 +2119,6 @@ input#search:focus {
 
 
 
-/* Text-size control in the song viewer, styled like the transpose pill */
-.font-controls {
-    display: flex;
-    align-items: center;
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 0.2rem 0.4rem;
-}
-
-.font-controls .btn-icon {
-    width: 34px;
-    height: 30px;
-    font-size: 0.85rem;
-    font-weight: 700;
-}
-
 /* Collapsible filters: the toggle only shows on phones */
 .filters-toggle {
     display: none;
@@ -2146,7 +2180,7 @@ input#search:focus {
         padding-right: 0;
     }
 
-    /* Icon-only buttons so Close always fits */
+    /* Square icon-only buttons so Close always fits */
     .viewer-controls {
         gap: 0.4rem;
     }
@@ -2154,7 +2188,7 @@ input#search:focus {
         display: none;
     }
     .viewer-controls .btn {
-        padding: 0.6rem 0.8rem;
+        padding: 0;
     }
 
     /* Compact video panel: the video plus the three versions in one row, so the sheet keeps the screen */
@@ -2783,6 +2817,9 @@ input#search:focus {
 .viewer-left-panel.with-selected-chord .viewer-controls .btn-label {
     display: none;
 }
+.viewer-left-panel.with-selected-chord .viewer-controls .btn {
+    padding: 0;
+}
 
 /* Phones: the video already sits under the sheet, so minimized it stays there (without the versions),
    shorter instead of floating over the lyrics */
@@ -2835,9 +2872,12 @@ input#search:focus {
    buttons go on one line that slides sideways, and the chord diagrams are smaller */
 @media (max-width: 600px) {
     .viewer-header {
+        --ctl-h: 34px;
         gap: 0.5rem;
-        padding: 0.6rem 0 0.5rem;
+        top: 0;
+        padding: 0.6rem 0.75rem;
         margin-bottom: 0.8rem;
+        border-radius: 12px;
     }
     .viewer-header > div:first-child {
         display: flex;
@@ -2874,37 +2914,34 @@ input#search:focus {
     .viewer-controls > * {
         flex-shrink: 0;
     }
-    /* Tighter so the whole row fits a 375 px phone: "Tono Original" on two short lines, smaller ± and A buttons */
+    /* Tighter so the whole row fits a 375 px phone: "Tono original" on two short lines, smaller ± and A buttons */
     #song-viewer .viewer-header .viewer-controls {
         gap: 0.35rem;
     }
-    .viewer-controls .btn {
-        padding: 0.5rem 0.65rem;
+    .transpose-controls,
+    .font-controls {
+        padding: 0 2px;
     }
-    .transpose-controls {
-        padding: 0.15rem 0.3rem !important;
-    }
-    .transpose-controls > div {
+    .transpose-label,
+    .transpose-label.shifted {
         width: 46px;
-        min-width: 44px !important;
-        font-size: 0.68rem !important;
+        min-width: 46px;
+        font-size: 0.68rem;
         line-height: 1.1;
     }
-    .transpose-controls .btn-icon {
-        width: 28px !important;
-    }
+    .transpose-controls .btn-icon,
     .font-controls .btn-icon {
-        width: 30px;
+        width: 28px;
     }
     /* Save (the star, third from the end) and Close sit at the end of the title line */
     .viewer-controls .btn-close,
     .viewer-controls > :nth-last-child(3) {
         position: absolute;
         top: 0.3rem;
-        right: 0;
+        right: 0.75rem;
     }
     .viewer-controls > :nth-last-child(3) {
-        right: 2.5rem;
+        right: calc(0.75rem + var(--ctl-h) + 0.35rem);
     }
     .viewer-left-panel.with-selected-chord .chords-scroll-container {
         padding-left: 0 !important;
@@ -2973,7 +3010,8 @@ input#search:focus {
     padding: 80px 200px 12px 0; /* below TikTok's top bar (LIVE, For You, search) */
     margin-bottom: 0.6rem;
     background: linear-gradient(to bottom, rgba(5, 5, 8, 0.96) 80%, rgba(5, 5, 8, 0.8));
-    border-bottom: none;
+    border: none;
+    border-radius: 0;
 }
 #song-viewer.reel .viewer-header > div:first-child {
     display: block;

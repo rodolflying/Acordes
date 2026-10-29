@@ -6,7 +6,7 @@ import Visualizer, { VISUAL_STYLES } from './Visualizer';
 const MOODS_CONFIG = {
   "Romántico": { color: "#ff007a", rgb: "255, 0, 122" },
   "Melancólico": { color: "#5e60ce", rgb: "94, 96, 206" },
-  "Reflexivo": { color: "#00f2ff", rgb: "0, 242, 255" },
+  "Reflexivo": { color: "#38bdf8", rgb: "56, 189, 248" },
   "Enérgico": { color: "#ffb703", rgb: "255, 183, 3" },
   "Alegre": { color: "#ff7096", rgb: "255, 112, 150" },
   "Épico": { color: "#ff003c", rgb: "255, 0, 60" },
@@ -973,7 +973,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
   const displaySpeed = scrollSpeeds[scrollSpeedIndex];
 
   const getTransposeLabel = () => {
-      if (transposeDelta === 0) return 'Tono Original';
+      if (transposeDelta === 0) return 'Tono original';
       return transposeDelta > 0 ? `+${transposeDelta}` : `${transposeDelta}`;
   };
 
@@ -1101,7 +1101,6 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                       setShowYoutube(!showYoutube);
                     }}
                     className={`btn ${showYoutube ? 'btn-on' : ''}`}
-                    style={{ gap: '6px' }}
                     title="Pistas oficiales de acompañamiento"
                     aria-label={showYoutube ? 'Ocultar pista' : 'Mostrar pista'}
                   >
@@ -1110,18 +1109,18 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                   </button>
                 )}
 
-                <div className="transpose-controls" style={{ display: 'flex', alignItems: 'center', background: 'var(--glass)', borderRadius: '20px', padding: '0.2rem 0.5rem', border: '1px solid var(--glass-border)' }}>
-                  <button onClick={() => setTransposeDelta(p => p - 1)} className="btn-icon" style={{ width: '30px', height: '30px', fontSize: '0.9rem' }} title="Bajar medio tono">
+                <div className="transpose-controls">
+                  <button onClick={() => setTransposeDelta(p => p - 1)} className="btn-icon" title="Bajar medio tono" aria-label="Bajar medio tono">
                       <i className="fas fa-minus"></i>
                   </button>
-                  <div style={{ minWidth: '80px', textAlign: 'center', fontSize: '0.85rem', fontWeight: 'bold', color: transposeDelta !== 0 ? 'var(--signal)' : 'var(--text-main)' }}>
+                  <div className={`transpose-label ${transposeDelta !== 0 ? 'shifted' : ''}`}>
                       {getTransposeLabel()}
                   </div>
-                  <button onClick={() => setTransposeDelta(p => p + 1)} className="btn-icon" style={{ width: '30px', height: '30px', fontSize: '0.9rem' }} title="Subir medio tono">
+                  <button onClick={() => setTransposeDelta(p => p + 1)} className="btn-icon" title="Subir medio tono" aria-label="Subir medio tono">
                       <i className="fas fa-plus"></i>
                   </button>
                   {transposeDelta !== 0 && (
-                      <button onClick={() => setTransposeDelta(0)} className="btn-icon" style={{ width: '30px', height: '30px', fontSize: '0.9rem', color: 'var(--accent)' }} title="Restablecer">
+                      <button onClick={() => setTransposeDelta(0)} className="btn-icon transpose-reset" title="Volver al tono original" aria-label="Volver al tono original">
                           <i className="fas fa-undo"></i>
                       </button>
                   )}
@@ -1138,7 +1137,7 @@ const SongViewer = ({ song, onClose, chordDb, backingTracks: propBackingTracks, 
                   <i className={`fas ${shared ? 'fa-check' : 'fa-share-nodes'}`}></i>{shared && <span className="btn-label"> Link copiado</span>}
                 </button>
 
-                <button onClick={onClose} className="btn btn-close" style={{ background: 'var(--glass)', color: 'white' }} aria-label="Cerrar">
+                <button onClick={onClose} className="btn btn-close" aria-label="Cerrar">
                   <i className="fas fa-times"></i> <span className="btn-label">Cerrar</span>
                 </button>
               </div>
